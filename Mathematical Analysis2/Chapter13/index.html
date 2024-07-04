@@ -1,0 +1,1244 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Chapter12/">
+      
+      
+        <link rel="next" href="../Chapter14/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>第十三章 - Monsterdie's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#xiii" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第十三章
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学分析Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            数学分析Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第十三章
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第十三章
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1 有界闭区域上的重积分
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.1 有界闭区域上的重积分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1311" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1.1 零面积集
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.1.1 零面积集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1312" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1.2 可积的判定
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2 重积分的性质与计算
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2 重积分的性质与计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1321" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2.1 性质
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2.1 性质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理一
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理二
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理三
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理四
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      积分中值定理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1322" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2.2 计算
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2.2 计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      二重积分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      三重积分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.3 重积分的变量替换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3 重积分的变量替换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1331" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.3.1 二重积分变量替换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1332-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.3.2 $n$重积分变量替换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3.2 $n$重积分变量替换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      柱坐标变换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      球坐标变换
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    线性代数Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            线性代数Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1 有界闭区域上的重积分
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.1 有界闭区域上的重积分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1311" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1.1 零面积集
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.1.1 零面积集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1312" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1.2 可积的判定
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2 重积分的性质与计算
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2 重积分的性质与计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1321" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2.1 性质
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2.1 性质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理一
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理二
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理三
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理四
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      积分中值定理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1322" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2.2 计算
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2.2 计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      二重积分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      三重积分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.3 重积分的变量替换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3 重积分的变量替换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1331" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.3.1 二重积分变量替换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1332-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.3.2 $n$重积分变量替换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3.2 $n$重积分变量替换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      柱坐标变换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      球坐标变换
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="xiii">XIII 重积分</h1>
+<hr />
+<h2 id="131">13.1 有界闭区域上的重积分</h2>
+<h3 id="1311">13.1.1 零面积集</h3>
+<h4 id="_1">定义</h4>
+<p>设 $D\subseteq R^2$，若对于任意 $\epsilon&gt;0$，存在有限个矩形 $D_1,···,D_k$，使得 $D\subseteq\bigcup\limits_{i=1}^kD_i$，且 $\sum\sigma(D_i)&lt;\epsilon$，则称 $D$ 为<strong>零面积集</strong>.</p>
+<h4 id="_2">定理</h4>
+<p>设$\begin{cases}
+    x=x(t)\\
+    y=y(t)
+\end{cases}$，$t\in[\alpha,\beta]$ 为连续曲线 $E$，且 $x(t)$ 和 $y(t)$ 中至少有一个关于 $t$ 连续可微，则 $E$ 是零面积集.  </p>
+<h3 id="1312">13.1.2 可积的判定</h3>
+<p>设 $f$ 是矩形 $D=[a,b]\times[c,d]$ 上的有界函数，则以下命题等价：  </p>
+<ul>
+<li>$f$ 在 $D$ 上可积  </li>
+<li>对于 $\forall\epsilon&gt;0$，都存在 $D$ 的划分 $P$，使得 $\overline{S}(f,P)-\underline{S}(f,P)&lt;\epsilon$  </li>
+<li>$\overline{\int}_Dfd\sigma=\underline{\int}_Dfd\sigma$  </li>
+</ul>
+<blockquote>
+<p><strong>证明：</strong>  </p>
+<p><strong>2推3：</strong><br />
+由关系式：<br />
+$\underline{S}(f,P)\leqslant\underline{\int}_Dfd\sigma\leqslant\overline{\int}_Dfd\sigma\leqslant\overline{S}(f,P)$
+即可得证  </p>
+<p><strong>3推2：</strong><br />
+由上下积分的定义：<br />
+对于 $\forall\epsilon&gt;0$<br />
+存在 $P_1$，使得 $\overline{S}(f,P_1)-\overline{\int}_Dfd\sigma&lt;\frac{\epsilon}{2}$<br />
+存在 $P_2$，使得 $\underline{\int}  _Dfd\sigma-\underline{S}(f,P_2)&lt;\frac{\epsilon}{2}$
+令 $P$ 为 $P_1$ 和 $P_2$ 的共同加细即可得证  </p>
+<p><strong>1推2：</strong><br />
+记积分为$A$<br />
+对于 $\forall\epsilon&gt;0$，$\exists\delta&gt;0$，使得对于 $D$ 的任意划分 $P$，以及对应的任意介点组，只要 $P$ 的细度小于 $\delta$，都有 $|\sum\limits_{i=1}^nf(\xi_i)\sigma(D_i)-A|&lt;\epsilon$<br />
+于是有 $A-\frac{\epsilon}{2}&lt;\underline{S}(f,P)\leqslant\overline{S}(f,P)&lt;A+\frac{\epsilon}{2}$<br />
+于是有 $\overline{S}(f,P)-\underline{S}(f,P)&lt;\epsilon$，得证  </p>
+<p><strong>2,3推1：</strong><br />
+由2：对于 $\forall\epsilon&gt;0$，存在划分 $P_1={D_1,···,D_n}$，使得 $\overline{S}(f,P_1)-\underline{S}(f,P_1)&lt;\epsilon$<br />
+由3：记上下积分为 $A$   <br />
+令 $\delta_0$ 为所有 $D_i$ 的宽的最小值的一半<br />
+对于满足 $0&lt;\delta&lt;\delta_0$ 的 $\delta$<br />
+记区域 $K$ 为所有 $D_i$ 的边界左右各加粗 $\delta$ 得到的区域（由 $\delta_0$ 的定义：任意 $D_i$ 都不会被完全挤占）<br />
+对于 $\forall\epsilon&gt;0$，总能找到一个 $\delta$ 在 $0$ 到 $\delta_0$ 之间，使得 $\sigma(K)&lt;\epsilon$，即 $K$ 的面积趋于 $0$<br />
+任意给出一个 $D$ 的划分 $P={E_1,···,E_t}$，其细度小于 $\delta$，且任意给出 $P$ 取定后的介点组<br />
+我们要证明的是：$|\sum\limits_{i=1}^tf(\xi_i)\sigma(E_i)-A|&lt;\epsilon$<br />
+注意到：$\underline{S}(f,P)\leqslant\sum\limits_{i=1}^tf(\xi_i)\sigma(E_i)\leqslant\overline{S}(f,P)$<br />
+且 $\underline{S}(f,P)\leqslant A\leqslant\overline{S}(f,P)$<br />
+因此：$|\sum\limits_{i=1}^tf(\xi_i)\sigma(E_i)-A|\leqslant\overline{S}(f,P)-\underline{S}(f,P)=\sum\limits_{i=1}^t(M_i-m_i)\sigma(E_i)$<br />
+接下来，我们把 $E_i$ 分成两组：<br />
+第一组：$E_i\subseteq K$，对应的 $i$ 的集合为 $\Lambda_1$<br />
+第二组：$E_i\nsubseteq K$，对应的 $i$ 的集合为 $\Lambda_2$<br />
+其中，第一组振幅大，但面积可以限制<br />
+第二组面积大，但振幅可以限制<br />
+第一组：<br />
+记 $M$ 为整个 $D$ 的上确界，$m$ 为整个 $D$ 的下确界<br />
+$\sum\limits_{i\in\Lambda_1}(M_i-m_i)\sigma(E_i)\leqslant(M-m)\sum\limits_{i\in\Lambda_1}\sigma(E_i)\leqslant(M-m)\sigma(K)=(M-m)\epsilon$<br />
+第二组：<br />
+由于 $K$ 中线的宽度为 $2\delta$<br />
+因此如果 $E_i$ 并没有完全包含于 $K$，则其必然包含于某个 $D_j$<br />
+记 $M_i$ 为 $E_i$ 的上确界，$M_j$ 为 $D_j$ 的上确界，下确界同理<br />
+$\sum\limits_{i\in\Lambda_2}(M_i-m_i)\sigma(E_i)$<br />
+$\leqslant\sum\limits_{j=1}^n\sum\limits_{i:E_i\subseteq D_j}(M_i-m_i)\sigma(E_i)$<br />
+$\leqslant\sum\limits_{j=1}^n(M_j-m_j)\sigma(D_j)$<br />
+$=\overline{S}(f,P_1)-\underline{S}(f,P_1)$<br />
+$&lt;\epsilon$<br />
+综上：两组都趋于 $0$，得证</p>
+</blockquote>
+<hr />
+<h2 id="132">13.2 重积分的性质与计算</h2>
+<h3 id="1321">13.2.1 性质</h3>
+<h4 id="_3">定理一</h4>
+<p>设 $f$ 是 $D=[a,b]\times[c,d]$ 上的有界函数，若 $f$ 的间断点是零面积集，则 $f$ 在 $D$ 上可积.</p>
+<h4 id="_4">定理二</h4>
+<p>设 $f$ 是 $D=[a,b]\times[c,d]$ 上的有界函数，若 $E={x\in D|f(x)\neq0}$ 是一个零面积集，则 $f$ 在 $D$ 上可积，且积分为 $0$.</p>
+<h4 id="_5">定理三</h4>
+<p>设 $f$，$g$ 是 $D=[a,b]\times[c,d]$ 上的有界函数，若 $E=\{x\in D|f(x)\neq g(x)\}$ 是一个零面积集，则只要 $f$ 和 $g$ 之中有一个在 $D$ 上可积，那么另一个也可积，且积分相同.  </p>
+<h4 id="_6">定理四</h4>
+<p>设 $f$ 是 $E\in R^2$ 上的有界函数，若 $f$ 的间断点集与 $E$ 的边界点集都是零面积集，则 $f$ 在 $E$ 上可积.  </p>
+<h4 id="_7">积分中值定理</h4>
+<p>设 $K$ 是由 $R^2$ 中有限条光滑曲线围成的有界闭区域，函数 $f$，$g:K\rightarrow R$ 连续且 $g$ 在 $K$ 上不变号，则 $\exists \xi\in K$，使得 $\int\limits_{K}fgdxdy=f(\xi)\int\limits_{K}gdxdy$  </p>
+<p>特别地，取 $g=1$，有 $\int\limits_{K}fdxdy=f(\xi)\sigma(K)$，其中 $\sigma(K)$ 为 $K$ 的面积.  </p>
+<h3 id="1322">13.2.2 计算</h3>
+<h4 id="_8">二重积分</h4>
+<p><strong>矩形区域</strong></p>
+<p>设 $f$ 在 $D=[a,b]\times[c,d]$ 上可积，则  </p>
+<p>$\iint\limits_{D}f(x,y)dxdy=\int_a^bdx\int_c^df(x,y)dy=\int_c^ddy\int_a^bf(x,y)dx$  </p>
+<p><strong>x型区域</strong></p>
+<p>设 $f$ 在 $E=\{(x,y)|y_1(x)\leqslant y \leqslant y_2(x),x\in[a,b]\}$上可积，则  </p>
+<p>$\iint\limits_{E}f(x,y)dxdy=\int_a^bdx\int_{y_1(x)}^{y_2(x)}f(x,y)dy$  </p>
+<p><strong>y型区域</strong></p>
+<p>设 $f$ 在 $E=\{(x,y)|x_1(y)\leqslant x \leqslant x_2(y),y\in[c,d]\}$ 上可积，则  </p>
+<p>$\iint\limits_{E}f(x,y)dxdy=\int_c^ddy\int_{x_1(y)}^{x_2(y)}f(x,y)dx$  </p>
+<h4 id="_9">三重积分</h4>
+<p><strong>闭方体区域</strong></p>
+<p>设 $f$ 在 $\Omega=[a_1,b_1]\times[a_2,b_2]\times[a_3,b_3]$ 上可积，则  </p>
+<p>$\iiint\limits_{\Omega}f(x,y,z)dxdydz=\int_{a_1}^{b_1}dx\int_{a_2}^{b_2}dy\int_{a_3}^{b_3}f(x,y,z)dz$  </p>
+<p><strong>x-y型区域</strong></p>
+<p>设 $f$ 在 $E=\{(x,y,z)|z_1(x,y)\leqslant z\leqslant z_2(x,y),(x,y)\in D\}$ 上可积，其中 $D$ 是可求面积的有界闭区域，$z_1(x,y)$，$z_2(x,y)$ 在 $D$ 上连续，则  </p>
+<p>$\iiint\limits_{\Omega}f(x,y,z)dxdydz=\iint\limits_{D}dxdy\int_{z_1(x,y)}^{z_2(x,y)}f(x,y,z)dz$  </p>
+<p>若有进一步条件：$D=\{(x,y)|y_1(x)\leqslant y\leqslant y_2(x),x\in[a,b]\}$，则  </p>
+<p>$\iiint\limits_{\Omega}f(x,y,z)dxdydz=\int_a^bdx\int_{y_1(x)}^{y_2(x)}dy\int_{z_1(x,y)}^{z_2(x,y)}f(x,y,z)dz$  </p>
+<blockquote>
+<p><strong>例：利用重积分的性质和计算方法证明：设 $f(x)$ 在 $[a,b]$ 上连续，则 $[\int_a^bf(x)dx]^2\leqslant(b-a)\int_a^b[f(x)]^2dx$.</strong><br />
+证明：<br />
+左式 $=\int_a^bf(x)dx·\int_a^bf(y)dy$<br />
+$=\int_a^bdx(\int_a^bf(x)f(y)dy)$<br />
+$=\iint\limits_{[a,b]\times[a,b]}f(x)f(y)dxdy$<br />
+$\leqslant\iint\limits_{D}\frac{f^2(x)+f^2(y)}{2}dxdy$<br />
+$=\frac{1}{2}\iint\limits_{D}f^2(x)dxdy+\frac{1}{2}\iint\limits_{D}f^2(y)dxdy$<br />
+$=\frac{1}{2}[(b-a)\int_a^bf^2(x)dx+(b-a)\int_a^bf^2(y)dy]$<br />
+$=(b-a)\int_a^b[f(x)]^2dx$  </p>
+</blockquote>
+<hr />
+<h2 id="133">13.3 重积分的变量替换</h2>
+<h3 id="1331">13.3.1 二重积分变量替换</h3>
+<p>设映射 $\varphi:\begin{cases}
+    x=x(u,v)\\
+    y=y(u,v)
+\end{cases}$ 是开集 $U$ 上的连续可微的映射，对于 $\forall (u,v)\in U$，有 $\frac{\partial(x,y)}{\partial(u,v)}\neq0$. <br />
+设 $\Delta\subset U$ 是由有限条光滑曲线所围成的闭区域，且 $\varphi$ 是 $\Delta$ 上的单射. 设 $f$ 在 $D=\varphi(\Delta)$ 上连续，则<strong>二重积分变量替换公式</strong>成立，即  </p>
+<p>$\iint\limits_{D}f(x,y)dxdy=\iint\limits_{\Delta}f(x(u,v),y(u,v))|\frac{\partial(x,y)}{\partial(u,v)}|dudv$  </p>
+<h3 id="1332-n">13.3.2 $n$重积分变量替换</h3>
+<p>设 $U$ 是 $R^n$ 中的开集，映射 $T:\begin{cases}
+    y_1=y_1(x_1,···,x_n)\\
+    ···\\
+    y_n=y_n(y_1,···,y_n)
+\end{cases}$ 是 $U$ 上的单射，$y_1,···,y_n$ 有连续偏导数，且 $\forall(x_1,···,x_n)$ 有 $\frac{\partial(y_1,···,y_n)}{\partial(x_1,···,x_n)}\neq0$.<br />
+设 $\Omega_1$ 是 $U$ 内具有分片光滑边界的有界闭区域，且 $f(y_1,···,y_n)$ 在 $\Omega$ 上连续，则  </p>
+<p>$\int\limits_{\Omega}f(y_1,···,y_n)dy_1···dy_n=\int\limits_{\Omega_1}f(y_1(x_1,···,x_n),···,y_n(x_1,···,x_n))|\frac{\partial(y_1,···,y_n)}{\partial(x_1,···,x_n)}|dx_1···dx_n$  </p>
+<h4 id="_10">柱坐标变换</h4>
+<p>$\begin{cases}
+    x=r\cos\theta\\
+    y=r\sin\theta\\
+    z=z
+\end{cases}$  </p>
+<p>$0\leqslant r&lt;+\infty$，$0\leqslant\theta\leqslant 2\pi$，$z\in R$  </p>
+<p>$|\frac{\partial(x,y,z)}{\partial(r,\theta,z)}|=r$  </p>
+<h4 id="_11">球坐标变换</h4>
+<p>$\begin{cases}
+    x=r\sin\varphi\cos\theta\\
+    y=r\sin\varphi\sin\theta\\
+    z=r\cos\varphi
+\end{cases}$  </p>
+<p>$0\leqslant r&lt;+\infty$，$0\leqslant\theta\leqslant 2\pi$，$0\leqslant\varphi\leqslant\pi$  </p>
+<p>$|\frac{\partial(x,y,z)}{\partial(r,\varphi,\theta)}|=r^2\sin\varphi$  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
