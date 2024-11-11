@@ -1,0 +1,1643 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Chapter3/">
+      
+      
+        <link rel="next" href="../../Mathematical%20Analysis2/Chapter9/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>第五章 - Monsterdie's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter5-binomial-queue" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第五章
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            高级数据结构与算法分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#findmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      FindMin操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insert操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletemin" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteMin操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decreasekey" class="md-nav__link">
+    <span class="md-ellipsis">
+      DecreaseKey操作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学分析Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学分析Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    线性代数Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            线性代数Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    补充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    离散数学理论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            离散数学理论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    补充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅰ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            普通物理学Ⅰ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics1/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics1/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            CSAPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#findmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      FindMin操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insert操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletemin" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteMin操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decreasekey" class="md-nav__link">
+    <span class="md-ellipsis">
+      DecreaseKey操作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="chapter5-binomial-queue">Chapter5 Binomial Queue 二项堆</h1>
+<hr />
+<h2 id="51">5.1 基本概念</h2>
+<p>二项堆不是一棵树，而是由多棵树组成的森林，森林中的每一棵树是一棵<strong>二项树（binomial tree）</strong>。</p>
+<blockquote>
+<p>记高度为$k$的二项树为$B_k$
+将$B_{k-1}$的根节点连接到另一棵$B_{k-1}$的根节点上，作为其子树，得到的新树即为$B_k$（二项树的递归定义）
+<img alt="alt text" src="../image/5.1.png" />
+性质：
+* $B_k$的根节点有$k$个子节点
+* $B_k$一共有$2^k$个节点
+* $B_k$在深度为$d$（根节点深度为$0$）的节点数为$C_k^d$（二项堆名称的由来）</p>
+</blockquote>
+<p>二项堆中的每个二项树都遵循最小堆的性质，即<strong>父节点的键值小于其孩子节点的键值</strong>。</p>
+<p>不考虑具体键值，任意大小的优先队列可以被唯一表示为一个二项堆。</p>
+<blockquote>
+<p>例：如果优先队列有13个节点，由于$13=2^0+0\times 2^1+2^2+2^3=1101_2$，因此其可以表示为一个$B_0$，一个$B_2$，一个$B_3$组成的二项堆（注意：唯一表示中不可能出现两个$k$相同的$B_k$）</p>
+</blockquote>
+<h2 id="52">5.2 操作</h2>
+<p><strong>数据结构：</strong></p>
+<p>主结构：指针数列，第$i$个位置存放指向$B_i$的指针</p>
+<p>二项树：链表，采用<code>first-child-next-sibling</code>的连接方式</p>
+<p><img alt="alt text" src="../image/5.3.jpg" /></p>
+<pre><code class="language-c">struct BinQueue//二项堆的主结构定义
+{
+    int N;//总节点数
+    BinTree Trees[MaxTree];//指针数列，存放指向每一棵二项树的指针
+}
+
+struct Node//二项堆的节点定义
+{
+    KeyType Key;//键值
+    Position LeftChild;//左孩子
+    Position NextSibling;//右兄弟
+}
+</code></pre>
+<h3 id="findmin"><code>FindMin</code>操作</h3>
+<p>最小的节点位于某一个$B_k$的根节点处（二项堆里的二项树符合最小堆的性质）。</p>
+<p>对于一个有$N$个节点的二项堆，最多有$\lceil\log N\rceil$棵二项树，因此最多需要检查根节点$\lceil\log N\rceil$次。</p>
+<p>时间复杂度：$T=O(\log N)$</p>
+<blockquote>
+<p>如果对二项堆内的二项树进行维护（例如以根节点的键值大小排序），那么FindMin操作的时间复杂度可降至$O(1)$</p>
+</blockquote>
+<h3 id="merge"><code>Merge</code>操作</h3>
+<p><img alt="alt text" src="../image/5.2.jpg" /></p>
+<p>实际上类似于二进制的竖式计算，一一合并的二项树深度相同，仅需比较根节点的键值，将大的连到小的上即可。</p>
+<p><code>Merge</code>操作所需的时间对应二进制位上合并的次数，一共需要合并的次数（位数）对应$H_1$和$H_2$的二项树棵数，二项树棵数对应$\log N$。</p>
+<p>时间复杂度：$T=O(\log N)$，其中$N=N_1+N_2$</p>
+<p><strong>伪代码：</strong></p>
+<pre><code class="language-c">BinTree Combine(BinTree T1,BinTree T2)//合并两棵二项树
+{
+    if(T1-&gt;Key&gt;T2-&gt;key)return Combine(T2,T1);//保证T1的根节点更小
+    T2-&gt;NextSibling=T1-&gt;LeftChild;
+    T1-&gt;LeftChild=T2;
+    return T1;
+}
+
+BinQueue Merge(BinQueue H1,BinQueue H2)//合并两个二项堆
+{
+    BinTree T1,T2,Carry=NULL;
+    int i,j;
+    for(i=0,j=1;j&lt;=H1-&gt;N+H2-&gt;N;i++,j*=2)//i用来控制数组的位数，j用来控制循环次数，因为MaxTree=log N
+    {
+        T1=H1-&gt;Trees[i];
+        T2=H2-&gt;Trees[i];
+        switch(4*!!Carry+2*!!T2+!!T1)//将Carry，T2，T1的有无用二进制表示，例如101表示“有Carry，无T2，有T1”
+        {
+            case 0://000
+            case 1:break;//001
+            case 2://010
+                    {
+                        H1-&gt;Trees[i]=T2;
+                        H2-&gt;Trees[i]=NULL;
+                        break;
+                    }
+            case 3://011
+                    {
+                        Carry=Combine(T1,T2);
+                        H1-&gt;Trees[i]=NULL;
+                        H2-&gt;Trees[i]=NULL;
+                        break;
+                    }
+            case 4://100
+                    {
+                        H1-&gt;Trees[i]=Carry;
+                        H2-&gt;Tress[i]=NULL;
+                        break;
+                    }
+            case 5://101
+                    {
+                        Carry=Combine(T1,Carry);
+                        H1-&gt;Trees[i]=NULL;
+                        break;
+                    }
+            case 6://110
+                    {
+                        Carry=Combine(T2,Carry);
+                        H2-&gt;Trees[i]=NULL;
+                        break;
+                    }
+            case 7://111
+                    {
+                        H1-&gt;Trees[i]=Carry;
+                        Carry=Combine(T1,T2);
+                        H2-&gt;Trees[i]=NULL;
+                    }
+        }
+    }
+    H1-&gt;N+=H2-&gt;N;//更新总节点数
+    return H1;
+}
+</code></pre>
+<h3 id="insert"><code>Insert</code>操作</h3>
+<p>实际上是<code>Merge</code>操作的特殊情况。</p>
+<p>时间复杂度：如果最小的空置二项树为$B_i$（数组第$i$个位置为<code>NULL</code>），则$T=Const\cdot(i+1)=O(1)$</p>
+<p>从空堆开始连续插入$N$个节点的最差总耗时为$O(N)$，均摊时间复杂度为$O(1)$。（分析详见二进制计数器）</p>
+<h3 id="deletemin"><code>DeleteMin</code>操作</h3>
+<p>定义一开始的二项堆为$H$。</p>
+<ul>
+<li>
+<p><strong>第一步：</strong>
+  进行<code>FindMin</code>操作，找到最小元素，其所在二项树为$B_k$
+  该步耗时：$O(\log N)$</p>
+</li>
+<li>
+<p><strong>第二步：</strong>
+  将$B_k$从$H$中移走，剩下的二项树组成的二项堆定义为$H'$
+  该步耗时：$O(1)$</p>
+</li>
+<li>
+<p><strong>第三步：</strong>
+  单独对$B_k$操作，将$B_k$的根节点移走（$H$的最小元素），剩下的子树拆散成一棵棵二项树，形成的新的二项堆定义为$H''$
+  该步耗时：$O(\log N)$</p>
+</li>
+<li>
+<p><strong>第四步：</strong>
+  对$H'$和$H''$进行<code>Merge</code>操作
+  该步耗时：$O(\log N)$</p>
+</li>
+</ul>
+<p>时间复杂度：$T=O(\log N)$</p>
+<p><strong>伪代码：</strong></p>
+<pre><code class="language-c">KeyType DeleteMin(BinQueue H)
+{
+    BinQueue DeletedQueue;
+    Position DeletedTree,OldRoot;
+    KeyType Min=∞;
+    int i,j,MinTree;
+    for(i=0;i&lt;MaxTree;i++)//遍历所有二项树
+    {
+        if(H-&gt;Trees[i]&amp;&amp;H-&gt;Trees[i]-&gt;Key&lt;Min)//寻找最小节点
+        {
+            Min=H-&gt;Trees[i]-&gt;Key;
+            MinTree=i;
+        }
+    }
+    DeletedTree=H-&gt;Trees[MinTree];//获得待操作的树
+    H-&gt;Trees[MinTree]=NULL;//原本对应的位置抹去
+    OldRoot=DeletedTree;//保留待删除的节点
+    DeletedTree=DeletedTree-&gt;LeftChild;//将待操作的树的根节点（待删除节点）移走
+    free(OldRoot);//删除节点
+    DeletedQueue=Initialize();//拆分得到的二项堆数列初始化
+    DeletedQueue-&gt;N=(1&lt;&lt;MinTree)-1;//2^MinTree-1 
+    for(j=MinTree–1;j&gt;=0;j––)//拆分过程
+    {  
+        DeletedQueue-&gt;Trees[j] =DeletedTree;
+        DeletedTree=DeletedTree-&gt;NextSibling;
+        DeletedQueue-&gt;Trees[j]-&gt;NextSibling=NULL;
+    }
+    H-&gt;N=H-&gt;N-DeleteQueue-&gt;N-1;
+    H=Merge(H,DeletedQueue);
+    return Min;
+}
+</code></pre>
+<h3 id="decreasekey"><code>DecreaseKey</code>操作</h3>
+<p>假定已经知道要进行<code>Decrease</code>操作的节点的具体位置，接下来要做的只是不断地向上与父节点交换，直到恢复最小堆的性质</p>
+<p>时间复杂度：$T=O(\log N)$</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>

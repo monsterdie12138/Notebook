@@ -1,0 +1,1708 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Chapter 2 搜索与求解 - Monsterdie's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 2 搜索与求解
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            高级数据结构与算法分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学分析Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学分析Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    线性代数Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            线性代数Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    补充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    离散数学理论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            离散数学理论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    补充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅰ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            普通物理学Ⅰ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics1/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics1/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            CSAPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 搜索算法基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 搜索算法基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      术语
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法评价指标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      搜索算法框架
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 有信息（启发式）搜索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 有信息（启发式）搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      贪婪最佳优先搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      A*搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      A*搜索性能分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 对抗搜索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 对抗搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      最小最大搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\alpha$-$\beta$剪枝搜索
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 蒙特卡洛树搜索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 蒙特卡洛树搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      引入：多臂赌博机问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="引入：多臂赌博机问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      贪心算法策略
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epsilon-" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\epsilon$-贪心算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      上限置信区间算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      蒙特卡洛树搜索算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="chapter-2">Chapter 2 搜索与求解</h1>
+<hr />
+<h2 id="21">2.1 搜索算法基础</h2>
+<p><img alt="alt text" src="../image/2.3.jpg" /></p>
+<h3 id="_1">术语</h3>
+<p><img alt="alt text" src="../image/2.1.png" /></p>
+<p><strong>状态</strong>
+状态是对搜索算法和搜索环境当前所处情形的描述信息，在本例中对应当前位于的城市</p>
+<p><strong>动作</strong>
+算法从一个状态转移到另一个状态所采取的行为被称为动作，在本例中对应乘坐一趟列车从当前城市到下一城市</p>
+<p><strong>状态转移</strong>
+算法选择了一个动作之后，其所处状态也会发生相应变化，这个过程被称为状态转移（由动作触发）</p>
+<p><strong>路径</strong>
+将状态转移过程中经历的状态记录下来，可以得到一个状态序列，这个状态序列被称为一条路径</p>
+<p><strong>代价</strong>
+每条路径对应一个代价，在本例中对应路径长度</p>
+<p><strong>目标测试</strong>
+目标测试函数用于判断状态$S$是否为目标状态，但判断结果为真并不意味着找到的路径是最短的</p>
+<p>搜索算法可以被看成是一个构建搜索树的过程，从根节点（初始状态）开始，不断展开每个节点的后继节点，直到某个节点通过了目标测试</p>
+<p><img alt="alt text" src="../image/2.2.png" /></p>
+<h3 id="_2">算法评价指标</h3>
+<ul>
+<li><strong>完备性：</strong> 当问题存在解时，算法是否能保证找到一个解</li>
+<li><strong>最优性：</strong> 搜索算法是否能保证找到的第一个解是最优解</li>
+<li><strong>时间复杂度：</strong> 找到一个解所需时间</li>
+<li><strong>空间复杂度：</strong> 在算法的运行过程中需要消耗的内存量</li>
+</ul>
+<p><strong>用于估计复杂度的变量</strong></p>
+<ul>
+<li><strong>b：</strong> 分支因子，即搜索树中每个节点最大的分支数目</li>
+<li><strong>d：</strong> 根节点到最浅的目标节点的路径长度</li>
+<li><strong>m：</strong> 搜索树中路径的最大可能长度</li>
+<li><strong>n：</strong> 状态空间中状态的数量</li>
+</ul>
+<h3 id="_3">搜索算法框架</h3>
+<p>在树搜索算法中，集合$F$用于保存搜索树中可用于下一步探索的所有候选节点，这个集合被称为<strong>边缘集合</strong>，有时也被叫做<strong>开表</strong></p>
+<p>对于每一轮搜索，先从$F$中取出一个节点$n$，如果$n$能通过目标测试，则返回从初始节点到$n$的路径（不一定是最佳路径），否则对节点$n$进行<strong>扩展</strong>，即将$n$的所有后继节点放入$F$中，进入下一轮搜索</p>
+<p>实际上，给定当前节点，并不是所有的后继节点都值得探索，在某些情况下，主动放弃一些后继节点能够提高搜索效率而不会影响最终的搜索结果，甚至能解决一些死循环问题，这种做法叫做<strong>剪枝</strong></p>
+<ul>
+<li>
+<p><strong>广度优先算法：队列形式</strong>
+  时间复杂度：$O(b^d)$
+  空间复杂度：$O(b^d)$
+  完备性：√
+  最优性：只有每条路径代价为1时为√</p>
+</li>
+<li>
+<p><strong>深度优先算法：栈形式</strong>
+  时间复杂度：$O(b^m)$
+  空间复杂度：$O(bm)$
+  完备性：×
+  最优性：×</p>
+</li>
+</ul>
+<hr />
+<h2 id="22">2.2 有信息（启发式）搜索</h2>
+<p>辅助信息：</p>
+<ul>
+<li><strong>评价函数$f(n)$：</strong> 用于决定从当前节点$n$出发，下一个要访问的后继节点是哪个</li>
+<li><strong>启发函数$h(n)$：</strong> 从节点$n$到目标节点之间的理论最小代价，一般已经提供，作为额外信息参考</li>
+<li><strong>代价函数$g(n)$：</strong> 表示从起始节点到节点$n$的开销（当前最小代价，经过计算后已知）</li>
+<li><strong>c(n,a,n')：</strong> 从节点$n$执行动作$a$到达节点$n'$的单步代价</li>
+<li><strong>h*(n)：</strong> 从节点$n$到目标节点之间的实际最小代价，通过计算得到</li>
+</ul>
+<h3 id="_4">贪婪最佳优先搜索</h3>
+<p>评价函数$f(n)$=启发函数$h(n)$</p>
+<p>以上述例子为例，给定启发函数为任意一个城市与终点城市$K$之间的直线距离，评价函数相同，每到一个节点，先找到其所有的后继节点，然后依次比较这些节点的评价函数，挑出最小的一个（直线距离最短），然后继续前进，直到到达$K$</p>
+<p><img alt="alt text" src="../image/2.4.JPG" /></p>
+<p>时间复杂度：$O(b^m)$
+空间复杂度：$O(b^m)$
+完备性：√
+最优性：×</p>
+<blockquote>
+<p>时空复杂度解释：
+贪婪最佳优先搜索在最坏情况下需要遍历所有的节点（$b^m$个），因为每次挑评价函数最小的节点一直往下走并不一定能到达目标，只能说几率比较大，因此时间复杂度和空间复杂度均为$O(b^m)$</p>
+</blockquote>
+<h3 id="a">A*搜索</h3>
+<p>评价函数$f(n)$=代价函数$g(n)$+启发函数$h(n)$</p>
+<p>以上述例子为例，给定启发函数为任意一个城市与终点城市$K$之间的直线距离，每到一个节点，先找到其所有的后继节点，然后计算出这些节点的评价函数，依次比较这些节点的评价函数，（值得注意的是并非只在当前节点的后继节点中比较，当前节点的兄弟节点甚至更上一层的也要参与比较挑出最小的一个，在示例的“扩展节点$H$”中有所体现），然后继续前进，直到到达$K$</p>
+<p><img alt="alt text" src="../image/2.5.JPG" /></p>
+<p>A*搜索的完备性和最优性取决于搜索问题和启发函数的性质</p>
+<h3 id="a_1">A*搜索性能分析</h3>
+<p>一个良好的启发函数需要满足如下两种性质：</p>
+<p><strong>可容性</strong></p>
+<p>对于任意节点$n$，有$h(n)\leqslant h^*(n)$，即估计代价不超过实际代价</p>
+<p><strong>一致性</strong></p>
+<p>对于任意节点$n$和$n'$，有$h(n)\leqslant c(n,a,n')+h(n')$</p>
+<p>满足一致性的启发函数一定满足可容性</p>
+<p>如果所求解问题和启发函数满足：</p>
+<ul>
+<li>搜索树中分支数量是有限的，即每个节点的后继节点数量是有限的</li>
+<li>单步代价的下界是一个正数</li>
+<li>启发函数有下界</li>
+</ul>
+<p>那么A*算法满足完备性</p>
+<p>如果启发函数是可容的，那么A*算法满足最优性</p>
+<hr />
+<h2 id="23">2.3 对抗搜索</h2>
+<p>在一个竞争的环境中，智能体之间通过竞争实现相反的利益，一方最大化这个利益，另外一方最小化这个利益</p>
+<p><strong>形式化描述</strong></p>
+<ul>
+<li><strong>状态：</strong> 包括当前的游戏局面和当前行动的智能体</li>
+<li><strong>动作：</strong> 给定状态$s$，动作指的是$player(s)$在当前局面下可以采取的操作$a$</li>
+<li><strong>状态转移：</strong> 给定状态$s$和动作$a$，状态转移函数$result(s,a)$决定了在$s$状态采取动作$a$后所得后继状态</li>
+<li><strong>终局状态检测：</strong> 终止状态检测函数$terminal_test(s)$用于测试游戏是否在状态$s$结束</li>
+<li><strong>终局得分：</strong> 终局得分$utility(s,p)$表示在终局状态$s$时玩家$p$的得分</li>
+</ul>
+<h3 id="_5">最小最大搜索</h3>
+<p>以井字棋为例</p>
+<p>每一层表示当前的状态$s$，左侧标明的是$player(s)$，即在状态$s$下即将采取动作$a$改变当前状态的玩家，终局有三种状态，分别是玩家1获胜、平局和玩家2获胜，对应的终局得分分别是+1、0和-1</p>
+<p><img alt="alt text" src="../image/2.6.jpg" /></p>
+<p>在这个问题下，玩家1总是会选择能够最大化自己得分的搜索树分支，玩家0总是会选择能够最小化自己得分的搜索树分支，最小最大搜索的名字由此而来</p>
+<p>推广：以最大化得分为目标的玩家称为玩家$Max$，以最小化得分为目标的玩家称为玩家$Min$</p>
+<p><img alt="alt text" src="../image/2.7.jpg" /></p>
+<p>上图中，叶子节点表示不同的终局得分，当状态为$B$时，此时轮到$Min$行动，为了使终局得分最小化，其会选择动作$b_1$，此时$B$旁边就有了一个分数，表示$Min$在状态$B$采取行动后可以达到的最小终局得分（当前玩家的最优得分），状态$C$，$D$同理</p>
+<p>而对于状态$A$，$Max$行动，在已知采取不同行动后可能的终局得分（状态$B$，$C$，$D$旁边的分数）的情况下，其会选择动作$a_1$，因为这样可以达到最大终局得分（当前玩家的最优得分）</p>
+<p>现在，$minimax(s)$表示在状态$s$下，对应玩家采取行动后能获得的相对于该玩家的最优终局得分，则可归纳得到：</p>
+<p>$minimax(s)=\begin{cases}
+  utility(s),~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~if~terminal_test(s)\
+  max{minimax(result(s,a))},if~player(s)=Max\
+  min{minimax(result(s,a))},if~player(s)=Min
+\end{cases}$</p>
+<p><strong>伪代码</strong></p>
+<p><img alt="alt text" src="../image/2.8.jpg" /></p>
+<p>完备性：√（只要搜索树是有限的）
+最优性：√（只要双方一直在按照最优策略交替采取行动）
+时间复杂度：$O(b^m)$
+空间复杂度：$O(bm)$
+（最小最大搜索实际上执行了一个完整的深度优先搜索，因此时空复杂度与深度优先搜索一致）</p>
+<p>缺点：
+如果搜索树极大，由于需要遍历所有节点，因此无法快速返回结果
+返回最优结果的前提是对手也在按照最优策略行动</p>
+<h3 id="alpha-beta">$\alpha$-$\beta$剪枝搜索</h3>
+<p>在最小最大搜索的基础上采取剪枝的方法，减少需要搜索的节点数，且不影响最终结果</p>
+<p><img alt="alt text" src="../image/2.9.png" /></p>
+<p>以上图为例：
+$minimax(A)=max(min(3,9,10),min(2,x,y),min(10,5,1))=max(3,min(2,x,y),1)=3$
+与$x$，$y$无关，因此可以被剪枝</p>
+<p>完整算法流程：</p>
+<p><img alt="alt text" src="../image/2.10.jpg" /></p>
+<hr />
+<h2 id="24">2.4 蒙特卡洛树搜索</h2>
+<h3 id="_6">引入：多臂赌博机问题</h3>
+<p>假设智能体面前有$K$个赌博机，每个赌博机有一个臂膀。每次转动一个赌博机臂膀，赌博机则会随机吐出一些硬币或不吐出硬币，将所吐出的硬币的币值用收益分数来表示。现在假设给智能体$\tau(\tau&gt;K)$次转动臂膀的机会，那么智能体如何选择赌博机、转动$\tau$次赌博机臂膀，能够获得更多的收益分数呢？</p>
+<ul>
+<li><strong>状态：</strong> 摇过第$i$个赌博机之后的状态记为$s_i$，因此除了初始状态$s_0$（未摇动任何赌博机），共有状态$s_1,s_2,···,s_K$</li>
+<li><strong>动作：</strong> 摇动第$i$个赌博机的动作记为$a_i$，共有动作$a_1,a_2,···,a_K$</li>
+<li><strong>状态转移：</strong> 执行动作$a_i$后，状态转移到$s_i$</li>
+<li><strong>奖励：</strong> 假设从第$i$个赌博机获得收益分数的分布为$D_i$，均值为$\mu_i$，如果智能体在第$t$次行动中选择摇动第$l_t$个赌博机，则其在第$t$次行动中所得收益分数$\hat{r_t}$服从分布$D_{l_t}$，$\hat{r_t}$称为第$t$次行动的奖励，一般假定$\hat{r_t}\in[0,1]$</li>
+<li><strong>诲值函数：</strong> 根据智能体前$T$次动作，可定义诲值函数
+  $\rho_T=T*\max\limits_{i=1,···,K}{\mu_i}-\sum\limits_{t=1}^T\hat{r_t}$
+  即$T$次操作的最优策略的期望得分减去智能体的实际得分，问题求解的目标在于最小化诲值函数的期望</li>
+</ul>
+<h4 id="_7">贪心算法策略</h4>
+<p>智能体记录下每次摇动的赌博机和获得的相应收益分数。给定第$i$个赌博机，记在过去$t-1$次摇动赌博机的行动中，一共摇动第$i$个赌博机的次数为$T_{(i,t-1)}$。于是，可以计算得到第𝑖个赌博机在过去$T_{(i,t-1)}$次被摇动过程中的收益分数平均值$\overline{x}<em>{i,T</em>{(i,t-1)}}$。这样，智能体在第$t$步，只要选择$\overline{x}<em>{i,T</em>{(i,t-1)}}$最大的赌博机进行摇动</p>
+<p>不足：某个赌博机被摇动越多次，其返回的收益估值越精确，之后智能体会更倾向于继续摇动该赌博机，从而忽略了其他从未摇动或很少摇动的赌博机，而失去了可能的机会</p>
+<h4 id="epsilon-">$\epsilon$-贪心算法</h4>
+<p>第$t$次行动的选择：$l_t=\begin{cases}
+  \max{\overline{x}_{i,T(i,t-1)}},p=1-\epsilon\
+  random~i\in{1,2,···,K},p=\epsilon
+\end{cases}$</p>
+<p>即以$1-\epsilon$的概率选择在过去$t-1$次行动中所得平均收益分数最高的赌博机进行摇动；以$\epsilon$的概率随机选择一个赌博机进行摇动</p>
+<p>不足：与被探索的次数无关，可能存在一个给出更好奖励期望的动作，但因为智能体对其探索次数少而认为其期望奖励小。因此，需要对那些探索次数少或几乎没有被探索过的动作赋予更高的优先级</p>
+<h4 id="_8">上限置信区间算法</h4>
+<p>优先探索估计值不确定度高的动作，此外，如果从已有探索样本中知道一个动作的奖励估计值极端偏小，那么即使该动作的估计值的不确定度很大，算法也没有必要将其作为优先探索对象</p>
+<p><img alt="alt text" src="../image/2.11.jpg" /></p>
+<p>以上图为例：动作1虽然估计值的不确定度很大，但相比于动作2和动作3来说已经极端偏小了，所以并不优先考虑；对于动作2和动作3，其均值相同，但动作2的奖励期望取址的不确定度（估计范围）更大，于是置信上界更大，被优先考虑</p>
+<p>对于如何计算置信上界，这里暂时不考虑背后的算法原理，直接给出结论：</p>
+<p>经过$t-1$次行动后状态$s_i$的UCB：$UCB_i=\overline{x}<em>{i,T</em>{(i,t-1)}}+C\sqrt{\frac{2\ln t}{T_{(i,t-1)}}}$</p>
+<p>第$t$次行动的选择：$l_t=\max{UCB_i}=\max{\overline{x}<em>{i,T</em>{(i,t-1)}}}+C\sqrt{\frac{2\ln t}{T_{(i,t-1)}}}$</p>
+<p>（其中$C$为常数）</p>
+<h3 id="_9">蒙特卡洛树搜索算法</h3>
+<p>蒙特卡洛树搜索算法分为以下四个步骤：</p>
+<ul>
+<li><strong>选择：</strong> 指算法从搜索树的根节点开始，向下递归选择子节点，直至到达叶子节点或者到达具有还未被扩展过的子节点的节点$L$，每一次选择以$UCB$值作为选择依据</li>
+<li><strong>扩展：</strong> 选择结束后，如果到达的不是叶子节点（终局节点），而是具有还未被扩展过的子节点的节点，则随机扩展它的一个未被扩展过的后继边缘节点$M$</li>
+<li><strong>模拟：</strong> 从节点$M$出发，采用随机策略（常用）模拟扩展搜索树，直到找到一个终止节点，获得一个终局结果</li>
+<li><strong>反向传播：</strong> 依据这个终局结果回溯更新从$M$节点一直到根节点的所有收益分数之和以及访问次数</li>
+</ul>
+<p>以下图来具体分析（每个节点左侧的数字表示目前经过该节点所得收益分数之和，右侧的数字表示访问次数）：</p>
+<p><img alt="alt text" src="../image/2.12.jpg" /></p>
+<p>第一步：选择（a）
+搜索树中已有三个节点，分别计算第二层的$UCB$值（将左右的数字代入公式），左边的$UCB$值更大，因此选择左侧的节点$L$，由于$L$有未被扩展的子节点，因此选择阶段结束</p>
+<p>第二步：扩展（b）
+算法随即扩展了一个未被扩展的子节点$C$，将收益分数之和和访问次数均初始化为0（因为其还没有得到相关数据），图中虚线框表示$L$未被扩展的其他子节点，标记其$UCB$值为$+\infty$，表示下次访问到$L$时必然扩展这些未被扩展的子节点</p>
+<p>第三步：模拟（c）
+从节点$C$出发，通过随机策略得到最后的一个可能终局得分为3</p>
+<p>第四步：反向传播（d）
+从节点$C$开始回溯更新，路径上所有的节点的访问次数+1，MIN层节点现有总分加上终局得分分数，MAX层节点现有总分减去终局得分分数</p>
+<blockquote>
+<p>在对抗搜索中，玩家MIN总是期望最小化终局得分，因此在MIN层选择其子结点时，其目标并非选取奖励最大化的子结点，而是选择奖励最小化的结点，为了统一使用上限置信区间算法求解，算法将MIN层的子结点（即MAX层结点）的总分记为其相反数</p>
+</blockquote>
+<p><strong>伪代码：</strong></p>
+<p>函数：UCTSearch
+输入：当前状态$s_0$
+输出：玩家Max行动下，当前最优动作$a$</p>
+<pre><code>v0=create_node(s0)            //以当前状态s0作为根节点
+while 未达到最大迭代次数 do     //不断完善s0子节点的UCB相关数据
+  v1=Select(v0)               //选择+扩展阶段，走到具有还未被扩展过的子节点的节点，然后随即返回其未被扩展的某个子节点
+  st=Simulate(v1-&gt;state)      //模拟阶段，返回一个在v1对应状态下继续博弈，最后可能出现的结果分数
+  Back(v1,st)                 //反向传播阶段，从v1往上更新节点的UCB相关数据
+end
+a=UCB(v0,C)                   //计算出s0状态所有子节点的UCB值，取最大值（玩家为Max）
+</code></pre>
+<p>函数：Select
+输入：选择步骤的起始节点$v_0$
+输出：选择步骤的终止节点（新的未被扩展的节点或者终局节点）$v$</p>
+<pre><code>v=v0
+while v不为终止节点 do
+  if v存在未被扩展的子节点 then
+    return Expand(v)          //如果走到具有还未被扩展过的子节点的节点，则随机返回其一个未被扩展的子节点
+  else
+    v=UCB(v,C)                //如果没有走到底，则依据UCB值依次往下选择
+  end
+end
+</code></pre>
+<p>函数：Expand
+输入：节点$v$
+输出：$v$的某个未被扩展的子节点$v'$</p>
+<pre><code>a=random(actions(v-&gt;state))   //在v的状态下随机挑选一个未被探索过的动作
+v'=create_node(result(v-&gt;state,a))//v'为v的某个未被扩展（探索）的子节点
+v'-&gt;N=0                       //总分数设为0
+v'-&gt;Q=0                       //访问次数设为0
+v'-&gt;parent=v
+v'-&gt;child=NULL
+v-&gt;child=v.child∪{v'}
+</code></pre>
+<p>函数：Simulate
+输入：状态$s_0$
+输出：模拟得到的终止状态$s$</p>
+<pre><code>s=s0
+while s不为终止节点 do
+  a=从actions(s)中随机采样
+  s=result(s,a)
+end
+</code></pre>
+<p>函数：Back
+输入：反向传播更新的起始节点$v$，之前模拟得到的终止状态$s_t$</p>
+<pre><code>while v!=NULL do
+  v-&gt;N+=1                     //访问次数+1
+  v-&gt;Q-=utility(st,player(v-&gt;state))//分数之和的加减取决于当前为Max还是Min
+  v=v-&gt;parent
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>

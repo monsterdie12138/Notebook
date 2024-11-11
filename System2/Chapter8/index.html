@@ -1,0 +1,1602 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Chapter8 OS Structures - Monsterdie's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter8-os-structures" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter8 OS Structures
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            高级数据结构与算法分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学分析Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学分析Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    线性代数Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            线性代数Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    补充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    离散数学理论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            离散数学理论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    补充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅰ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            普通物理学Ⅰ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics1/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics1/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            CSAPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#os-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      OS Services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-and-operating-system-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      User and Operating System-Interface
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Calls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkers-and-loaders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linkers and Loaders
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-applications-are-operating-system-specific" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Applications are Operating System Specific
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-system-design-and-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating-System Design and Implementation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-system-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating System Structure
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="chapter8-os-structures">Chapter8 OS Structures</h1>
+<hr />
+<h2 id="os-services">OS Services</h2>
+<p><img alt="alt text" src="../image/8.1.jpg" /></p>
+<p><strong>Helpful to users:</strong></p>
+<ul>
+<li>program execution 程序执行</li>
+<li>I/O operations 输入/输出操作</li>
+<li>file systems 文件系统（提供文件抽象）</li>
+<li>communications 交互（内存共享，信息传递）</li>
+<li>error detection 错误检测</li>
+</ul>
+<p><strong>Better efficiency/operation:</strong></p>
+<ul>
+<li>resource allocation 资源分配</li>
+<li>accounting 记账（统计用户的资源使用情况，可产生限制）</li>
+<li>protection and security 保护与安全</li>
+</ul>
+<hr />
+<h2 id="user-and-operating-system-interface">User and Operating System-Interface</h2>
+<ul>
+<li>GUI 图形用户界面</li>
+<li>batch 批处理</li>
+<li>CLI 命令行</li>
+</ul>
+<blockquote>
+<p>batch 批处理：
+一种自动化执行一系列命令或任务的方法，通常通过脚本文件实现。
+用户编写脚本，定义一组命令，这些命令按顺序自动执行，而无需用户交互。</p>
+<p>CLI 命令行：
+CLI有时在内核中实现，有时通过系统程序实现。
+命令分为内置（在命令解释器shell内部实现，如<code>ls</code>，<code>cd</code>等）和外置（系统中的可执行文件，位于文件系统的某个位置，如<code>gcc</code>，<code>python</code>等）。</p>
+</blockquote>
+<hr />
+<h2 id="system-calls">System Calls</h2>
+<ul>
+<li>操作系统提供给应用程序的接口，用于请求操作系统内核执行特定的服务或操作</li>
+<li>通常用高级语言编写（C/C++）</li>
+<li>被更高一层的API调用，而不是被直接调用</li>
+</ul>
+<blockquote>
+<p>API（Application Programming Interface，应用程序接口）：
+应用程序之间交互的一组定义和协议，提供更高层次的抽象，使得应用程序不需要了解底层实现细节，只需使用定义好的接口来实现功能
+系统调用是最底层的接口，由操作系统内核直接提供，而 API 则可以是更高层次的接口，可能会调用多个系统调用以实现复杂的功能
+例如：<code>open()</code>，<code>read()</code>，<code>write()</code>，<code>close()</code>是syscall；<code>fopen()</code>，<code>fread()</code>，<code>fwrite()</code>，<code>fclose()</code>是API</p>
+</blockquote>
+<pre><code class="language-c">//vesion1:
+# include&lt;stdio.h&gt;
+int main()
+{
+    printf(&quot;hello world\n&quot;);
+}
+
+//version2:
+#include&lt;unistd.h&gt;
+int main()
+{
+    write(1,&quot;hello world\n&quot;,13);
+}
+</code></pre>
+<p>上面两段代码的功能完全一样，区别在于：</p>
+<ul>
+<li>version1使用标准输入输出库<code>stdio.h</code>，version2使用POSIX标准库<code>unistd.h</code>（POSIX是Linux的API）</li>
+<li>version1的<code>printf</code>函数是高级别的C标准库函数，version2的<code>write</code>函数是低级别的syscall，直接与kernel交互</li>
+<li><code>write</code>的第一个参数“1”表示文件描述符，“13”表示要写入的字符数</li>
+</ul>
+<p><img alt="alt text" src="../image/8.2.jpg" /></p>
+<p><strong>syscall number 系统调用号：</strong></p>
+<p>操作系统内核用于区分不同系统调用的一种数字标识。当应用程序发出一个系统调用请求时，它会将对应的系统调用号传递给内核，以告知内核需要执行的具体操作（通过查syscall table得到）。</p>
+<ul>
+<li><code>read</code>:0</li>
+<li><code>write</code>:1</li>
+<li><code>open</code>:2</li>
+<li><code>close</code>:3</li>
+</ul>
+<p><strong>文件描述符：</strong></p>
+<p>操作系统用来标识和访问打开的文件或I/O资源的整数。</p>
+<ul>
+<li>标准输入<code>stdin</code>:0</li>
+<li>标准输出<code>stdout</code>:1</li>
+<li>标准错误输出<code>stderr</code>:2</li>
+</ul>
+<p><strong>Example of System Calls: Copy Files</strong></p>
+<p><strong>strace命令：</strong></p>
+<p><code>strace</code>用来展示程序在执行时需要调用的syscall种类和数量</p>
+<p><strong>time命令：</strong></p>
+<p><code>time</code>用来得到程序执行的时间</p>
+<ul>
+<li>real time：总时间</li>
+<li>user time：在user层的时间</li>
+<li>system time：在kernel层的时间</li>
+</ul>
+<p>理论上：real=user+system
+若real<user+system，则因为有并行执行
+若real>user+system，则因为有不算在user层或kernel层的读取</p>
+<p><strong>syscall的参数传递：</strong></p>
+<ul>
+<li>传值调用（将值放入寄存器）</li>
+<li>传引用调用（将指针地址放入寄存器）</li>
+<li>使用栈</li>
+</ul>
+<p>后两者对参数的数量或者长度没有限制</p>
+<p><strong>syscall的种类：</strong></p>
+<ul>
+<li>Process control 进程控制</li>
+<li>File management 文件管理</li>
+<li>Device management 设备管理</li>
+<li>Information maintenance 信息维护</li>
+<li>Communications 交互</li>
+<li>Protection 保护</li>
+</ul>
+<p><img alt="alt text" src="../image/8.3.jpg" /></p>
+<hr />
+<h2 id="system-services">System Services</h2>
+<p>上文提到的<code>strace</code>，<code>time</code>都属于System Services</p>
+<ul>
+<li>File manipulation 
+  新建、删除、复制、重命名等</li>
+<li>Status information 
+  查询得到日志、debugging信息等</li>
+<li>Programming language support
+  如编译器、汇编器等</li>
+<li>Program loading and execution
+  绝对加载器、可重定位加载器、链接编辑器等</li>
+<li>Communications</li>
+<li>网页浏览、远程登录、文件传输等</li>
+<li>Background services
+  服务、子系统、守护进程等</li>
+<li>Application programs
+  应用程序</li>
+</ul>
+<hr />
+<h2 id="linkers-and-loaders">Linkers and Loaders</h2>
+<p><strong>Linker 链接器：</strong></p>
+<p>将多个目标文件和库文件链接在一起，生成最终的可执行文件</p>
+<p><strong>Loader 加载器：</strong></p>
+<p>在程序执行时将可执行文件加载到内存中，并准备程序运行，在加载过程中，重定位会为程序的各个部分分配最终的地址，并调整代码和数据以匹配这些地址</p>
+<p><img alt="alt text" src="../image/8.4.jpg" /></p>
+<p><strong>ELF（Executable and Linkable Format 可执行与可链接格式）：</strong></p>
+<p>是一种用于存储可执行文件、共享库和核心转储的标准文件格式</p>
+<p>组成（section 节）：
+* ELF header 文件头：包含ELF的基本信息，如文件类型，架构类型，程序头表和节头表的位置和大小等
+* Program header table 程序头表：描述程序段的信息，指导加载进内存
+* .text：存储可执行代码
+* .rodata：存储只读数据
+* .data：存储已初始化的可读写的数据
+* .bss：存储未初始化的可读写的数据
+* Section header table 节头表：描述各个节的信息，用于连接和重定位</p>
+<blockquote>
+<p>.bss单独分出来是为了节省空间</p>
+</blockquote>
+<p><strong>静态链接与动态链接：</strong></p>
+<p>静态链接：在编译时将库的代码直接合并到可执行文件中
+（可移植性好）</p>
+<p>动态链接：在运行时将库文件加载到内存中，程序依赖这些外部库
+（节约空间）</p>
+<p><strong><code>.interp</code>：</strong></p>
+<p><code>.interp</code>是ELF文件中的一个特殊节（section），它的作用是指定程序执行时需要使用的动态链接器（interpreter）。动态链接器负责在程序运行时加载和链接动态库</p>
+<p>静态链接的elf没有<code>.interp</code>节，动态链接的elf有<code>.interp</code>节</p>
+<p><strong>memory layout:</strong></p>
+<p><img alt="alt text" src="../image/8.5.jpg" /></p>
+<p>当我们要执行一个ELF时，我们会将其不同的section映射到如图所示的BSS segment,Data segment,Text segment处，对于动态链接，其动态库的文件等会被映射到Memory Mapping Segment，而静态链接没有这一映射</p>
+<p>对于静态链接的elf，如果我们运行并使用<code>strace</code>查看调用syscall的情况，我们发现其调用了
+* <code>execve</code>：用于执行一个新的程序，用新的程序替换当前进程的内存映像
+* <code>brk</code>：用于调整数据段的结束地址，从而改变进程的堆空间大小（分配内存）
+* <code>write</code></p>
+<p>$~$</p>
+<ul>
+<li>将ELF映射到内存的是<strong>kernel（exec syscall）</strong></li>
+<li>初始化栈和堆的是<strong>kernel（exec syscall）</strong></li>
+<li>将动态库文件映射到内存的是<strong>loader</strong></li>
+</ul>
+<blockquote>
+<p><code>exec</code>是一组用于在操作系统中执行新程序的系统调用，它们使当前进程的地址空间被新程序替换。<code>exec</code>系列系统调用包括<code>execl</code>, <code>execv</code>, <code>execle</code>, <code>execve</code>等，每个都有略微不同的参数形式，但基本功能相同。</p>
+</blockquote>
+<p><strong>栈和堆：</strong></p>
+<ul>
+<li>
+<p>操作系统中的栈和堆：栈用于存储函数调用的临时数据，包括局部变量、函数参数和返回地址；堆用于动态内存分配</p>
+</li>
+<li>
+<p>数据结构中的栈和堆：用于特定算法和数据处理</p>
+</li>
+</ul>
+<p><strong>ELF是如何开始被执行的：</strong></p>
+<p>静态链接：</p>
+<p>在<code>evecve</code>调用后进入<code>_start</code>入口点（而不是<code>main()</code>，<code>main()</code>只是用户程序的入口点）</p>
+<p><img alt="alt text" src="../image/8.6.jpg" /></p>
+<p>动态链接：</p>
+<p>与静态链接不同，在<code>evecve</code>调用后进入loader（ld.so）</p>
+<p><img alt="alt text" src="../image/8.7.jpg" /></p>
+<hr />
+<h2 id="why-applications-are-operating-system-specific">Why Applications are Operating System Specific</h2>
+<p>在一个OS上能执行的App在其他OS上往往不能执行，因为不同的OS使用不同的syscall</p>
+<p>然而，以下情况不然：
+* App使用解释型语言（如Python等），且有合适的interpreter
+* App使用Java等跨平台语言，其在虚拟机（VM）上运行
+* App使用标准语言（如C等），在不同的OS上分别编译运行</p>
+<p><strong>ABI（Application Binary Interface）</strong></p>
+<p>ABI（Application Binary Interface）和API（Application Programming Interface）都是用于定义软件组件之间交互的接口，但API定义的是源代码级别（上层）的接口，ABI定义的是二进制级别（底层）的接口</p>
+<hr />
+<h2 id="operating-system-design-and-implementation">Operating-System Design and Implementation</h2>
+<p><strong>设计理念：</strong></p>
+<p>对于用户：
+方便使用，安全迅速</p>
+<p>对于程序员：
+方便设计维护，灵活有效</p>
+<ul>
+<li><strong>Policy 策略：</strong> 做什么</li>
+<li><strong>Mechanism 机制：</strong> 怎么做</li>
+</ul>
+<p>核心理念：<strong>Separation of Policy from Mechanism</strong></p>
+<blockquote>
+<p>例如：Policy：选这门课的同学进这个教室
+Mechanism1：锁与钥匙
+如果改变Policy为：实验好的同学不需要来了，则需要向所有目标回收钥匙，但有很多突发情况，此时Policy和Mechanism相关性很强，并不是一个好方法
+Mechanism2：刷脸
+改变Policy时，Mechanism改变很方便，是一个好方法</p>
+</blockquote>
+<p><strong>实现：</strong></p>
+<p>早期OS用汇编语言实现
+中期OS用Algol，PL/1实现
+当代OS用C，C++实现</p>
+<p>事实上，OS有多种语言参与，低层级用汇编语言实现，主体用C实现，脚本用PERL，Python等实现</p>
+<blockquote>
+<p>OS不能用Java写的原因：
+OS需要直接与硬件交互，但Java是高级语言，依赖于虚拟机（JVM），其设计初衷是屏蔽底层硬件细节，提供跨平台能力</p>
+</blockquote>
+<hr />
+<h2 id="operating-system-structure">Operating System Structure</h2>
+<ul>
+<li>MS-DOS采用<strong>简单结构（Simple Structure）</strong></li>
+<li>Unix，Linux采用<strong>单片结构（Monolithic）</strong></li>
+<li><strong>层次结构（Layered）</strong></li>
+<li><strong>微内核结构（Microkernel）</strong></li>
+</ul>
+<blockquote>
+<p>简单结构：
+没有模块区分，不分user和kernel
+单片结构：
+分为kernel和systems programs，集中服务
+层次结构：
+微内核结构：</p>
+</blockquote>
+<p>Unix架构：</p>
+<p><img alt="alt text" src="../image/8.8.jpg" /></p>
+<p>Linux架构：</p>
+<p><img alt="alt text" src="../image/8.9.jpg" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
