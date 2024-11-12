@@ -72,7 +72,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -528,6 +528,69 @@
   
   <span class="md-ellipsis">
     第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
   </span>
   
 
@@ -1693,20 +1756,20 @@ $BF(node)=0,1,-1$</p>
 <p>摊还复杂度：$T_{amortized}=\frac{O(n)}{n}=O(1)$</p>
 <h3 id="2">典例2：二进制计数器</h3>
 <p>使用长度为$k$的数组$A$来表示$k$个bit的数字，$A[0]$为最低位，$A[k-1]$为最高位，表示的数字$x=\sum\limits_{i=0}^{k-1}A[i]·2^i$，$x$初始为0，只有一个操作<code>Increment</code>，表示$x$自增$1$，伪代码如下：</p>
-<pre><code class="language-c">Increment(A)
-{
-  i=0;
-  while(i&lt;A.length and A[i]==1)
-  {
-    A[i]=0;
-    i=i+1;
-  }
-  if(i&lt;A.length)
-  {
-    A[i]=1;
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Increment</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">A</span><span class="p">.</span><span class="n">length</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="n">A</span><span class="p">.</span><span class="n">length</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><img alt="alt text" src="../image/1.8.jpg" /></p>
 <p><strong>聚合法：</strong></p>
 <p>对于$A[0]$，在$n$次操作中最多改变$n$次，耗时为$n$；对于$A[1]$，在$n$次操作中最多改变$\lfloor\frac{n}{2}\rfloor$次，耗时为$\lfloor\frac{n}{2}\rfloor$；······；对于$A[k-1]$，在$n$次操作中最多改变$\lfloor\frac{n}{2^k}\rfloor$次，耗时为$\lfloor\frac{n}{2^k}\rfloor$。</p>

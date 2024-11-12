@@ -68,7 +68,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -329,6 +329,69 @@
   
   <span class="md-ellipsis">
     第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
   </span>
   
 
@@ -1344,20 +1407,20 @@ CLI有时在内核中实现，有时通过系统程序实现。
 系统调用是最底层的接口，由操作系统内核直接提供，而 API 则可以是更高层次的接口，可能会调用多个系统调用以实现复杂的功能
 例如：<code>open()</code>，<code>read()</code>，<code>write()</code>，<code>close()</code>是syscall；<code>fopen()</code>，<code>fread()</code>，<code>fwrite()</code>，<code>fclose()</code>是API</p>
 </blockquote>
-<pre><code class="language-c">//vesion1:
-# include&lt;stdio.h&gt;
-int main()
-{
-    printf(&quot;hello world\n&quot;);
-}
+<div class="highlight"><pre><span></span><code><span class="c1">//vesion1:</span>
+<span class="cp">#</span><span class="w"> </span><span class="cp">include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 
-//version2:
-#include&lt;unistd.h&gt;
-int main()
-{
-    write(1,&quot;hello world\n&quot;,13);
-}
-</code></pre>
+<span class="c1">//version2:</span>
+<span class="cp">#include</span><span class="cpf">&lt;unistd.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">13</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>上面两段代码的功能完全一样，区别在于：</p>
 <ul>
 <li>version1使用标准输入输出库<code>stdio.h</code>，version2使用POSIX标准库<code>unistd.h</code>（POSIX是Linux的API）</li>

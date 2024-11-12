@@ -72,7 +72,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -441,6 +441,69 @@
   
   <span class="md-ellipsis">
     第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
   </span>
   
 
@@ -1443,26 +1506,26 @@ $npl(X)=\min{npl(X's~child)}+1$</p>
 </ul>
 <p>递归终止情况：要合并的两棵树中至少有一棵是空树。</p>
 <p>伪代码：</p>
-<pre><code class="language-c">LeftistHeap Merge1(LeftistHeap H1,LeftistHeap H2)
-{
-    if(H1==NULL)return H2;
-    if(H2==NULL)return H1;//终止条件：存在空树
-    if(H1-&gt;root-&gt;key&lt;H2-&gt;root-&gt;key)return Merge2(H1,H2);
-    else return Merge2(H2,H1);//保证Merge2的第一个参数的根节点大小大于等于第二个参数的
-}
-</code></pre>
-<pre><code class="language-c">LeftistHeap Merge2(LeftistHeap H1,LeftistHeap H2)
-{
-    if(H1-&gt;left==NULL)H1-&gt;left=H2;//单一节点的情况
-    else
-    {
-        H1-&gt;right=Merge1(H1-&gt;right,H2);//第二步和第三步
-        if(H1-&gt;left-&gt;npl&lt;J1-&gt;right-&gt;npl)SwapChildren(H1);//第四步
-        H1-&gt;npl=H1-&gt;right-&gt;npl+1;//第五步
-    }
-    return H1;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">LeftistHeap</span><span class="w"> </span><span class="nf">Merge1</span><span class="p">(</span><span class="n">LeftistHeap</span><span class="w"> </span><span class="n">H1</span><span class="p">,</span><span class="n">LeftistHeap</span><span class="w"> </span><span class="n">H2</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">H1</span><span class="o">==</span><span class="nb">NULL</span><span class="p">)</span><span class="k">return</span><span class="w"> </span><span class="n">H2</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">H2</span><span class="o">==</span><span class="nb">NULL</span><span class="p">)</span><span class="k">return</span><span class="w"> </span><span class="n">H1</span><span class="p">;</span><span class="c1">//终止条件：存在空树</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">key</span><span class="o">&lt;</span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">)</span><span class="k">return</span><span class="w"> </span><span class="n">Merge2</span><span class="p">(</span><span class="n">H1</span><span class="p">,</span><span class="n">H2</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Merge2</span><span class="p">(</span><span class="n">H2</span><span class="p">,</span><span class="n">H1</span><span class="p">);</span><span class="c1">//保证Merge2的第一个参数的根节点大小大于等于第二个参数的</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">LeftistHeap</span><span class="w"> </span><span class="nf">Merge2</span><span class="p">(</span><span class="n">LeftistHeap</span><span class="w"> </span><span class="n">H1</span><span class="p">,</span><span class="n">LeftistHeap</span><span class="w"> </span><span class="n">H2</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">==</span><span class="nb">NULL</span><span class="p">)</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">=</span><span class="n">H2</span><span class="p">;</span><span class="c1">//单一节点的情况</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">=</span><span class="n">Merge1</span><span class="p">(</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="n">H2</span><span class="p">);</span><span class="c1">//第二步和第三步</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">npl</span><span class="o">&lt;</span><span class="n">J1</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">npl</span><span class="p">)</span><span class="n">SwapChildren</span><span class="p">(</span><span class="n">H1</span><span class="p">);</span><span class="c1">//第四步</span>
+<span class="w">        </span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">npl</span><span class="o">=</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">npl</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="c1">//第五步</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">H1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>2.迭代算法：</strong></p>
 <ul>
 <li><strong>第一步：</strong>

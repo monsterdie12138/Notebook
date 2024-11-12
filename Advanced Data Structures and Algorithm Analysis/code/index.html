@@ -68,7 +68,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -324,6 +324,69 @@
   
   <span class="md-ellipsis">
     第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
   </span>
   
 
@@ -1215,119 +1278,119 @@
 
 <hr />
 <p><strong>从零构建AVL树并找到最终的根节点（以树高作为平衡指标，递归思想）：</strong></p>
-<pre><code class="language-c">#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;</span>
 
-struct TreeNode
-{
-    int data;
-    struct TreeNode *left;
-    struct TreeNode *right;
-    int height;
-};
-typedef struct TreeNode *AVLTree;
+<span class="k">struct</span><span class="w"> </span><span class="nc">TreeNode</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">left</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">right</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">AVLTree</span><span class="p">;</span>
 
-int max(int a,int b);
-AVLTree SingleLeftRotation(AVLTree A);
-AVLTree SingleRightRotation(AVLTree A);
-AVLTree DoubleLeftRotation(AVLTree A);
-AVLTree DoubleRightRotation(AVLTree A);
-int GetHeight(AVLTree T);
-AVLTree insert(AVLTree t,int N);
+<span class="kt">int</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="n">AVLTree</span><span class="w"> </span><span class="nf">SingleLeftRotation</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
+<span class="n">AVLTree</span><span class="w"> </span><span class="nf">SingleRightRotation</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
+<span class="n">AVLTree</span><span class="w"> </span><span class="nf">DoubleLeftRotation</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
+<span class="n">AVLTree</span><span class="w"> </span><span class="nf">DoubleRightRotation</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">A</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetHeight</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">T</span><span class="p">);</span>
+<span class="n">AVLTree</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">);</span>
 
-int max(int a,int b)
-{
-    return (a&gt;b)?a:b;
-}
+<span class="kt">int</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="p">)</span><span class="o">?</span><span class="n">a</span><span class="o">:</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
 
-AVLTree SingleLeftRotation(AVLTree A)
-{
-    AVLTree c=A-&gt;left;
-    A-&gt;left=c-&gt;right;
-    c-&gt;right=A;
-    A-&gt;height=max(GetHeight(A-&gt;left),GetHeight(A-&gt;right))+1;
-    c-&gt;height=max(A-&gt;height,GetHeight(c-&gt;left))+1;
-    return c;
-}
-AVLTree SingleRightRotation(AVLTree A)
-{
-    AVLTree c=A-&gt;right;
-    A-&gt;right=c-&gt;left;
-    c-&gt;left=A;
-    A-&gt;height=max(GetHeight(A-&gt;left),GetHeight(A-&gt;right))+1;
-    c-&gt;height=max(A-&gt;height,GetHeight(c-&gt;right))+1;
-    return c;
-}
-AVLTree DoubleLeftRotation(AVLTree A)
-{
-    A-&gt;left=SingleRightRotation(A-&gt;left);
-    return SingleLeftRotation(A);
-}
-AVLTree DoubleRightRotation(AVLTree A)
-{
-    A-&gt;right=SingleLeftRotation(A-&gt;right);
-    return SingleRightRotation(A);
-}
+<span class="n">AVLTree</span><span class="w"> </span><span class="nf">SingleLeftRotation</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">AVLTree</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+<span class="w">    </span><span class="n">A</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">=</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">=</span><span class="n">A</span><span class="p">;</span>
+<span class="w">    </span><span class="n">A</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">),</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">,</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">AVLTree</span><span class="w"> </span><span class="nf">SingleRightRotation</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">AVLTree</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+<span class="w">    </span><span class="n">A</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">=</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">=</span><span class="n">A</span><span class="p">;</span>
+<span class="w">    </span><span class="n">A</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">),</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">,</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">AVLTree</span><span class="w"> </span><span class="nf">DoubleLeftRotation</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">A</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">=</span><span class="n">SingleRightRotation</span><span class="p">(</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">SingleLeftRotation</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">AVLTree</span><span class="w"> </span><span class="nf">DoubleRightRotation</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">A</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">=</span><span class="n">SingleLeftRotation</span><span class="p">(</span><span class="n">A</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">SingleRightRotation</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+<span class="p">}</span>
 
-int GetHeight(AVLTree T) {
-    if (!T)
-        return -1;
-    else
-        return T-&gt;height;
-}
+<span class="kt">int</span><span class="w"> </span><span class="nf">GetHeight</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">T</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">T</span><span class="o">-&gt;</span><span class="n">height</span><span class="p">;</span>
+<span class="p">}</span>
 
-AVLTree insert(AVLTree t,int N)
-{
-    if(!t)
-    {
-        t=(AVLTree)malloc(sizeof(struct TreeNode));
-        t-&gt;data=N;
-        t-&gt;left=t-&gt;right=NULL;
-        t-&gt;height=0;
-    }
-    else if(N&lt;t-&gt;data)
-    {
-        t-&gt;left=insert(t-&gt;left,N);
-        if(GetHeight(t-&gt;left)-GetHeight(t-&gt;right)==2)
-        {
-            if(N&lt;t-&gt;left-&gt;data)
-            {
-                t=SingleLeftRotation(t);
-            }
-            else
-                t=DoubleLeftRotation(t);
-        }
-    }
-    else if(N&gt;t-&gt;data)
-    {
-        t-&gt;right=insert(t-&gt;right,N);
-        if(GetHeight(t-&gt;right)-GetHeight(t-&gt;left)==2)
-        {
-            if(N&gt;t-&gt;right-&gt;data)
-                t=SingleRightRotation(t);
-            else
-                t=DoubleRightRotation(t);
-        }
-    }
-    t-&gt;height=max(GetHeight(t-&gt;left),GetHeight(t-&gt;right))+1;
-    return t;
-}
-int main()
-{
-    AVLTree T=NULL;
-    int N;
-    int x;
-    scanf(&quot;%d&quot;,&amp;N);
-    while(N--)
-        {
-                scanf(&quot;%d&quot;,&amp;x);
-                T=insert(T,x);
-        }
-    if(T)
-    printf(&quot;%d&quot;,T-&gt;data);
-    return 0;
-}
-</code></pre>
+<span class="n">AVLTree</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="n">AVLTree</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">t</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="n">AVLTree</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TreeNode</span><span class="p">));</span>
+<span class="w">        </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">=</span><span class="n">N</span><span class="p">;</span>
+<span class="w">        </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">=</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">        </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">N</span><span class="o">&lt;</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">=</span><span class="n">insert</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span><span class="o">-</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">N</span><span class="o">&lt;</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">t</span><span class="o">=</span><span class="n">SingleLeftRotation</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">                </span><span class="n">t</span><span class="o">=</span><span class="n">DoubleLeftRotation</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">N</span><span class="o">&gt;</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">=</span><span class="n">insert</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="n">N</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span><span class="o">-</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">N</span><span class="o">&gt;</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span>
+<span class="w">                </span><span class="n">t</span><span class="o">=</span><span class="n">SingleRightRotation</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">                </span><span class="n">t</span><span class="o">=</span><span class="n">DoubleRightRotation</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">height</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">),</span><span class="n">GetHeight</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">AVLTree</span><span class="w"> </span><span class="n">T</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">N</span><span class="o">--</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">                </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+<span class="w">                </span><span class="n">T</span><span class="o">=</span><span class="n">insert</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="n">T</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 

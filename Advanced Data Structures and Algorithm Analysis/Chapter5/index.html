@@ -12,7 +12,7 @@
         <link rel="prev" href="../Chapter3/">
       
       
-        <link rel="next" href="../../Mathematical%20Analysis2/Chapter9/">
+        <link rel="next" href="../Chapter6/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -72,7 +72,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -444,10 +444,82 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 回顾
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1395,6 +1467,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 回顾
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1415,7 +1496,7 @@
 <h2 id="51">5.1 基本概念</h2>
 <p>二项堆不是一棵树，而是由多棵树组成的森林，森林中的每一棵树是一棵<strong>二项树（binomial tree）</strong>。</p>
 <blockquote>
-<p>记高度为$k$的二项树为$B_k$
+<p>记高度为$k$的二项树为$B_k$<br />
 将$B_{k-1}$的根节点连接到另一棵$B_{k-1}$的根节点上，作为其子树，得到的新树即为$B_k$（二项树的递归定义）
 <img alt="alt text" src="../image/5.1.png" />
 性质：
@@ -1433,19 +1514,19 @@
 <p>主结构：指针数列，第$i$个位置存放指向$B_i$的指针</p>
 <p>二项树：链表，采用<code>first-child-next-sibling</code>的连接方式</p>
 <p><img alt="alt text" src="../image/5.3.jpg" /></p>
-<pre><code class="language-c">struct BinQueue//二项堆的主结构定义
-{
-    int N;//总节点数
-    BinTree Trees[MaxTree];//指针数列，存放指向每一棵二项树的指针
-}
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">BinQueue</span><span class="c1">//二项堆的主结构定义</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="c1">//总节点数</span>
+<span class="w">    </span><span class="n">BinTree</span><span class="w"> </span><span class="n">Trees</span><span class="p">[</span><span class="n">MaxTree</span><span class="p">];</span><span class="c1">//指针数列，存放指向每一棵二项树的指针</span>
+<span class="p">}</span>
 
-struct Node//二项堆的节点定义
-{
-    KeyType Key;//键值
-    Position LeftChild;//左孩子
-    Position NextSibling;//右兄弟
-}
-</code></pre>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="c1">//二项堆的节点定义</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">KeyType</span><span class="w"> </span><span class="n">Key</span><span class="p">;</span><span class="c1">//键值</span>
+<span class="w">    </span><span class="n">Position</span><span class="w"> </span><span class="n">LeftChild</span><span class="p">;</span><span class="c1">//左孩子</span>
+<span class="w">    </span><span class="n">Position</span><span class="w"> </span><span class="n">NextSibling</span><span class="p">;</span><span class="c1">//右兄弟</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="findmin"><code>FindMin</code>操作</h3>
 <p>最小的节点位于某一个$B_k$的根节点处（二项堆里的二项树符合最小堆的性质）。</p>
 <p>对于一个有$N$个节点的二项堆，最多有$\lceil\log N\rceil$棵二项树，因此最多需要检查根节点$\lceil\log N\rceil$次。</p>
@@ -1459,69 +1540,69 @@ struct Node//二项堆的节点定义
 <p><code>Merge</code>操作所需的时间对应二进制位上合并的次数，一共需要合并的次数（位数）对应$H_1$和$H_2$的二项树棵数，二项树棵数对应$\log N$。</p>
 <p>时间复杂度：$T=O(\log N)$，其中$N=N_1+N_2$</p>
 <p><strong>伪代码：</strong></p>
-<pre><code class="language-c">BinTree Combine(BinTree T1,BinTree T2)//合并两棵二项树
-{
-    if(T1-&gt;Key&gt;T2-&gt;key)return Combine(T2,T1);//保证T1的根节点更小
-    T2-&gt;NextSibling=T1-&gt;LeftChild;
-    T1-&gt;LeftChild=T2;
-    return T1;
-}
+<div class="highlight"><pre><span></span><code><span class="n">BinTree</span><span class="w"> </span><span class="nf">Combine</span><span class="p">(</span><span class="n">BinTree</span><span class="w"> </span><span class="n">T1</span><span class="p">,</span><span class="n">BinTree</span><span class="w"> </span><span class="n">T2</span><span class="p">)</span><span class="c1">//合并两棵二项树</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">T1</span><span class="o">-&gt;</span><span class="n">Key</span><span class="o">&gt;</span><span class="n">T2</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">)</span><span class="k">return</span><span class="w"> </span><span class="n">Combine</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span><span class="n">T1</span><span class="p">);</span><span class="c1">//保证T1的根节点更小</span>
+<span class="w">    </span><span class="n">T2</span><span class="o">-&gt;</span><span class="n">NextSibling</span><span class="o">=</span><span class="n">T1</span><span class="o">-&gt;</span><span class="n">LeftChild</span><span class="p">;</span>
+<span class="w">    </span><span class="n">T1</span><span class="o">-&gt;</span><span class="n">LeftChild</span><span class="o">=</span><span class="n">T2</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">T1</span><span class="p">;</span>
+<span class="p">}</span>
 
-BinQueue Merge(BinQueue H1,BinQueue H2)//合并两个二项堆
-{
-    BinTree T1,T2,Carry=NULL;
-    int i,j;
-    for(i=0,j=1;j&lt;=H1-&gt;N+H2-&gt;N;i++,j*=2)//i用来控制数组的位数，j用来控制循环次数，因为MaxTree=log N
-    {
-        T1=H1-&gt;Trees[i];
-        T2=H2-&gt;Trees[i];
-        switch(4*!!Carry+2*!!T2+!!T1)//将Carry，T2，T1的有无用二进制表示，例如101表示“有Carry，无T2，有T1”
-        {
-            case 0://000
-            case 1:break;//001
-            case 2://010
-                    {
-                        H1-&gt;Trees[i]=T2;
-                        H2-&gt;Trees[i]=NULL;
-                        break;
-                    }
-            case 3://011
-                    {
-                        Carry=Combine(T1,T2);
-                        H1-&gt;Trees[i]=NULL;
-                        H2-&gt;Trees[i]=NULL;
-                        break;
-                    }
-            case 4://100
-                    {
-                        H1-&gt;Trees[i]=Carry;
-                        H2-&gt;Tress[i]=NULL;
-                        break;
-                    }
-            case 5://101
-                    {
-                        Carry=Combine(T1,Carry);
-                        H1-&gt;Trees[i]=NULL;
-                        break;
-                    }
-            case 6://110
-                    {
-                        Carry=Combine(T2,Carry);
-                        H2-&gt;Trees[i]=NULL;
-                        break;
-                    }
-            case 7://111
-                    {
-                        H1-&gt;Trees[i]=Carry;
-                        Carry=Combine(T1,T2);
-                        H2-&gt;Trees[i]=NULL;
-                    }
-        }
-    }
-    H1-&gt;N+=H2-&gt;N;//更新总节点数
-    return H1;
-}
-</code></pre>
+<span class="n">BinQueue</span><span class="w"> </span><span class="nf">Merge</span><span class="p">(</span><span class="n">BinQueue</span><span class="w"> </span><span class="n">H1</span><span class="p">,</span><span class="n">BinQueue</span><span class="w"> </span><span class="n">H2</span><span class="p">)</span><span class="c1">//合并两个二项堆</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">BinTree</span><span class="w"> </span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="p">,</span><span class="n">Carry</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">N</span><span class="o">+</span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">,</span><span class="n">j</span><span class="o">*=</span><span class="mi">2</span><span class="p">)</span><span class="c1">//i用来控制数组的位数，j用来控制循环次数，因为MaxTree=log N</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">T1</span><span class="o">=</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="n">T2</span><span class="o">=</span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="k">switch</span><span class="p">(</span><span class="mi">4</span><span class="o">*!!</span><span class="n">Carry</span><span class="o">+</span><span class="mi">2</span><span class="o">*!!</span><span class="n">T2</span><span class="o">+!!</span><span class="n">T1</span><span class="p">)</span><span class="c1">//将Carry，T2，T1的有无用二进制表示，例如101表示“有Carry，无T2，有T1”</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="c1">//000</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="k">break</span><span class="p">;</span><span class="c1">//001</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="c1">//010</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">T2</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="c1">//011</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">Carry</span><span class="o">=</span><span class="n">Combine</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">4</span><span class="p">:</span><span class="c1">//100</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">Carry</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">Tress</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span><span class="c1">//101</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">Carry</span><span class="o">=</span><span class="n">Combine</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span><span class="n">Carry</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">6</span><span class="p">:</span><span class="c1">//110</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">Carry</span><span class="o">=</span><span class="n">Combine</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span><span class="n">Carry</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="mi">7</span><span class="p">:</span><span class="c1">//111</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">Carry</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">Carry</span><span class="o">=</span><span class="n">Combine</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">N</span><span class="o">+=</span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">N</span><span class="p">;</span><span class="c1">//更新总节点数</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">H1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="insert"><code>Insert</code>操作</h3>
 <p>实际上是<code>Merge</code>操作的特殊情况。</p>
 <p>时间复杂度：如果最小的空置二项树为$B_i$（数组第$i$个位置为<code>NULL</code>），则$T=Const\cdot(i+1)=O(1)$</p>
@@ -1552,41 +1633,88 @@ BinQueue Merge(BinQueue H1,BinQueue H2)//合并两个二项堆
 </ul>
 <p>时间复杂度：$T=O(\log N)$</p>
 <p><strong>伪代码：</strong></p>
-<pre><code class="language-c">KeyType DeleteMin(BinQueue H)
-{
-    BinQueue DeletedQueue;
-    Position DeletedTree,OldRoot;
-    KeyType Min=∞;
-    int i,j,MinTree;
-    for(i=0;i&lt;MaxTree;i++)//遍历所有二项树
-    {
-        if(H-&gt;Trees[i]&amp;&amp;H-&gt;Trees[i]-&gt;Key&lt;Min)//寻找最小节点
-        {
-            Min=H-&gt;Trees[i]-&gt;Key;
-            MinTree=i;
-        }
-    }
-    DeletedTree=H-&gt;Trees[MinTree];//获得待操作的树
-    H-&gt;Trees[MinTree]=NULL;//原本对应的位置抹去
-    OldRoot=DeletedTree;//保留待删除的节点
-    DeletedTree=DeletedTree-&gt;LeftChild;//将待操作的树的根节点（待删除节点）移走
-    free(OldRoot);//删除节点
-    DeletedQueue=Initialize();//拆分得到的二项堆数列初始化
-    DeletedQueue-&gt;N=(1&lt;&lt;MinTree)-1;//2^MinTree-1 
-    for(j=MinTree–1;j&gt;=0;j––)//拆分过程
-    {  
-        DeletedQueue-&gt;Trees[j] =DeletedTree;
-        DeletedTree=DeletedTree-&gt;NextSibling;
-        DeletedQueue-&gt;Trees[j]-&gt;NextSibling=NULL;
-    }
-    H-&gt;N=H-&gt;N-DeleteQueue-&gt;N-1;
-    H=Merge(H,DeletedQueue);
-    return Min;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">KeyType</span><span class="w"> </span><span class="nf">DeleteMin</span><span class="p">(</span><span class="n">BinQueue</span><span class="w"> </span><span class="n">H</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">BinQueue</span><span class="w"> </span><span class="n">DeletedQueue</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Position</span><span class="w"> </span><span class="n">DeletedTree</span><span class="p">,</span><span class="n">OldRoot</span><span class="p">;</span>
+<span class="w">    </span><span class="n">KeyType</span><span class="w"> </span><span class="n">Min</span><span class="o">=</span><span class="err">∞</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">MinTree</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">MaxTree</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="c1">//遍历所有二项树</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&amp;&amp;</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">Key</span><span class="o">&lt;</span><span class="n">Min</span><span class="p">)</span><span class="c1">//寻找最小节点</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Min</span><span class="o">=</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">Key</span><span class="p">;</span>
+<span class="w">            </span><span class="n">MinTree</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">DeletedTree</span><span class="o">=</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">MinTree</span><span class="p">];</span><span class="c1">//获得待操作的树</span>
+<span class="w">    </span><span class="n">H</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">MinTree</span><span class="p">]</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span><span class="c1">//原本对应的位置抹去</span>
+<span class="w">    </span><span class="n">OldRoot</span><span class="o">=</span><span class="n">DeletedTree</span><span class="p">;</span><span class="c1">//保留待删除的节点</span>
+<span class="w">    </span><span class="n">DeletedTree</span><span class="o">=</span><span class="n">DeletedTree</span><span class="o">-&gt;</span><span class="n">LeftChild</span><span class="p">;</span><span class="c1">//将待操作的树的根节点（待删除节点）移走</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">OldRoot</span><span class="p">);</span><span class="c1">//删除节点</span>
+<span class="w">    </span><span class="n">DeletedQueue</span><span class="o">=</span><span class="n">Initialize</span><span class="p">();</span><span class="c1">//拆分得到的二项堆数列初始化</span>
+<span class="w">    </span><span class="n">DeletedQueue</span><span class="o">-&gt;</span><span class="n">N</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">MinTree</span><span class="p">)</span><span class="mi">-1</span><span class="p">;</span><span class="c1">//2^MinTree-1 </span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">MinTree</span><span class="err">–</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="err">––</span><span class="p">)</span><span class="c1">//拆分过程</span>
+<span class="w">    </span><span class="p">{</span><span class="w">  </span>
+<span class="w">        </span><span class="n">DeletedQueue</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="n">DeletedTree</span><span class="p">;</span>
+<span class="w">        </span><span class="n">DeletedTree</span><span class="o">=</span><span class="n">DeletedTree</span><span class="o">-&gt;</span><span class="n">NextSibling</span><span class="p">;</span>
+<span class="w">        </span><span class="n">DeletedQueue</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">NextSibling</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">H</span><span class="o">-&gt;</span><span class="n">N</span><span class="o">=</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">N</span><span class="o">-</span><span class="n">DeleteQueue</span><span class="o">-&gt;</span><span class="n">N</span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">H</span><span class="o">=</span><span class="n">Merge</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">DeletedQueue</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Min</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="decreasekey"><code>DecreaseKey</code>操作</h3>
 <p>假定已经知道要进行<code>Decrease</code>操作的节点的具体位置，接下来要做的只是不断地向上与父节点交换，直到恢复最小堆的性质</p>
 <p>时间复杂度：$T=O(\log N)$</p>
+<h2 id="53">5.3 回顾</h2>
+<table>
+<thead>
+<tr>
+<th>$~$</th>
+<th>二叉堆</th>
+<th>左式堆</th>
+<th>斜堆</th>
+<th>二项堆</th>
+<th>斐波那契堆</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Insert</code></td>
+<td>$O(\log N)$</td>
+<td>$O(\log N)$</td>
+<td>$O(\log N)$</td>
+<td>$O(1)$</td>
+<td>$O(1)$</td>
+</tr>
+<tr>
+<td><code>Merge</code></td>
+<td>$O(N)$</td>
+<td>$O(\log N)$</td>
+<td>$O(\log N)$</td>
+<td>$O(\log N)$</td>
+<td>$O(1)$</td>
+</tr>
+<tr>
+<td><code>DeleteMin</code></td>
+<td>$O(\log N)$</td>
+<td>$O(\log N)$</td>
+<td>$O(\log N)$</td>
+<td>$O(\log N)$</td>
+<td>$O(\log N)$</td>
+</tr>
+<tr>
+<td><code>DecreaseKey</code></td>
+<td>$O(\log N)$</td>
+<td>$O(\log N)$</td>
+<td>$~$</td>
+<td>$O(\log N)$</td>
+<td>$O(1)$</td>
+</tr>
+</tbody>
+</table>
 
 
 

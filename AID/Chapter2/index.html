@@ -68,7 +68,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -329,6 +329,69 @@
   
   <span class="md-ellipsis">
     第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
   </span>
   
 
@@ -1604,19 +1667,19 @@ $minimax(A)=max(min(3,9,10),min(2,x,y),min(10,5,1))=max(3,min(2,x,y),1)=3$
 <p><strong>伪代码：</strong></p>
 <p>函数：UCTSearch
 输入：当前状态$s_0$
-输出：玩家Max行动下，当前最优动作$a$</p>
-<pre><code>v0=create_node(s0)            //以当前状态s0作为根节点
+输出：玩家Max行动下，当前最优动作$a$
+<div class="highlight"><pre><span></span><code>v0=create_node(s0)            //以当前状态s0作为根节点
 while 未达到最大迭代次数 do     //不断完善s0子节点的UCB相关数据
   v1=Select(v0)               //选择+扩展阶段，走到具有还未被扩展过的子节点的节点，然后随即返回其未被扩展的某个子节点
   st=Simulate(v1-&gt;state)      //模拟阶段，返回一个在v1对应状态下继续博弈，最后可能出现的结果分数
   Back(v1,st)                 //反向传播阶段，从v1往上更新节点的UCB相关数据
 end
 a=UCB(v0,C)                   //计算出s0状态所有子节点的UCB值，取最大值（玩家为Max）
-</code></pre>
+</code></pre></div></p>
 <p>函数：Select
 输入：选择步骤的起始节点$v_0$
-输出：选择步骤的终止节点（新的未被扩展的节点或者终局节点）$v$</p>
-<pre><code>v=v0
+输出：选择步骤的终止节点（新的未被扩展的节点或者终局节点）$v$
+<div class="highlight"><pre><span></span><code>v=v0
 while v不为终止节点 do
   if v存在未被扩展的子节点 then
     return Expand(v)          //如果走到具有还未被扩展过的子节点的节点，则随机返回其一个未被扩展的子节点
@@ -1624,34 +1687,34 @@ while v不为终止节点 do
     v=UCB(v,C)                //如果没有走到底，则依据UCB值依次往下选择
   end
 end
-</code></pre>
+</code></pre></div></p>
 <p>函数：Expand
 输入：节点$v$
-输出：$v$的某个未被扩展的子节点$v'$</p>
-<pre><code>a=random(actions(v-&gt;state))   //在v的状态下随机挑选一个未被探索过的动作
-v'=create_node(result(v-&gt;state,a))//v'为v的某个未被扩展（探索）的子节点
-v'-&gt;N=0                       //总分数设为0
-v'-&gt;Q=0                       //访问次数设为0
-v'-&gt;parent=v
-v'-&gt;child=NULL
-v-&gt;child=v.child∪{v'}
-</code></pre>
+输出：$v$的某个未被扩展的子节点$v'$
+<div class="highlight"><pre><span></span><code>a=random(actions(v-&gt;state))   //在v的状态下随机挑选一个未被探索过的动作
+v&#39;=create_node(result(v-&gt;state,a))//v&#39;为v的某个未被扩展（探索）的子节点
+v&#39;-&gt;N=0                       //总分数设为0
+v&#39;-&gt;Q=0                       //访问次数设为0
+v&#39;-&gt;parent=v
+v&#39;-&gt;child=NULL
+v-&gt;child=v.child∪{v&#39;}
+</code></pre></div></p>
 <p>函数：Simulate
 输入：状态$s_0$
-输出：模拟得到的终止状态$s$</p>
-<pre><code>s=s0
+输出：模拟得到的终止状态$s$
+<div class="highlight"><pre><span></span><code>s=s0
 while s不为终止节点 do
   a=从actions(s)中随机采样
   s=result(s,a)
 end
-</code></pre>
+</code></pre></div></p>
 <p>函数：Back
-输入：反向传播更新的起始节点$v$，之前模拟得到的终止状态$s_t$</p>
-<pre><code>while v!=NULL do
+输入：反向传播更新的起始节点$v$，之前模拟得到的终止状态$s_t$
+<div class="highlight"><pre><span></span><code>while v!=NULL do
   v-&gt;N+=1                     //访问次数+1
   v-&gt;Q-=utility(st,player(v-&gt;state))//分数之和的加减取决于当前为Max还是Min
   v=v-&gt;parent
-</code></pre>
+</code></pre></div></p>
 
 
 

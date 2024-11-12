@@ -16,7 +16,7 @@
     
     
       
-        <title>day6 Backtracking 回溯法 - Monsterdie's Notebook</title>
+        <title>day9 Greedy Algorithms 贪心 - Monsterdie's Notebook</title>
       
     
     
@@ -68,7 +68,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#day6-backtracking" class="md-skip">
+        <a href="#day9-greedy-algorithms" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              day6 Backtracking 回溯法
+              day9 Greedy Algorithms 贪心
             
           </span>
         </div>
@@ -329,6 +329,69 @@
   
   <span class="md-ellipsis">
     第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
   </span>
   
 
@@ -1214,52 +1277,25 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      基础概念
+      基本概念
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#activity-selection-problem" class="md-nav__link">
     <span class="md-ellipsis">
-      八皇后问题
+      Activity Selection Problem 活动选择问题
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-turnpike-reconstruction-problem" class="md-nav__link">
+  <a href="#huffman-codes" class="md-nav__link">
     <span class="md-ellipsis">
-      收费站问题（The Turnpike Reconstruction Problem）
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      木棒拼接问题
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tic-tac-toe" class="md-nav__link">
-    <span class="md-ellipsis">
-      井字棋问题（Tic-tac-toe）
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      八数码问题
+      Huffman Codes 霍夫曼编码
     </span>
   </a>
   
@@ -1280,100 +1316,89 @@
                   
 
 
-<h1 id="day6-backtracking">day6 Backtracking 回溯法</h1>
+<h1 id="day9-greedy-algorithms">day9 Greedy Algorithms 贪心</h1>
 <hr />
-<h2 id="_1">基础概念</h2>
-<p>对于一个问题，一个肯定有效的解决方法为：枚举出所有可能的解，再一一验证</p>
-<p>回溯法的精髓在于：在枚举所有可能的解的同时，排除掉相当一部分不符合要求的解（剪枝）</p>
-<p>当我们得到一个不完全解$(x_1,x_2,···,x_i)$后，我们添加$x_{i+1}$，检查$(x_1,x_2,···,x_i,x_{i+1})$是否还符合要求，如果符合要求，则继续添加，否则回到$(x_1,x_2,···,x_i)$，尝试添加$x_{i+2}$等其他可能，若所有可能经过尝试都不成功，则再往后回溯到$(x_1,x_2,···,x_{i-1})$，以此类推</p>
+<h2 id="_1">基本概念</h2>
+<p>贪心算法常用于解决<strong>优化问题</strong></p>
 <blockquote>
-<p><strong>例：假设某棵树的节点只有0或1，试找一条全是0的路径.</strong>
-枚举法：先找出所有路径，再依次检查
-回溯法：一步一步向下走，如果走到1，则在该位置剪枝，回到上一个0重新走
-深度优先：找到一条符合要求的路径
-广度优先：找到最短的符合要求的路径
-深度和广度均可：找到所有符合要求的路径</p>
+<p><strong>优化问题：</strong>
+给定一系列的限制和一个目标函数，在可行解中找到能使目标函数取最优值的解，称为最优解</p>
+</blockquote>
+<p>贪心算法在每一步都采取最优策略，之后不会再更改，且保证每一步均可行</p>
+<p>注意：贪心算法只有在<strong>局部最优=全局最优</strong>时有效</p>
+<p>贪心算法无法保证能找到最优解，但其找到的解会与最优解十分接近，因此，当寻找最优解耗时过长时可以考虑用贪心算法的解近似替代</p>
+<blockquote>
+<p>例如：在使用回溯法求最优解的时候，我们往往会遇到难以剪枝的情况，此时我们可以考虑用贪心算法得到一个近似最优解，以此作为剪枝条件，如果当前枚举到的情况甚至不如该解，则直接剪枝</p>
 </blockquote>
 <hr />
-<h2 id="_2">八皇后问题</h2>
-<p>$Q_i$：第$i$行的皇后
-$x_i$：第$i$行的皇后所在的列
-求解$(x_1,x_2,···,x_8)$
-要求：
-* $x_i\neq x_j~(i\neq j)$
-* $(x_i-x_j)/(i-j)\neq\pm1~(i\neq j)$</p>
-<p>回溯法求解思路（以四皇后为例）：</p>
-<p>第一步：构造游戏树（game tree）</p>
-<p><img alt="alt text" src="../image/6.1.jpg" /></p>
-<p>每一条边表示采取一次行动（落子），每一个节点表示一种状态。例如：节点1表示未放棋子的初始状态，节点1和2之间的边表示采取了将第一行的皇后放在第一列的动作，于是得到了新的棋盘状态，用节点2表示</p>
-<p>第二步：深度优先搜索（后序遍历）</p>
-<hr />
-<h2 id="the-turnpike-reconstruction-problem">收费站问题（The Turnpike Reconstruction Problem）</h2>
-<p>在一条直线上放置$N$个收费站，两两之间满足给定的距离限制，求解收费站的放置方法</p>
-<p>以距离限制${1,2,2,2,3,3,3,4,5,5,5,6,7,8,10}$为例：</p>
-<p>第一步：由于距离限制数等于$\frac{N(N-1)}{2}$，因此可以计算出收费站的数量$N=6$</p>
-<p>第二步：令第一个收费站的位置$x_1=0$，则由最大距离限制可知$x_6=10$，此时距离限制还剩${1,2,2,2,3,3,3,4,5,5,5,6,7,8}$</p>
-<p>第三步：在剩余的限制中再次寻找最大的距离，发现为$8$，此时有两种情况，分别是$x_5=8$和$x_2=2$，假设选择$x_5=8$，则从距离限制的集合中又可以删掉$x_5-x_1=8$和$x_6-x_5=2$，因此距离限制还剩${1,2,2,3,3,3,4,5,5,5,6,7}$</p>
-<p>第四步：同第三步，找最大的距离限制后分情况，选择一种情况后删除相应的距离限制，如果发现矛盾则回溯，没有发现则继续向前</p>
+<h2 id="activity-selection-problem">Activity Selection Problem 活动选择问题</h2>
+<p>假设有$n$个活动$S={a_1,a_2,···,a_n}$，都需要用到同一间教室，每个活动$a_i$占用的时间区间为$[s_i,f_i)$，且假设$f_1&lt;f_2&lt;···&lt;f_n$，求能够安排的最多活动数量</p>
+<p><img alt="alt text" src="../image/9.1.jpg" /></p>
+<p><strong>动态规划：</strong></p>
+<p>设$S_{ij}$表示开始时间在$a_i$结束之后，结束时间在$a_j$开始之前的最大兼容活动集合（集合中的两两活动时间不重叠）</p>
+<p>设$c_{ij}$表示从活动$a_i$结束到活动$a_j$开始这段时间内能够安排的最多活动数量，即$S_{ij}$的元素个数</p>
+<p>$c_{ij}=\begin{cases}
+    0,S_{ij}=\empty\
+    \max\limits_{a_k\in S_{ij}}{c_{ik}+c_{kj}+1},S_{ij}\neq\empty
+\end{cases}$</p>
+<p>存在冗余：
+例如，在最优解中有$a_k$，$a_l$，且满足$a_i&lt;a_k&lt;a_l&lt;a_j$，我们可能在计算$c_{ij}$时锁定$a_k$，然后在计算$c_{ky}$时锁定$a_l$；也可能在计算$c_{ij}$时锁定$a_l$，然后在计算$c_{il}$时锁定$a_k$。两种不同方式的状态转移，导向同一组解$a_k$，$a_l$，从而导致计算的冗余</p>
+<p>本质原因：我们想要的是集合，但我们选出的是序列</p>
+<p>因此需要将序列的选择转变为集合的选择：强行定下顺序，使得只能得到$a_k$，$a_l$顺序的解，不能得到$a_l$，$a_k$顺序的解</p>
+<p><strong>优化后的动态规划：</strong></p>
+<p>设$S_i$表示活动$a_1,a_2,···,a_i$的最大兼容活动集合，集合中的两两活动时间不重叠）</p>
+<p>设$c_i$表示$S_i$的元素个数，我们最后所求即为$c_n$</p>
+<p>$c_i=\max{c_{i-1},c_k+1}$</p>
+<p>其中$c_{i-1}$表示不选择$a_i$时，$a_1,a_2,···,a_i$中的最多兼容活动数量，因为不选择$a_i$，所以相当于是$a_1,a_2,···,a_{i-1}$中的最多兼容活动数量</p>
+<p>活动$a_k$满足其结束时间早于$a_i$的活动时间，且使得$c_k$取最大值，即$a_1,a_2,···,a_k$中能安排最多数量的兼容活动</p>
+<p>现在来检查冗余情况：</p>
+<p>假设一共有三个活动$a_1,a_2,a_3$</p>
+<p>最优解有两个活动，其中一个为$a_3$</p>
+<p>从小到大，看$c_0$如何推出$c_2$</p>
+<p>从$c_0$可以推出任意一个只选了一个活动的状态：</p>
+<ul>
+<li>情况一：只选了$a_1$：$c_1=c_0+1=1$</li>
+<li>情况二：只选了$a_2$：$c_2=c_0+1=1$（$a_1$与$a_2$不兼容）</li>
+<li>情况三：只选了$a_3$：$c_3=c_0+1=1$（$a_1$或$a_2$都与$a_3$不兼容）</li>
+</ul>
+<p>对于选择了两个活动的状态（最优解，其中一个为$a_3$）：</p>
+<ul>
+<li>情况一：从前一个情况一推得：$c_3=c_1+1=2$（$a_1$与$a_3$兼容，$a_2$与$a_3$不兼容）</li>
+<li>情况二：从前一个情况二推得：$c_3=c_2+1=2$（$a_1$与$a_2$不兼容，$a_2$与$a_3$兼容，但我们也可以从中推出$a_1$与$a_3$兼容）</li>
+</ul>
+<p>从中我们可以看出，如果$a_1$与$a_3$兼容，那么就没有必要找$a_2$了。然而由于动态规划实际的顺序是从后往前，因此会先去找$c_2$，比$c_1$计算时间更久（因为$c_2$的计算可能还需要$c_1$），因此产生冗余</p>
+<p>实际上正向的思考过程就是贪心算法</p>
+<p><strong>不同的贪心算法：</strong></p>
+<p>1.开始时间早的优先（失败）</p>
+<p>2.耗时短的优先（失败）</p>
+<p>3.冲突少的优先（失败）</p>
+<p>4.结束时间早的优先（成功）</p>
+<p><strong>贪心算法的证明：</strong></p>
+<ul>
+<li>证明1：得到的解是合法的</li>
+<li>证明2：得到的解是最优的</li>
+<li>证明2.1：<strong>贪心选择性质</strong>（对于任意非空子问题$S$，令$b$是$S$中结束时间最早的活动，则$b$在$S$的某个最大兼容活动子集中）</li>
+<li>证明2.2：<strong>最优子结构性质</strong>（用贪心策略选择$a_m$后得到子问题$S_m$，那么$a_m$和子问题$S_m$的最优解合并一定可以得到原问题的最优解）</li>
+</ul>
+<p>其中，$S_k={a_i|s_i\geqslant f_k}$，即在$a_k$结束后才开始的活动集合</p>
 <blockquote>
-<p>对于当前的距离限制的集合，其最大的距离限制对应的两个收费站一定有一个$x_1$或者$x_6$，因为如果两个收费站都在中间，那么其距离一定小于其中一个收费站到$x_1$或$x_6$的距离</p>
+<p><strong>证明2.1：</strong></p>
+<p><strong>证明2.2：</strong></p>
 </blockquote>
-<p><img alt="alt text" src="../image/6.2.jpg" /></p>
-<p>伪代码：</p>
-<pre><code class="language-c">bool Reconstruct(x[],D[],N,left,right)
-//x[]为收费站坐标，D[]为距离限制，N为收费站总数，x[1],···,x[left-1]和x[right+1],···,x[N]已经确定
-Found=False;
-if(D is empty)return True ;//距离限制清空表示找到解
-maxD=FindMax(D[]);//找到最大的距离限制
-//第一种情况：X[right]=MaxD
-OK=Check(maxD,N,left,right)//检查与其他收费站的距离限制是否满足
-if(OK)
-{
-    for(i=1;i&lt;=left-1;i++)Delete(|x[right]-x[i]|,D[]);
-    for(i=right+1;i&lt;=N;i++)Delete(|x[right]-x[i]|,D[]);//将相关的距离限制从集合中删除
-    Found=Reconstruct(X[],D[],N,left,right-1);//继续求解
-    if(!Found)
-    {
-        for(i=1;i&lt;=left-1;i++)Insert(|x[right]-x[i]|,D[]);
-        for(i=right+1;i&lt;=N;i++)Insert(|x[right]-x[i]|,D[]);//若发现之后走不通，则将原本删除的距离补回集合
-    }
-//如果第一种情况不成立，则进入第二种情况，x[left]=x[N]-MaxD
-if(!Found)
-{
-    OK=Check(x[N]-Max[D],N,left,right);
-    if(OK)
-    {
-        x[left]=x[N]-MaxD;
-        for(i=1;i&lt;=left-1;i++)Delete(|x[left]-x[i]|,D[]);
-        for(i=right+1;i&lt;=N;i++)Delete(|x[left]-x[i]|,D[]);
-        Found=Reconstruct(x[],D[],N,left+1,right);
-        if(!Found)
-        {
-            for(i=1;i&lt;=left-1;i++)Insert(|x[left]-x[i]|,D[]);
-            for(i=right+1;i&lt;=N;i++)Insert(|x[left]-x[i]|,D[]);
-        }
-    }
-    return Found;
-}
-</code></pre>
+<p>如果2.1和2.2成立，那么我们得到如下的构造方式：</p>
+<p>$a_1$到$a_n$中，第一个满足要求的活动一定在最优解中，为$a_1$（2.1），$a_1$和子问题$S_1$的最优解合并一定能求得原问题的最优解（2.2），于是转而去求子问题$S_1$的最优解，以此类推</p>
+<p><strong>问题变形：</strong></p>
+<p>为每个活动$a_i$附加一个分值$w_i$，如何安排才能得到最大分数？</p>
+<p>$c_i=\max{c_{i-1},c_k+w_i}$</p>
 <hr />
-<h2 id="_3">木棒拼接问题</h2>
-<p>对于同一问题，在构建树的过程中，先后顺序也十分重要。如下图的两棵树，虽然最后结果相同，但第一棵树一开始的分支少，后面的分支多；第二棵树一开始的分支多，后面的分支少。我们在构建树的时候，倾向于第一棵树，因为这样的话一次剪枝就可以剪掉更多。</p>
-<p><img alt="alt text" src="../image/6.3.jpg" /></p>
-<p>相关的问题为木棒拼接问题：现在有9根木棒碎片，长度集合为${5,2,1,5,2,1,5,2,1}$，现在要将这些碎片拼成几根长度相同的木棒，求能够拼成的最短木棒的长度。</p>
-<p>对于这个问题，我们进行简化，假设最短木棒的长度给定，先考虑如何用这些碎片拼成这几根木棒。</p>
-<p>事实上，越长的碎片约束越多，因此我们优先考虑安置长的碎片，比如先将长度为5的碎片放在相应位置，再依次考虑次长的碎片，这里的思想实际上就是构建一棵一开始分支少的树。</p>
-<hr />
-<h2 id="tic-tac-toe">井字棋问题（Tic-tac-toe）</h2>
-<p>涉及<strong>最小最大搜索</strong>和 <strong>$\alpha-\beta$剪枝</strong>，具体内容详见“人工智能导论”相关笔记</p>
-<hr />
-<h2 id="_4">八数码问题</h2>
-<p><img alt="alt text" src="../image/6.4.jpg" /></p>
-<p>使用尽量少的步骤，利用唯一的空格，通过挪动方块到达指定状态</p>
-<p>以下提供一些剪枝思路：
-* 可以记录节点状态（当前盘面），如果发现重复了则剪枝
-* 还可以和目前已知的最优解进行对比，如果步数更多则剪枝
-* 还可以计算空格（甚至所有数字）从初态到末态最少需要移动的步数，同样与目前已知的最优解进行对比，如果步数更多则剪枝</p>
+<h2 id="huffman-codes">Huffman Codes 霍夫曼编码</h2>
+<p>给定了不同字符和相应的使用频率，构建一棵用于霍夫曼编码的树，使得期望编码长度最小。</p>
+<p>方法详见离散数学，用最小堆来实现</p>
+<p>证明这个贪心算法的正确性：</p>
+<blockquote>
+<p><strong>贪心选择性质：对于字符集$S$，$x,y\in S$是其中频率最低的两个字符，则在$S$的某个最优霍夫曼编码中，$x$和$y$的编码长度相同，且只有最后一位不同.</strong></p>
+<p><strong>最优子结构性质：对于字符集$S$，$x,y\in S$是其中频率最低的两个字符，我们用频率为$x$，$y$之和的字符$z$来替换$x$和$y$，得到字符集$S'$，则在$S'$的任意一个最优霍夫曼编码中，我们总可以将叶子节点$z$替换为直接连接$x$和$y$的内部节点，得到$S$的某个最优霍夫曼编码.</strong></p>
+</blockquote>
 
 
 
