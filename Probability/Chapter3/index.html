@@ -1,0 +1,2790 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Chapter2/">
+      
+      
+        <link rel="next" href="../Chapter4/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>第三章 - Monsterdie's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Times+New+Roman:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Times New Roman";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter3" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第三章
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            高级数据结构与算法分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章：AVL树，Splay树与均摊分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章：红黑树与B+树
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章：左式堆与斜堆
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章：倒排索引
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章：二项堆
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章：回溯法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章：分治法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章：动态规划
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学分析Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学分析Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    线性代数Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            线性代数Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    补充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    离散数学理论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            离散数学理论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    补充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅰ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            普通物理学Ⅰ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics1/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics1/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            普通物理学Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 数学期望
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 数学期望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学期望的定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数学期望的定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      离散型随机变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      连续型随机变量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学期望的性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机变量函数的数学期望
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="随机变量函数的数学期望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      离散型随机变量的函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      连续型随机变量的函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 方差
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 方差">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      方差的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      方差的性质
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 协方差、协方差矩阵与相关系数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 协方差、协方差矩阵与相关系数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      协方差
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      协方差矩阵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关性与独立性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关系数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 条件期望与全期望公式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 条件期望与全期望公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件期望
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      全期望公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 矩
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 矩">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      矩的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机变量分布与矩的关系
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 特征函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 特征函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征函数的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征函数的分析性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征函数的运算性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      唯一性定理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      二元随机向量的特征函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            CSAPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 数学期望
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 数学期望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学期望的定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数学期望的定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      离散型随机变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      连续型随机变量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学期望的性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机变量函数的数学期望
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="随机变量函数的数学期望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      离散型随机变量的函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      连续型随机变量的函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 方差
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 方差">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      方差的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      方差的性质
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 协方差、协方差矩阵与相关系数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 协方差、协方差矩阵与相关系数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      协方差
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      协方差矩阵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关性与独立性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关系数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 条件期望与全期望公式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 条件期望与全期望公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件期望
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      全期望公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 矩
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 矩">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      矩的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机变量分布与矩的关系
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 特征函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 特征函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征函数的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征函数的分析性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征函数的运算性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      唯一性定理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      二元随机向量的特征函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter3">Chapter3 数字特征</h1>
+<hr />
+<h2 id="31">3.1 数学期望</h2>
+<h3 id="_1">数学期望的定义</h3>
+<h4 id="_2">离散型随机变量</h4>
+<p>$$X\sim\begin{pmatrix}
+    x_1&amp;x_2&amp;···&amp;x_N\\
+    p_1&amp;p_2&amp;···&amp;p_N
+\end{pmatrix}$$</p>
+<p>$$EX=\sum\limits_{k=1}^Nx_kp_k$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当$N\rightarrow\infty$时，要求绝对可和，即$\sum\limits_{k=1}^{\infty}|x_k|p_k$存在。  </p>
+</div>
+<p><strong>二项Bernoulli分布：$X\sim B(n,p)$</strong></p>
+<p>$$P(X=k)=C_n^kp^k(1-p)^{n-k}$$</p>
+<p>$$EX=np$$</p>
+<p><strong>Poisson分布：$X\sim P(\lambda)$</strong></p>
+<p>$$P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda}$$</p>
+<p>$$EX=\lambda$$</p>
+<p><strong>几何分布：$X\sim G(p)$</strong></p>
+<p>$$P(X=k)=p(1-p)^{k-1}$$</p>
+<p>$$EX=\frac{1}{p}$$</p>
+<h4 id="_3">连续型随机变量</h4>
+<p>$$X\sim p(x)$$</p>
+<p>$$EX=\int_{-\infty}^{+\infty}xp(x)dx$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>要求绝对可积，即$\int_{-\infty}^{+\infty}|x|p(x)dx$存在。</p>
+</div>
+<p><strong>正态分布：$X\sim N(\mu,\sigma^2)$</strong></p>
+<p>$$p(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$</p>
+<p>$$EX=\mu$$</p>
+<p><strong>指数分布：$X\sim\exp(\lambda)$</strong></p>
+<p>$$p(x)=\lambda e^{-\lambda x}$$</p>
+<p>$$EX=\frac{1}{\lambda}$$</p>
+<p><strong>柯西分布：$X\sim C(\mu,\sigma)$</strong></p>
+<p>$$p(x)=\frac{1}{\pi\sigma}\frac{1}{1+(\frac{x-\mu}{\sigma})^2}$$</p>
+<p>$EX$不存在。</p>
+<h3 id="_4">数学期望的性质</h3>
+<p><strong>性质1：</strong></p>
+<p>$$E(a+bX)=a+bEX$$</p>
+<p><strong>性质2：</strong></p>
+<p>$$E(X+Y)=EX+EY$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>$X$和$Y$无论是否相互独立，上式均成立。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p>若$(X,Y)\sim p(x,y)$<br />
+$p_Z(z)=\int_{-\infty}^ {+\infty}p(x,z-x)dx$<br />
+$E(X+Y)=\int_{-\infty}^{+\infty}zp_{Z}(z)dz$<br />
+$=\int_{-\infty}^{+\infty}z(\int_{-\infty}^{+\infty}p(x,z-x)dx)dz$<br />
+$=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x+y)p(x,y)dxdy$（令$z=x+y$）<br />
+$=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}xp(x,y)dxdy+\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}yp(x,y)dxdy$<br />
+$=\int_{-\infty}^{+\infty}xp_X(x)dx+\int_{-\infty}^{+\infty}yp_{Y}(y)dy$
+$=EX+EY$  </p>
+</div>
+<p>推广：</p>
+<p>$$E(a_1X_1+a_2X_2+···a_mX_m)=a_1E(X_1)+a_2E(X_2)+···+a_mE(X_m)$$</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例1：设$X_1,X_2,···,X_m$是非负的独立同分布的随机变量，求$E(\frac{X_1+···+X_k}{X_1+···+X_m})$。</strong></p>
+<p>由加法定理：$1=E(\frac{X_1+···+X_m}{X_1+···+X_m})=E(\frac{X_1}{X_1+···+X_m})+···+E(\frac{X_m}{X_1+···+X_m})$<br />
+由独立同分布：$\frac{X_1}{X_1+···+X_m}=···=\frac{X_m}{X_1+···+X_m}$<br />
+$E(\frac{X_1}{X_1+···+X_m})=···=E(\frac{X_m}{X_1+···+X_m})=\frac{1}{m}$<br />
+综上：$E(\frac{X_1+···=X_k}{X_1+···+X_m})=\frac{k}{m}$  </p>
+<p><strong>例2：计算二项分布$S_n\sim B(n,p)$的数学期望。</strong></p>
+<p>将$n$次试验分别看作独立随机变量<br />
+$X_i=\begin{cases}
+    1,p\\
+    0,1-p
+\end{cases}~i=1,2,···,n$<br />
+$S_n=\sum\limits_{i=1}^nX_i$<br />
+$E(S_n)=\sum\limits_{i=1}^nE(X_i)=np$  </p>
+<p><strong>例3：计算超几何分布$S_n\sim H(N,M,n)$的数学期望。</strong></p>
+<p>与例2同理：将$n$次抽取分别看作独立随机变量<br />
+$X_i=\begin{cases}
+1,p\\
+0,1-p
+\end{cases}~i=1,2,···,n$<br />
+该情况下$X_i$不相互独立，但加法原则依然适用<br />
+$S_n=\sum\limits_{i=1}^nX_i$<br />
+$E(S_n)=\sum\limits_{i=1}^nE(X_i)=np=n\frac{M}{N}$  </p>
+</div>
+<p><strong>性质3：</strong></p>
+<p>若$X$，$Y$相互独立，则</p>
+<p>$$E(XY)=EX\cdot EY$$</p>
+<h3 id="_5">随机变量函数的数学期望</h3>
+<h4 id="_6">离散型随机变量的函数</h4>
+<p>$$P(X=x_k)=p_k$$</p>
+<p>$$E[f(X)]=\sum\limits_{k=1}^Nf(x_k)p_k$$</p>
+<h4 id="_7">连续型随机变量的函数</h4>
+<p>$$X\sim p(x)$$</p>
+<p>$$E[f(X)]=\int_{-\infty}^{+\infty}f(x)p(x)dx$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>若$Z=f(X,Y)$，则<br />
+$EZ=\sum f(x_i,y_j)P(X=x_i,Y=y_j)$（离散型）<br />
+$EZ=\iint f(x,y)p(x,y)dxdy$（连续型）  </p>
+</div>
+<hr />
+<h2 id="32">3.2 方差</h2>
+<h3 id="_8">方差的定义</h3>
+<p>$$Var(X)=E[(X-EX)^2]=E(X^2)-(EX)^2$$</p>
+<p><strong>二项Bernoulli分布：$X\sim B(n,p)$</strong></p>
+<p>$$P(X=k)=C_n^kp^k(1-p)^{n-k}$$</p>
+<p>$$Var(X)=np(1-p)$$</p>
+<p><strong>Poisson分布：$X\sim P(\lambda)$</strong></p>
+<p>$$P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda}$$</p>
+<p>$$Var(X)=\lambda$$</p>
+<p><strong>均匀分布：$X\sim U(a,b)$</strong></p>
+<p>$$p(x)=\frac{1}{b-a}$$</p>
+<p>$$Var(X)=\frac{(b-a)^2}{12}$$</p>
+<p><strong>指数分布：$X\sim\exp(\lambda)$</strong></p>
+<p>$$p(x)=\lambda e^{-\lambda x}$$</p>
+<p>$$Var(X)=\frac{1}{\lambda^2}$$</p>
+<p><strong>正态分布：$X\sim N(\mu,\sigma^2)$</strong></p>
+<p>$$p(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$</p>
+<p>$$Var(X)=\sigma^2$$</p>
+<h3 id="_9">方差的性质</h3>
+<p><strong>性质1：</strong></p>
+<p>$$Var(a+bX)=b^2Var(X)$$</p>
+<p><strong>性质2：</strong></p>
+<p>$$Var(X+Y)=Var(X)+Var(Y)+2E[(X-EX)(Y-EY)]$$</p>
+<p>若$X$，$Y$相互独立，则</p>
+<p>$$Var(X+Y)=Var(X)+Var(Y)$$</p>
+<p>推广：若$X_1,X_2,···,X_m$相互独立，则</p>
+<p>$$Var(\sum\limits_{k=1}^mX_k)=\sum\limits_{k=1}^mVar(X_k)$$</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>计算二项分布$S_n\sim B(n,p)$的方差。</strong><br />
+将$n$次试验分别看作独立随机变量<br />
+$X_i=\begin{cases}
+1,p\\
+0,1-p
+\end{cases}~i=1,2,···,n$<br />
+$S_n=\sum\limits_{i=1}^nX_i$<br />
+$Var(S_n)=\sum\limits_{i=1}^nVar(X_i)=np(1-p)$<br />
+此时，若我们想要用同样方法计算超几何分布的方差，则代入的公式就比较麻烦，因为$X_i$并不相互独立。</p>
+</div>
+<p><strong>性质3：</strong></p>
+<p>当$c\neq EX$时</p>
+<p>$$Var(X)&lt;E[(X-c)^2]$$</p>
+<p><strong>性质4：Chebyschev不等式</strong></p>
+<p>对于任意$\varepsilon&gt;0$，都有</p>
+<p>$$P(|X-EX|&gt;\varepsilon)\leqslant\frac{Var(X)}{\varepsilon^2}$$</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p>$P(|X-EX|&gt;\varepsilon)=\int_{x:|x-EX|&gt;\varepsilon}p(x)dx$<br />
+$\leqslant\int_{x:|x-EX|&gt;\varepsilon}\frac{|x-EX|^2}{\varepsilon^2}p(x)dx$（$\frac{|x-EX|^2}{\varepsilon^2}\geqslant 1$）<br />
+$\leqslant\frac{1}{\varepsilon^2}\int_{-\infty}^{+\infty}|x-EX|^2p(x)dx$<br />
+$=\frac{Var(X)}{\varepsilon^2}$  </p>
+</div>
+<p>推广：若$f$是单调不减严格正函数，则</p>
+<p>$$P(X&gt;\varepsilon)\leqslant\frac{E[f(X)]}{f(\varepsilon)}$$</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p>$P(X&gt;\varepsilon)\leqslant P(f(X)&gt;f(\varepsilon))\leqslant\frac{E[f(X)]}{f(\varepsilon)}$<br />
+前一个不等号是因为$f$是单调不减的，因此当$X&gt;\varepsilon$时，一定有$f(X)&gt;f(\varepsilon)$  </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>证明：若$Var(X)=0$，则$P(X=EX)=1$。</strong><br />
+不妨设$EX=0$<br />
+求证：$P(X=0)=1$<br />
+即：$P(|X|&gt;0)=0$<br />
+由切比雪夫不等式，对$\forall\varepsilon&gt;0$，都有<br />
+$P(|X|&gt;\varepsilon)\leqslant\frac{Var(X)}{\varepsilon^2}=0$<br />
+因此<br />
+$P(|X|&gt;0)=P(\bigcup\limits_{n=1}^{\infty}{|X|&gt;\frac{1}{n}})\leqslant\sum\limits_{n=1}^{\infty}P(|X|&gt;\frac{1}{n})=0$  </p>
+</div>
+<hr />
+<h2 id="33">3.3 协方差、协方差矩阵与相关系数</h2>
+<h3 id="_10">协方差</h3>
+<p>$$Cov(X,Y)=E[(X-EX)(Y-EY)]=E(XY)-EX\cdot EY$$</p>
+<p><strong>Cauchy-Schwarz不等式</strong></p>
+<p>$$E(|X-EX||Y-EY|)\leqslant\sqrt{E[(X-EX)^2]\cdot E[(Y-EY)^2]}$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>若$S_n=\sum\limits_{k=1}^n\xi_k$，则$Var(S_n)=\sum\limits_{k=1}^nVar(\xi_k)+2\sum\limits_{k&lt;l}Cov(\xi_k,\xi_l)$</p>
+</div>
+<p>可以推得：</p>
+<p>$$Cov(X,Y)\leqslant\sqrt{Var(X)\cdot Var(Y)}$$</p>
+<h3 id="_11">协方差矩阵</h3>
+<p>$$\Sigma=\begin{pmatrix}
+    Var(X)&amp;Cov(X,Y)\\
+    Cov(X,Y)&amp;Var(Y)
+\end{pmatrix}$$</p>
+<p>协方差矩阵是<strong>非负定</strong>的，即对于任意$x,y$</p>
+<p>$$\begin{pmatrix}
+    x&amp;y
+\end{pmatrix}\begin{pmatrix}
+ Var(X)&amp;Cov(X,Y)\\
+    Cov(X,Y)&amp;Var(Y)  <br />
+\end{pmatrix}\begin{pmatrix}
+    x\\
+    y
+\end{pmatrix}\geqslant 0$$</p>
+<h3 id="_12">相关性与独立性</h3>
+<p>若$X$，$Y$相互独立，则</p>
+<p>$$Cov(X,Y)=0$$</p>
+<p>反过来，$Cov(X,Y)=0$并不意味着$X$，$Y$相互独立。</p>
+<p>若$Cov(X,Y)=0$，则称$X$，$Y$<strong>不相关</strong>。<strong>独立一定不相关，不相关不一定独立。</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>二元联合正态分布$(X,Y)\sim N(\mu_1,\sigma_1^2,\mu_2,\sigma_2^2,\rho)$。</strong>  </p>
+<p>简单起见，设$\mu_1=\mu_2=0$，$\sigma_1^2=\sigma_2^2=1$ <br />
+$Cov(X,Y)=E(XY)$<br />
+$=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}xy\frac{1}{2\pi\sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}(x^2-2\rho xy+y^2)}dxdy$<br />
+$=\int_{-\infty}^{+\infty}x\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}(\int_{-\infty}^{+\infty}y\frac{1}{\sqrt{2\pi(1-\rho^2)}}e^{-\frac{1}{2(1-\rho^2)}(y-\rho x)^2}dy)dx$（括号内的是$Y\sim N(\rho x,\sqrt{1-\rho^2})$的期望）<br />
+$=\rho\int_{-\infty}^{+\infty}x^2\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx$<br />
+$=\rho$<br />
+若$(X,Y)\sim N(\mu_1,\sigma_1^2,\mu_2,\sigma_2^2,\rho)$<br />
+$Cov(X,Y)=E[(X-EX)(Y-EY)]$<br />
+$=E(\frac{X-EX}{\sigma_1}\cdot\frac{Y-EY}{\sigma_2})\cdot\sigma_1\sigma_2$<br />
+记$U=\frac{X-EX}{\sigma_1}$，$V=\frac{Y-EY}{\sigma_2}$<br />
+则$(U,V)\sim N(0,1,0,1,\rho)$<br />
+因此<br />
+$Cov(X,Y)=E(UV)\cdot\sigma_1\sigma_2$<br />
+$=\rho\sigma_1\sigma_2$  </p>
+</div>
+<h3 id="_13">相关系数</h3>
+<p>$$\gamma=\frac{Cov(X,Y)}{\sqrt{Var(X)\cdot Var(Y)}}$$</p>
+<p>由Cauchy-Schwarz不等式：$|\gamma|\leqslant 1$</p>
+<p>若$\gamma=1$，则存在$t_0=\sqrt{\frac{Var(X)}{Var(Y)}}$，使得</p>
+<p>$$P(X-EX=t_0(Y-EY))=1$$</p>
+<p>即：$X$和$Y$是正线性相关的。</p>
+<p>若$\gamma=-1$，则存在$t_0=-\sqrt{\frac{Var(X)}{Var(Y)}}$，使得</p>
+<p>$$P(X-EX=t_0(Y-EY))=1$$</p>
+<p>即：$X$和$Y$是负线性相关的。</p>
+<p>若$\gamma=0$，则$X$和$Y$不相关（不线性相关）。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>考虑二元联合正态分布，若$\rho=1$，则$\gamma=1$，$X$，$Y$线性相关。</p>
+</div>
+<hr />
+<h2 id="34">3.4 条件期望与全期望公式</h2>
+<h3 id="_14">条件期望</h3>
+<p>给定$Y=y_j$，$X$的条件期望定义为</p>
+<p>$$E(X|Y=y_j)=\sum\limits_{i=1}^{\infty}x_iP(X=x_i|Y=y_j)$$</p>
+<p>（离散型）</p>
+<p>$$E(X|Y=y_j)=\int_{-\infty}^{+\infty}x\frac{p(x,y_j)}{p_Y(y_j)}dx$$</p>
+<p>（连续型）</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>二元联合正态分布$(X,Y)\sim N(\mu_1,\sigma_1^2,\mu_2,\sigma_2^2,\rho)$在给定$Y=y$的条件期望。</strong>  </p>
+<p>给定$Y=y$的条件下<br />
+$X\sim N(\mu_1+\frac{\rho\sigma_1}{\sigma_2}(y-\mu_2),(1-\rho^2)\sigma_1^2)$<br />
+$E(X|Y=y)=\mu_1+\frac{\rho\sigma_1}{\sigma_2}(y-\mu_2)$  </p>
+</div>
+<h3 id="_15">全期望公式</h3>
+<p>回忆条件期望：一个$y_j$对应一个$E(X|Y=y_j)$，为一个映射。</p>
+<p>定义</p>
+<p>$$g(y_j)=E(X|Y=y_j)$$</p>
+<p>即</p>
+<p>$$g(Y)=E(X|Y)$$</p>
+<p>为一个新的随机变量。</p>
+<p>$$E[g(Y)]=E[E(X|Y)]=EX$$</p>
+<p>类似的</p>
+<p>$$E[E(Y|X)]=EY$$</p>
+<p>以上结论对离散型、连续型或一般型随机变量均成立。</p>
+<hr />
+<h2 id="35">3.5 矩</h2>
+<h3 id="_16">矩的定义</h3>
+<p>定义$E(X^k)$为随机变量$X$的 <strong>$k$阶矩</strong>。</p>
+<p>定义$E[(X-EX)^k]$为随机变量$X$的 <strong>$k$阶中心矩</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>并不是所有$X$都有任意$k$阶矩。</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例1：求$X\sim N(0,1)$的$k$阶矩。</strong>  </p>
+<p>考虑偶数：<br />
+$E(X^{2k})=\int_{-\infty}^{+\infty}x^{2k}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx$<br />
+$=-\int_{-\infty}^{+\infty}x^{2k-1}\frac{1}{\sqrt{2\pi}}d(e^{-\frac{x^2}{2}})$<br />
+$=-x^{2k-1}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}\vert_{-\infty}^{+\infty}+(2k-1)\int_{-\infty}^{+\infty}x^{2k-2}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx$<br />
+$=(2k-1)E(X^{2k-2})$<br />
+因此<br />
+$E(X^{2k})=(2k-1)!!$<br />
+考虑奇数：<br />
+$X^{2k+1}$分布为偶函数，即正负概率相等<br />
+$E(X^{2k+1})=0$  </p>
+<p><strong>例2：求$X\sim P(\lambda)$的$k$阶矩。</strong>  </p>
+<p>$EX=\lambda$<br />
+$E[X(X-1)]=\sum\limits_{k=0}^{\infty}k(k-1)\frac{\lambda^k}{k!}e^{-\lambda}=\sum\limits_{k=2}^{\infty}\frac{\lambda^ke^{-\lambda}}{(k-2)!}=\sum\limits_{k=0}^{\infty}\frac{\lambda^{k+2}e^{-\lambda}}{k!}=\lambda^2$<br />
+以此类推：<br />
+$E[X(X-1)···(X-(k-1))]=\lambda^k$<br />
+$E(X^2)=E[X(X-1)]+EX$<br />
+$E(X^3)=E[X(X-1)(X-2)]+2E[X(X-1)]+EX$<br />
+以此类推，$E(X^k)$均可以表示成$E[X(X-1)···(X-(m-1))]$的求和形式。  </p>
+</div>
+<h3 id="_17">随机变量分布与矩的关系</h3>
+<p>考虑随机变量$X$，$Y$。</p>
+<p>若$X$，$Y$分布一致，则对于$\forall k$，都有$E(X^k)=E(Y^k)$。</p>
+<p>但是，若对于$\forall k$，都有$E(X^k)=E(Y^k)$，并不一定有$X$，$Y$分布一致。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>反例：</strong>  </p>
+<p>设$\xi\sim N(0,1)$，$X=e^{\xi}$，则$X\sim p_X(x)$：<br />
+$P_X(x)=\frac{1}{\sqrt{2\pi}x}e^{-\frac{1}{2}(\ln x)^2}$（公式见Chapter2）<br />
+定义$Y\sim P_Y(y)$：<br />
+$P_Y(y)=p_X(y)(1+\sin(2\pi\ln y))$<br />
+可以证明$P_Y(y)$确实是密度函数，且$E(X^k)=E(Y^k),\forall k$  </p>
+</div>
+<p><strong>随机变量分布与矩关系唯一确定的条件：</strong></p>
+<p>设随机变量$X$，$Y$，且对于$\forall k$，$E(X^k)=E(Y^k)=m_k$，若以下三个条件之一成立：</p>
+<p>$$\exists t&gt;0,~\sum\limits_{k=1}^{\infty}\frac{m_{2k}t^{2k}}{(2k)!}&lt;\infty$$</p>
+<p>或</p>
+<p>$$\sum\limits_{k=1}^{\infty}m_{2k}^{-\frac{1}{2k}}=\infty$$</p>
+<p>或</p>
+<p>$$\lim\limits_{k\rightarrow\infty}\sup|m_k|^{\frac{1}{k}}&lt;\infty$$</p>
+<p>则$X$和$Y$分布一致。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>正态分布与泊松分布都是可以与矩一一对应的。</p>
+</div>
+<hr />
+<h2 id="36">3.6 特征函数</h2>
+<h3 id="_18">特征函数的定义</h3>
+<p>$$\varphi(t)=E(e^{itX})=E(\cos tX)+iE(\sin tX),~t\in R$$</p>
+<p>若$X\sim F(x)$，则</p>
+<p>$$\varphi(t)=\int_{-\infty}^{\infty}e^{itx}d[F(x)]$$</p>
+<p><strong>二项Bernoulli分布：$X\sim B(n,p)$</strong></p>
+<p>$$\varphi(t)=(pe^{it}+1-p)^n$$</p>
+<p><strong>Poisson分布：$X\sim P(\lambda)$</strong></p>
+<p>$$\varphi(t)=e^{\lambda e^{it}-\lambda}$$</p>
+<p><strong>均匀分布：$X\sim U(a,b)$</strong></p>
+<p>$$\varphi(t)=\frac{e^{itb}-e^{ita}}{it(b-a)}$$</p>
+<p><strong>指数分布：$X\sim \exp(\lambda)$</strong></p>
+<p>$$\varphi(t)=\frac{\lambda}{\lambda-it}$$</p>
+<p><strong>正态分布：$X\sim N(0,1)$</strong></p>
+<p>$$\varphi(t)=e^{-\frac{t^2}{2}}$$</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p>$\varphi(t)=E(e^{itX})$<br />
+$=\int_{-\infty}^{+\infty}e^{itx}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx$<br />
+$=\int_{-\infty}^{+\infty}\cos tx\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx+i\int_{-\infty}^{+\infty}\sin tx\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx$（后一项为0）<br />
+$=\sum\limits_{k=0}^{\infty}\frac{(-1)^kt^{2k}}{(2k)!}\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}x^{2k}e^{-\frac{x^2}{2}}dx$（前一项泰勒展开）<br />
+$=\sum\limits_{k=0}^{\infty}\frac{(-1)^kt^{2k}}{(2k)!}(2k-1)!!$（使用之前$k$阶矩的计算结论）<br />
+$=\sum\limits_{k=0}^{\infty}\frac{(-1)^kt^{2k}}{2^kk!}$<br />
+$=e^{-\frac{t^2}{2}}$（再次使用泰勒公式）  </p>
+</div>
+<h3 id="_19">特征函数的分析性质</h3>
+<p><strong>性质1：</strong></p>
+<p>$$|\varphi(t)|\leqslant\varphi(0)=1$$</p>
+<p><strong>性质2：</strong></p>
+<p>$$\varphi(-t)=\overline{\varphi(t)}$$</p>
+<p><strong>性质3：一致连续性</strong></p>
+<p>$\varphi(t)$在$R$上一致连续。</p>
+<p><strong>性质4：Bochner非负定性</strong></p>
+<p>对任意实数$t_1,t_2,···,t_n$，任意复数$a_1,a_2,···,a_n$，都有</p>
+<p>$$\sum\limits_{k,l=1}^na_k\overline{a_l}\varphi(t_k-t_l)\geqslant 0$$</p>
+<p><strong>性质5：可微性</strong></p>
+<p>若$E(|X|)$存在，$EX=\mu$，则</p>
+<p>$\varphi(t)$可微，且</p>
+<p>$$\varphi'(0)=i\mu$$</p>
+<p>$$\varphi'(t)=i\int_{-\infty}^{+\infty}xe^{itx}d[F(x)]$$</p>
+<p>$$\varphi^{(k)}(t)=i^k\int_{-\infty}^{+\infty}x^ke^{itx}d[F(x)]$$</p>
+<p>特别的，$\varphi(t)$在0处可以进行泰勒展开：</p>
+<p>$$\varphi(t)=\varphi(0)+\varphi'(0)t+\frac{\varphi''(0)}{2!}t^2+···+\frac{\varphi^{(k)}(0)}{k!}+o(t^k),~t\rightarrow 0$$</p>
+<h3 id="_20">特征函数的运算性质</h3>
+<p><strong>性质1：</strong></p>
+<p>令$X$的特征函数为$\varphi_X(t)$，则</p>
+<p>$$E[e^{it(aX+c)}]=e^{itc}\varphi_X(at)$$</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>若$Y\sim N(\mu,\sigma^2)$，则可写成<br />
+$Y=\sigma X+\mu$，$X\sim N(0,1)$<br />
+因此<br />
+$\varphi_Y(t)=E[e^{it(\sigma X+\mu)}]=e^{it\mu}\varphi_X(\sigma t)=e^{it\mu-\frac{\sigma^2t^2}{2}}$  </p>
+</div>
+<p><strong>性质2：乘法公式</strong></p>
+<p>若$X$和$Y$相互独立，则$Z=X+Y$的特征函数为</p>
+<p>$$\varphi_Z(t)=\varphi_X(t)\cdot\varphi_Y(t)$$</p>
+<p>推广：若$X_1,X_2,···,X_n$相互独立，则$Z=X_1+X_2+···+X_n$的特征函数为</p>
+<p>$$\varphi_Z(t)=\prod\limits_{k=1}^n\varphi_{X_k}(t)$$</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>若$S_n\sim B(n,p)$，$S_n=\sum\limits_{k=1}^n\xi_k$<br />
+则<br />
+$\varphi_{S_n}(t)=\prod\limits_{k=1}^n\varphi_{\xi_k}(t)=(pe^{it}+1-p)^n$  </p>
+</div>
+<h3 id="_21">唯一性定理</h3>
+<p>对于随机变量$X$，$Y$，若$\varphi_X(t)=\varphi_Y(t)$，则$F_X(x)=F_Y(x)$，反之亦然。</p>
+<h3 id="_22">二元随机向量的特征函数</h3>
+<p>若$(X,Y)$是二元随机向量，则其特征函数是一个二元函数</p>
+<p>$$\phi(t_1,t_2)=E[e^{i(t_1X+t_2Y)}],~t_1,t_2\in R$$</p>
+<p>当$X$和$Y$相互独立时</p>
+<p>$$\phi(t_1,t_2)=\varphi_X(t_1)\varphi_Y(t_2)$$</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

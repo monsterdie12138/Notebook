@@ -1,0 +1,2123 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>Chapter13 - Monsterdie's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Times+New+Roman:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Times New Roman";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter13-synchronization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter13
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            高级数据结构与算法分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章：AVL树，Splay树与均摊分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章：红黑树与B+树
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章：左式堆与斜堆
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章：倒排索引
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章：二项堆
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章：回溯法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章：分治法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Advanced%20Data%20Structures%20and%20Algorithm%20Analysis/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章：动态规划
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学分析Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学分析Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematical%20Analysis2/Chapter16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    线性代数Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            线性代数Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linear%20Algebra2/plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    补充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    离散数学理论基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            离散数学理论基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Discrete%20Mathematics/plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    补充
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅰ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            普通物理学Ⅰ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics1/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics1/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            普通物理学Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第七章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第八章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Physics2/Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Probability/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Probability/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Probability/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Probability/Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            CSAPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSAPP/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#synchronization-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronization Tools
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter13-synchronization">Chapter13 Synchronization 同步</h1>
+<hr />
+<div class="admonition note 声明">
+<p class="admonition-title">Note</p>
+<p>此章节统一使用<strong>线程</strong>表示线程/进程。
+（在Linux的kernel中，有很多竞争，可以把整个OS看作一个大的进程，其中运行的所有进程可以看作OS进程的线程）</p>
+</div>
+<p><strong>Example 典例：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">loops</span><span class="o">=</span><span class="mf">1e6</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">worker</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">loops</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">pthread_t</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">worker</span><span class="p">,</span><span class="s">&quot;A&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p2</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">worker</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pthread_join</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pthread_join</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">counter</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>理论上最后输出应为2000000，但实际上最后输出并不到2000000，且每次输出不同。</p>
+<p>原因：</p>
+<p><code>counter++</code>实际分成了三步：</p>
+<p><code>mov 0x8049a1c,%eax</code>：从内存读入寄存器
+<code>add $0x1,%eax</code>：寄存器自增
+<code>mov %eax,0x8049a1c</code>：从寄存器写回内存</p>
+<p>如果Thread1在执行完<code>add</code>后中断，切换到Thread2，则会出现错误，详情见下图（在counter=50的情况下，本来两线程各自自增1应该得到52，但最后只有51）：</p>
+<p><img alt="alt text" src="../image/13.1.jpg" /></p>
+<p><strong>Race Condition 竞态：</strong></p>
+<p>当多个线程同时对同一数据进行操作时，最终结果取决于这些操作的特定顺序。</p>
+<p>竞态在Linux中很常见。例如，当两个线程同时调用<code>fork</code>创建子线程时，可能会得到相同的<code>next_available_pid</code>（下一个可用的ID），导致创建出的两个child的ID一样。</p>
+<p><img alt="alt text" src="../image/13.2.jpg" /></p>
+<p><strong>Critical Section 临界区：</strong></p>
+<p><img alt="alt text" src="../image/13.3.jpg" /></p>
+<p>每个线程的代码都有一个<strong>critical section临界区</strong>，其中的代码涉及改变全局变量、写文件等会发生冲突的操作。</p>
+<p>同一时刻只能有一个线程处于其临界区内，一个线程若想进入其临界区，需要在其<strong>entry section 入口区</strong>发送请求，在其<strong>exit section 出口区</strong>结束请求。</p>
+<p>对于单核系统，一个线程处于临界区时可以设置为不被中断，这样可以确保没有其他进程能打断当前进程的执行；但对于多核系统不适用，因为就算关掉一个线程的中断，同时可能还会有其他线程在操作同一区域。</p>
+<p>对于临界区的处理（同步问题），必须满足3个要求：</p>
+<ul>
+<li><strong>mutual exclusion 互斥访问：</strong> 在同一时刻，最多只有一个线程可以执行其临界区</li>
+<li><strong>progress 空闲让进：</strong> 当没有线程在执行临界区代码时，必须在请求进入临界区的
+线程中选择一个，允许其执行临界区代码，保证程序执
+行的进展</li>
+<li><strong>bounded waiting 有限等待：</strong>  当一个线程请求进入临界区后，必须在有限的时间内获得许可并进入临界区，不能无限等待</li>
+</ul>
+<hr />
+<h2 id="synchronization-tools">Synchronization Tools</h2>
+<p><strong>Peterson's Solution：</strong></p>
+<p>只能解决两个线程之间的同步问题。</p>
+<p>假定<code>load</code>和<code>store</code>指令都是原子性的，即执行期间无法中断。</p>
+<p>两个线程共享两个关键的变量：</p>
+<ul>
+<li><code>boolean flag[2]</code>：表示线程是否请求进入临界区</li>
+<li><code>int turn</code>：表示哪个线程可以进入临界区</li>
+</ul>
+<p>$P_0$：</p>
+<div class="highlight"><pre><span></span><code><span class="k">do</span><span class="w"> </span>
+<span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TRUE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">    </span><span class="cm">/*critical section*/</span>
+<span class="w">    </span><span class="n">flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FALSE</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/*remainder section*/</span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">TRUE</span><span class="p">);</span>
+</code></pre></div>
+<p>$P_1$：</p>
+<div class="highlight"><pre><span></span><code><span class="k">do</span><span class="w"> </span>
+<span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">flag</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TRUE</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="n">turn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">turn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span><span class="w"> </span>
+<span class="w">    </span><span class="cm">/*critical section*/</span><span class="w"> </span>
+<span class="w">    </span><span class="n">flag</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FALSE</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="cm">/*remainder section*/</span><span class="w"> </span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">TRUE</span><span class="p">);</span>
+</code></pre></div>
+<p>以$P_0$为例，如果$P_0$想要进入临界区，首先其要先发送请求（<code>flag[0]=TRUE</code>），然后先把使用权限给对方（<code>turn=1</code>），看对方如何表示，如果对方有需求且权限在对方手上（<code>flag[1]&amp;&amp;(turn==1)</code>），则一直等待，直到对方完成任务后没有需求或者对方把权限让给自己，然后才执行临界区的代码。执行完后需要结束请求（<code>flag[0]=FALSE</code>）。</p>
+<p>我们可以证明Peterson's solution满足上述3个要求。</p>
+<p>对于mutual exclusion：</p>
+<p>假设$P_0$进入临界区，则说明<code>flag[1]=0</code>或<code>turn=0</code>。</p>
+<p>若<code>flag[1]=0</code>，说明$P_1$没有请求，因此$P_1$不在临界区。</p>
+<p>若<code>turn=0</code>，则$P_1$处于循环中，不在临界区。</p>
+<p>对于progress：</p>
+<p>当两个线程都请求进入临界区时，由于<code>turn</code>要么为0要么为1，因此两个线程都不会处于无限循环的状态，必然有一个能进入临界区。</p>
+<p>若只有一个线程请求进入临界区，则其自然会进入。</p>
+<p>对于bounded waiting：</p>
+<p>两个线程能否进入临界区都是由对方牵制的，任意一个线程都无法一直处于循环之中，因为一旦在临界区内的线程完成任务，其请求就会取消，此时另一处于循环中的线程就能进入临界区。</p>
+<p>实际上，Peterson's solution无法实际运用，因为以下几点：</p>
+<ul>
+<li>只适用于两个线程</li>
+<li>假设<code>load</code>和<code>store</code>指令都是原子性的</li>
+<li>假设指令顺序执行（但实际上编译器或者CPU会优化，更换顺序）</li>
+</ul>
+<p>例如，对于以下两个线程：</p>
+<p><img alt="alt text" src="../image/13.4.jpg" /></p>
+<p>理论上输出应为100。但Thread2可能被优化，上下指令的顺序互换，此时输出变为0。</p>
+<p><strong>Memory Barriers 内存屏障：</strong></p>
+<p><strong>memory model内存模型</strong>定义了计算机体系结构对应用程序所做的内存保证，即如何在多处理器环境下管理内存操作的可见性和顺序。其具体可以分为：</p>
+<ul>
+<li><strong>strongly ordered：</strong> 一个处理器对内存的修改会立刻对其他处理器可见，有更好的一致性</li>
+<li><strong>weakly ordered：</strong> 一个处理器对内存的修改并不会立刻对其他处理器可见，有更好的性能优化</li>
+</ul>
+<p>内存屏障是一条指令，强制任何内存的改变都传递到其他处理器，要求在此之前的所有内存操作完成后才能继续之后的内存操作。（针对的是上述优化重排序的情况）</p>
+<p><img alt="alt text" src="../image/13.5.jpg" /></p>
+<p>例如，在之前例子的线程中插入<code>memory_barrier()</code>指令，对于Thread1，保证了只有<code>flag</code>的值变化后，<code>x</code>的值才会输出。</p>
+<p>对于Thread2，保证了在<code>flag</code>的值变化前，<code>x</code>的修改会先传递到其他处理器。</p>
+<p>当引入多核和缓存时，内存屏障会变得十分复杂。X86架构支持以下两种：</p>
+<ul>
+<li><strong>store memory barrier 写内存屏障：</strong> 让写入缓存中最新数据更新写入内存中，让其他线程可见</li>
+<li><strong>load memory barrier 读内存屏障：</strong> 让高速缓存中的数据失效，强制重新从内存中加载数据</li>
+</ul>
+<p><strong>Test-and-Set Instruction：</strong></p>
+<p>一种原子指令，能够在不中断的情况下修改一个变量。其输入是一个地址，将地址上的值置为1，然后返回旧值。具体表示如下：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">test_and_set</span><span class="w"> </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="p">)</span>
+<span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TRUE</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">rv</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>使用方法：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FALSE</span><span class="p">;</span>
+<span class="k">do</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">test_and_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">));</span>
+<span class="w">    </span><span class="cm">/*critical section*/</span>
+<span class="w">    </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FALSE</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/*remainder section*/</span><span class="w"> </span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">TRUE</span><span class="p">);</span>
+</code></pre></div>
+<p>一开始的<code>lock</code>是<code>FALSE</code>的状态，表示未加锁。</p>
+<p><code>while(test_and_set(&amp;lock));</code>如果是未加锁的情况，则不会进入循环，而是进入临界区，且在<code>test_and_set(&amp;lock)</code>将<code>lock</code>置为了1，表示上锁；如果是加锁的情况，则等待。</p>
+<p>Test-and-Set满足mutual exclusion和progress，但不满足bounded-waiting。</p>
+<p>例如：假设有三个线程$T_0$，$T_1$，$T_2$。一开始$T_0$处于临界区，$T_1$和$T_2$在等待，当$T_0$完成后，释放锁，先被$T_1$抢占，进入临界区，$T_0$和$T_2$在等待（$T_0$的等待是下一循环的），当$T_1$完成后，释放锁，又被$T_0$抢占。综上，很有可能$T_0$和$T_1$交替进入临界区，但$T_2$一直在无限等待。</p>
+<p><img alt="alt text" src="../image/13.6.jpg" /></p>
+<p>解决方法：有序选择执行等待中的线程。</p>
+<div class="highlight"><pre><span></span><code><span class="k">do</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">waiting</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span><span class="w">                        </span><span class="c1">//Ti发送请求</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">waiting</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&amp;&amp;</span><span class="n">test_and_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">));</span><span class="w">     </span><span class="c1">//lock为0时（未加锁）则变为1（上锁）进入CS，否则（已上锁）等待</span>
+<span class="w">    </span><span class="n">waiting</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span><span class="w">                       </span><span class="c1">//Ti结束请求</span>
+<span class="w">    </span><span class="cm">/*critical section*/</span>
+<span class="w">    </span><span class="n">j</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="n">n</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="p">((</span><span class="n">j</span><span class="o">!=</span><span class="n">i</span><span class="p">)</span><span class="o">&amp;&amp;!</span><span class="n">waiting</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="w">              </span><span class="c1">//寻找下一个发送请求的Tj</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">j</span><span class="o">=</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="n">n</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">j</span><span class="o">==</span><span class="n">i</span><span class="p">)</span><span class="w">                                </span><span class="c1">//若没找到，则解锁</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">lock</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w">                                    </span><span class="c1">//若找到，则将锁传下去</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">waiting</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="cm">/*remainder section*/</span>
+<span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>Compare-and-Swap Instruction：</strong></p>
+<p>一种原子指令，能够在不中断的情况下比较和修改变量。其输入为待检查的地址<code>value</code>，用于比较的数<code>expected</code>和更新的数<code>new_value</code>，如果<code>*value</code>与<code>expected</code>相等，则更新为<code>new_value</code>，返回旧值。具体表示如下：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">compare_and_swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">value</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span>
+<span class="w">    </span><span class="o">*</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_value</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>使用方法：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">TRUE</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">compare_and_swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">));</span>
+<span class="w">    </span><span class="cm">/*critical section*/</span>
+<span class="w">    </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/*remainder section*/</span><span class="w"> </span>
+<span class="p">}</span>
+</code></pre></div>
+<p>初始时是未上锁状态，对于一个线程，如果未上锁，则<code>lock</code>为0，<code>compare_and_swap(&amp;lock,0,1)</code>返回0，同时<code>lock</code>变为1（上锁），进入临界区；如果已上锁，则<code>lock</code>为1，则陷入循环等待。</p>
+<p>在X86架构中，使用<code>cmpxchg</code>指令来表示<code>compare_and_swap</code>，通过锁总线来达到原子操作的目的。</p>
+<p>在ARM64中，通过互斥指令来达到原子操作的目的。</p>
+<ul>
+<li><strong><code>LDXR</code>：</strong> 加载排他寄存器的指令，用于加载内存位置的值并将其设置为独占状态。意味着该内存地址的值被当前处理器锁定，其他处理器不能修改它，直到锁被释放</li>
+<li><strong><code>STXR</code>：</strong> 存储排他寄存器的指令，用于将一个新的值存储到之前通过<code>LDXR</code>指令加载的内存位置，并结束独占状态。</li>
+<li><strong><code>Modify</code>：</strong> 对内存位置的值进行修改</li>
+</ul>
+<p><img alt="alt text" src="../image/13.7.jpg" /></p>
+<p>第一行：某一内存区域处于自由访问状态；</p>
+<p>第二行：Thread1执行<code>LDXR</code>，该内存区域被Thread1独占；</p>
+<p>第三行：Thread2执行<code>LDXR</code>，能读到值，但该内存区域依然被Thread1独占；</p>
+<p>第四行：Thread2执行<code>Modify</code>，无效该内存区域依然被Thread1独占；</p>
+<p>第五行：Thread2执行<code>STXR</code>，该内存区域回到自由访问状态；</p>
+<p>第六行：Thread1执行<code>Modify</code>，成功，该区域依然处于自由访问状态；</p>
+<p>第七行：Thread1执行<code>STXR</code>，自由访问状态无法执行<code>STXR</code>，因为并没有独占。</p>
+<p><strong>Atomic Variables 原子变量：</strong></p>
+<p>TAS、CAS等指令常用于构建其他同步工具,例如原子变量，其更新时无法中断。</p>
+<p>例如：以下对于原子变量<code>sequence</code>的<code>increment</code>操作可以保证变量更新时无法中断：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="kt">atomic_int</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+<span class="w">    </span><span class="k">do</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span><span class="n">compare_and_swap</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">temp</span><span class="p">,</span><span class="n">temp</span><span class="o">+</span><span class="mi">1</span><span class="p">)));</span>
+<span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><strong>Mutex Locks 互斥锁：</strong></p>
+<p>实际上在介绍TAS和CAS时，二者参与实现的代码就是互斥锁的具体表现形式。我们这里对两种实现进行归纳和封装：互斥锁其保护临界区的方式是先<code>acquire</code>一个锁，再<code>release</code>一个锁，<code>acquire</code>和<code>release</code>操作通过TAS或CAS实现原子性：</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">acquire</span><span class="w"> </span><span class="n">lock</span>
+<span class="w">    </span><span class="n">critical</span><span class="w"> </span><span class="n">section</span>
+<span class="w">    </span><span class="n">release</span><span class="w"> </span><span class="n">lock</span>
+<span class="w">    </span><span class="n">remainder</span><span class="w"> </span><span class="n">section</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">acquire</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">compare_and_swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="nb">true</span><span class="p">));</span><span class="c1">//或者while (test_and_set(&amp;lock));</span>
+<span class="p">}</span>
+
+<span class="n">release</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">lock</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>不难发现，这种解决方法需要<strong>busy waiting 忙等待</strong>，因此该锁也被称为<strong>spinlock 自旋锁</strong>。</p>
+<p>然而，互斥锁存在一定的不足。处于等待之中的线程每一次进行循环的条件判断都相当于是在检查一次锁，因此，一个等待的线程就是在不断地循环检查锁，依然占用CPU资源。</p>
+<p>并且，考虑以下两个线程$T_0$，$T_1$。假设$T_0$获得了锁，然后中断，这个时候$T_1$就要一直等待，直到中断回到$T_0$，$T_0$完成任务释放锁之后，$T_1$才能拿到锁。假设在$T_0$拿到锁之后和其完成任务之前之一段时间内不断地中断，那么$T_1$就要等待很长时间，而在中断的时候，$T_0$持有锁却没有利用CPU。</p>
+<p>综上：互斥锁会带来大量CPU资源的浪费。</p>
+<p>我们可以考虑，让那些处于等待状态的线程不要一直去检查锁有没有释放，而是将其从running状态转移到waiting状态（sleeping）。</p>
+<p>具体的实现方式是：新增一条与锁相关的waiting queue，当上锁时，处于忙等待的线程进入waiting状态，入队，再进行调度。</p>
+<p><strong>Semaphore 信号量：</strong></p>
+<p>当使用信号量作为同步工具时，设置整数变量$S$为信号量，其只能被<code>wait</code>和<code>signal</code>这两个原子操作改变。</p>
+<div class="highlight"><pre><span></span><code><span class="n">wait</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="c1">//用于请求进入临界区</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">S</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">S</span><span class="o">--</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">signal</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="c1">//用于结束请求，表示已出临界区</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">S</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>信号量$S$表示剩余可用的资源量，若一次只有一个线程能进入临界区，则使用<strong>binary semaphore</strong>，这时就和互斥锁一样；若需要对资源进行计数或者允许多线程操作，则使用<strong>counting semaphore</strong>。</p>
+<p>例如：对于线程$T_1$和$T_2$，若要让$T_1$的操作$S_1$先于$T_2$的操作$S_2$，则可以创建一个初始化为0的二值信号量<code>sem</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="nl">P1</span><span class="p">:</span>
+<span class="w">    </span><span class="n">S1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
+
+<span class="nl">P2</span><span class="p">:</span>
+<span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
+<span class="w">    </span><span class="n">S2</span><span class="p">;</span>
+</code></pre></div>
+<p>对于每个信号量，都有一个对应的waiting queue，结构如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"> </span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">list_head</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">waiting_queue</span><span class="p">;</span><span class="w"> </span>
+<span class="p">}</span><span class="w"> </span><span class="n">semaphore</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
+<p>涉及两个操作：</p>
+<ul>
+<li><code>block</code>：将对应线程放入waiting queue</li>
+<li><code>wakeup</code>：将对应线程从waiting queue移到ready queue</li>
+</ul>
+<p>因此，对于<code>wait</code>和<code>signal</code>，其更具体的形式如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">wait</span><span class="p">(</span><span class="n">semaphore</span><span class="w"> </span><span class="o">*</span><span class="n">S</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">--</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">add</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
+<span class="w">        </span><span class="n">block</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span><span class="w"> </span><span class="o">*</span><span class="n">S</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">remove</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">proc</span><span class="p">.</span><span class="n">P</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
+<span class="w">        </span><span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning 存疑">
+<p class="admonition-title">Warning</p>
+<p>为什么是<code>S-&gt;value&lt;=0</code>而不是<code>S-&gt;value&gt;0</code>
+说明waiting queue里有线程在等？</p>
+</div>
+<blockquote>
+<p>注意：这里<code>S-&gt;value</code>的变化也需要互斥。</p>
+</blockquote>
+<p>对于信号量，<code>wait</code>和<code>signal</code>也要是原子操作，通过互斥锁来实现。</p>
+<p><img alt="alt text" src="../image/13.8.jpg" /></p>
+<p>通过使用信号量，在临界区不会发生等待，而<code>wait</code>和<code>signal</code>仍会发生等待（因为其使用了互斥锁），但远比单纯使用互斥锁快得多。</p>
+<blockquote>
+<p><strong>例：</strong>
+<img alt="alt text" src="../image/13.9.jpg" />
+在如图所示的代码中，<code>guard</code>对<code>flag</code>进行保护，<code>guard</code>为0表示可以修改<code>flag</code>，反之则不能修改，相当于保证了<code>flag</code>的改变是原子性的。此处的<code>flag</code>就是一个信号量。
+<code>lock</code>函数用于请求进入临界区。
+首先，要获得信号量的读写权，因此需要<code>while(TestAndSet(&amp;m-&gt;guard,1)==1)</code>的忙等待。
+获得读写权后，如果<code>m-&gt;flag==0</code>，说明没有锁，可以进入临界区，于是上锁（<code>m-&gt;flag=1</code>），并且释放读写权（<code>m-&gt;guard=0</code>）。
+如果<code>m-&gt;flag==1</code>，说明已被锁，这个时候将该线程加到waiting queue中。先释放读写权再调度。
+注意，这里释放读写权和调度的顺序不能换，因为如果先被调度，则该线程sleep，但<code>guard</code>还没被释放，因此之后的线程都无法读写<code>m-&gt;flag</code>，无法执行。
+<code>unlock</code>函数用于取消进入临界区的请求，释放权限。
+同样的，先要获取<code>m-&gt;flag</code>的读写权。
+如果waiting queue为空，则释放锁，因为没有线程想要执行。
+否则，依然保持上锁，并允许waiting queue中的一个线程进入临界区。
+同样的，最后要释放读写权。
+<img alt="alt text" src="../image/13.10.jpg" /></p>
+</blockquote>
+<p><strong>Comparison between Mutex and Semaphore：</strong></p>
+<p>mutex lock：</p>
+<ul>
+<li>优点：没有阻塞</li>
+<li>缺点：等待时浪费CPU资源</li>
+<li>适用于临界区短的线程</li>
+</ul>
+<p>semaphore：</p>
+<ul>
+<li>优点：没有循环</li>
+<li>缺点：上下文切换耗时</li>
+<li>适用于临界区长的线程</li>
+</ul>
+<blockquote>
+<p>这里临界区长短的衡量标准是与上下文切换的耗时比较。</p>
+</blockquote>
+<hr />
+<p><strong>Deadlock 死锁：</strong></p>
+<p>两个或多个线程在等待彼此释放资源，从而进入一种无限等待的状态，导致所有线程都无法继续执行。</p>
+<p><img alt="alt text" src="../image/13.11.jpg" /></p>
+<p><strong>Starvation 饥荒：</strong></p>
+<p>一个线程长时间得不到所需资源，导致其无法继续执行，而其他线程不断获得资源。</p>
+<p><strong>Priority Inversion 优先级倒置：</strong></p>
+<p>高优先级的线程被低优先级的抢占。</p>
+<p>低优先级的线程持有锁，但由于优先级低，因此无法使用CPU，于是无法完成也无法释放锁。</p>
+<p>高优先级的线程永远在等待锁。</p>
+<p>例如，三个线程的优先级$T_L&lt;T_M&lt;T_H$，$T_H$请求锁，但此时$T_L$持有，因此$T_H$被阻塞；由于$T_M$的优先级高于$T_L$，因此$T_L$被抢占，但其锁无法释放，于是$T_H$继续被阻塞，而$T_M$在运行，因此$T_H$和$T_M$的相对优先级倒置了。</p>
+<p>解决方法：<strong>priority inheritance 优先级继承</strong></p>
+<p>将当前等待中的最高优先级的线程（$T_H$）暂时赋予当前持有锁的低优先级线程（$T_L$）。这样，$T_L$将以较高的优先级运行，直至释放锁，从而防止$T_H$阻塞。</p>
+<p><strong>Linux Synchronization：</strong></p>
+<ul>
+<li>atomic integers</li>
+<li>spinlocks</li>
+<li>semaphores</li>
+<li>reader-writer locks</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
