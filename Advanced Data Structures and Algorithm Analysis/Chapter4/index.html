@@ -514,6 +514,153 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章：贪心算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章：NP完全性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章：近似算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十二章：局部搜索
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十三章：随机算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十四章：并行算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十五章：外部排序
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1785,7 +1932,7 @@
 <p><strong>思路二：</strong> 相关发生矩阵（Term-Document Incidence Matrix）</p>
 <p><img alt="alt text" src="../image/4.1.jpg" /></p>
 <p>例如：要查询“silver truck”，我们可以分别对“silver”和“truck”进行查询，其分别出现在第1、3个文档和第1、3、4个文档，因此取交集，最终查询得到第1、3个文档。</p>
-<p>$silver\&amp; truck=1010\&amp;1011=1010$</p>
+<p>$$silver\&amp; truck=1010\&amp;1011=1010$$</p>
 <p><strong>潜在问题：</strong></p>
 <p>如果某个文档含有“silver”和“truck”，但二者并无关联，或者先后顺序调换，则这个文档并不是我们的目标，但也会被检索到。虽然如此，过去许多的浏览器选择忽略这个问题，将文本看作单词的集合而不是序列（<strong>词袋假设</strong>）。</p>
 <p>矩阵过于庞大，不仅是单词的维度上，还是网页的维度上。</p>
@@ -1796,10 +1943,11 @@
 <p>称为“倒排”的原因：文档包含哪些单词→单词属于哪些文档（行与列的互换）</p>
 <p>改进：对于某个单词和某个包含该单词的文档，我们还在后面列举其出现在文档中的位置。</p>
 <p><img alt="alt text" src="../image/4.3.jpg" /></p>
-<blockquote>
-<p>标注每个单词频率（一个单词出现在几个文档中）的原因：<br />
-便于加快取交集的过程。例如，我要查询的一段文字中含有许多单词，那么需要进行很多次取交集。如果我们从频率低的单词开始取交集，则可以很快排除大量的情况，加快取交集的过程。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>标注每个单词频率（一个单词出现在几个文档中）的原因： <br />
+便于加快取交集的过程。例如，要查询的一段文字中含有许多单词，那么需要进行很多次取交集。如果我们从频率低的单词开始取交集，则可以很快排除大量的情况，加快取交集的过程。</p>
+</div>
 <p><strong>词干提取（Word Stemming）：</strong></p>
 <p>将一个单词还原为其词干。</p>
 <p>例如：Process，processing，processes，processed都应被还原为process。</p>
@@ -1810,9 +1958,9 @@
 <li>搜索树</li>
 <li>哈希表</li>
 </ul>
-<p>优劣比较：
-对于单次查询，哈希表只需要常数时间，而搜索树的查询时间与单词长度有关； 
-而对于顺序查询，由于搜索树的相邻单词具有相关性，因此更有利。 </p>
+<p>优劣比较：</p>
+<p>对于单次查询，哈希表只需要常数时间，而搜索树的查询时间与单词长度有关； </p>
+<p>而对于顺序查询，由于搜索树的相邻单词具有相关性，因此更有利。 </p>
 <p><strong>分布式索引（Distributed Indexing）：</strong></p>
 <p>当单词和文档数量过多时采用的解决方法。</p>
 <ul>
@@ -1844,11 +1992,12 @@
 <li>对于布尔查询无效（例如(<code>A AND B) OR (C AND (NOT D))</code>表示含有<code>A</code>和<code>B</code>，或者含有<code>C</code>且不含有<code>D</code>的文档），因为其数量庞大，结果复杂，很难保证限制得到的结果最优</li>
 <li>截断也会导致一些真正重要的文档被忽略</li>
 </ul>
-<blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>网页排序：<br />
 由于网页之间有超链接的存在，因此以网页为节点，超链接为有向边，可以画出一张有向图。如果一个重要的网页有指向另一个网页的超链接，则我们可以认为另一个网页也是重要的，因此提高其排名。<br />
 例如网页$A$同时被网页$B$和网页$C$超链接，但是$B$使用的超链接只指向$A$，而$C$使用的超链接除了$A$以外还指向了许多其他的网页，那么$B$的重要程度对$A$的影响就会比$C$更大。</p>
-</blockquote>
+</div>
 <p>输入信息层面：</p>
 <p>按照频率对查询词进行排序，更重视频率低的单词。</p>
 <p><strong>评估：</strong></p>

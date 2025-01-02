@@ -446,7 +446,7 @@
           <li class="md-nav__item">
   <a href="#findmin" class="md-nav__link">
     <span class="md-ellipsis">
-      FindMin操作
+      FindMin
     </span>
   </a>
   
@@ -455,7 +455,7 @@
           <li class="md-nav__item">
   <a href="#merge" class="md-nav__link">
     <span class="md-ellipsis">
-      Merge操作
+      Merge
     </span>
   </a>
   
@@ -464,7 +464,7 @@
           <li class="md-nav__item">
   <a href="#insert" class="md-nav__link">
     <span class="md-ellipsis">
-      Insert操作
+      Insert
     </span>
   </a>
   
@@ -473,7 +473,7 @@
           <li class="md-nav__item">
   <a href="#deletemin" class="md-nav__link">
     <span class="md-ellipsis">
-      DeleteMin操作
+      DeleteMin
     </span>
   </a>
   
@@ -482,7 +482,7 @@
           <li class="md-nav__item">
   <a href="#decreasekey" class="md-nav__link">
     <span class="md-ellipsis">
-      DecreaseKey操作
+      DecreaseKey
     </span>
   </a>
   
@@ -565,6 +565,153 @@
   
   <span class="md-ellipsis">
     第八章：动态规划
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第九章：贪心算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章：NP完全性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章：近似算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十二章：局部搜索
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十三章：随机算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十四章：并行算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十五章：外部排序
   </span>
   
 
@@ -1826,7 +1973,7 @@
           <li class="md-nav__item">
   <a href="#findmin" class="md-nav__link">
     <span class="md-ellipsis">
-      FindMin操作
+      FindMin
     </span>
   </a>
   
@@ -1835,7 +1982,7 @@
           <li class="md-nav__item">
   <a href="#merge" class="md-nav__link">
     <span class="md-ellipsis">
-      Merge操作
+      Merge
     </span>
   </a>
   
@@ -1844,7 +1991,7 @@
           <li class="md-nav__item">
   <a href="#insert" class="md-nav__link">
     <span class="md-ellipsis">
-      Insert操作
+      Insert
     </span>
   </a>
   
@@ -1853,7 +2000,7 @@
           <li class="md-nav__item">
   <a href="#deletemin" class="md-nav__link">
     <span class="md-ellipsis">
-      DeleteMin操作
+      DeleteMin
     </span>
   </a>
   
@@ -1862,7 +2009,7 @@
           <li class="md-nav__item">
   <a href="#decreasekey" class="md-nav__link">
     <span class="md-ellipsis">
-      DecreaseKey操作
+      DecreaseKey
     </span>
   </a>
   
@@ -1897,28 +2044,30 @@
                   
 
 
+<p><span style="font-family: 'Times New Roman';"></p>
 <h1 id="chapter5-binomial-queue">Chapter5 Binomial Queue 二项堆</h1>
 <hr />
 <h2 id="51">5.1 基本概念</h2>
 <p>二项堆不是一棵树，而是由多棵树组成的森林，森林中的每一棵树是一棵<strong>二项树（binomial tree）</strong>。</p>
-<blockquote>
-<p>记高度为$k$的二项树为$B_k$<br />
-将$B_{k-1}$的根节点连接到另一棵$B_{k-1}$的根节点上，作为其子树，得到的新树即为$B_k$（二项树的递归定义）
-<img alt="alt text" src="../image/5.1.png" />
-性质：
-* $B_k$的根节点有$k$个子节点
-* $B_k$一共有$2^k$个节点
-* $B_k$在深度为$d$（根节点深度为$0$）的节点数为$C_k^d$（二项堆名称的由来）</p>
-</blockquote>
+<p>记高度为$k$的二项树为$B_k$。将$B_{k-1}$的根节点连接到另一棵$B_{k-1}$的根节点上，作为其子树，得到的新树即为$B_k$（二项树的递归定义）。</p>
+<p><img alt="alt text" src="../image/5.1.png" /></p>
+<p>性质：</p>
+<ul>
+<li>$B_k$的根节点有$k$个子节点</li>
+<li>$B_k$一共有$2^k$个节点</li>
+<li>$B_k$在深度为$d$（根节点深度为$0$）的节点数为$C_k^d$（二项堆名称的由来）</li>
+</ul>
 <p>二项堆中的每个二项树都遵循最小堆的性质，即<strong>父节点的键值小于其孩子节点的键值</strong>。</p>
 <p>不考虑具体键值，任意大小的优先队列可以被唯一表示为一个二项堆。</p>
-<blockquote>
-<p>例：如果优先队列有13个节点，由于$13=2^0+0\times 2^1+2^2+2^3=1101_2$，因此其可以表示为一个$B_0$，一个$B_2$，一个$B_3$组成的二项堆（注意：唯一表示中不可能出现两个$k$相同的$B_k$）</p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>如果优先队列有13个节点，由于$13=2^0+0\times 2^1+2^2+2^3=1101_2$，因此其可以表示为一个$B_0$，一个$B_2$，一个$B_3$组成的二项堆（注意：唯一表示中不可能出现两个$k$相同的$B_k$）。</p>
+</div>
+<hr />
 <h2 id="52">5.2 操作</h2>
 <p><strong>数据结构：</strong></p>
 <p>主结构：指针数列，第$i$个位置存放指向$B_i$的指针</p>
-<p>二项树：链表，采用<code>first-child-next-sibling</code>的连接方式</p>
+<p>二项树：链表，采用first-child-next-sibling的连接方式</p>
 <p><img alt="alt text" src="../image/5.3.jpg" /></p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">BinQueue</span><span class="c1">//二项堆的主结构定义</span>
 <span class="p">{</span>
@@ -1933,18 +2082,22 @@
 <span class="w">    </span><span class="n">Position</span><span class="w"> </span><span class="n">NextSibling</span><span class="p">;</span><span class="c1">//右兄弟</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="findmin"><code>FindMin</code>操作</h3>
+<h3 id="findmin">FindMin</h3>
 <p>最小的节点位于某一个$B_k$的根节点处（二项堆里的二项树符合最小堆的性质）。</p>
 <p>对于一个有$N$个节点的二项堆，最多有$\lceil\log N\rceil$棵二项树，因此最多需要检查根节点$\lceil\log N\rceil$次。</p>
-<p>时间复杂度：$T=O(\log N)$</p>
-<blockquote>
-<p>如果对二项堆内的二项树进行维护（例如以根节点的键值大小排序），那么FindMin操作的时间复杂度可降至$O(1)$</p>
-</blockquote>
-<h3 id="merge"><code>Merge</code>操作</h3>
+<p>时间复杂度：</p>
+<p>$$T=O(\log N)$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果对二项堆内的二项树进行维护（例如以根节点的键值大小排序），那么FindMin操作的时间复杂度可降至$O(1)$。</p>
+</div>
+<h3 id="merge">Merge</h3>
 <p><img alt="alt text" src="../image/5.2.jpg" /></p>
-<p>实际上类似于二进制的竖式计算，一一合并的二项树深度相同，仅需比较根节点的键值，将大的连到小的上即可。</p>
-<p><code>Merge</code>操作所需的时间对应二进制位上合并的次数，一共需要合并的次数（位数）对应$H_1$和$H_2$的二项树棵数，二项树棵数对应$\log N$。</p>
-<p>时间复杂度：$T=O(\log N)$，其中$N=N_1+N_2$</p>
+<p>实际上类似于<strong>二进制的竖式计算</strong>，一一合并的二项树深度相同，仅需比较根节点的键值，将大的连到小的上即可。</p>
+<p>Merge所需的时间对应二进制位上合并的次数，一共需要合并的次数（位数）对应$H_1$和$H_2$的二项树棵数，二项树棵数对应$\log N$。</p>
+<p>时间复杂度：</p>
+<p>$$T=O(\log N)$$</p>
+<p>其中$N=N_1+N_2$。</p>
 <p><strong>伪代码：</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">BinTree</span><span class="w"> </span><span class="nf">Combine</span><span class="p">(</span><span class="n">BinTree</span><span class="w"> </span><span class="n">T1</span><span class="p">,</span><span class="n">BinTree</span><span class="w"> </span><span class="n">T2</span><span class="p">)</span><span class="c1">//合并两棵二项树</span>
 <span class="p">{</span>
@@ -1958,7 +2111,7 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="n">BinTree</span><span class="w"> </span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="p">,</span><span class="n">Carry</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">N</span><span class="o">+</span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">,</span><span class="n">j</span><span class="o">*=</span><span class="mi">2</span><span class="p">)</span><span class="c1">//i用来控制数组的位数，j用来控制循环次数，因为MaxTree=log N</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">N</span><span class="o">+</span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">,</span><span class="n">j</span><span class="o">*=</span><span class="mi">2</span><span class="p">)</span><span class="c1">//i用来控制数组的位数，j用来控制循环次数，因为MaxTree=logN</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">T1</span><span class="o">=</span><span class="n">H1</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 <span class="w">        </span><span class="n">T2</span><span class="o">=</span><span class="n">H2</span><span class="o">-&gt;</span><span class="n">Trees</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
@@ -2009,16 +2162,17 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">H1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="insert"><code>Insert</code>操作</h3>
-<p>实际上是<code>Merge</code>操作的特殊情况。</p>
-<p>时间复杂度：如果最小的空置二项树为$B_i$（数组第$i$个位置为<code>NULL</code>），则$T=Const\cdot(i+1)=O(1)$</p>
+<h3 id="insert">Insert</h3>
+<p>实际上是Merge的特殊情况。</p>
+<p>时间复杂度：如果最小的空置二项树为$B_i$（数组第$i$个位置为NULL），则</p>
+<p>$$T(N)=Const\cdot(i+1)=O(1)$$</p>
 <p>从空堆开始连续插入$N$个节点的最差总耗时为$O(N)$，均摊时间复杂度为$O(1)$。（分析详见二进制计数器）</p>
-<h3 id="deletemin"><code>DeleteMin</code>操作</h3>
+<h3 id="deletemin">DeleteMin</h3>
 <p>定义一开始的二项堆为$H$。</p>
 <ul>
 <li>
 <p><strong>第一步：</strong>
-  进行<code>FindMin</code>操作，找到最小元素，其所在二项树为$B_k$
+  进行FindMin，找到最小元素，其所在二项树为$B_k$
   该步耗时：$O(\log N)$</p>
 </li>
 <li>
@@ -2033,11 +2187,12 @@
 </li>
 <li>
 <p><strong>第四步：</strong>
-  对$H'$和$H''$进行<code>Merge</code>操作
+  对$H'$和$H''$进行Merge
   该步耗时：$O(\log N)$</p>
 </li>
 </ul>
-<p>时间复杂度：$T=O(\log N)$</p>
+<p>时间复杂度：</p>
+<p>$$T=O(\log N)$$</p>
 <p><strong>伪代码：</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">KeyType</span><span class="w"> </span><span class="nf">DeleteMin</span><span class="p">(</span><span class="n">BinQueue</span><span class="w"> </span><span class="n">H</span><span class="p">)</span>
 <span class="p">{</span>
@@ -2071,9 +2226,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Min</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="decreasekey"><code>DecreaseKey</code>操作</h3>
-<p>假定已经知道要进行<code>Decrease</code>操作的节点的具体位置，接下来要做的只是不断地向上与父节点交换，直到恢复最小堆的性质</p>
-<p>时间复杂度：$T=O(\log N)$</p>
+<h3 id="decreasekey">DecreaseKey</h3>
+<p>假定已经知道要进行Decrease的节点的具体位置，接下来要做的只是不断地向上与父节点交换，直到恢复最小堆的性质</p>
+<p>时间复杂度：</p>
+<p>$$T=O(\log N)$$</p>
 <h2 id="53">5.3 回顾</h2>
 <table>
 <thead>
@@ -2088,7 +2244,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>Insert</code></td>
+<td>Insert</td>
 <td>$O(\log N)$</td>
 <td>$O(\log N)$</td>
 <td>$O(\log N)$</td>
@@ -2096,7 +2252,7 @@
 <td>$O(1)$</td>
 </tr>
 <tr>
-<td><code>Merge</code></td>
+<td>Merge</td>
 <td>$O(N)$</td>
 <td>$O(\log N)$</td>
 <td>$O(\log N)$</td>
@@ -2104,7 +2260,7 @@
 <td>$O(1)$</td>
 </tr>
 <tr>
-<td><code>DeleteMin</code></td>
+<td>DeleteMin</td>
 <td>$O(\log N)$</td>
 <td>$O(\log N)$</td>
 <td>$O(\log N)$</td>
@@ -2112,7 +2268,7 @@
 <td>$O(\log N)$</td>
 </tr>
 <tr>
-<td><code>DecreaseKey</code></td>
+<td>DecreaseKey</td>
 <td>$O(\log N)$</td>
 <td>$O(\log N)$</td>
 <td>$~$</td>
