@@ -78,11 +78,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#43" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -1717,7 +1712,7 @@
             
   
   <span class="md-ellipsis">
-    CSAPP
+    人工智能引论
   </span>
   
 
@@ -1726,6 +1721,111 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            人工智能引论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AID/Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章：逻辑与推理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AID/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章：搜索与求解
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AID/Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第三章：机器学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CSAPP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             CSAPP
           </label>
@@ -1819,47 +1919,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#43" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3 依概率收敛和依分布收敛
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4.3 依概率收敛和依分布收敛">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      依概率收敛
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      依分布收敛
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1875,51 +1934,12 @@
 
   <h1>Guodu</h1>
 
-<p><span style="font-family: 'Times New Roman';"></p>
-<h2 id="43">4.3 依概率收敛和依分布收敛</h2>
-<h3 id="_1">依概率收敛</h3>
-<p>$(\Omega,\Sigma,P)$是一个概率空间，$X$和$X_n,n\geqslant1$是随机变量，若对于$\forall\varepsilon&gt;0$，都有</p>
-<p>$P(\omega:|X_n(\omega)-X(\omega)|&gt;\varepsilon)\rightarrow 0$，$n\rightarrow\infty$</p>
-<p>则称$X_n$<strong>依概率收敛</strong>到$X$，记作$X_n\stackrel{P}\rightarrow X$。</p>
-<p><strong>极限唯一性：</strong></p>
-<p>若$X_n\stackrel{P}\rightarrow X$，$X_n\stackrel{P}\rightarrow Y$，则</p>
-<p>$P(X=Y)=1$</p>
-<p><strong>判别法则：</strong></p>
-<p>若$\exist r&gt;0$，使得</p>
-<p>$E(|X_n-X|^r)\rightarrow 0$，$n\rightarrow\infty$</p>
-<p>则</p>
-<p>$X_n\stackrel{P}\rightarrow X$</p>
-<p><strong>运算性质：</strong></p>
-<p>若$X_n\stackrel{P}\rightarrow X$，$Y_n\stackrel{P}\rightarrow Y$，则</p>
-<ul>
-<li>$X_n\pm Y_n\stackrel{P}\rightarrow X\pm Y$</li>
-<li>$X_n\cdot Y_n\stackrel{P}\rightarrow X\cdot Y$</li>
-<li>若$P(Y\neq 0)=1$，则$\frac{X_n}{Y_n}\stackrel{P}\rightarrow\frac{X}{Y}$</li>
-<li>若$f:R\mapsto R$是连续映射，则$f(X_n)\stackrel{P}\rightarrow f(X)$</li>
-</ul>
-<blockquote>
-<p><strong>例：设$\xi_k$独立同分布，服从$[0,1]$上的均匀分布，记$\eta_n=(\prod\limits_{k=1}^n\xi_k)^{\frac{1}{n}}$，求证：$\eta_n\stackrel{P}\rightarrow C$，$n\rightarrow \infty$。</strong>
-$\log\eta_n=\frac{1}{n}\sum\limits_{k=1}^n\log\xi_k$
-由Chebyschev大数律：
-$\frac{1}{n}\sum\limits_{k=1}^n\log\xi_k\stackrel{P}\rightarrow E(\log\xi_1)=\int_0^1\log xdx=-1$
-因此$\log \eta_n\stackrel{P}\rightarrow-1$
-$\eta_n=e^{\log\eta_n}\stackrel{P}\rightarrow e^{-1}$
-<strong>几何平均与算数平均的关系</strong></p>
-</blockquote>
-<h3 id="_2">依分布收敛</h3>
-<p>$(\Omega,\Sigma,P)$是一个概率空间，$X$和$X_n,n\geqslant1$是随机变量，$F$，$F_n,n\geqslant 1$是对应的分布函数，若对于$F$的任意连续点$x$</p>
-<p>$F_n(x)\rightarrow F(x)$，$n\rightarrow\infty$</p>
-<p>则称$X_n$依分布收敛到$X$，记作$X_n\stackrel{d}\rightarrow X$。</p>
-<p><strong>依概率收敛和依分布收敛的关系：</strong></p>
-<p>依概率收敛意味着依分布收敛；依分布收敛并不意味着依概率收敛。</p>
-<p><strong>判别法则：Levy连续性定理：</strong></p>
-<p>设$X,X_n$是一列随机变量，具有特征函数$\varphi,\varphi_n$，则</p>
-<p>$X_n\stackrel{d}\rightarrow X\Leftrightarrow \varphi_n(t)\rightarrow\varphi(t)$</p>
-<p>另一种形式：</p>
-<p>设$X_n$是一列随机变量，具有特征函数$\varphi(t)$，若</p>
-<p>$\varphi(t)\rightarrow\varphi(t)$，$t\in R$</p>
-<p>且$\varphi$在0处连续，则$varphi$一定是特征函数，对应的随机变量为$X$，那么</p>
-<p>$X_n\stackrel{d}\rightarrow X$</p>
+<p>$\int_{-\infty}^{\infty}e^{-\frac{1}{2}ax^2+bx}dx=\sqrt{\frac{2\pi}{a}}e^{\frac{b^2}{2a}}$</p>
+<p>$\int_{-\infty}^{\infty}x^{2n}e^{-\frac{1}{2}ax^2}dx=\frac{(2n-1)!!}{a^n}\sqrt{\frac{2\pi}{a}}$</p>
+<p>$x=r\sin\phi\cos\theta$
+$y=r\sin\phi\sin\theta$
+$z=r\cos\phi$</p>
+<p>$|\frac{\partial(x,y,z)}{\partial(r,\phi,\theta)}|=r^2\sin\phi$</p>
 
 
 
