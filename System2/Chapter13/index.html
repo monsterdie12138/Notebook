@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../Chapter12/">
+      
+      
+        <link rel="next" href="../Chapter14/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Chapter13 - Monsterdie's Notebook</title>
+        <title>第十三章：Synchronization - Monsterdie's Notebook</title>
       
     
     
@@ -115,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter13
+              第十三章：Synchronization
             
           </span>
         </div>
@@ -1815,6 +1819,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AID/medium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章：强化学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1826,17 +1851,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -1850,7 +1877,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             计算机系统Ⅱ
@@ -1890,6 +1917,250 @@
   
   <span class="md-ellipsis">
     第九章：Processes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十章：CPU Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十一章：Inter-Process Communication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十二章：Threads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第十三章：Synchronization
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第十三章：Synchronization
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.1 基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-synchronization-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2 Synchronization Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2 Synchronization Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#petersons-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Peterson's Solution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-barriers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Barriers 内存屏障
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-and-set-instructiontas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test-and-Set Instruction（TAS）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compare-and-swap-instructioncas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compare-and-Swap Instruction（CAS）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutex-locks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutex Locks 互斥锁
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semaphore 信号量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十四章：Synchronization Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第十五章：Deadlocks
   </span>
   
 
@@ -2038,11 +2309,80 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#synchronization-tools" class="md-nav__link">
+  <a href="#131" class="md-nav__link">
     <span class="md-ellipsis">
-      Synchronization Tools
+      13.1 基本概念
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132-synchronization-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      13.2 Synchronization Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13.2 Synchronization Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#petersons-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Peterson's Solution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-barriers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Barriers 内存屏障
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-and-set-instructiontas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test-and-Set Instruction（TAS）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compare-and-swap-instructioncas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compare-and-Swap Instruction（CAS）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutex-locks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutex Locks 互斥锁
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semaphore 信号量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2064,6 +2404,7 @@
 <p><span style="font-family: 'Times New Roman';"></p>
 <h1 id="chapter13-synchronization">Chapter13 Synchronization 同步</h1>
 <hr />
+<h2 id="131">13.1 基本概念</h2>
 <div class="admonition note 声明">
 <p class="admonition-title">Note</p>
 <p>此章节统一使用<strong>线程</strong>表示线程/进程。
@@ -2096,9 +2437,11 @@
 <p>理论上最后输出应为2000000，但实际上最后输出并不到2000000，且每次输出不同。</p>
 <p>原因：</p>
 <p><code>counter++</code>实际分成了三步：</p>
-<p><code>mov 0x8049a1c,%eax</code>：从内存读入寄存器
-<code>add $0x1,%eax</code>：寄存器自增
-<code>mov %eax,0x8049a1c</code>：从寄存器写回内存</p>
+<ul>
+<li><code>mov 0x8049a1c,%eax</code>：从内存读入寄存器</li>
+<li><code>add $0x1,%eax</code>：寄存器自增</li>
+<li><code>mov %eax,0x8049a1c</code>：从寄存器写回内存</li>
+</ul>
 <p>如果Thread1在执行完<code>add</code>后中断，切换到Thread2，则会出现错误，详情见下图（在counter=50的情况下，本来两线程各自自增1应该得到52，但最后只有51）：</p>
 <p><img alt="alt text" src="../image/13.1.jpg" /></p>
 <p><strong>Race Condition 竞态：</strong></p>
@@ -2119,8 +2462,8 @@
 <li><strong>bounded waiting 有限等待：</strong>  当一个线程请求进入临界区后，必须在有限的时间内获得许可并进入临界区，不能无限等待</li>
 </ul>
 <hr />
-<h2 id="synchronization-tools">Synchronization Tools</h2>
-<p><strong>Peterson's Solution：</strong></p>
+<h2 id="132-synchronization-tools">13.2 Synchronization Tools</h2>
+<h3 id="petersons-solution">Peterson's Solution</h3>
 <p>只能解决两个线程之间的同步问题。</p>
 <p>假定<code>load</code>和<code>store</code>指令都是原子性的，即执行期间无法中断。</p>
 <p>两个线程共享两个关键的变量：</p>
@@ -2167,10 +2510,13 @@
 <li>假设<code>load</code>和<code>store</code>指令都是原子性的</li>
 <li>假设指令顺序执行（但实际上编译器或者CPU会优化，更换顺序）</li>
 </ul>
-<p>例如，对于以下两个线程：</p>
-<p><img alt="alt text" src="../image/13.4.jpg" /></p>
-<p>理论上输出应为100。但Thread2可能被优化，上下指令的顺序互换，此时输出变为0。</p>
-<p><strong>Memory Barriers 内存屏障：</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>例如，对于以下两个线程：<br />
+<img alt="alt text" src="../image/13.4.jpg" /><br />
+理论上输出应为100，但Thread2可能被优化，上下指令的顺序互换，此时输出变为0。  </p>
+</div>
+<h3 id="memory-barriers">Memory Barriers 内存屏障</h3>
 <p><strong>memory model内存模型</strong>定义了计算机体系结构对应用程序所做的内存保证，即如何在多处理器环境下管理内存操作的可见性和顺序。其具体可以分为：</p>
 <ul>
 <li><strong>strongly ordered：</strong> 一个处理器对内存的修改会立刻对其他处理器可见，有更好的一致性</li>
@@ -2185,7 +2531,7 @@
 <li><strong>store memory barrier 写内存屏障：</strong> 让写入缓存中最新数据更新写入内存中，让其他线程可见</li>
 <li><strong>load memory barrier 读内存屏障：</strong> 让高速缓存中的数据失效，强制重新从内存中加载数据</li>
 </ul>
-<p><strong>Test-and-Set Instruction：</strong></p>
+<h3 id="test-and-set-instructiontas">Test-and-Set Instruction（TAS）</h3>
 <p>一种原子指令，能够在不中断的情况下修改一个变量。其输入是一个地址，将地址上的值置为1，然后返回旧值。具体表示如下：</p>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">test_and_set</span><span class="w"> </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="p">)</span>
 <span class="w"> </span><span class="p">{</span>
@@ -2207,8 +2553,11 @@
 <p>一开始的<code>lock</code>是<code>FALSE</code>的状态，表示未加锁。</p>
 <p><code>while(test_and_set(&amp;lock));</code>如果是未加锁的情况，则不会进入循环，而是进入临界区，且在<code>test_and_set(&amp;lock)</code>将<code>lock</code>置为了1，表示上锁；如果是加锁的情况，则等待。</p>
 <p>Test-and-Set满足mutual exclusion和progress，但不满足bounded-waiting。</p>
-<p>例如：假设有三个线程$T_0$，$T_1$，$T_2$。一开始$T_0$处于临界区，$T_1$和$T_2$在等待，当$T_0$完成后，释放锁，先被$T_1$抢占，进入临界区，$T_0$和$T_2$在等待（$T_0$的等待是下一循环的），当$T_1$完成后，释放锁，又被$T_0$抢占。综上，很有可能$T_0$和$T_1$交替进入临界区，但$T_2$一直在无限等待。</p>
-<p><img alt="alt text" src="../image/13.6.jpg" /></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>假设有三个线程$T_0$，$T_1$，$T_2$。一开始$T_0$处于临界区，$T_1$和$T_2$在等待，当$T_0$完成后，释放锁，先被$T_1$抢占，进入临界区，$T_0$和$T_2$在等待（$T_0$的等待是下一循环的），当$T_1$完成后，释放锁，又被$T_0$抢占。综上，很有可能$T_0$和$T_1$交替进入临界区，但$T_2$一直在无限等待。
+<img alt="alt text" src="../image/13.6.jpg" /></p>
+</div>
 <p>解决方法：有序选择执行等待中的线程。</p>
 <div class="highlight"><pre><span></span><code><span class="k">do</span>
 <span class="p">{</span>
@@ -2232,7 +2581,7 @@
 <span class="w">    </span><span class="cm">/*remainder section*/</span>
 <span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </code></pre></div>
-<p><strong>Compare-and-Swap Instruction：</strong></p>
+<h3 id="compare-and-swap-instructioncas">Compare-and-Swap Instruction（CAS）</h3>
 <p>一种原子指令，能够在不中断的情况下比较和修改变量。其输入为待检查的地址<code>value</code>，用于比较的数<code>expected</code>和更新的数<code>new_value</code>，如果<code>*value</code>与<code>expected</code>相等，则更新为<code>new_value</code>，返回旧值。具体表示如下：</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">compare_and_swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">new_value</span><span class="p">)</span>
 <span class="p">{</span>
@@ -2280,7 +2629,7 @@
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span><span class="n">compare_and_swap</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">temp</span><span class="p">,</span><span class="n">temp</span><span class="o">+</span><span class="mi">1</span><span class="p">)));</span>
 <span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p><strong>Mutex Locks 互斥锁：</strong></p>
+<h3 id="mutex-locks">Mutex Locks 互斥锁</h3>
 <p>实际上在介绍TAS和CAS时，二者参与实现的代码就是互斥锁的具体表现形式。我们这里对两种实现进行归纳和封装：互斥锁其保护临界区的方式是先<code>acquire</code>一个锁，再<code>release</code>一个锁，<code>acquire</code>和<code>release</code>操作通过TAS或CAS实现原子性：</p>
 <div class="highlight"><pre><span></span><code><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
 <span class="p">{</span>
@@ -2306,8 +2655,8 @@
 <p>综上：互斥锁会带来大量CPU资源的浪费。</p>
 <p>我们可以考虑，让那些处于等待状态的线程不要一直去检查锁有没有释放，而是将其从running状态转移到waiting状态（sleeping）。</p>
 <p>具体的实现方式是：新增一条与锁相关的waiting queue，当上锁时，处于忙等待的线程进入waiting状态，入队，再进行调度。</p>
-<p><strong>Semaphore 信号量：</strong></p>
-<p>当使用信号量作为同步工具时，设置整数变量$S$为信号量，其只能被<code>wait</code>和<code>signal</code>这两个原子操作改变。</p>
+<h3 id="semaphore">Semaphore 信号量</h3>
+<p>当使用semaphore作为同步工具时，设置整数变量$S$为semaphore，其只能被<code>wait</code>和<code>signal</code>这两个原子操作改变。</p>
 <div class="highlight"><pre><span></span><code><span class="n">wait</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="c1">//用于请求进入临界区</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">S</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">);</span>
@@ -2319,8 +2668,8 @@
 <span class="w">    </span><span class="n">S</span><span class="o">++</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>信号量$S$表示剩余可用的资源量，若一次只有一个线程能进入临界区，则使用<strong>binary semaphore</strong>，这时就和互斥锁一样；若需要对资源进行计数或者允许多线程操作，则使用<strong>counting semaphore</strong>。</p>
-<p>例如：对于线程$T_1$和$T_2$，若要让$T_1$的操作$S_1$先于$T_2$的操作$S_2$，则可以创建一个初始化为0的二值信号量<code>sem</code>：</p>
+<p>semaphore$S$表示剩余可用的资源量，若一次只有一个线程能进入临界区，则使用<strong>binary semaphore</strong>，这时就和互斥锁一样；若需要对资源进行计数或者允许多线程操作，则使用<strong>counting semaphore</strong>。</p>
+<p>例如：对于线程$T_1$和$T_2$，若要让$T_1$的操作$S_1$先于$T_2$的操作$S_2$，则可以创建一个初始化为0的二值semaphore<code>sem</code>：</p>
 <div class="highlight"><pre><span></span><code><span class="nl">P1</span><span class="p">:</span>
 <span class="w">    </span><span class="n">S1</span><span class="p">;</span>
 <span class="w">    </span><span class="n">signal</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
@@ -2329,7 +2678,7 @@
 <span class="w">    </span><span class="n">wait</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
 <span class="w">    </span><span class="n">S2</span><span class="p">;</span>
 </code></pre></div>
-<p>对于每个信号量，都有一个对应的waiting queue，结构如下：</p>
+<p>对于每个semaphore，都有一个对应的waiting queue，结构如下：</p>
 <div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
 <span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"> </span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">list_head</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">waiting_queue</span><span class="p">;</span><span class="w"> </span>
@@ -2358,36 +2707,36 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">remove</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">proc</span><span class="p">.</span><span class="n">P</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
 <span class="w">        </span><span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
-<span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<div class="admonition warning 存疑">
-<p class="admonition-title">Warning</p>
-<p>为什么是<code>S-&gt;value&lt;=0</code>而不是<code>S-&gt;value&gt;0</code>
-说明waiting queue里有线程在等？</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>是<code>S-&gt;value&lt;=0</code>而不是<code>S-&gt;value&gt;0</code>，说明waiting queue里有线程在等。</p>
 </div>
-<blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>注意：这里<code>S-&gt;value</code>的变化也需要互斥。</p>
-</blockquote>
-<p>对于信号量，<code>wait</code>和<code>signal</code>也要是原子操作，通过互斥锁来实现。</p>
+</div>
+<p>对于semaphore，<code>wait</code>和<code>signal</code>也要是原子操作，通过互斥锁来实现。</p>
 <p><img alt="alt text" src="../image/13.8.jpg" /></p>
-<p>通过使用信号量，在临界区不会发生等待，而<code>wait</code>和<code>signal</code>仍会发生等待（因为其使用了互斥锁），但远比单纯使用互斥锁快得多。</p>
-<blockquote>
-<p><strong>例：</strong>
-<img alt="alt text" src="../image/13.9.jpg" />
-在如图所示的代码中，<code>guard</code>对<code>flag</code>进行保护，<code>guard</code>为0表示可以修改<code>flag</code>，反之则不能修改，相当于保证了<code>flag</code>的改变是原子性的。此处的<code>flag</code>就是一个信号量。
-<code>lock</code>函数用于请求进入临界区。
-首先，要获得信号量的读写权，因此需要<code>while(TestAndSet(&amp;m-&gt;guard,1)==1)</code>的忙等待。
-获得读写权后，如果<code>m-&gt;flag==0</code>，说明没有锁，可以进入临界区，于是上锁（<code>m-&gt;flag=1</code>），并且释放读写权（<code>m-&gt;guard=0</code>）。
-如果<code>m-&gt;flag==1</code>，说明已被锁，这个时候将该线程加到waiting queue中。先释放读写权再调度。
-注意，这里释放读写权和调度的顺序不能换，因为如果先被调度，则该线程sleep，但<code>guard</code>还没被释放，因此之后的线程都无法读写<code>m-&gt;flag</code>，无法执行。
-<code>unlock</code>函数用于取消进入临界区的请求，释放权限。
-同样的，先要获取<code>m-&gt;flag</code>的读写权。
-如果waiting queue为空，则释放锁，因为没有线程想要执行。
-否则，依然保持上锁，并允许waiting queue中的一个线程进入临界区。
-同样的，最后要释放读写权。
-<img alt="alt text" src="../image/13.10.jpg" /></p>
-</blockquote>
+<p>通过使用semaphore，在临界区不会发生等待，而<code>wait</code>和<code>signal</code>仍会发生等待（因为其使用了互斥锁），但远比单纯使用互斥锁快得多。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="alt text" src="../image/13.9.jpg" /><br />
+在如图所示的代码中，<code>guard</code>对<code>flag</code>进行保护，<code>guard</code>为0表示可以修改<code>flag</code>，反之则不能修改，相当于保证了<code>flag</code>的改变是原子性的。此处的<code>flag</code>就是一个semaphore。<br />
+<code>lock</code>函数用于请求进入临界区。<br />
+首先，要获得semaphore的读写权，因此需要<code>while(TestAndSet(&amp;m-&gt;guard,1)==1)</code>的忙等待。<br />
+获得读写权后，如果<code>m-&gt;flag==0</code>，说明没有锁，可以进入临界区，于是上锁（<code>m-&gt;flag=1</code>），并且释放读写权（<code>m-&gt;guard=0</code>）。<br />
+如果<code>m-&gt;flag==1</code>，说明已被锁，这个时候将该线程加到waiting queue中。先释放读写权再调度。<br />
+注意，这里释放读写权和调度的顺序不能换，因为如果先被调度，则该线程sleep，但<code>guard</code>还没被释放，因此之后的线程都无法读写<code>m-&gt;flag</code>，无法执行。<br />
+<code>unlock</code>函数用于取消进入临界区的请求，释放权限。<br />
+同样的，先要获取<code>m-&gt;flag</code>的读写权。<br />
+如果waiting queue为空，则释放锁，因为没有线程想要执行。<br />
+否则，依然保持上锁，并允许waiting queue中的一个线程进入临界区。<br />
+同样的，最后要释放读写权。<br />
+<img alt="alt text" src="../image/13.10.jpg" />  </p>
+</div>
 <p><strong>Comparison between Mutex and Semaphore：</strong></p>
 <p>mutex lock：</p>
 <ul>
@@ -2401,9 +2750,10 @@
 <li>缺点：上下文切换耗时</li>
 <li>适用于临界区长的线程</li>
 </ul>
-<blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>这里临界区长短的衡量标准是与上下文切换的耗时比较。</p>
-</blockquote>
+</div>
 <hr />
 <p><strong>Deadlock 死锁：</strong></p>
 <p>两个或多个线程在等待彼此释放资源，从而进入一种无限等待的状态，导致所有线程都无法继续执行。</p>
