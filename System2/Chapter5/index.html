@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../Chapter4/">
+      
+      
+        <link rel="next" href="../Chapter8/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Chapter5 - Monsterdie's Notebook</title>
+        <title>第五章：Inst Scheduling - Monsterdie's Notebook</title>
       
     
     
@@ -79,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter5" class="md-skip">
+        <a href="#chapter5-inst-scheduling" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter5
+              第五章：Inst Scheduling
             
           </span>
         </div>
@@ -1847,17 +1851,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -1871,12 +1877,163 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             计算机系统Ⅱ
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章：ISA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章：Pipelining
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章：Hazard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第五章：Inst Scheduling
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第五章：Inst Scheduling
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-scheduling-of-nonlinear-pipelining" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Scheduling of Nonlinear pipelining
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-how-to-schedule-nonlinear-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 How to Schedule Nonlinear Pipeline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-multiple-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Multiple Issue
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
             
               
                 
@@ -2227,7 +2384,7 @@
 
 
 <p><span style="font-family: 'Times New Roman';"></p>
-<h1 id="chapter5">Chapter5</h1>
+<h1 id="chapter5-inst-scheduling">Chapter5 Inst Scheduling</h1>
 <hr />
 <h2 id="51-scheduling-of-nonlinear-pipelining">5.1 Scheduling of Nonlinear pipelining</h2>
 <p><strong>Reservation Table 预约表：</strong></p>
@@ -2247,12 +2404,13 @@
 <p>初始冲突向量从预约表导出，表征指令对资源的互相占用情况。</p>
 <p>第一条指令的资源占用情况正如预约表所示。假如下一条指令相差1个周期进入（T=2），则在T=3时会和上一条指令冲突；假如下一条指令相差2个周期进入（T=3），不会和上一条指令冲突；假如下一条指令相差3个周期进入（T=4），则也不会和上一条指令冲突……</p>
 <p>从相差1个周期到相差8个周期（由于一条指令需要9个周期，因此相差9个周期开始完全不重叠，无需考虑），我们发现相差1、5、6、8个周期时会冲突，因此，这些数字构成<strong>prohibit set 禁止集</strong>：</p>
-<p>$$F={1,5,7,8}$$</p>
+<p>$$F=\{1,5,6,8\}$$</p>
 <p>初始冲突向量表示初始情况下的下一条指令有哪些间隔数是不可行的。第$i$位若为1，则表示当前情况下在相差$i$个周期时进入下一条指令会冲突。记一条指令所需周期数为$N$，则（初始）冲突向量有$N-1$位。在本例中：</p>
 <p>$$C_0=(10110001)$$</p>
-<blockquote>
-<p>注意，最右边是第1位，对应相差1个周期。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>最右边是第1位，对应相差1个周期。</p>
+</div>
 <p><strong>Conflict Vector 冲突向量：</strong></p>
 <p>每一个时钟周期都有一个对应的冲突向量，表示在当前情况下哪些间隔数放下一条指令会冲突。我们也可以将其记为<strong>CCV=current conflict vector</strong>。</p>
 <p>$1\rightarrow$表示进入第一条指令，此时对于第一条指令，对应冲突向量即为初始向量，而因为当前只有只有一条指令，因此CCV也即为初始向量。</p>
@@ -2265,10 +2423,11 @@
 <p>第四条指令只能相差7个周期进入，我们发现得到的CCV和初始的CCV（即初始冲突向量）一致，那么接下来将进入循环。</p>
 <p><img alt="alt text" src="../image/5.6.jpg" /></p>
 <p>综上，我们得到的一种调度方式是2，2，7，即循环相差2，2，7个周期放入指令。</p>
-<blockquote>
-<p>事实上，每进入一条新的指令，并不需要按照已有指令右移→按位或得到CCV→确定接下来可行的间隔来计算，而是可以直接将CCV右移来计算。详情见state transition graph。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>事实上，每进入一条新的指令，并不需要按照已有指令右移→按位或得到CCV→确定接下来可行的间隔来计算，而是可以直接将CCV右移来计算。详情见state transition graph。  </p>
 <p>CCV并不需要变成初始冲突向量才意味着完成一轮循环，变成之前出现过的也可以。详情见state transition graph。</p>
-</blockquote>
+</div>
 <p><strong>State Transition Graph 状态转移图：</strong></p>
 <p>画状态转移图的步骤可归纳如下：</p>
 <ul>
@@ -2299,13 +2458,13 @@
 <p><strong>Multiple Issue 多发射：</strong></p>
 <p>多发射可分为：</p>
 <ul>
-<li>静态多发射：
-  由<strong>编译器</strong>决定一个时钟周期内发射几条、哪几条指令，把要发射的指令包装到issue slots里（包内没有依赖性，包之间可能存在依赖性）
-  由编译器处理冲突</li>
-<li>动态多发射：
+<li>静态多发射：<br />
+  由<strong>编译器</strong>决定一个时钟周期内发射几条、哪几条指令，把要发射的指令包装到issue slots里（包内没有依赖性，包之间可能存在依赖性）<br />
+  由编译器处理冲突  </li>
+<li>动态多发射：<br />
   由<strong>CPU</strong>决定一个时钟周期内发射几条、哪几条指令
-  由CPU处理冲突
-  编译器可协助对指令进行重排序，但也可完全不参与</li>
+  由CPU处理冲突<br />
+  编译器可协助对指令进行重排序，但也可完全不参与  </li>
 </ul>
 <p><strong>Speculation：</strong></p>
 <p>预测在多发射中很常见，目的是尽早开始操作，如果预测正确则继续执行，否则重新开始。</p>
@@ -2347,33 +2506,35 @@
 <p><strong>RISC-V with Static Dual Issue：</strong></p>
 <p>一个包里最多放两条指令，一条ALU/Branch指令，另一条Load/Store指令。</p>
 <p>考虑如下指令：</p>
-<p><code>add x10,x0,x1</code>
+<p><code>add x10,x0,x1</code><br />
 <code>ld x2,0(x10)</code></p>
 <p>这时候不能将其放入一个包内。当指令很多时，会有更多类似的冲突，因此需要编译器进行指令重排。</p>
-<blockquote>
-<p>例：
-<img alt="alt text" src="../image/5.17.jpg" /></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="alt text" src="../image/5.17.jpg" /></p>
+</div>
 <p><strong>Loop Rolling：</strong></p>
 <p>对于循环，可以考虑将其重复展开，以获得更多并行的可行性。</p>
 <p>具体的实现需要对每次重复的寄存器重命名。</p>
-<blockquote>
-<p>例：
-仍以之前的循环为例，考虑以四次循环为单位展开：
-<img alt="alt text" src="../image/5.18.jpg" />
-原本的<code>x31</code>只是作为一个中间变量使用，因此可以使用寄存器重命名，为<code>x30</code>，<code>x29</code>，<code>x28</code>。</p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>仍以之前的循环为例，考虑以四次循环为单位展开：  </p>
+<p><img alt="alt text" src="../image/5.18.jpg" /></p>
+<p>原本的<code>x31</code>只是作为一个中间变量使用，因此可以使用寄存器重命名，为<code>x30</code>，<code>x29</code>，<code>x28</code>。</p>
+</div>
 <p><strong>VLIW：</strong></p>
-<p>例：假设VLIW处理器每个周期能同时处理5条指令：2条访存指令 + 2条浮点数指令 + 1条整数/Branch指令。</p>
-<p>给定待执行的指令序列：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>假设VLIW处理器每个周期能同时处理5条指令：2条访存指令 + 2条浮点数指令 + 1条整数/Branch指令。给定待执行的指令序列：</p>
 <p><img alt="alt text" src="../image/5.20.jpg" /></p>
 <p>则将其改变顺序并打包，得到：</p>
 <p><img alt="alt text" src="../image/5.21.jpg" /></p>
 <p>相关计算：</p>
-<p>总共运行8个时钟周期
-每个阶段平均需要1.6个时钟周期（8/5）
-每个时钟周期平均执行2.1条指令（17/8）
-一共有40个<strong>operating slots</strong>（5*8），利用率为42.5%（17/40）</p>
+<p>总共运行8个时钟周期<br />
+每个阶段平均需要1.6个时钟周期（8/5）<br />
+每个时钟周期平均执行2.1条指令（17/8）<br />
+一共有40个<strong>operating slots</strong>（5*8），利用率为42.5%（17/40）  </p>
+</div>
 <p>存在的问题：</p>
 <ul>
 <li>合并后的代码长度显著增加，因为<code>nop</code>也是占空间的</li>

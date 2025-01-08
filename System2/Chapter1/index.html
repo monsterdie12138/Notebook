@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../../AID/medium/">
+      
+      
+        <link rel="next" href="../Chapter2/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Chapter1 - Monsterdie's Notebook</title>
+        <title>第一章：ISA - Monsterdie's Notebook</title>
       
     
     
@@ -79,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter1" class="md-skip">
+        <a href="#chapter1-isa" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter1
+              第一章：ISA
             
           </span>
         </div>
@@ -1847,17 +1851,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -1871,12 +1877,154 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             计算机系统Ⅱ
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第一章：ISA
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第一章：ISA
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-instruction-set-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Instruction Set Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-more-about-isa" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 More about ISA
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章：Pipelining
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第四章：Hazard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章：Inst Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2185,18 +2333,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#instruction-set-principles" class="md-nav__link">
+  <a href="#11-instruction-set-principles" class="md-nav__link">
     <span class="md-ellipsis">
-      Instruction Set Principles
+      1.1 Instruction Set Principles
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#more-about-isa" class="md-nav__link">
+  <a href="#12-more-about-isa" class="md-nav__link">
     <span class="md-ellipsis">
-      More about ISA
+      1.2 More about ISA
     </span>
   </a>
   
@@ -2218,9 +2366,9 @@
 
 
 <p><span style="font-family: 'Times New Roman';"></p>
-<h1 id="chapter1">Chapter1</h1>
+<h1 id="chapter1-isa">Chapter1 ISA</h1>
 <hr />
-<h2 id="instruction-set-principles">Instruction Set Principles</h2>
+<h2 id="11-instruction-set-principles">1.1 Instruction Set Principles</h2>
 <p><strong>Basic Principles：</strong></p>
 <ul>
 <li>compatibility 兼容性</li>
@@ -2236,30 +2384,35 @@
 </ul>
 <p><strong>Stack 栈：</strong></p>
 <p>操作数是隐式的，为栈顶元素（TOS）。</p>
-<blockquote>
-<p>例1：执行<code>C=A+B</code>
-<code>Push A</code>
-<code>Push B</code>
-<code>Add</code>
-<code>Pop C</code>
-<img alt="alt text" src="../image/1.1.JPG" /></p>
-<p>例2：执行<code>D=A*(B+C)</code>
-<code>Push A</code>
-<code>Push B</code>
-<code>Push C</code>
-<code>Add</code>
-<code>Mul</code>
-<code>Pop D</code></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例1：执行<code>C=A+B</code></strong></p>
+<p><code>Push A</code><br />
+<code>Push B</code><br />
+<code>Add</code><br />
+<code>Pop C</code>  </p>
+<p><img alt="alt text" src="../image/1.1.JPG" />  </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例2：执行<code>D=A*(B+C)</code></strong></p>
+<p><code>Push A</code><br />
+<code>Push B</code><br />
+<code>Push C</code><br />
+<code>Add</code><br />
+<code>Mul</code><br />
+<code>Pop D</code>  </p>
+</div>
 <p><strong>Accumulator 累加器：</strong></p>
 <p>一个操作数是隐式的（来自累加器），一个操作数是显式的（来自内存）。</p>
-<blockquote>
-<p>例1：执行<code>C=A+B</code>
-<code>Load A</code>
-<code>Add B</code>
-<code>Store C</code>
-<img alt="alt text" src="../image/1.2.JPG" /></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>执行<code>C=A+B</code></strong></p>
+<p><code>Load A</code><br />
+<code>Add B</code><br />
+<code>Store C</code></p>
+<p><img alt="alt text" src="../image/1.2.JPG" /></p>
+</div>
 <p><strong>GPR 通用寄存器：</strong></p>
 <p>只有显式操作数，来自寄存器或者内存。</p>
 <p>GPR分为：</p>
@@ -2269,88 +2422,91 @@
 <li>memory-memory arch</li>
 </ul>
 <p><strong>Register-Memory Arch：</strong></p>
-<blockquote>
-<p>例1：执行<code>C=A+B</code>
-<code>Load R1,A</code>
-<code>Add R3,R1,B</code>
-<code>Store R3,C</code>
-<img alt="alt text" src="../image/1.3.JPG" /></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>执行<code>C=A+B</code></strong></p>
+<p><code>Load R1,A</code><br />
+<code>Add R3,R1,B</code><br />
+<code>Store R3,C</code>  </p>
+<p><img alt="alt text" src="../image/1.3.JPG" /></p>
+</div>
 <p><strong>Load-Store Arch：</strong></p>
-<blockquote>
-<p>例1：执行<code>C=A+B</code>
-<code>Load R1,A</code>
-<code>Load R2,B</code>
-<code>Add R3,R1,R2</code>
-<code>Store R3,C</code>
-<img alt="alt text" src="../image/1.4.JPG" /></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>执行<code>C=A+B</code></strong></p>
+<p><code>Load R1,A</code><br />
+<code>Load R2,B</code><br />
+<code>Add R3,R1,R2</code><br />
+<code>Store R3,C</code>  </p>
+<p><img alt="alt text" src="../image/1.4.JPG" /></p>
+</div>
 <p><strong>Memory-Memory Arch：</strong></p>
 <p><strong>不同内存方式的比较：</strong></p>
 <p><img alt="alt text" src="../image/1.5.jpg" /></p>
-<blockquote>
-<p>例：执行<code>D=A*B-(A+C*B)</code>
-<strong>stack:</strong>
-<code>Push A</code>
-<code>Push B</code>
-<code>Mul</code>
-<code>Push A</code>
-<code>Push C</code>
-<code>Push B</code>
-<code>Mul</code>
-<code>Add</code>
-<code>Sub</code>
-<code>Pop D</code>
-<strong>accumulator:</strong>
-<code>Load C</code>
-<code>Mul B</code>
-<code>Add A</code>
-<code>Store D</code>
-<code>Load A</code>
-<code>Mul B</code>
-<code>Sub D</code>
-<code>Store D</code>
-<strong>register-memory arch:</strong>
-<code>Load R1,A</code>
-<code>Mul R1,B</code>
-<code>Load R2,C</code>
-<code>Mul R2,B</code>
-<code>Add R2,A</code>
-<code>Store R2,D</code>
-<code>Sub R1,D</code>
-<code>Store R1,D</code>
-<strong>load-store arch:</strong>
-<code>Load R1,&amp;A</code>
-<code>Load R2,&amp;B</code>
-<code>Load R3,&amp;C</code>
-<code>Mul R7,R3,R2</code>
-<code>Add R8,R7,R1</code>
-<code>Mul R9,R1,R2</code>
-<code>Sub R10,R9,R8</code>
-<code>Store R10,D</code>
-<strong>memory-memory arch (3 operands):</strong>
-<code>Mul D,A,B</code>
-<code>Mul E,C,B</code>
-<code>Add E,A,E</code>
-<code>Sub D,D,E</code>
-<strong>memory-memory arch (2 operands):</strong>
-<code>Mov D,A</code>
-<code>Mul D,B</code>
-<code>Mov E,C</code>
-<code>Mul E,B</code>
-<code>Add E,A</code>
-<code>Sub D,E</code></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>执行<code>D=A*B-(A+C*B)</code></strong></p>
+<p><strong>stack:</strong></p>
+<p><code>Push A</code><br />
+<code>Push B</code><br />
+<code>Mul</code><br />
+<code>Push A</code><br />
+<code>Push C</code><br />
+<code>Push B</code><br />
+<code>Mul</code><br />
+<code>Add</code><br />
+<code>Sub</code><br />
+<code>Pop D</code>  </p>
+<p><strong>accumulator:</strong>  </p>
+<p><code>Load C</code><br />
+<code>Mul B</code><br />
+<code>Add A</code><br />
+<code>Store D</code><br />
+<code>Load A</code><br />
+<code>Mul B</code><br />
+<code>Sub D</code><br />
+<code>Store D</code>  </p>
+<p><strong>register-memory arch:</strong>  </p>
+<p><code>Load R1,A</code> <br />
+<code>Mul R1,B</code>  <br />
+<code>Load R2,C</code> <br />
+<code>Mul R2,B</code>  <br />
+<code>Add R2,A</code>  <br />
+<code>Store R2,D</code>  <br />
+<code>Sub R1,D</code>  <br />
+<code>Store R1,D</code>    </p>
+<p><strong>load-store arch:</strong></p>
+<p><code>Load R1,&amp;A</code><br />
+<code>Load R2,&amp;B</code><br />
+<code>Load R3,&amp;C</code><br />
+<code>Mul R7,R3,R2</code><br />
+<code>Add R8,R7,R1</code><br />
+<code>Mul R9,R1,R2</code><br />
+<code>Sub R10,R9,R8</code><br />
+<code>Store R10,D</code>  </p>
+<p><strong>memory-memory arch (3 operands):</strong></p>
+<p><code>Mul D,A,B</code><br />
+<code>Mul E,C,B</code><br />
+<code>Add E,A,E</code><br />
+<code>Sub D,D,E</code>  </p>
+<p><strong>memory-memory arch (2 operands):</strong>  </p>
+<p><code>Mov D,A</code><br />
+<code>Mul D,B</code><br />
+<code>Mov E,C</code><br />
+<code>Mul E,B</code><br />
+<code>Add E,A</code><br />
+<code>Sub D,E</code>  </p>
+</div>
 <hr />
-<h2 id="more-about-isa">More about ISA</h2>
+<h2 id="12-more-about-isa">1.2 More about ISA</h2>
 <p><strong>Addressing Modes：</strong></p>
 <ul>
-<li>immediate
-  <code>Add R1,#3</code>表示<code>Regs[R1]=Regs[R1]+3</code></li>
-<li>register
-  <code>Add R1,R2</code>表示<code>Regs[R1]=Regs[R1]+Regs[R2]</code></li>
-<li>displacement
-  <code>Add R1,100(R2)</code>表示<code>Regs[R1]=Regs[R1]+Mem[100+Regs[R2]]</code></li>
+<li>immediate<br />
+<code>Add R1,#3</code>表示<code>Regs[R1]=Regs[R1]+3</code></li>
+<li>register<br />
+<code>Add R1,R2</code>表示<code>Regs[R1]=Regs[R1]+Regs[R2]</code></li>
+<li>displacement<br />
+<code>Add R1,100(R2)</code>表示<code>Regs[R1]=Regs[R1]+Mem[100+Regs[R2]]</code></li>
 </ul>
 <p><img alt="alt text" src="../image/1.8.jpg" /></p>
 <p><strong>Interpret Memory Address：</strong></p>
@@ -2374,18 +2530,18 @@
 <p>无条件跳转到PC+offset，并将其保存到<code>x1</code>。</p>
 <p><code>jalr x2,x1,offset</code>：</p>
 <p>无条件跳转到<code>Regs[x1]</code>+offset，并将其保存到<code>x2</code>。</p>
-<blockquote>
-<p>例：
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">leaf_example</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">leaf_example</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
 <span class="w">    </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-其中，参数依次位于<code>x10</code>-<code>x13</code>，<code>f</code>位于<code>x7</code>，结果位于<code>x17</code>。
-<img alt="alt text" src="../image/1.10.jpg" /></p>
-</blockquote>
+其中，参数依次位于<code>x10</code>-<code>x13</code>，<code>f</code>位于<code>x7</code>，结果位于<code>x17</code>。  </p>
+<p><img alt="alt text" src="../image/1.10.jpg" /></p>
+</div>
 <p><strong>Save Registers：</strong></p>
 <p><img alt="alt text" src="../image/1.9.jpg" /></p>
 

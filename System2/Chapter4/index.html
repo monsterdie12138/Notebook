@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../Chapter2/">
+      
+      
+        <link rel="next" href="../Chapter5/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Chapter4 - Monsterdie's Notebook</title>
+        <title>第四章：Hazard - Monsterdie's Notebook</title>
       
     
     
@@ -115,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter4
+              第四章：Hazard
             
           </span>
         </div>
@@ -1847,17 +1851,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -1871,12 +1877,196 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             计算机系统Ⅱ
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第一章：ISA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第二章：Pipelining
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    第四章：Hazard
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    第四章：Hazard
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-structural-hazard" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Structural Hazard 结构冲突
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-data-hazard" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Data Hazard 数据冲突
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Data Hazard 数据冲突">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      简单数据冲突
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      双重数据冲突
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load数据冲突
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-control-hazard" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Control Hazard 控制冲突
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第五章：Inst Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2265,11 +2455,11 @@
 <h2 id="41-structural-hazard">4.1 Structural Hazard 结构冲突</h2>
 <p><strong>Problem：</strong></p>
 <p>某个硬件资源在一个周期内被多条指令请求。</p>
-<blockquote>
-<p><strong>例：</strong>
-在同一个时钟周期内访问内存（一条指令取数据，一条指令取指令），但在冯诺依曼架构下，指令内存和数据内存为同一个，只有一个输出端。
-<img alt="alt text" src="../image/4.1.jpg" /></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>在同一个时钟周期内访问内存（一条指令取数据，一条指令取指令），但在冯诺依曼架构下，指令内存和数据内存为同一个，只有一个输出端。  </p>
+<p><img alt="alt text" src="../image/4.1.jpg" /></p>
+</div>
 <p><strong>Solution：</strong></p>
 <ul>
 <li>让指令轮流使用硬件资源，部分指令需要stall；</li>
@@ -2279,56 +2469,61 @@
 <h2 id="42-data-hazard">4.2 Data Hazard 数据冲突</h2>
 <p><strong>Problem：</strong></p>
 <p>某条指令的操作与前面指令的读写结果相关联。</p>
-<blockquote>
-<p><strong>例：</strong>
-<code>add x1,x2,x3</code>
-<code>sub x4,x1,x5</code>
-<code>sub</code>指令的<code>x1</code>寄存器的值需要<code>add</code>指令先计算出来。
-<img alt="alt text" src="../image/4.2.jpg" /></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><code>add x1,x2,x3</code><br />
+<code>sub x4,x1,x5</code><br />
+<code>sub</code>指令的<code>x1</code>寄存器的值需要<code>add</code>指令先计算出来。  </p>
+<p><img alt="alt text" src="../image/4.2.jpg" /></p>
+</div>
 <p><strong>Solution：</strong></p>
 <p>使用<strong>forwarding 前递</strong>，增加额外硬件，提前取出接下来需要的数据。</p>
 <h3 id="_1">简单数据冲突</h3>
 <p><strong>Detecting：</strong></p>
 <ul>
-<li>前一条指令的目的操作数和后一条指令的源操作数冲突
-  <code>EX/MEM.rd==ID/EX.rs1</code>（相邻R-type）
-  <code>EX/MEM.rd==ID/EX.rs2</code>（相邻R-type）
-  <code>MEM/WB.rd==ID/EX.rs1</code>（隔一行的R-type或Load）
-  <code>MEM/WB.rd==ID/EX.rs2</code>（隔一行的R-type或Load）</li>
-<li>上一条指令涉及写回（例如其他没有冲突的指令，其译码出的立即数也可能恰好等于后面指令的源操作数，从而引发冲突信号）
-  <code>EX/MEM.we_reg==1</code>（相邻R-type）
-  <code>MEM/WB.we_reg==1</code>（隔一行的R-type或Load）</li>
-<li><code>rd</code>不为<code>x0</code>（无效写入）
-  <code>EX/MEM.rd!=0</code>（相邻R-type）
-  <code>MEM/WB.rd!=0</code>（隔一行的R-type或Load）</li>
+<li>前一条指令的目的操作数和后一条指令的源操作数冲突<br />
+<code>EX/MEM.rd==ID/EX.rs1</code>（相邻R-type）<br />
+<code>EX/MEM.rd==ID/EX.rs2</code>（相邻R-type）<br />
+<code>MEM/WB.rd==ID/EX.rs1</code>（隔一行的R-type或Load）<br />
+<code>MEM/WB.rd==ID/EX.rs2</code>（隔一行的R-type或Load）  </li>
+<li>上一条指令涉及写回（例如其他没有冲突的指令，其译码出的立即数也可能恰好等于后面指令的源操作数，从而引发冲突信号）<br />
+<code>EX/MEM.we_reg==1</code>（相邻R-type）<br />
+<code>MEM/WB.we_reg==1</code>（隔一行的R-type或Load）  </li>
+<li><code>rd</code>不为<code>x0</code>（无效写入）<br />
+<code>EX/MEM.rd!=0</code>（相邻R-type）<br />
+<code>MEM/WB.rd!=0</code>（隔一行的R-type或Load）  </li>
 </ul>
 <p><strong>Forwarding Paths：</strong></p>
 <p><img alt="alt text" src="../image/4.10.jpg" /></p>
 <p><strong>Forwarding Conditions：</strong></p>
 <p><img alt="alt text" src="../image/4.4.jpg" />
 <img alt="alt text" src="../image/4.5.jpg" /></p>
-<p><strong>Example：</strong></p>
-<p><img alt="alt text" src="../image/4.6.jpg" /></p>
-<p>第一条指令和第二条指令：<strong>EX冲突</strong>
-<code>(EX/MEM.rd==ID/EX.rs1)&amp;&amp;(EX/MEM.we_reg==1)&amp;&amp;(EX/MEM.rd!=0)</code>
-对应选择：<code>ForwardA==10</code></p>
-<p>第一条指令和第三条指令：<strong>MEM冲突</strong>
-<code>(MEM/WB.rd==ID/EX.rs1)&amp;&amp;(MEM/WB.we_reg==1)&amp;&amp;(MEM/WB.rd!=0)</code>
-对应选择：<code>ForwardA==01</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="alt text" src="../image/4.6.jpg" />  </p>
+<p>第一条指令和第二条指令：<strong>EX冲突</strong><br />
+<code>(EX/MEM.rd==ID/EX.rs1)&amp;&amp;(EX/MEM.we_reg==1)&amp;&amp;(EX/MEM.rd!=0)</code><br />
+对应选择：<code>ForwardA==10</code>  </p>
+<p>第一条指令和第三条指令：<strong>MEM冲突</strong><br />
+<code>(MEM/WB.rd==ID/EX.rs1)&amp;&amp;(MEM/WB.we_reg==1)&amp;&amp;(MEM/WB.rd!=0)</code><br />
+对应选择：<code>ForwardA==01</code>  </p>
+</div>
 <h3 id="_2">双重数据冲突</h3>
-<p><code>add x1,x1,x2</code>
-<code>add x1,x1,x3</code>
-<code>add x1,x1,x4</code></p>
+<p><code>add x1,x1,x2</code><br />
+<code>add x1,x1,x3</code><br />
+<code>add x1,x1,x4</code>  </p>
 <p>与之前情况不同的是，第三条指令的<code>rs1</code>在第一条和第二条指令中均作为<code>rd</code>存在，倘若使用上面的判断方法，则会同时触发EX冲突和MEM冲突，但实际上需要的是来自第二条指令的结果，因此，有必要引入新的判断条件来处理双重数据冲突：<strong>出现MEM冲突的同时不能有EX冲突，否则MEM冲突不成立</strong>。</p>
 <p><img alt="alt text" src="../image/4.7.jpg" /></p>
-<p><strong>对MEM冲突判断的修正：</strong>
-<code>(MEM/WB.rd==ID/EX.rs1)&amp;&amp;(MEM/WB.we_reg==1)&amp;&amp;(MEM/WB.rd!=0)&amp;&amp;not[(EX/MEM.rd==ID/EX.rs1)&amp;&amp;(EX/MEM.we_reg==1)&amp;&amp;(EX/MEM.rd!=0)]</code></p>
-<p>中括号内是EX冲突的判断条件，请注意前面的<code>not</code>。</p>
+<p><strong>对MEM冲突判断的修正：</strong></p>
+<p><code>(MEM/WB.rd==ID/EX.rs1)&amp;&amp;(MEM/WB.we_reg==1)&amp;&amp;(MEM/WB.rd!=0)&amp;&amp;not[(EX/MEM.rd==ID/EX.rs1)&amp;&amp;(EX/MEM.we_reg==1)&amp;&amp;(EX/MEM.rd!=0)]</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>中括号内是EX冲突的判断条件，请注意前面的<code>not</code>。  </p>
+</div>
 <p><strong>Forwarding Paths：</strong></p>
 <p><img alt="alt text" src="../image/4.11.jpg" /></p>
 <h3 id="load">Load数据冲突</h3>
-<p><code>ld x2,20(x1)</code>
+<p><code>ld x2,20(x1)</code><br />
 <code>and x4,x2,x5</code></p>
 <p>此时的情况又与之前不同，<code>ld</code>指令载入<code>x2</code>的数据要在MEM阶段运行结束后得到，但下一条<code>and</code>指令同时进入EXE阶段，<code>x2</code>的数据要作为运行开始的输入，二者产生无法用forwarding解决的矛盾，因此：针对这种情况要有新的判断，解决方法为<strong>stall一个时钟周期</strong>。</p>
 <p><img alt="alt text" src="../image/4.8.jpg" /></p>
@@ -2338,14 +2533,15 @@
 <li>第一个判断点：上一条指令是load指令</li>
 <li>第二个判断点：前后两条指令使用的寄存器相同</li>
 </ul>
-<blockquote>
-<p>此时信号取<code>ID/EX.rd==IF/ID.rs1</code>而不是<code>EX/MEM.rd==ID/EX.rs1</code>的原因：
-如果是后者，那么判断在<code>and</code>指令的EX阶段给出，错误的数据已经在ALU中计算出来并等待下一个时钟周期流到EX/MEM寄存器，当判断在下一个时钟周期上升沿起到stall的作用时，这一瞬间错误的计算结果会传入EX/MEM寄存器，所以会导致stall没起到拦截的作用。</p>
-<p>不需要判断<code>ID/EX.rd!=0</code>的原因：
-load指令不会将数据载入<code>x0</code>寄存器。</p>
-<p>不需要判断<code>ID/EX.we_reg==1</code>的原因：
-load指令的寄存器写使能信号一直为0。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>此时信号取<code>ID/EX.rd==IF/ID.rs1</code>而不是<code>EX/MEM.rd==ID/EX.rs1</code>的原因：<br />
+如果是后者，那么判断在<code>and</code>指令的EX阶段给出，错误的数据已经在ALU中计算出来并等待下一个时钟周期流到EX/MEM寄存器，当判断在下一个时钟周期上升沿起到stall的作用时，这一瞬间错误的计算结果会传入EX/MEM寄存器，所以会导致stall没起到拦截的作用。  </p>
+<p>不需要判断<code>ID/EX.rd!=0</code>的原因：<br />
+load指令不会将数据载入<code>x0</code>寄存器。  </p>
+<p>不需要判断<code>ID/EX.we_reg==1</code>的原因：<br />
+load指令的寄存器写使能信号一直为0。  </p>
+</div>
 <p><strong>stall具体操作：</strong></p>
 <ul>
 <li>将ID/EX寄存器置为0</li>
@@ -2361,11 +2557,11 @@ load指令的寄存器写使能信号一直为0。</p>
 <h2 id="43-control-hazard">4.3 Control Hazard 控制冲突</h2>
 <p><strong>Problem：</strong></p>
 <p>遇到需要跳转的指令（B型或J型），影响指令的执行流。</p>
-<blockquote>
-<p><strong>例：</strong>
-<code>beq</code>指令在EXE阶段才会出来结果，决定是否跳转，但在这之前已经有新的指令载入。
-<img alt="alt text" src="../image/4.9.jpg" /></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><code>beq</code>指令在EXE阶段才会出来结果，决定是否跳转，但在这之前已经有新的指令载入。 </p>
+<p><img alt="alt text" src="../image/4.9.jpg" /></p>
+</div>
 <p><strong>Solution：</strong></p>
 <p>当遇到Branch指令时，在其跳转结果出来之前都不再载入新的指令。</p>
 <p><img alt="alt text" src="../image/4.12.jpg" /></p>
@@ -2390,10 +2586,6 @@ load指令的寄存器写使能信号一直为0。</p>
 <p>以下为三种延迟槽的调度方法：</p>
 <p><img alt="alt text" src="../image/4.18.jpg" /></p>
 <p><img alt="alt text" src="../image/4.19.jpg" /></p>
-<div class="admonition warning 存疑">
-<p class="admonition-title">Warning</p>
-<p>从前调度可以理解，但从对象调度和从失败处调度难以理解。</p>
-</div>
 <p><strong>Dynamic Branch Prediction：</strong></p>
 <ul>
 <li>每次执行Branch指令时，将是否跳转以及跳转地址等信息储存在<strong>branch history table</strong>中</li>
@@ -2402,9 +2594,10 @@ load指令的寄存器写使能信号一直为0。</p>
 </ul>
 <p><strong>1-Bit Predictor：</strong></p>
 <p><img alt="alt text" src="../image/4.20.jpg" /></p>
-<blockquote>
-<p>注意：这里的success指的是发生跳转，failure指的是不发生跳转。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里的success指的是发生跳转，failure指的是不发生跳转。</p>
+</div>
 <p>但是，在以下情况时，1-bit predictor一定预测错。考虑双重循环，内循环的最后一次判断一定会出错，因为之前一直判断仍然跳转到内循环，但最后一次判断会跳出内循环，继续到外循环；内循环的第一次判断也一定会出错，因为上一次刚从内循环跳出。</p>
 <p><strong>2-Bit Predictor：</strong></p>
 <p>只有连续两次预测出错才会改变预测。</p>
