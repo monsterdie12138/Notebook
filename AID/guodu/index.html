@@ -78,11 +78,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#63" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -1822,11 +1817,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../medium/" class="md-nav__link">
+      <a href="../Chapter5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     第五章：强化学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    第六章：人工智能博弈
   </span>
   
 
@@ -2260,47 +2276,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#63" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.3 博弈规则设计
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6.3 博弈规则设计">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      双边匹配问题
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      单边匹配问题
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2317,37 +2292,6 @@
   <h1>Guodu</h1>
 
 <p><span style="font-family: 'Times New Roman';"></p>
-<h2 id="63">6.3 博弈规则设计</h2>
-<p>设计博弈的规则使得博弈的最终局势能尽可能达到整体利益的最大化。</p>
-<h3 id="_1">双边匹配问题</h3>
-<p>与资源匹配相关的决策问题(如求职就业、报考录取等，需要双向选择)，称为<strong>双边匹配问题</strong>。在双边匹配问题中，需要双方互相满足对方的需求才会达成匹配。</p>
-<blockquote>
-<p><strong>例：稳定婚姻匹配问题</strong>
-$n$个男性的集合$M={m_1,m_2,···,m_n}$
-$n$个女性的集合$F={f_1,f_2,···,f_n}$
-对于任意一个男性$m_i$，都有自己爱慕女性的顺序，对于任意一个女性也同理。
-算法的最终目标是为$n$个男性和$n$个女性一一匹配，尽量满足多数人的期望。</p>
-</blockquote>
-<p><img alt="alt text" src="../image/6.4.png" /></p>
-<p><strong>算法流程（GS算法）：</strong></p>
-<ul>
-<li>单身男性向最喜欢的女性表白</li>
-<li>所有收到表白的女性从向其表白男性中选择最喜欢的男性，暂时匹配</li>
-<li>未匹配的男性继续向没有拒绝过他的女性表白。收到表白的女性如果没有完成匹配，则从这一批表白者中选择最喜欢男性。即使收到表白的女性已经完成匹配，但是如果她认为有她更喜欢的男性，则可以拒绝之前的匹配者，重新匹配</li>
-<li>如此循环迭代，直到所有人都成功匹配为止</li>
-</ul>
-<h3 id="_2">单边匹配问题</h3>
-<p>类似于以物易物方式的交换匹配问题（如室友的匹配或者是座位的分配），称为<strong>单边匹配问题</strong>，这些问题中分配的对象都是不可分的标的物，他们只能属于一个所有者，且可以属于任何一个所有者。</p>
-<blockquote>
-<p><strong>例：稳定室友匹配问题：</strong></p>
-</blockquote>
-<p><strong>算法流程（TTC算法）：</strong></p>
-<ul>
-<li>首先记录每个标的物的初始占有者，或者对物品进行随机分配。</li>
-<li>每个交易者连接一条指向他最喜欢的标的物的边，并从每一个标的物连接到其占有者或是具有高优先权的交易者。</li>
-<li>此时形成一张有向图，且必存在环，这种环被称为“交易圈”，对于交易圈中的交易者，将每人指向结点所代表的标的物赋予交易者，同时交易者放弃原先占有的标的物，占有者和匹配成功的标的物离开匹配市场。</li>
-<li>接着从剩余的交易者和标的物之间重复进行交易圈匹配，直到无法形成交易圈，算法停止</li>
-</ul>
 
 
 
