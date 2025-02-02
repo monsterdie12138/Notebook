@@ -1,0 +1,1632 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/AID/Chapter3/">
+      
+      
+        <link rel="prev" href="../Chapter2/">
+      
+      
+        <link rel="next" href="../Chapter4/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>3.机器学习 - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CLibre+Baskerville:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Libre Baskerville"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter3" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.机器学习
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Mathematics/Mathematical%20Analysis1/Chapter1/" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../ADS/Chapter1/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../Mathematics/Mathematical%20Analysis1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            人工智能引论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.逻辑与推理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.搜索与求解
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3.机器学习
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    3.机器学习
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 监督学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 监督学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      监督学习的基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      回归分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      决策树
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lda" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性判别分析（LDA）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ada-boosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ada Boosting算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 无监督学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 无监督学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      无监督学习的基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kk-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      K均值聚类（K-means）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      主成分分析（PCA）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征人脸方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.深度学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.强化学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.人工智能博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 监督学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 监督学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      监督学习的基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      回归分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      决策树
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lda" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性判别分析（LDA）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ada-boosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ada Boosting算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 无监督学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 无监督学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      无监督学习的基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kk-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      K均值聚类（K-means）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      主成分分析（PCA）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征人脸方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter3">Chapter3 机器学习</h1>
+<hr />
+<p><strong>机器学习的分类：</strong></p>
+<ul>
+<li><strong>监督学习：</strong> 数据有标签，一般为回归或分类等任务</li>
+<li><strong>无监督学习：</strong> 数据无标签，一般为聚类或降维等任务</li>
+<li><strong>强化学习：</strong> 序列数据决策学习，一般从环境交互中学习</li>
+</ul>
+<hr />
+<h2 id="31">3.1 监督学习</h2>
+<h3 id="_1">监督学习的基本概念</h3>
+<p>训练集中一共有$n$个标注数据，第$i$个标注数据记为$(x_i,y_i)$，其中第$i$个样本数据为$x_i$，$y_i$是$x_i$的标注信息。</p>
+<p>我们的目标是建立一个映射函数$f:x\mapsto y$，使得$f(x_i)$尽量等于$y_i$。</p>
+<p><strong>损失函数：</strong></p>
+<p>对于$x_i$，损失函数用于计算真实值$y_i$与预测值$f(x_i)$之间的差距，我们的目标是<strong>使得损失函数总和尽可能小</strong>。</p>
+<p><img alt="alt text" src="../image/3.1.jpg" /></p>
+<p><strong>训练数据/测试数据/未知数据：</strong></p>
+<p>用训练数据集学习映射函数$f$</p>
+<p>用测试数据集测试映射函数$f$</p>
+<p>用未知数据集使用映射函数$f$</p>
+<p><strong>经验风险/期望风险：</strong></p>
+<table>
+<thead>
+<tr>
+<th>经验风险</th>
+<th>期望风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\frac{1}{n}\sum\limits_{i=1}^nLoss(y_i,f(x_i))$</td>
+<td>$\int_{x\times y}Loss(y,f(x))P(x,y)dxdy$</td>
+</tr>
+<tr>
+<td>训练集中数据（有限）产生的平均损失</td>
+<td>测试集中数据（无限）产生的联合分布期望损失</td>
+</tr>
+<tr>
+<td>经验风险越小，说明学习模型对训练数据拟合程度越好</td>
+<td>期望风险越小，说明学习模型越好</td>
+</tr>
+</tbody>
+</table>
+<p>当训练数据数$n\rightarrow\infty$时，经验风险趋于期望风险。</p>
+<p><strong>过学习/欠学习：</strong></p>
+<p><img alt="alt text" src="../image/3.2.jpg" /></p>
+<p><strong>结构风险最小化：</strong></p>
+<p>为了防止过学习，结构风险最小化在经验风险的基础上引入<strong>正则项</strong>或<strong>惩罚项</strong>来降低模型复杂度，既最小化经验风险，又力求降低模型复杂度，在二者间寻找平衡：</p>
+<p>$$\frac{1}{n}\sum\limits_{i=1}^nLoss(y_i,f(x_i))+\lambda J(f)$$</p>
+<p>其中，$J(f)$是正则化因子或惩罚项因子，$\lambda$是调整惩罚强度的系数。</p>
+<p><strong>模型性能度量方法：</strong></p>
+<p>以二分类问题为例，$n$为训练样例总数，正例总数为$P$，反例总数为$N$，真正例、假正例、真反例、假反例的数量分别为$TP$、$FP$、$TN$、$FN$。</p>
+<ul>
+<li><strong>准确率：$ACC=\frac{TP+TN}{P+N}$：</strong> 若正负样本比例不均衡，则不是一个度量模型的好方法</li>
+<li><strong>错误率：$errorRate=\frac{FP+FN}{P+N}$：</strong> 1-准确率</li>
+<li><strong>精确率：$precision=\frac{TP}{TP+FP}$：</strong> 表示被模型预测为正例的样本中实际为正例的比例</li>
+<li><strong>召回率：$recall=\frac{TP}{TP+FN}$：</strong> 表示所有正例样本中被模型预测为正例的比例</li>
+<li><strong>综合分类率：$F1score=\frac{2}{\frac{1}{precision}+\frac{1}{recall}}$：</strong> 精确率和召回率的调和平均，在尽可能提高二者的同时减小差异</li>
+</ul>
+<p><strong>判别模型：</strong></p>
+<p>学习目标：映射函数$f$或者条件概率分布$P(Y|X)$</p>
+<p><strong>生成模型：</strong></p>
+<p>学习目标：联合概率分布$P(X,Y)$（通过似然概率$P(X|Y)$和类概率$P(Y)$的乘积来求取）</p>
+<h3 id="_2">回归分析</h3>
+<p>分析不同变量之间存在关系的研究叫<strong>回归分析</strong>，刻画不同变量之间关系的模型被称为<strong>回归模型</strong>。</p>
+<p><strong>单变量线性回归：</strong></p>
+<p>符号表示：</p>
+<ul>
+<li>$m$：训练集样本数</li>
+<li>$x$：输入变量/特征</li>
+<li>$y$：输出变量/目标</li>
+<li>$(x_i,y_i)$：第$i$个训练样本</li>
+<li>$h$：解决方案/函数/假设</li>
+</ul>
+<p>单变量线性回归分析即拟合一条直线：</p>
+<p>$$h_\theta(x)=\theta_0+\theta_1(x)$$</p>
+<p>使用误差平方和函数：</p>
+<p>$$J(\theta_0,\theta_1)=\frac{1}{m}\sum\limits_{i=1}^m(h_\theta(x_i)-y_i)^2$$</p>
+<p>作为回归问题的<strong>代价函数</strong>，来衡量预测值与真实值的接近程度。</p>
+<p>我们的目标是<strong>选择合适的$\theta_0$和$\theta_1$，使得$J(\theta_0,\theta_1)$最小化。</strong></p>
+<p><img alt="alt text" src="../image/3.3.jpg" /></p>
+<p><strong>梯度下降算法：</strong></p>
+<p>梯度下降算法是最常见的一种函数最小化算法。</p>
+<p>优化思路：</p>
+<ul>
+<li>设置一组初始的参数（比如说设置$\theta_0=\theta_1=0$），作为优化的起点</li>
+<li>不断改变$\theta_0$，$\theta_1$，使$J(\theta_0,\theta_1)$减小，直到到达最小值，这里的实现思路是<strong>选择该点处下降最快（最陡峭）的方向</strong>：</li>
+</ul>
+<p>$$\theta_0'=\theta_0-\alpha\frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1)$$</p>
+<p>$$\theta_1'=\theta_1-\alpha\frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1)$$</p>
+<p>$$\theta_0=\theta_0'$$</p>
+<p>$$\theta_1=\theta_1'$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>多个参数的更新应当同步进行。</p>
+</div>
+<p>$\alpha$为控制迈步大小的<strong>正参数（学习率）</strong>，偏导数为迈步的大小和方向。</p>
+<p>即便学习率保持不变，梯度下降仍然能够收敛到局部最优（偏导数逐渐减小直到0）。</p>
+<p>对于线性回归模型，只有一个全局最优点，因此不用担心陷入“局部”最优的问题，其局部最优即为全局最优。</p>
+<table>
+<thead>
+<tr>
+<th>批量梯度下降</th>
+<th>随机梯度下降</th>
+<th>小批量梯度下降</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在梯度下降的每一步都使用训练集的全部样本</td>
+<td>每次只使用一个样本</td>
+<td>每次使用一部分样本</td>
+</tr>
+<tr>
+<td>最精确，但样本数较大时速度慢</td>
+<td>速度最快，但相对不精确</td>
+<td>折中，在实际运用中最为常见</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最小二乘法：</strong></p>
+<p>实际上即为针对于单变量线性回归的梯度下降算法，可简化为：求解方程组</p>
+<p>$$\begin{cases}
+    \frac{\partial J(\theta_0,\theta_1)}{\partial\theta_0}=0\\
+    \frac{\partial J(\theta_0,\theta_1)}{\partial\theta_1}=0
+\end{cases}$$</p>
+<p><strong>逻辑回归：</strong></p>
+<p>若要研究某一事件发生的概率与若干因素之间的关系，这种情况下不适合用线性回归模型，因为其对离群点非常敏感，导致模型建模不稳定，结果有偏。应当使用<strong>逻辑回归模型</strong>：</p>
+<p>$$\ln\frac{p}{1-p}=\beta_0+\beta_1x_1+···+\beta_qx_q\Rightarrow p=\frac{1}{1+e^{-(\beta_0+\beta_1x_1+···+\beta_qx_q)}}$$</p>
+<p><strong>优势比：$OR=\frac{p}{1-p}$</strong></p>
+<p>函数性质：单调递增，值域为$(0,1)$，当输入$x=[x_1,···,x_q]$趋于一定数值后，输出$p$无限逼近1或0，当$z=\beta_0+\beta^Tx=0$时，输出$p$为0.5。</p>
+<p><img alt="alt text" src="../image/3.4.jpg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>单纯的逻辑回归模型只能解决二分类问题。</p>
+</div>
+<h3 id="_3">决策树</h3>
+<p><strong>决策树</strong>是一种通过树形结构进行分类的监督学习方法，每个非叶子节点表示对分类目标在某个属性上的一个判断，每个叶子节点表示一种分类结果，因此决策树可以看作一系列以叶子节点为输出的决策规则。</p>
+<p><img alt="alt text" src="../image/3.5.jpg" /></p>
+<p>建立决策树的过程，就是不断选择属性值对样本集进行划分，直至每个子样本集为同一类别的过程。要解决的问题有：</p>
+<ul>
+<li>收集属性完全且分类好的数据</li>
+<li>确定用于分类的属性</li>
+<li>选择最佳的分类原则</li>
+<li>
+<p>设计分类停止条件  </p>
+<ul>
+<li>节点包含的数据太少不足以分裂</li>
+<li>继续分裂数据集对树生成的目标(例如ID3中的熵下降准则)没有贡献</li>
+<li>树的深度过大不宜再分</li>
+</ul>
+</li>
+</ul>
+<p>通用的决策树分裂目标是<strong>使整棵树的熵总量最小</strong>。</p>
+<p><strong>信息熵：</strong></p>
+<p><strong>信息熵</strong>是一种衡量集合纯度的指标。信息熵越大，说明属性分配越平均，集合的不确定度大，纯度低，不具有鉴别度；信息熵越小，说明属性分配越一致，集合的不确定度小，纯度高，具有鉴别度。</p>
+<p>给定一个集合$S$，其中的样本最终被分类为$y_1,y_2,···,y_n$，比例依次为$p_1,p_2,···,p_n$，则$S$的信息熵为</p>
+<p>$$E(S)=-\sum\limits_{i=1}^np_i\log_2p_i$$</p>
+<p><strong>信息增益：</strong></p>
+<p><strong>信息增益</strong>是衡量集合纯度增大程度（集合不确定性减少程度）的指标，作为决策树分支属性选择的依据。</p>
+<p>给定一个集合$S$，其依据属性$A$分类得到集合$S_1,S_2,···,S_m$，则$S$中属性$A$的信息增益为</p>
+<p>$$G(S,A)=E(S)-E(A)=E(S)-\sum\limits_{i=1}^{m}\frac{|S_i|}{|S|}E(S_i)$$</p>
+<p><strong>ID3算法流程：</strong></p>
+<ul>
+<li>计算当前的信息熵</li>
+<li>考察任一属性，分成若干子集</li>
+<li>每个子集计算信息熵，然后计算得到每个属性的信息增益</li>
+<li>从所有属性中选择信息增益最大的属性作为当前决策</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="alt text" src="../image/3.6.jpg" /><br />
+<strong>根据天气的四个属性，使用ID3算法，构建决策树。</strong>  </p>
+<p>记“适合打网球”为“正例”，“不适合打网球”为“反例”<br />
+初始状态下，14个实例中有9个正例5个反例<br />
+$E(Initial)=-(\frac{9}{14}\log_2\frac{9}{14}+\frac{5}{14}\log_2\frac{5}{14})=0.940$<br />
+若选择Outlook为下一步的分类属性，则分成Sunny（2正3负），Overcast（4正0负），Rain（3正2负）<br />
+$E(A)=-\frac{5}{14}(\frac{2}{5}\log_2\frac{2}{5}+\frac{3}{5}\log_2\frac{3}{5})-\frac{4}{15}(\frac{4}{4}\log_2\frac{4}{4}+\frac{0}{4}\log_2\frac{0}{4})-\frac{5}{15}(\frac{3}{5}\log_2\frac{3}{5}+\frac{2}{5}\log_2\frac{2}{5})=0.694$<br />
+因此，这种划分的信息增益是<br />
+$G(Initial,Outlook)=0.940-0.694=0.246$<br />
+同理<br />
+$G(Initial,Temperature)=0.029$<br />
+$G(Initial,Humidity)=0.151$<br />
+$G(Initial,Wind)=0.048$<br />
+Outlook属性的增益值最大，因此以其作为分类依据，分得三个子集，生成三个子节点<br />
+对每个子节点递归采用上述过程，直至每个节点都成为叶子节点<br />
+<img alt="alt text" src="../image/3.7.png" />  </p>
+</div>
+<p><strong>存在问题：</strong></p>
+<p>若把“编号”也作为一个候选划分属性，则其信息增益一般远大于其他属性，这时容易导致模型过拟合，即<strong>信息增益对可取值数目较多的属性有所偏好。</strong></p>
+<p><strong>增益率：</strong></p>
+<p>增益率的核心思想是对分支过多进行惩罚，除了计算属性划分后的信息增益以外，还要计算划分行为本身带来的信息。</p>
+<p>$$GainRatio(S,A)=\frac{Gain(S,A)}{-\sum\limits_{i=1}^m\frac{|S_i|}{S}\log_2\frac{|S_i|}{S}}$$</p>
+<p>相比于直接根据信息增益选择分类属性，更好的方式是<strong>先在候选属性中找出信息增益高于平均水平的属性，再从中选取增益率最高的。</strong></p>
+<p><strong>剪枝处理：</strong></p>
+<ul>
+<li>
+<p><strong>预剪枝：</strong> 对每个节点在划分前进行评估，若当前节点的划分不能带来决策树泛化性能提升，则停止划分并将当前节点记为叶节点，其类别标记为训练样例数最多的类别  </p>
+</li>
+<li>
+<p>优点：降低过拟合风险，减小时间开销</p>
+</li>
+<li>
+<p>缺点：有欠拟合风险</p>
+</li>
+<li>
+<p><strong>后剪枝：</strong> 先从训练集生成一棵完整的决策树，然后自底向上地对非叶节点进行考察，若将该节点对应的子树替换为叶节点能带来决策树泛化性能提升，则将该子树替换为叶节点  </p>
+</li>
+<li>
+<p>优点：欠拟合风险小</p>
+</li>
+<li>缺点：时间开销大</li>
+</ul>
+<h3 id="lda">线性判别分析（LDA）</h3>
+<p><strong>LDA</strong>是一种<strong>基于监督学习的降维方法</strong>，对于一组具有标签信息的高维数据样本，LDA利用其类别信息，将其线性投影到一个低维空间上，实现<strong>类内间隔尽可能小，类间间隔尽可能大</strong>。</p>
+<p><img alt="alt text" src="../image/3.8.jpg" /></p>
+<p><strong>二分类问题：</strong></p>
+<p>设样本集$D={(x_1,y_1),(x_2,y_2),···,(x_n,y_n)}$，其中</p>
+<p>$x_i\in R^d$，为第$i$个样本的$d$个属性组成的向量；</p>
+<p>$y_i$为第$i$个样本的标签（最终分类结果），$y_i\in{C_1,C_2}$；</p>
+<p>投影函数$y(x)=w^Tx$，将样本投影到一维空间，我们需要求的就是最佳的$w\in R^d$。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里的$x$和$w$均为列向量，即$d\times 1$。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p><strong>第一步：分别计算两个类别一开始的均值向量</strong></p>
+<p>$$m_1=average(x_i),~y_i=C_1$$  </p>
+<p>$$m_2=average(x_i),~y_i=C_2$$</p>
+<p><strong>第二步：分别计算两个类别投影之后的协方差矩阵</strong></p>
+<p>$$s_1=\sum\limits_{y_i=C_1}(w^Tx_i-w^Tm_1)^2=w^T[\sum\limits_{y_i=C_1}(x_i-m_1)(x_i-m_1)^T]w=w^T\sum_1w$$</p>
+<p>$$s_2=\sum\limits_{y_i=C_2}(w^Tx_i-w^Tm_2)^2=w^T[\sum\limits_{y_i=C_2}(x_i-m_2)(x_i-m_2)^T]w=w^T\sum_2w$$</p>
+<p>其中，$w$未知，作为参数保留。
+$s_1$，$s_2$均为实数，可用来衡量同一类别中样本之间的分散程度，为了使类内间隔尽可能小，需要最小化$s_1+s_2$的取值。</p>
+<p><strong>第三步：构建需要最大化的目标函数</strong></p>
+<p>我们已知需要最小化$s_1+s_2$（类内间隔最小化），还需要最大化两个类别投影之后的均值向量之差（类间间隔最大化），因此，给出函数：</p>
+<p>$$J(w)=\frac{||w^Tm_1-w^Tm_2||^2}{s_1+s_2}$$</p>
+<p>我们的目的是找到$w$，使得$J(w)$取最大值。</p>
+<p>$$J(w)=\frac{||w^T(m_2-m_1)||^2}{w^T\sum_1w+w^T\sum_2w}=\frac{w^T(m_2-m_1)(m_2-m_1)^Tw}{w^T(\sum_1+\sum_2)w}=\frac{w^TS_bw}{w^TS_ww}$$</p>
+<p>$S_b=(m_2-m_1)(m_2-m_1)^T$称为<strong>类间散度矩阵</strong>，衡量两个类别均值点之间的分离程度；
+$S_w=\sum_1+\sum_2$称为<strong>类内散度矩阵</strong>，衡量每个类别中数据点的分离程度。</p>
+<p><strong>第四步：求$w$，使得$J(w)$取最大值</strong></p>
+<p>由于$J(w)$的分子和分母都是关于$w$的二项式，因此最后的解只与$w$的方向有关，与$w$的长度无关，因此可令分母$w^TS_ww=1$，然后用<strong>拉格朗日乘子法</strong>来求解这个问题。</p>
+<p>忽略中间过程，最后的结论为：</p>
+<p>$$w=S_w^{-1}(m_2-m_1)$$</p>
+</div>
+<p><strong>多分类问题：</strong></p>
+<p>总类别数为$K$，需要从$n$维降到$r$维。</p>
+<p>投影矩阵为$n\times r$矩阵</p>
+<p>$$W=(w_1,w_2,···,w_r)$$</p>
+<p>投影函数</p>
+<p>$$y(x)=W^Tx$$</p>
+<p>第$i$类样本投影之前的均值向量为$m_i$，所有样本投影之前的均值向量为$m$；第$i$类样本的总数为$N_i$，所有样本的总数为$N$。</p>
+<p>类间散度矩阵</p>
+<p>$$S_b=\sum\limits_{i=1}^K\frac{N_i}{N}(m_i-m)(m_i-m)^T$$</p>
+<p>类内散度矩阵</p>
+<p>$$S_w=\sum\limits_{i=1}^K\sum_i$$</p>
+<p>其中</p>
+<p>$$\sum_i=\sum\limits_{x\in class~i}(x-m_i)(x-m_i)^T$$</p>
+<p>结论：所求投影矩阵$W$由$S_w^{-1}S_b$前$r$个最大特征值所对应的特征向量$(w_1,w_2,···,w_r)$组成。</p>
+<h3 id="ada-boosting">Ada Boosting算法</h3>
+<p><strong>Ada Boosting算法</strong>通过<strong>集成</strong>手段来达到提升算法性能的目的。</p>
+<p><strong>核心思想：</strong></p>
+<p>对于一个复杂的分类任务，可以将其分解为若干子任务（<strong>弱分类器</strong>），然后将若干子任务完成方法综合，最终完成该复杂任务（<strong>强分类器</strong>）。</p>
+<p><img alt="alt text" src="../image/3.9.jpg" /></p>
+<p><strong>核心问题：</strong></p>
+<ul>
+<li><strong>改变训练数据的权重：</strong> 提高在上一轮中分类错误样本的权重</li>
+<li><strong>将一系列弱分类器组合成强分类器：</strong> 通过加权来提高分类误差小的弱分类器的权重，让其在最终分类中起到更大作用</li>
+</ul>
+<p><strong>算法描述：</strong></p>
+<p><strong>第一步：初始化每个训练样本的权重</strong></p>
+<p>假设有$N$个待分类的样本$(x_1,y_1),(x_2,y_2),···,(x_N,y_N)$，则每个样本的权重为$w_{1i}=\frac{1}{N}$，权重状态记为$D_1=(w_{11},w_{12},···,w_{1N})$。</p>
+<p><strong>第二步：使用权重状态为$D_m$的训练数据来学习得到第$m$个弱分类器$G_m$，并计算其分类误差</strong></p>
+<p>$$err_m=\sum\limits_{i=1}^Nw_{mi}I(G_m(x_i)\neq y_i)$$</p>
+<p>当$G_m(x_i)\neq y_i$时$I$取1，否则取0。</p>
+<p><strong>第三步：计算弱分类器$G_m$的权重</strong></p>
+<p>$$\alpha_m=\frac{1}{2}\ln\frac{1-err_m}{err_m}$$</p>
+<p><strong>第四步：更新训练数据的分布权重</strong></p>
+<p>$$w_{m+1,i}=\begin{cases}
+    \frac{w_{mi}}{Z_m}e^{-\alpha_m},G_m(x_i)=y_i\\
+    \frac{w_{mi}}{Z_m}e^{\alpha_m},G_m(x_i)\neq y_i\
+\end{cases}$$</p>
+<p>$Z_m$为归一化因子。</p>
+<p>可见，如果某个样本无法被第$m$个弱分类器分类成功，则需要增大该样本权重，否则减少该样本权重。这样，被错误分类样本会在训练第$m+1$个弱分类器时被重点关注。</p>
+<p>在每一轮学习过程中，Ada Boosting算法均在<strong>划重点</strong>（重视当前尚未被正确分类的样本）。</p>
+<p><strong>第五步：线性加权组合弱分类器得到强分类器</strong></p>
+<p>$$f(x)=\sum\limits_{i=1}^M\alpha_mG_m(x)$$</p>
+<p>$$G(x)=sign(f(x))$$</p>
+<p>将样本分为$+1$和$-1$。</p>
+<hr />
+<h2 id="32">3.2 无监督学习</h2>
+<h3 id="_4">无监督学习的基本概念</h3>
+<p>寻找数据中存在的结构和模式。</p>
+<p><strong>重要因素：</strong></p>
+<ul>
+<li><strong>数据特征</strong></li>
+<li><strong>相似度函数：</strong> 基于所提取的特征来计算数据之间的相似性</li>
+</ul>
+<h3 id="kk-means">K均值聚类（K-means）</h3>
+<p><strong>K均值聚类</strong>的目的在于将数据依据其特征聚类到不同的集合，<strong>最小化类内距离，最大化类间距离</strong>。</p>
+<p>K均值聚类要求特征变量连续，数据没有异常值。其找到的是一个局部最优，但不能保证找到全局最优。其同时也是一个容易受到初始值影响的迭代算法。</p>
+<p>输入：$n$个数据（只有特征，没有标签），$x_i=(x_{i1},x_{i2},···,x_{im})$</p>
+<p>输出：$K$个集合</p>
+<p><strong>第一步：随机初始化$K$个聚类质心$C={c_1,c_2,···,c_K}$</strong></p>
+<p>每个聚类质心$c_j$所对应的集合为$G_j$。</p>
+<p><strong>第二步：将每个待聚类的数据放入唯一一个聚类集合中</strong></p>
+<p>计算数据$x_i$和质心$c_j$之间的距离</p>
+<p>$$d(x_i,c_j)=\sqrt{\sum\limits_{k=1}^m(x_{ik}-c_{jk})^2}$$</p>
+<p>计算完与所有质心的距离之后，将$x_i$放入与之距离最近的质心所对应的集合。</p>
+<p><strong>第三步：根据聚类结果，更新质心</strong></p>
+<p>设聚类集合$G_j$的元素数量为$|G_j|$。</p>
+<p>其质心更新后为</p>
+<p>$$c_j=\frac{1}{|G_j|}\sum\limits_{x_i\in G_j}x_i$$</p>
+<p><strong>第四步：算法循环迭代，直到满足条件</strong></p>
+<ul>
+<li>到达迭代次数上限</li>
+<li>前后两次迭代中，聚类质心基本不变</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>需要事先确定聚类数目$K$</li>
+<li>初始化聚类质心对结果影响较大</li>
+<li>迭代的时间开销较大</li>
+<li>欧氏距离假设数据每个维度（特征）的重要性是一样的</li>
+<li>对数据的尺度敏感，例如长度特征的以米还是厘米为单位会对最后的结果有影响</li>
+<li>对于位于聚类边缘的点的判定过于绝对</li>
+</ul>
+<h3 id="pca">主成分分析（PCA）</h3>
+<p><strong>PCA</strong>是一种<strong>基于非监督学习的降维方法</strong>，通过分析找到数据特征的主要成分，使用这些主要成分来代替原始数据，降维后的结果保持原始数据固有结构，或者说最大限度保持原始高维数据的总体方差结构，<strong>把每个样本当作一个类，最大化类间间隔（方差）。</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="alt text" src="../image/3.10.jpg" /></p>
+<p>如上图所示，原本的数据有两个特征（$x$和$y$），但我们显然能发现这两个特征是有关联的，因此我们通过主成分分析进行降维，得到主要成分（$z$），用$z$替代$x$和$y$，依然能够保持数据之间的差异性（离散程度），但由于维度的降低，分析起来更加方便。</p>
+</div>
+<p>对向量形式的数据要进行的根本操作：</p>
+<ul>
+<li><strong>找新的坐标原点</strong>
+  求所有数据的中心坐标</li>
+<li><strong>找新的坐标系（方差最大的地方）</strong>
+  依靠协方差矩阵来求转过的角度</li>
+</ul>
+<p><strong>算法动机：</strong></p>
+<ul>
+<li>将$d$维特征数据映射到$l$维空间，去除原始数据之间的冗余性</li>
+<li>将原始数据向这些数据方差最大的方向进行投影。一旦发现了方差最大的投影方向，则继续寻找保持方差第二的方向且进行投影（保证方向的正交性）</li>
+<li>每个数据所得到最好的$l$维特征就是使得每一维上样本方差都尽可能大</li>
+</ul>
+<p><strong>算法描述：</strong></p>
+<p><img alt="alt text" src="../image/3.11.jpg" /></p>
+<p>在主成分分析中，最优化的方差等于原始样本数据$X$的协方差矩阵$\Sigma$的特征值之和。为了使方差最大，可以求出协方差矩阵$\Sigma$的特征向量和特征值，然后取前$l$个最大特征值所对应的特征向量组成映射矩阵$W$即可。</p>
+<p><strong>降维后维数$l$的确定：</strong></p>
+<p>当我们不知道降维到多少维合适时，我们可以定义一个比重阈值$\alpha\in(0,1]$，只要$l$满足：</p>
+<p>$$\frac{\sum\limits_{i=1}^l\lambda_i}{\sum\limits_{i=1}^d\lambda_i}\geqslant\alpha$$</p>
+<p>则降维后的数据包含的信息已经达到了一定的占比，我们可以认为此时的$l$是合适的。</p>
+<p><strong>线性判别分析和主成分分析的差异：</strong></p>
+<p><img alt="alt text" src="../image/3.12.jpg" /></p>
+<h3 id="_5">特征人脸方法</h3>
+<p>特征人脸方法是一种应用<strong>主成分分析</strong>来实现人脸图像降维的方法，其本质是用<strong>一种称为特征人脸的特征向量按照线性组合形式</strong>来表达每一张原始人脸图像，进而实现人脸识别。</p>
+<p>假设一张图像的分辨率为$32\times 32=1024$，每个像素包含一个灰度数值，则可以获得一个1024维的列向量。</p>
+<p>但由于人脸具有一定的拓扑结构，像素点之间有较强的空间关系，因此可以使用一个低维向量来表达原始图像大部分的信息，这就是要使用主成分分析的原因。</p>
+<p><strong>算法描述：</strong></p>
+<p><img alt="alt text" src="../image/3.13.jpg" /></p>
+<p><strong>具象解释：</strong></p>
+<p>每个人脸特征向量$w_i$与原始人脸数据$x_i$的维数是一样的，均为1024。可将每个特征向量还原为$32\times 32$的特征人脸，一共$l$个。</p>
+<p>将每幅人脸分别与每个特征人脸做矩阵乘法，得到一个相关系数，一共得到$l$个相关系数。</p>
+<p>每幅人脸是所有特征人脸的线性组合（系数即为上述）。</p>
+<p>在后续人脸识别分类中，就使用这$l$个系数来表示原始人脸图像。计算两张人脸是否相似时，不是去计算两个$32\times 32$矩阵是否相似，而是去计算两个人脸所对应的$l$个系数是否相似。</p>
+<p><strong>缺点：</strong></p>
+<p>主成分分析生成的特征人脸只能提取原始图像中存在的全局信息，而无法提取局部信息。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter2/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2.搜索与求解">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                2.搜索与求解
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Chapter4/" class="md-footer__link md-footer__link--next" aria-label="下一页: 4.深度学习">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                4.深度学习
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

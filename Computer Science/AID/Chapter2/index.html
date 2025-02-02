@@ -1,0 +1,1653 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/AID/Chapter2/">
+      
+      
+        <link rel="prev" href="../Chapter1/">
+      
+      
+        <link rel="next" href="../Chapter3/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>2.搜索与求解 - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CLibre+Baskerville:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Libre Baskerville"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-2" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.搜索与求解
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Mathematics/Mathematical%20Analysis1/Chapter1/" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../ADS/Chapter1/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../Mathematics/Mathematical%20Analysis1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            人工智能引论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.逻辑与推理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2.搜索与求解
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2.搜索与求解
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 搜索算法基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 搜索算法基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关术语
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法评价指标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      搜索算法框架
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 有信息（启发式）搜索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 有信息（启发式）搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      贪婪最佳优先搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      A*搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      A*搜索性能分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 对抗搜索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 对抗搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      最小最大搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\alpha$-$\beta$剪枝搜索
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 蒙特卡洛树搜索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 蒙特卡洛树搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      多臂赌博机问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多臂赌博机问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      贪心算法策略
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epsilon-" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\epsilon$-贪心算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucb" class="md-nav__link">
+    <span class="md-ellipsis">
+      上限置信区间算法（UCB）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      蒙特卡洛树搜索算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.机器学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.深度学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.强化学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.人工智能博弈
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 搜索算法基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 搜索算法基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关术语
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法评价指标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      搜索算法框架
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 有信息（启发式）搜索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 有信息（启发式）搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      贪婪最佳优先搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      A*搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      A*搜索性能分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 对抗搜索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 对抗搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      最小最大搜索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\alpha$-$\beta$剪枝搜索
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 蒙特卡洛树搜索
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 蒙特卡洛树搜索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      多臂赌博机问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多臂赌博机问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      贪心算法策略
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epsilon-" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\epsilon$-贪心算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucb" class="md-nav__link">
+    <span class="md-ellipsis">
+      上限置信区间算法（UCB）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      蒙特卡洛树搜索算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="chapter-2">Chapter 2 搜索与求解</h1>
+<hr />
+<h2 id="21">2.1 搜索算法基础</h2>
+<p><img alt="alt text" src="../image/2.3.jpg" /></p>
+<h3 id="_1">相关术语</h3>
+<p><img alt="alt text" src="../image/2.1.png" /></p>
+<p><strong>状态：</strong></p>
+<p>状态是对搜索算法和搜索环境当前所处情形的描述信息，在本例中对应当前位于的城市。</p>
+<p><strong>动作：</strong></p>
+<p>算法从一个状态转移到另一个状态所采取的行为被称为动作，在本例中对应乘坐一趟列车从当前城市到下一城市。</p>
+<p><strong>状态转移：</strong></p>
+<p>算法选择了一个动作之后，其所处状态也会发生相应变化，这个过程被称为状态转移（由动作触发）。</p>
+<p><strong>路径：</strong></p>
+<p>将状态转移过程中经历的状态记录下来，可以得到一个状态序列，这个状态序列被称为一条路径。</p>
+<p><strong>代价：</strong></p>
+<p>每条路径对应一个代价，在本例中对应通过该路径的时间开销，图中每条边上的数值即为单步代价取值。</p>
+<p><strong>目标测试：</strong></p>
+<p>目标测试函数用于判断状态$S$是否为目标状态，但判断结果为真并不意味着找到的路径是最短的。</p>
+<p>搜索算法可以被看成是一个构建<strong>搜索树</strong>的过程，从根节点（初始状态）开始，不断展开每个节点的后继节点，直到某个节点通过了目标测试。</p>
+<p><img alt="alt text" src="../image/2.2.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>搜索树第三层有三个标号均为$A$的节点，其分别被圆圈、正方形和三角形框住，其表示同一城市，但对应从初始状态出发的不同路径。</p>
+</div>
+<h3 id="_2">算法评价指标</h3>
+<ul>
+<li><strong>完备性：</strong> 当问题存在解时，算法是否能保证找到一个解</li>
+<li><strong>最优性：</strong> 搜索算法是否能保证找到的第一个解是最优解</li>
+<li><strong>时间复杂度：</strong> 找到一个解所需时间</li>
+<li><strong>空间复杂度：</strong> 在算法的运行过程中需要消耗的内存量</li>
+</ul>
+<p>完备性和最优性刻画了算法找到解的能力以及所求的解的质量，时间复杂度和空间复杂度衡量了算法的资源消耗。</p>
+<p>一般地，时间复杂度使用扩展的总节点数来衡量，空间复杂度通过同时记录的节点数来衡量。</p>
+<p><strong>用于估计复杂度的变量：</strong></p>
+<ul>
+<li><strong>b：</strong> 分支因子，即搜索树中每个节点最大的分支数目</li>
+<li><strong>d：</strong> 根节点到最浅的目标节点的路径长度</li>
+<li><strong>m：</strong> 搜索树中路径的最大可能长度</li>
+<li><strong>n：</strong> 状态空间中状态的数量</li>
+</ul>
+<h3 id="_3">搜索算法框架</h3>
+<p>在树搜索算法中，集合$F$用于保存搜索树中可用于下一步探索的所有候选节点，这个集合被称为<strong>边缘集合</strong>，有时也被叫做<strong>开表</strong>。</p>
+<p>对于每一轮搜索，先从$F$中取出一个节点$n$，如果$n$能通过目标测试，则返回从初始节点到$n$的路径（不一定是最佳路径），否则对节点$n$进行<strong>扩展</strong>，即将$n$的所有后继节点放入$F$中，进入下一轮搜索。</p>
+<p><img alt="alt text" src="../image/2.13.png" /></p>
+<p>实际上，给定当前节点，并不是所有的后继节点都值得探索，在某些情况下，主动放弃一些后继节点能够提高搜索效率而不会影响最终的搜索结果，甚至能解决一些死循环问题，这种做法叫做<strong>剪枝</strong>。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>广度优先算法：队列形式</strong>  </p>
+<p>时间复杂度：$O(b^d)$<br />
+空间复杂度：$O(b^d)$<br />
+完备性：√<br />
+最优性：只有每条路径代价为1时为√  </p>
+<p><strong>深度优先算法：栈形式</strong>  </p>
+<p>时间复杂度：$O(b^m)$<br />
+空间复杂度：$O(bm)$<br />
+完备性：×<br />
+最优性：×  </p>
+</div>
+<hr />
+<h2 id="22">2.2 有信息（启发式）搜索</h2>
+<p><strong>辅助信息：</strong></p>
+<ul>
+<li><strong>评价函数$f(n)$：</strong> 用于决定从当前节点$n$出发，下一个要访问的后继节点是哪个</li>
+<li><strong>启发函数$h(n)$：</strong> 从节点$n$到目标节点之间的理论最小代价，一般已经提供，作为额外信息参考</li>
+<li><strong>代价函数$g(n)$：</strong> 表示从起始节点到节点$n$的开销（当前最小代价，经过计算后已知）</li>
+<li><strong>c(n,a,n')：</strong> 从节点$n$执行动作$a$到达节点$n'$的单步代价</li>
+<li><strong>h*(n)：</strong> 从节点$n$到目标节点之间的实际最小代价，通过计算得到</li>
+</ul>
+<h3 id="_4">贪婪最佳优先搜索</h3>
+<p><strong>评价函数$f(n)$=启发函数$h(n)$</strong></p>
+<p>以上述例子为例，给定启发函数为任意一个城市与终点城市$K$之间的直线距离，评价函数相同，每到一个节点，先找到其所有的后继节点，然后依次比较这些节点的评价函数，挑出最小的一个（直线距离最短），然后继续前进，直到到达$K$。</p>
+<p><img alt="alt text" src="../image/2.4.JPG" /></p>
+<ul>
+<li>时间复杂度：$O(b^m)$  </li>
+<li>空间复杂度：$O(b^m)$  </li>
+<li>完备性：√（但如果不排除环路则是不完备的）  </li>
+<li>最优性：×  </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>时空复杂度解释：<br />
+贪婪最佳优先搜索在最坏情况下需要遍历所有的节点（$b^m$个），因为每次挑评价函数最小的节点一直往下走并不一定能到达目标，只能说几率比较大，因此时间复杂度和空间复杂度均为$O(b^m)$。  </p>
+</div>
+<h3 id="a">A*搜索</h3>
+<p><strong>评价函数$f(n)$=代价函数$g(n)$+启发函数$h(n)$</strong></p>
+<p>以上述例子为例，给定启发函数为任意一个城市与终点城市$K$之间的直线距离，每到一个节点，先找到其所有的后继节点，然后计算出这些节点的评价函数，依次比较这些节点的评价函数，然后继续前进，直到到达$K$。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>值得注意的是并非只在当前节点的后继节点中比较，当前节点的兄弟节点甚至更上一层的也要参与比较挑出最小的一个，在示例的“扩展节点$H$”中有所体现。</p>
+</div>
+<p><img alt="alt text" src="../image/2.5.JPG" /></p>
+<p>A*搜索的完备性和最优性取决于搜索问题和启发函数的性质。</p>
+<h3 id="a_1">A*搜索性能分析</h3>
+<p>一个良好的启发函数需要满足如下两种性质：</p>
+<p><strong>可容性：</strong></p>
+<p>对于任意节点$n$，有</p>
+<p>$$h(n)\leqslant h^*(n)$$</p>
+<p>即估计代价不超过实际代价。</p>
+<p>在上例中，两个城市之间的行驶距离不会小于两个城市之间的直线距离，因此列车以最大行驶速度通过直线距离花费的时间必然不会超过实际代价，将该时间作为启发函数是满足可容性的。</p>
+<p><strong>一致性：</strong></p>
+<p>对于任意节点$n$和$n'$，有</p>
+<p>$$h(n)\leqslant c(n,a,n')+h(n')$$</p>
+<p>在上例中，假设节点$n$和$n'$分别对应城市$s$和$s'$，将单步代价$c(n,a,n')$重新定义为两个城市的直线距离，则由三角不等式，城市$s$到目标城市的直线距离一定不超过城市$s$和$s'$之间的直线距离与城市$s'$到目标城市的直线距离之和，因此以当前城市与目标城市之间的直线距离对应的时间作为启发函数是满足一致性的。</p>
+<p><strong>满足一致性的启发函数一定满足可容性。</strong></p>
+<p><strong>A*算法的完备性：</strong></p>
+<p>如果所求解问题和启发函数满足：</p>
+<ul>
+<li>搜索树中分支数量是有限的，即每个节点的后继节点数量是有限的</li>
+<li>单步代价的下界是一个正数</li>
+<li>启发函数有下界</li>
+</ul>
+<p>那么A*算法满足完备性。</p>
+<p><strong>A*算法的最优性：</strong></p>
+<p>如果启发函数是可容的，那么A*算法满足最优性。</p>
+<hr />
+<h2 id="23">2.3 对抗搜索</h2>
+<p>在一个竞争的环境中，智能体之间通过竞争实现相反的利益，一方最大化这个利益，另外一方最小化这个利益。</p>
+<p><strong>形式化描述：</strong></p>
+<ul>
+<li><strong>状态：</strong> 包括当前的游戏局面和当前行动的智能体</li>
+<li><strong>动作：</strong> 给定状态$s$，动作指的是$player(s)$在当前局面下可以采取的操作$a$，$a$所属的动作集合记为$actions(s)$</li>
+<li><strong>状态转移：</strong> 给定状态$s$和动作$a$，状态转移函数$result(s,a)$决定了在$s$状态采取动作$a$后所得后继状态</li>
+<li><strong>终局状态检测：</strong> 终止状态检测函数$terminal_test(s)$用于测试游戏是否在状态$s$结束</li>
+<li><strong>终局得分：</strong> 终局得分$utility(s,p)$表示在终局状态$s$时玩家$p$的得分</li>
+</ul>
+<h3 id="_5">最小最大搜索</h3>
+<p>以井字棋为例。</p>
+<p>每一层表示当前的状态$s$，左侧标明的是$player(s)$，即在状态$s$下即将采取动作$a$改变当前状态的玩家，终局有三种状态，分别是玩家1获胜、平局和玩家0获胜，对应的终局得分分别是+1、0和-1。</p>
+<p><img alt="alt text" src="../image/2.6.jpg" /></p>
+<p>在这个问题下，玩家1总是会选择能够最大化自己得分的搜索树分支，玩家0总是会选择能够最小化自己得分的搜索树分支，最小最大搜索的名字由此而来。</p>
+<p>推广：以最大化得分为目标的玩家称为玩家Max，以最小化得分为目标的玩家称为玩家Min。</p>
+<p><img alt="alt text" src="../image/2.7.jpg" /></p>
+<p>上图中，叶子节点表示不同的终局得分，当状态为$B$时，此时轮到Min行动，为了使终局得分最小化，其会选择动作$b_1$，此时$B$旁边就有了一个分数，表示Min在状态$B$采取行动后可以达到的最小终局得分（当前玩家的最优得分），状态$C$，$D$同理。</p>
+<p>而对于状态$A$，Max行动，在已知采取不同行动后可能的终局得分（状态$B$，$C$，$D$旁边的分数）的情况下，其会选择动作$a_1$，因为这样可以达到最大终局得分（当前玩家的最优得分）。</p>
+<p>现在，$minimax(s)$表示在状态$s$下，对应玩家采取行动后能获得的相对于该玩家的最优终局得分，则可归纳得到：</p>
+<p>$$minimax(s)=\begin{cases}
+  utility(s),~if~terminal_test(s)\\
+  \max_{a\in actions(s)}{minimax(result(s,a))},~if~player(s)=Max\\
+  \min_{a\in actions(s)}{minimax(result(s,a))},~if~player(s)=Min
+\end{cases}$$</p>
+<p><strong>伪代码：</strong></p>
+<p><img alt="alt text" src="../image/2.8.jpg" /></p>
+<ul>
+<li>完备性：√（只要搜索树是有限的）</li>
+<li>最优性：√（只要双方一直在按照最优策略交替采取行动）</li>
+<li>时间复杂度：$O(b^m)$</li>
+<li>空间复杂度：$O(bm)$</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>最小最大搜索实际上执行了一个完整的深度优先搜索，因此时空复杂度与深度优先搜索一致。</p>
+</div>
+<p><strong>缺点：</strong></p>
+<p>如果搜索树极大，由于需要遍历所有节点，因此无法快速返回结果；</p>
+<p>返回最优结果的前提是对手也在按照最优策略行动。</p>
+<h3 id="alpha-beta">$\alpha$-$\beta$剪枝搜索</h3>
+<p>在最小最大搜索的基础上采取<strong>剪枝</strong>的方法，减少需要搜索的节点数，且不影响最终结果。</p>
+<p><img alt="alt text" src="../image/2.9.png" /></p>
+<p>以上图为例，叶子节点并不代表终局状态，而是各自代表一棵子树，搜索算法还不知道动作$c_2$和$c_3$对应的子树收益，此时Max在根节点所能得到的最大分数为</p>
+<p>$$minimax(A)=\max(\min(3,9,10),\min(2,x,y),\min(10,5,1))=\max(3,\min(2,x,y),1)=3$$</p>
+<p>与$x$，$y$无关，因此可以被剪枝。</p>
+<p>现在进行推广。</p>
+<p><strong>$\alpha$剪枝：</strong></p>
+<p><img alt="alt text" src="../image/2.14.png" /></p>
+<p>在确定Max节点$m'$的收益时，已知其Min子节点$m$提供的收益为$\alpha$，那么对于$m$的兄弟的某个Min后继（后代）节点$n$，若其目前能够为其Max父节点$n'$提供的收益已经小于$\alpha$，则其未被访问的后继节点被剪枝。</p>
+<p><strong>$\beta$剪枝：</strong></p>
+<p><img alt="alt text" src="../image/2.15.png" /></p>
+<p>在确定Min节点$m'$的收益时，已知其Max子节点$m$提供的收益为$\beta$，那么对于$m$的兄弟的某个Max后继（后代）节点$n$，若其目前能够为其Min父节点$n'$提供的收益已经大于$\beta$，则其未被访问的后继节点被剪枝。</p>
+<p>无论一个节点位于Min还是Max，都可以通过上述情况找到一个上界和一个下界，即可以为每个节点设置一个$\alpha$和一个$\beta$。</p>
+<p>在设计算法时，没有必要为了计算一个节点的上下界，而枚举所有会影响当前节点$\alpha$和$\beta$的节点，只需要<strong>继承其父节点的$\alpha$和$\beta$，然后进行更新。对于Max节点，如果其后继的Min节点的收益大于当前的$\alpha$，则将$\alpha$更新为该收益；对于Min节点，如果其后继的Max节点的收益小于当前的$\beta$，则将$\beta$更新为该收益。</strong></p>
+<p>根节点（Max节点）的$\alpha$初始化为$-\infty$，$\beta$初始化为$+\infty$。随着搜索算法的执行，每个节点的$\alpha$和$\beta$不断更新，$\alpha$逐渐增大，$\beta$逐渐减小。<strong>当某个节点的$\alpha&gt;\beta$，则其尚未被访问的后继节点被剪枝。</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="alt text" src="../image/2.16.png" />
+<img alt="alt text" src="../image/2.17.png" /></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当某个节点所有的后继节点都已遍历完（包括被剪枝），则其$\alpha$和$\beta$就已经确定，收益也可以因此确定。Max节点的收益取$\alpha$，Min节点的收益取$\beta$。</p>
+</div>
+<p><strong>伪代码：</strong></p>
+<p><img alt="alt text" src="../image/2.18.jpg" /></p>
+<hr />
+<h2 id="24">2.4 蒙特卡洛树搜索</h2>
+<h3 id="_6">多臂赌博机问题</h3>
+<p>假设智能体面前有$K$个赌博机，每个赌博机有一个臂膀。每次转动一个赌博机臂膀，赌博机则会随机吐出一些硬币或不吐出硬币，将所吐出的硬币的币值用收益分数来表示。现在假设给智能体$\tau(\tau&gt;K)$次转动臂膀的机会，那么智能体如何选择赌博机、转动$\tau$次赌博机臂膀，能够获得更多的收益分数？</p>
+<p><strong>形式化描述：</strong></p>
+<ul>
+<li><strong>状态：</strong> 摇过第$i$个赌博机之后的状态记为$s_i$，因此除了初始状态$s_0$（未摇动任何赌博机），共有状态$s_1,s_2,···,s_K$</li>
+<li><strong>动作：</strong> 摇动第$i$个赌博机的动作记为$a_i$，共有动作$a_1,a_2,···,a_K$</li>
+<li><strong>状态转移：</strong> 执行动作$a_i$后，状态转移到$s_i$</li>
+<li><strong>奖励：</strong> 假设从第$i$个赌博机获得收益分数的分布为$D_i$，均值为$\mu_i$，如果智能体在第$t$次行动中选择摇动第$l_t$个赌博机，则其在第$t$次行动中所得收益分数$\hat{r_t}$服从分布$D_{l_t}$，$\hat{r_t}$称为第$t$次行动的奖励，一般假定$\hat{r_t}\in[0,1]$</li>
+</ul>
+<p><strong>诲值函数：</strong> </p>
+<p>根据智能体前$T$次动作，可定义诲值函数</p>
+<p>$$\rho_T=T*\max\limits_{i=1,···,K}\{\mu_i\}-\sum\limits_{t=1}^T\hat{r_t}$$</p>
+<p>即$T$次操作的最优策略的期望得分减去智能体的实际得分，问题求解的目标在于最小化诲值函数的期望。</p>
+<h4 id="_7">贪心算法策略</h4>
+<p>智能体记录下每次摇动的赌博机和获得的相应收益分数。给定第$i$个赌博机，记在过去$t-1$次摇动赌博机的行动中，一共摇动第$i$个赌博机的次数为$T_{(i,t-1)}$。于是，可以计算得到第𝑖个赌博机在过去$T_{(i,t-1)}$次被摇动过程中的收益分数平均值$\overline{x_{i,T_{(i,t-1)}}}$。这样，智能体在第$t$步，只要选择$\overline{x_{i,T_{(i,t-1)}}}$最大的赌博机进行摇动。</p>
+<p>贪心选择策略的不足之处在于：某个赌博机被摇动越多次，其返回的收益估值越精确，之后智能体会更倾向于继续摇动该赌博机，从而忽略了其他从未摇动或很少摇动的赌博机，而失去了可能的机会。</p>
+<p>上述困境体现了<strong>探索</strong>和<strong>利用</strong>之间存在的对立关系。贪心算法更倾向于利用，缺少探索，因此需要引入改变其惯性的内在动力，使其能够访问那些尚未被充分访问过的空间。</p>
+<h4 id="epsilon-">$\epsilon$-贪心算法</h4>
+<p>第$t$次行动的选择：</p>
+<p>$$l_t=\begin{cases}
+  \max\{\overline{x_{i,T(i,t-1)}}\},p=1-\epsilon\\
+  random~i\in\{1,2,···,K\},p=\epsilon
+\end{cases}$$</p>
+<p>即<strong>以$1-\epsilon$的概率选择在过去$t-1$次行动中所得平均收益分数最高的赌博机进行摇动；以$\epsilon$的概率随机选择一个赌博机进行摇动。</strong></p>
+<p>$\epsilon$-贪心算法的不足之处在于：没有将每个动作被探索的次数纳入考虑范围，可能存在一个给出更好奖励期望的动作，但因为智能体对其探索次数少而认为其期望奖励小。因此，需要对那些探索次数少或几乎没有被探索过的动作赋予更高的优先级。</p>
+<h4 id="ucb">上限置信区间算法（UCB）</h4>
+<p><strong>UCB</strong>的特点是<strong>优先探索估计值不确定度高的动作</strong>，此外，如果从已有探索样本中知道一个动作的奖励估计值极端偏小，那么即使该动作的估计值的不确定度很大，算法也没有必要将其作为优先探索对象。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="alt text" src="../image/2.11.jpg" /></p>
+<p>以上图为例：动作1虽然估计值的不确定度很大，但相比于动作2和动作3来说已经极端偏小了，所以并不优先考虑；对于动作2和动作3，其均值相同，但动作2的奖励期望取值的不确定度（估计范围）更大，于是置信上界更大，被优先考虑。</p>
+</div>
+<p><strong>UCB计算：</strong></p>
+<p>在第$t$次时选择使得</p>
+<p>$$e^{-2T_{(i,t-1)}\delta^2},~\delta=C\sqrt{\frac{2\ln t}{T_{(i,t-1)}}}$$</p>
+<p>足够小的动作$a_{lt}$，$l_t$由以下式子计算得到：</p>
+<p>$$l_t=\max\{\overline{x_{i,T_{(i,t-1)}}}\}+C\sqrt{\frac{2\ln t}{T_{(i,t-1)}}}$$</p>
+<p>其中，$\overline{x_{i,T_{(i,t-1)}}}$为执行动作$a_i$所得收益的均值，$T_{(i,t-1)}$为摇动第$i$个赌博机的次数，$C$为给定超参。</p>
+<h3 id="_8">蒙特卡洛树搜索算法</h3>
+<p>蒙特卡洛树搜索算法分为以下四个步骤：</p>
+<ul>
+<li><strong>选择：</strong> 指算法从搜索树的根节点开始，向下递归选择子节点，直至到达叶子节点或者到达具有还未被扩展过的子节点的节点$L$，每一次选择以UCB值作为选择依据</li>
+<li><strong>扩展：</strong> 选择结束后，如果到达的不是叶子节点（终局节点），而是具有还未被扩展过的子节点的节点，则随机扩展它的一个未被扩展过的后继边缘节点$M$</li>
+<li><strong>模拟：</strong> 从节点$M$出发，采用随机策略（常用）模拟扩展搜索树，直到找到一个终止节点，获得一个终局结果</li>
+<li><strong>反向传播：</strong> 依据这个终局结果回溯更新从$M$节点一直到根节点的所有收益分数之和以及访问次数</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>以下图来具体分析，每个节点左侧的数字表示目前经过该节点所得收益分数之和，右侧的数字表示访问次数。</p>
+<p><img alt="alt text" src="../image/2.12.jpg" /></p>
+<p>第一步：选择（a）<br />
+搜索树中已有三个节点，分别计算第二层的UCB值（将左右的数字代入公式），左边的UCB值更大，因此选择左侧的节点$L$，由于$L$有未被扩展的子节点，因此选择阶段结束。</p>
+<p>第二步：扩展（b）<br />
+算法随即扩展了一个未被扩展的子节点$C$，将收益分数之和和访问次数均初始化为0（因为其还没有得到相关数据），图中虚线框表示$L$未被扩展的其他子节点，标记其UCB值为$+\infty$，表示下次访问到$L$时必然扩展这些未被扩展的子节点。</p>
+<p>第三步：模拟（c）<br />
+从节点$C$出发，通过随机策略得到最后的一个可能终局得分为3。</p>
+<p>第四步：反向传播（d）<br />
+从节点$C$开始回溯更新，路径上所有的节点的访问次数+1，MIN层节点现有总分加上终局得分分数，MAX层节点现有总分减去终局得分分数。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在对抗搜索中，玩家MIN总是期望最小化终局得分，因此在MIN层选择其子结点时，其目标并非选取奖励最大化的子结点，而是选择奖励最小化的结点，为了统一使用上限置信区间算法求解，算法将MIN层的子结点（即MAX层结点）的总分记为其相反数。</p>
+</div>
+<p><strong>伪代码：</strong></p>
+<p><img alt="alt text" src="../image/2.19.jpg" /></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter1/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 1.逻辑与推理">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                1.逻辑与推理
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Chapter3/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.机器学习">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                3.机器学习
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

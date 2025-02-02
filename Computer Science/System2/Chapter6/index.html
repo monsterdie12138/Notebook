@@ -1,0 +1,1602 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/System2/Chapter6/">
+      
+      
+        <link rel="prev" href="../Chapter5/">
+      
+      
+        <link rel="next" href="../Chapter7/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>6.Processes - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CLibre+Baskerville:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Libre Baskerville"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter6-processes" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6.Processes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Mathematics/Mathematical%20Analysis1/Chapter1/" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../ADS/Chapter1/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../Mathematics/Mathematical%20Analysis1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../AID/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.ISA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.Pipelining
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.Hazard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.Inst Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.OS Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6.Processes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6.Processes
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-process-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Process Concept 进程的概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-process-control-blockpcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Process Control Block(PCB) 进程控制块
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-process-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Process State 进程的状态
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Process State 进程的状态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newprocess-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      New：Process Creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminatedprocess-terminations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminated：Process Terminations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-process-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 Process Scheduling 进程的调度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 Process Scheduling 进程的调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Switch 上下文切换
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.CPU Scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.Inter-Process Communication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9.Threads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10.Synchronization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11.Deadlocks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-process-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Process Concept 进程的概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-process-control-blockpcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Process Control Block(PCB) 进程控制块
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-process-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 Process State 进程的状态
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Process State 进程的状态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newprocess-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      New：Process Creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminatedprocess-terminations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminated：Process Terminations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-process-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 Process Scheduling 进程的调度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 Process Scheduling 进程的调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Switch 上下文切换
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter6-processes">Chapter6 Processes</h1>
+<hr />
+<h2 id="61-process-concept">6.1 Process Concept 进程的概念</h2>
+<p><strong>resource allocation and protection 资源的分配与保护单元</strong></p>
+<p>进程是一个执行中的程序，一个未执行的程序仅仅是硬盘上的ELF，ELF载入内存后就变成了进程。</p>
+<p>同一个程序可以对应多个进程。例如，在一个共享服务器上，每个用户可以启动相同程序的一个实例（如文本编辑器、Shell等）。</p>
+<p>一个运行的系统包含多个进程，比如OS进程和user进程等。</p>
+<p><strong>进程包含的内容：</strong></p>
+<ul>
+<li>code（text）section：代码内容</li>
+<li>data section：全局变量，包括<code>.bss</code>段和<code>.data</code>段的内容</li>
+<li>program counter（pc）：指向下一条待执行的指令</li>
+<li>stack：与函数调用相关</li>
+<li>heap：与动态分配内存相关</li>
+<li>PCB：进程控制块，包含进程信息</li>
+</ul>
+<p><img alt="alt text" src="../image/9.1.jpg" /></p>
+<p>上图为user space的进程的内存布局。</p>
+<p><strong>stack 运行时栈：</strong></p>
+<p>与函数/方法调用相关，调用时会长，返回时会缩，其对应的内存空间称为<strong>stack frame 栈帧</strong>，保存于调用相关的信息，如返回地址、局部变量等，完全由编译器进行管理。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>栈帧又称activation records。</p>
+</div>
+<p>对于一个被调用的函数，其需要：</p>
+<ul>
+<li>caller传递的参数</li>
+<li>局部变量</li>
+<li>返回地址</li>
+<li>返回值</li>
+</ul>
+<p>在调用之前，caller也需要保存寄存器的相关状态。</p>
+<p>运行时栈是从高往低处（从高地址往低地址）长的，如果长得过多（递归）会导致stack overflow，会和heap冲突（静态）或者和lib冲突（动态）。</p>
+<p><strong>heap 运行时堆：</strong></p>
+<p>运行时堆在栈之后发明，弥补了栈没有办法长期维持一块内存的问题。大块内存（动态分配）在堆上，有自己的生命周期。</p>
+<p>如果没有及时释放堆的内存，则会导致memory leak，而栈一般不会。</p>
+<p><strong>同一程序的两个进程比较：</strong></p>
+<p>两个对应程序一样且同时的进程，<code>text</code>段和<code>data</code>段的大小一样（ELF映射），<code>text</code>段的内容一样，但<code>data</code>段的内容可能不一样，因为global valuable可变。栈和堆的大小和内容都不一样。</p>
+<p><img alt="alt text" src="../image/9.2.jpg" /></p>
+<hr />
+<h2 id="62-process-control-blockpcb">6.2  Process Control Block(PCB) 进程控制块</h2>
+<p>PCB本质上是内存的一块内容，存放对应进程的信息，一个进程只有一个PCB，在进程创建时分配，在进程结束时释放。</p>
+<p>PCB存放的信息：</p>
+<ul>
+<li>进程号PID：唯一标识进程</li>
+<li>进程状态：running、waiting等</li>
+<li>PC：下一条待执行指令的地址</li>
+<li>CPU寄存器：与该进程相关的寄存器的内容</li>
+<li>CPU调度信息：如优先级、调度队列指针等</li>
+<li>内存管理信息：如分配给该进程的内存区域等</li>
+<li>计数信息：如CPU占用情况，耗时，时间限制等</li>
+<li>I/O信息：如分配给该进程的I/O设备，待打开文件等</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在Linux中PCB用C语言表示为<code>task_struct</code>。</p>
+</div>
+<div class="language-c highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">pid</span><span class="w"> </span><span class="n">t_pid</span><span class="p">;</span><span class="w">                  </span><span class="cm">/* process identifier */</span><span class="w"> </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kt">long</span><span class="w"> </span><span class="n">state</span><span class="p">;</span><span class="w">                 </span><span class="cm">/* state of the process */</span><span class="w"> </span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">time_slice</span><span class="w">     </span><span class="cm">/* scheduling information */</span><span class="w"> </span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="k">struct</span><span class="w"> </span><span class="nc">task_struct</span><span class="w"> </span><span class="o">*</span><span class="n">parent</span><span class="p">;</span><span class="w"> </span><span class="cm">/* this process’s parent */</span><span class="w"> </span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">struct</span><span class="w"> </span><span class="nc">list_head</span><span class="w"> </span><span class="n">children</span><span class="p">;</span><span class="w">  </span><span class="cm">/* this process’s children */</span><span class="w"> </span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="k">struct</span><span class="w"> </span><span class="nc">files_struct</span><span class="w"> </span><span class="o">*</span><span class="n">files</span><span class="p">;</span><span class="w"> </span><span class="cm">/* list of open files */</span><span class="w"> </span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">struct</span><span class="w"> </span><span class="nc">mm_struct</span><span class="w"> </span><span class="o">*</span><span class="n">mm</span><span class="p">;</span><span class="w">       </span><span class="cm">/* address space of this process */</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="63-process-state">6.3 Process State 进程的状态</h2>
+<p><img alt="alt text" src="../image/9.3.jpg" /></p>
+<ul>
+<li><strong>New：</strong> 进程被创建</li>
+<li><strong>Running：</strong> 进程的指令在执行</li>
+<li><strong>Waiting：</strong> 进程在等待事件发生</li>
+<li><strong>Ready：</strong> 进程在等待被分配给处理器</li>
+<li><strong>Terminated：</strong> 进程结束</li>
+</ul>
+<h3 id="newprocess-creation">New：Process Creation</h3>
+<p><img alt="alt text" src="../image/9.4.jpg" /></p>
+<p>一个进程能创建新的进程，此时前者为parent，后者为child，child的ppid指的是其parent的pid。</p>
+<p>child可能会从其parent处继承一些信息，可能是parent的复制，也可能全新。</p>
+<p>parent能向child传递参数。创建child后，parent可以继续执行，也可以等待child执行。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Linux的一号进程是<code>systemd</code>（很多进程的parent），二号进程是<code>kernelthread</code>，他们的parent都是零号进程，零号进程是<code>swapper</code>（IDLE）（系统启动的最初进程）。</p>
+</div>
+<p><strong><code>folk</code>系统调用：</strong></p>
+<p><code>folk</code>系统调用用于创建一个新的进程，创建的child是parent的复制，接下来会和parent从同一位置一起执行（<code>folk</code>系统调用的下一句），但pid和ppid不同，resource utilization（资源利用率）初始化为0。</p>
+<p><code>folk</code>会返回两个不同的值，给parent返回child的pid，给child返回0。每个进程可以调用<code>getpid()</code>得到自己的pid，调用<code>getppid()</code>得到自己的ppid。</p>
+<p>所有进程系统调用<code>folk</code>后，依然会继续执行。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error: can’t fork()</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="n">perror</span><span class="p">(</span><span class="err">“</span><span class="n">fork</span><span class="p">()</span><span class="err">”</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">}</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;I am parent and my child has pid %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">pid</span><span class="p">);</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="p">}</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;I am child, and my pid is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">getpid</span><span class="p">());</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>例1：下列代码最后会输出多少？child的a最后为多少？<br />
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// PARENT</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// ask the OS to put me in waiting</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="err">”</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// CHILD</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">a</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">}</span>
+</span></code></pre></div></p>
+<p>解：12；15</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>例2：下列代码最后会打印多少次“hello”？
+<div class="language-c highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">pid1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">pid2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p>解：6<br />
+第一个进程在第1行创建第二个进程，这两个进程各自打印2次；这两个进程在第3行各自创建第三个进程和第四个进程，这两个进程各自打印1次。</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>例3：下列代码最后会形成多少个进程？  </p>
+<div class="language-c highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span>
+<span class="normal"><a href="#__codelineno-4-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">[])</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="n">fork</span><span class="w"> </span><span class="p">();</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fork</span><span class="w"> </span><span class="p">())</span><span class="w"> </span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">        </span><span class="n">fork</span><span class="w"> </span><span class="p">();</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">    </span><span class="n">fork</span><span class="w"> </span><span class="p">();</span><span class="w"> </span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>解：12</p>
+<p><img alt="alt text" src="../image/9.5.jpg" /></p>
+</div>
+<p><code>folk</code>得到的进程是一模一样的，看似没用，需要<code>exec</code> 系统调用用在<code>folk</code>之后才有用。</p>
+<p><strong><code>exec</code>系统调用：</strong></p>
+<p><code>exec</code>系统调用将当前进程的内存空间替换为新的内容。</p>
+<p>只有出现错误，<code>exec</code>才会有返回值。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>exec</code>实际上是一个系列，包括<code>execl</code>， <code>execle</code>，<code>execlp</code>，<code>execv</code>，<code>execve</code>和<code>execvp</code>，可以指定可执行文件路径、命令行参数、环境变量等。</p>
+</div>
+<p><img alt="alt text" src="../image/9.6.jpg" /></p>
+<p>如果在一个进程中先系统调用 <code>exec</code>，再调用<code>print</code>函数，<code>print</code>函数不会被执行，也不会输出任何内容。</p>
+<p>原因是：当<code>exec</code>系统调用成功时，它会用新程序的映像完全替换当前进程的映像。这意味着，之后的代码将不会被执行，因为当前进程已经被新程序取代了。<code>execv</code>只有在执行失败时才会返回，而在这种情况下，后续的代码才会被执行。</p>
+<p><strong><code>fork</code>+<code>exec</code>进程创建的优劣：</strong></p>
+<p>优点：</p>
+<ul>
+<li>简洁</li>
+<li>分工明确：<code>folk</code>搭起骨架，<code>exec</code>赋予灵魂</li>
+<li>保持进程之间的联系</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>复杂：涉及两个系统调用</li>
+<li>性能差</li>
+<li>安全性问题</li>
+</ul>
+<h3 id="terminatedprocess-terminations">Terminated：Process Terminations</h3>
+<p><strong><code>exit</code>系统调用：</strong></p>
+<p><code>exit</code>系统调用用于终止所在进程，其输入为一个exit code，OS负责释放该进程的所有资源（物理/虚拟内存、I/O buffer，open files等）</p>
+<div class="admonition success">
+<p class="admonition-title">Definition</p>
+<p><strong>exit code 退出码：</strong><br />
+常规情况：<code>exit(0)</code><br />
+出现错误：<code>exit(i)</code>（i非零）<br />
+其既可以作为输入，也可以作为输出返回给parent。  </p>
+</div>
+<p><strong><code>wait</code>和<code>waitpid</code>系统调用：</strong></p>
+<p><code>wait</code>系统调用被parent使用，等待其<strong>任意</strong>一个child结束，返回值为结束的child的pid和exit code。</p>
+<p><code>waitpid</code>系统调用等待<strong>特定</strong>的child结束（以child的pid作为输入），其还有一个参数输入叫作status，如果status为<code>WNOHANG</code>，则如果pid指定的child没有结束，则返回0；否则则返回child的pid。（non-blocking）</p>
+<p><strong>Signal：</strong></p>
+<p>signal是来自软件的中断，发送给进程，属于进程在某种程度上不得不响应的异步事件。</p>
+<p>signal可以用于处理进程同步。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>^C会向运行的命令发送<code>SIGNT</code>signal  </li>
+<li>段错误会向运行的进程发送<code>SIGBUS</code>signal  </li>
+<li>一个进程会向另一个进程发送<code>SIGKILL</code>signal  </li>
+</ul>
+</div>
+<p>每一种signal都会导致进程的对应默认行为，例如，<code>SIGINT</code>signal会导致进程终止。</p>
+<p>对于大多数signal，可以忽略或者通过用户指明的handler来处理，但像<code>SIGKILL</code>和<code>SIGSTOP</code>一类的signal无法被user忽略或者处理（出于安全考虑）。</p>
+<p><code>signal</code>系统调用允许进程指明如何处理signal，例如：</p>
+<ul>
+<li><code>signal(SIGINT,SIG_IGN)</code>：忽略<code>SIGINT</code></li>
+<li><code>signal(SIGINT,SIG_DFL)</code>：为<code>SIGINT</code>设置默认处理方式</li>
+<li><code>signal(SIGINT,my_handler)</code>：将<code>SIGINT</code>交给自定义的handler处理</li>
+</ul>
+<p><strong>Zombie进程：</strong></p>
+<p>如果一个child进程已经结束，并不占用CPU，但没有释放掉资源（如<code>.text</code>、<code>.data</code>、PCB等），则变为zombie。</p>
+<p>如果zombie越来越多，则会耗尽内存，导致<code>folk</code>失败。因此，zombie需要parent帮忙释放（例如系统调用<code>wait</code>获取exit code，或者使用handler）。</p>
+<p>只有zombie的parent调用<code>wait</code>或者parent没了，zombie才能消失。当child退出时，其parent会接收到<code>SIGCHLD</code>signal。</p>
+<p>典型处理方法：</p>
+<ul>
+<li>parent将<code>SIGCHLD</code>signal连接到一个handler</li>
+<li>handler调用<code>wait</code></li>
+<li>等待识别所有child的终止</li>
+</ul>
+<p><strong>Orphan进程：</strong></p>
+<p>如果一个child进程的parent没了，则这个child变为orphan。</p>
+<p>在Linux中，orphan进程会被第一进程（init进程）收养（orphan的parent设置为一号进程）。与之前同理，一号进程也会将<code>SIGCHLD</code>signal连接到一个handler，handler调用<code>wait</code>，等待识别所有orphan的终止，因此，没有orphan会变成zombie。</p>
+<hr />
+<h2 id="64-process-scheduling">6.4 Process Scheduling 进程的调度</h2>
+<p>进程调度的目的是通过快速切换进程来最大化CPU的使用效率。</p>
+<p><strong>process scheduler 调度程序</strong>在处于ready状态的进程中选择即将执行的，也负责决定何时执行，执行多长时间等。</p>
+<p>如果CPU只有一个core，则处于running状态的进程只会有一个，而ready和waiting状态会有很多个，用<strong>scheduling queue</strong>组织这两个状态。（new和terminated状态的时间很短，不需要组织）</p>
+<p>scheduling queue分为<strong>ready queue</strong>（待执行，只有一条）和<strong>wait queues</strong>（等待event，有很多条），若进程等待的对象不一样，则放入不同的wait queue，比如要等待硬盘的进程放一起，要等待lock的进程放一起，相当于分类。</p>
+<p><img alt="alt text" src="../image/9.8.jpg" /></p>
+<p><strong>scheduling queue的组织：</strong></p>
+<p><img alt="alt text" src="../image/9.7.jpg" /></p>
+<p>每一条scheduling queue的每一个进程都对应一个<strong>list head</strong>，存放两个指针，分别指向前一个和后一个list head，list head减去一个偏移量再进行强制转换得到对应的进程的PCB。</p>
+<h3 id="context-switch">Context Switch 上下文切换</h3>
+<p><img alt="alt text" src="../image/9.9.jpg" /></p>
+<p>当进程$P_0$切换到进程$P_1$时，由于寄存器只有一套，因此$P_0$对应的寄存器的值应当保存到其PCB中，然后寄存器载入$P_1$对应的值。</p>
+<p>上下文切换是overhead的，因此需要尽量减少。如果OS和PCB的内容越复杂，则上下文切换的耗时越长。</p>
+<p><strong>相关代码：</strong></p>
+<p>该代码对应的是两个kernel space的进程的上下文切换。</p>
+<p><img alt="alt text" src="../image/9.10.jpg" /></p>
+<p><code>cpu_switch_to</code>接收两个参数，分别是$P_0$和$P_1$的<code>task_struct</code>的地址，分别保存在<code>x0</code>和<code>x1</code>寄存器中。</p>
+<p><code>mov x10,#THREAD_CPU_CONTEXT</code><br />
+<code>add x8,x0,x10</code>：将$P_0$的<code>task_struct</code>的地址加上一段偏移量得到存放寄存器的地址<code>cpu_context</code>，该地址保存在<code>x8</code>寄存器中。</p>
+<p><code>mov x9,sp</code>：此时<code>sp</code>寄存器保存的是$P_0$的栈顶地址，上下文切换时同样需要保存，保存在<code>x9</code>寄存器中。</p>
+<p><code>stp x19,x20,[x8],#16</code>：类似的指令都是在保存$P_0$相关寄存器的值，存放的起始地址即为<code>x8</code>保存的地址。</p>
+<p><code>str lr,[x8]</code>：<code>lr</code>寄存器保存返回地址。在这一条指令中，内存保存了$P_0$调用<code>cpu_switch_to</code>下一条本来要执行的指令地址，也即从$P_1$切换回$P_0$后要接着执行的指令地址。</p>
+<p><code>add x8,x1,x10</code>：将$P_1$的<code>task_struct</code>的地址加上一段偏移量得到存放寄存器的地址<code>cpu_context</code>，该地址保存在<code>x8</code>寄存器中。</p>
+<p><code>ldp x19,x20,[x8],#16</code>：类似的指令都是在载入$P_1$相关寄存器的值，来源的地址即为<code>x8</code>保存的地址。</p>
+<p><code>ldr lr,[x8]</code>：将$P_1$上一次运行到一半到达的指令地址（位于内存的<code>[x8]</code>位置）载入<code>lr</code>寄存器，这个时候返回地址即为<code>lr</code>的值。</p>
+<p><code>mov sp,x9</code>：$P_1$的栈顶指针现已经载入<code>x9</code>寄存器，再次将其转移到<code>sp</code>寄存器，即更新栈顶指针。</p>
+<p><code>msr sp_e10,x1</code>：将<code>x1</code>寄存器的值移动到特殊寄存器<code>sp_e10</code>中，可暂时不考虑。</p>
+<p><code>ret</code>：返回到<code>lr</code>寄存器中保存的地址，即从$P_1$上一次没执行完的地方接着往下执行。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这一段代码用汇编而不用C的原因：<br />
+C的编译器会优化，代码改变，可能引起问题。  </p>
+</div>
+<p>假设$P_0$在第755行调用<code>schedule</code>，则最终会返回到<code>schedule</code>的下一条指令，即第756行。</p>
+<p><strong>kernel space进程的内存布局：</strong></p>
+<p><img alt="alt text" src="../image/9.11.jpg" /></p>
+<p>栈顶为<strong>pt_regs</strong>，保存对应user space进程的寄存器状态；栈底为<strong>thread_info</strong>，指向对应进程的<code>task_struct</code>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注意与user space的内存布局区分。</p>
+</div>
+<p><strong>上下文切换情景：</strong></p>
+<p>对于kernel space的进程的上下文切换：</p>
+<p><img alt="alt text" src="../image/9.12.jpg" /></p>
+<ul>
+<li>When：<code>cpu_switch_to</code></li>
+<li>Where：PCB的<code>cpu_context</code></li>
+</ul>
+<p>对于user space的进程的上下文切换：</p>
+<p>上下文切换依然要进入内核态，因为OS要进行资源分配。</p>
+<p>从user space到kernel space也发生了上下文切换。</p>
+<p><img alt="alt text" src="../image/9.13.jpg" /></p>
+<p>user的context保存：</p>
+<ul>
+<li>When：<code>kernel_entry</code></li>
+<li>Where：kernel stack中的<code>pt_regs</code></li>
+</ul>
+<p>kernel的context保存：</p>
+<ul>
+<li>When：<code>cpu_switch_to</code></li>
+<li>Where：PCB的<code>cpu_context</code></li>
+</ul>
+<p><strong><code>folk</code>返回值：</strong></p>
+<p><code>folk</code>系统调用会进入内核，有两套进程，对应两个<code>pt_regs</code>，<code>folk</code>的返回值（parent对应child的pid，child对应0）会保存在各自的<code>pt_regs</code>中（<code>pt_regs[0]</code>），再通过上下文切换返回给parent和child。</p>
+<p>当<code>folk</code>完成后，child处于ready状态，通过上下文切换进入running状态，从<code>ret_from_fork</code>开始（也保存在<code>pt_regs</code>中，顺序为<code>ret_from_folk</code>$\rightarrow$<code>ret_to_user</code>$\rightarrow$<code>kernel_exit</code>）；而parent原本处于running状态，通过上下文切换可能进入ready状态，也可能进入waiting状态。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter5/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 5.OS Structures">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                5.OS Structures
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Chapter7/" class="md-footer__link md-footer__link--next" aria-label="下一页: 7.CPU Scheduling">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                7.CPU Scheduling
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>
