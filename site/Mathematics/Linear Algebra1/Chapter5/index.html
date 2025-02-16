@@ -1,0 +1,2187 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Mathematics/Linear%20Algebra1/Chapter5/">
+      
+      
+        <link rel="prev" href="../Chapter4/">
+      
+      
+        <link rel="next" href="../../Linear%20Algebra2/Chapter1/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>5.特征值、特征向量与矩阵的标准形 - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CLibre+Baskerville:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Libre Baskerville"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter5" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5.特征值、特征向量与矩阵的标准形
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Computer%20Science/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Mathematics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Mathematical%20Analysis1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数学分析Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Mathematical%20Analysis2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数学分析Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    线性代数Ⅰ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            线性代数Ⅰ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.线性空间与内积空间
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.线性映射
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.矩阵
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.行列式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    5.特征值、特征向量与矩阵的标准形
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    5.特征值、特征向量与矩阵的标准形
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 正交变换与正交矩阵
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 正交变换与正交矩阵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      正交变换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      正交矩阵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q-R分解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadamard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadamard不等式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 线性变换在不同基下的矩阵表示 相似矩阵
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 线性变换在不同基下的矩阵表示 相似矩阵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性变换基所对应的矩阵关系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      相似矩阵
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 特征值与特征向量
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 特征值与特征向量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征值和特征向量（线性变换）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征值和特征向量（矩阵）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 可对角化的条件 相似标准形
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 可对角化的条件 相似标准形">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      对角化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      可对角化的条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      解对角阵和变换矩阵的一般步骤
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5 实对称矩阵的对角化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5 实对称矩阵的对角化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.6 双线性函数和二次型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6 双线性函数和二次型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      双线性函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      度量矩阵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      相合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      二次型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7 实二次型的标准形 实对称矩阵的相合标准形
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 实二次型的标准形 实对称矩阵的相合标准形">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      主轴定理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      惯性指数与惯性定理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.8 正定二次型与正定矩阵 其它有定二次型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8 正定二次型与正定矩阵 其它有定二次型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      正定二次型与正定矩阵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他二次型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Linear%20Algebra2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    线性代数Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Physics1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Physics2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Discrete%20Mathematics/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    离散数学理论基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Probability/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Computer%20Science/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 正交变换与正交矩阵
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 正交变换与正交矩阵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      正交变换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      正交矩阵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q-R分解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadamard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadamard不等式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 线性变换在不同基下的矩阵表示 相似矩阵
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 线性变换在不同基下的矩阵表示 相似矩阵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性变换基所对应的矩阵关系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      相似矩阵
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 特征值与特征向量
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 特征值与特征向量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征值和特征向量（线性变换）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      特征值和特征向量（矩阵）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 可对角化的条件 相似标准形
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 可对角化的条件 相似标准形">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      对角化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      可对角化的条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      解对角阵和变换矩阵的一般步骤
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5 实对称矩阵的对角化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5 实对称矩阵的对角化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      定理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.6 双线性函数和二次型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6 双线性函数和二次型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      双线性函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      度量矩阵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      相合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      二次型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7 实二次型的标准形 实对称矩阵的相合标准形
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 实二次型的标准形 实对称矩阵的相合标准形">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      主轴定理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      惯性指数与惯性定理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.8 正定二次型与正定矩阵 其它有定二次型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8 正定二次型与正定矩阵 其它有定二次型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      正定二次型与正定矩阵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他二次型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter5">Chapter5 特征值、特征向量与矩阵的标准形</h1>
+<hr />
+<h2 id="51">5.1 正交变换与正交矩阵</h2>
+<h3 id="_1">正交变换</h3>
+<p>欧氏空间$V(R)$的一个线性变换$\sigma$如果对$\forall \alpha,\beta\in V$满足：</p>
+<p>$$(\sigma(\alpha),\sigma(\beta))=(\alpha,\beta)$$</p>
+<p>即线性变换后内积不变，则称$\sigma$为<strong>正交变换</strong>.</p>
+<p><strong>等价条件：长度不变</strong></p>
+<p>$$|\sigma(\alpha)|=|\alpha|,~\forall \alpha\in V$$</p>
+<p><strong>性质一：夹角不变</strong></p>
+<p>若$\sigma$是正交变换，则</p>
+<p>$$\langle \sigma(\alpha),\sigma(\beta )\rangle=\langle\alpha,\beta\rangle$$</p>
+<p><strong>性质二：单射</strong></p>
+<p>若$\sigma$是正交变换，则$\sigma$是单射，从而可逆。</p>
+<p><strong>等价关系：</strong></p>
+<p>若$\sigma\in(V,V)$，则下列命题等价：</p>
+<p>① $\sigma$是正交变换</p>
+<p>② 对任意一组单位正交基$\varepsilon_1,\varepsilon_2,···,\varepsilon_n$，$\sigma(\varepsilon_1),\sigma(\varepsilon_2),···,\sigma(\varepsilon_n)$也是单位正交基</p>
+<p>③ 对任意一组单位正交基$\varepsilon_1,\varepsilon_2,···,\varepsilon_n$，满足</p>
+<p>$$(\sigma(\varepsilon_1),\sigma(\varepsilon_2),···,\sigma(\varepsilon_n))=(\varepsilon_1,\varepsilon_2,···,\varepsilon_n)M(\sigma)$$</p>
+<p>其中$M(\sigma)$满足</p>
+<p>$$M(\sigma)^TM(\sigma)=M(\sigma)M(\sigma)^T=E$$</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p><img alt="Alt text" src="../image/1.7.1.JPG" /></p>
+</div>
+<h3 id="_2">正交矩阵</h3>
+<p><strong>定义一：</strong></p>
+<p>欧氏空间$V(R)$的正交变换$\sigma$关于$V$的单位正交基所对应的矩阵$A$称为<strong>正交矩阵</strong>。</p>
+<p>$$\sigma(\varepsilon_1,\varepsilon_2,···,\varepsilon_n)=(\varepsilon_1,\varepsilon_2,···,\varepsilon_n)A$$</p>
+<p><strong>定义二：</strong></p>
+<p>满足</p>
+<p>$$A^TA=E$$</p>
+<p>的方阵$A$称为<strong>正交矩阵</strong>（或：如果$A$的列向量组是一组单位正交基）。</p>
+<p><strong>正交矩阵的性质：</strong></p>
+<p>（1）若$A$为正交矩阵，则$A^{-1}=A^T$，且$A^T$也是正交矩阵.</p>
+<p>（2）若$A$为正交矩阵，则$|A|=±1$</p>
+<p>（3）若$A,B$都是正交矩阵，则$AB$也是正交矩阵</p>
+<p><strong>第一类正交变换（旋转变换）：</strong></p>
+<p>$$|A|=1$$</p>
+<p><strong>第二类正交变换（镜面变换）：</strong></p>
+<p>$$|A|=-1$$</p>
+<h3 id="q-r">Q-R分解</h3>
+<p>若$A$为可逆实矩阵，则存在正交矩阵$Q$和主对角元为正数的上三角矩阵$R$，使得</p>
+<p>$$A=QR$$</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p><img alt="Alt text" src="../image/1.7.2.JPG" /></p>
+</div>
+<h3 id="hadamard">Hadamard不等式</h3>
+<p>$n$阶实矩阵$A$的行列式的绝对值小于等于$A$的$n$个列（行）向量长度的乘积，即</p>
+<p>$$|detA|\leqslant \prod\limits_{i=1}^{n}|\alpha_i|$$</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p><img alt="Alt text" src="../image/1.7.3.JPG" /></p>
+</div>
+<hr />
+<h2 id="52">5.2 线性变换在不同基下的矩阵表示 相似矩阵</h2>
+<h3 id="_3">线性变换基所对应的矩阵关系</h3>
+<p>设线性变换$\sigma\in L(V,V)$，$B_1=\{\alpha_1,···,\alpha_n\}$和$B_2=\{\beta_1,···,\beta_n\}$是线性空间$V(F)$的两组基，基$B_1$变为基$B_2$的变换矩阵为$C$，如果$\sigma$在基$B_1$下的矩阵为$A$，则$\sigma$在基$B_2$下的矩阵为$C^{-1}AC$。</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p><img alt="Alt text" src="../image/1.7.4.JPG" /></p>
+</div>
+<h3 id="_4">相似矩阵</h3>
+<p>若对于$A,B\in M_n(F)$，存在可逆矩阵$C\in M_n(F)$,使得</p>
+<p>$$C^{-1}AC=B$$</p>
+<p>则称$A$<strong>相似于</strong>$B$，记作$A\sim B$。</p>
+<p>相似矩阵的性质(等价关系)：</p>
+<p>（1）自反性：$A\sim A$</p>
+<p>（2）对称性：若$A\sim B$，则$B\sim A$</p>
+<p>（3）传递性：若$A_1\sim A_2$，$A_2\sim A_3$，则$A_1\sim A_3$</p>
+<p>（4）若$A\sim B$，则</p>
+<p>$$C^{-1}(AB)C=(C^{-1}AC)(C^{-1}BC)$$</p>
+<p>（5）若$A\sim B$，则</p>
+<p>$$C^{-1}(kA+tB)C=kC^{-1}AC+tC^{-1}BC$$</p>
+<p>（6）若$A\sim B$，则$A^m\sim B^m$（$m$为正整数）</p>
+<p>（7）若$A\sim B$，则$f(A)\sim f(B)$，其中</p>
+<p>$$f(x)=a_mx^m+a_{m-1}x^{m-1}+···+a_1x+a_0$$</p>
+<p><strong>相似矩阵的特征：</strong></p>
+<p>相似矩阵有相同的特征多项式，从而有相同的特征值、迹和行列式，但特征向量不一定相同。</p>
+<p>特征多项式相同则特征值相同，迹等于所有特征值之和，行列式等于所有特征值之积，因此相似矩阵有相同的迹，行列式，特征值。</p>
+<p>相似矩阵来源于同一线性变换在不同基下的表示，因此它们的特征向量是线性变换的特征向量在不同基下的坐标，因此不一定相同。</p>
+<hr />
+<h2 id="53">5.3 特征值与特征向量</h2>
+<h3 id="_5">特征值和特征向量（线性变换）</h3>
+<p>设$\sigma\in L(V,V)$，若存在非零向量$\alpha\in V$和数$\lambda \in F$，使得</p>
+<p>$$\sigma(\alpha)=\lambda \alpha$$</p>
+<p>则称$\lambda$是$\sigma$的一个<strong>特征值</strong>，$\alpha$是$\sigma$的一个关于其特征值$\lambda$的<strong>特征向量</strong>。</p>
+<p>所有$\sigma$的关于特征值$\lambda$的特征向量（加上零向量）组成的集合$V_\lambda$称为$\sigma$关于其特征值$\lambda$的<strong>特征子空间</strong>。</p>
+<h3 id="_6">特征值和特征向量（矩阵）</h3>
+<p><strong>引入：</strong></p>
+<p>已知</p>
+<p>$$\sigma(\xi)=\lambda_0\xi$$</p>
+<p>上式等价于</p>
+<p>$$(\lambda_0I-\sigma)(\xi)=0$$</p>
+<p>其中$I$为恒等变换</p>
+<p>所以特征子空间$V_{\lambda_0}$为线性变换$(\lambda_0I-\sigma)$的核</p>
+<p>因为$V_{\lambda_0}$中必有非零向量</p>
+<p>所以</p>
+<p>$$\dim(Ker(\lambda_0I-\sigma))\geqslant 1$$</p>
+<p>由维数公式：</p>
+<p>$$\dim(Ker(\lambda_0I-\sigma))+\dim(r(\lambda_0I-\sigma))=\dim(V)=n$$</p>
+<p>得到</p>
+<p>$$r(\lambda_0I-\sigma)\leqslant n-1$$</p>
+<p>若$\sigma$关于基$B$的对应矩阵为$A$</p>
+<p>则线性变换$(\lambda_0I-\sigma)$关于基$B$所对应的矩阵为$\lambda_0E-A$</p>
+<p>所以</p>
+<p>$$|\lambda_0E-A|=0$$</p>
+<p>齐次线性方程组$(\lambda_0E-A)X=0$有非零解</p>
+<p>非零解$X=(x_1,···,x_n)^T$所对应的非零向量</p>
+<p>$$\xi=x_1e_1+···+x_ne_n\in Ker(\lambda_0I-\sigma)$$</p>
+<p>$\xi$即为特征向量</p>
+<p>综上：$\sigma$的特征值即为方程$|\lambda_0E-A|=0$的根，所对应的特征向量即为方程组$(\lambda_0E-A)X=0$的解所对应的向量。</p>
+<p><strong>定义：</strong></p>
+<p>设矩阵$A\in M_n(F)$，如果存在数$\lambda_0\in F$和非零向量$X\in F^n$，使得</p>
+<p>$$AX=\lambda_0X$$</p>
+<p>则称$\lambda_0$为矩阵$A$的一个<strong>特征值</strong>，称非零向量$X$为矩阵$A$的属于其特征值$\lambda_0$的<strong>特征向量</strong>，称$\lambda$的$n$次多项式$f(\lambda)=|\lambda E-A|$为矩阵$A$的<strong>特征多项式</strong>。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例：已知$R^3$的线性变换$\sigma$关于$R^3$的某一组基$\{\alpha_1,\alpha_2,\alpha_3\}$所对应的矩阵为<br />
+$A=\begin{pmatrix}<br />
+    {0}&amp;{-2}&amp;{-2}\\  <br />
+    {2}&amp;{-4}&amp;{-2}\\  <br />
+    {-2}&amp;{2}&amp;{0}  <br />
+\end{pmatrix}$<br />
+求$\sigma$的特征值及相应的特征子空间。</strong></p>
+<p><img alt="Alt text" src="../image/1.7.5.JPG" /></p>
+</div>
+<h3 id="1">定理1</h3>
+<p>若$\lambda_1,\lambda_2,···,\lambda_m$是$\sigma(A)$不同的特征值，$\eta_{i1},\eta_{i2},···,\eta_{ir_i}$是关于$\lambda_i$的线性无关的特征向量，则$\eta_{11},···,\eta_{1r_1},\eta_{21},···,\eta_{2r_2},···,\eta_{m1},···,\eta_{mr_m}$线性无关。</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p><img alt="Alt text" src="../image/1.7.8.JPG" /></p>
+</div>
+<h3 id="2">定理2</h3>
+<p>$n$维线性空间$V(F)$的线性变换$\sigma$的每个特征值$\lambda_i$的重数 <strong>(代数重数)</strong> 大于等于其特征子空间的维数 <strong>(几何重数)</strong>。</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p><img alt="Alt text" src="../image/1.7.7.JPG" /></p>
+</div>
+<hr />
+<h2 id="54">5.4 可对角化的条件 相似标准形</h2>
+<h3 id="_7">对角化</h3>
+<p>如果有限维线性空间$V(F)$的线性变换$\sigma$在某个基下对应的矩阵为对角阵，则称$\sigma$为<strong>可对角化的线性变换</strong>，与对角阵相似的矩阵$A$称为<strong>可对角化矩阵</strong>。</p>
+<h3 id="_8">可对角化的条件</h3>
+<p><strong>充要条件1：</strong></p>
+<p>$n$维线性空间$V(F)$的线性变换$\sigma$（或$A\in M_n(F)$）可对角化的充要条件为$\sigma$（或$A$）有$n$个线性无关的特征向量。</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p><img alt="Alt text" src="../image/1.7.9.JPG" /></p>
+</div>
+<p><strong>推论：</strong></p>
+<p>若$n$维线性变换$\sigma$有$n$个互不相同的特征值，则$\sigma$可对角化。</p>
+<p><strong>充要条件2：</strong></p>
+<p>$n$维线性空间$V(F)$的线性变换$\sigma$可对角化的充要条件为：$\sigma$的每个特征值的重数等于其特征子空间的维数，且重数和为$n$。</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p>充分性：  <br />
+若重数和为$n$且代数重数等于几何重数 
+则由定理1：$n$个特征向量线性无关  <br />
+所以可对角化  <br />
+必要性：  <br />
+考虑反证法<br />
+若重数和小于$n$ 
+则由定理2：维数和也小于$n$<br />
+所以$\sigma$的线性无关的特征向量的个数小于$n$ <br />
+所以不可能对角化，矛盾<br />
+若重数和等于$n$但有一个特征值的重数大于其特征子空间的维数 <br />
+则由定理2：维数和小于$n$  <br />
+同样可推得矛盾<br />
+综上：证毕  </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例：求证：若矩阵$A$满足$A^2-(\lambda_1+\lambda_2)A+\lambda_1\lambda_2E=0,\lambda_1\neq \lambda_2$，则$A$可对角化。</strong>
+<img alt="Alt text" src="../image/1.7.6.JPG" /></p>
+</div>
+<h3 id="_9">解对角阵和变换矩阵的一般步骤</h3>
+<p>对于一个$n$阶可对角化矩阵$A$，求变换矩阵$P$，使得$P^{-1}AP=\Lambda$（对角阵），其解题步骤如下：</p>
+<p>① 求$A$的所有特征值$\lambda_1,\lambda_2,···,\lambda_m$</p>
+<p>② 求每个$\lambda$对应的特征子空间的基（基础解系）</p>
+<p>③ 将所有的基向量（$n$个）依次按列排列成$n$阶矩阵，即为变换矩阵$P$</p>
+<p>④ $\Lambda=diag(\lambda_1,···,\lambda_1,···,\lambda_m,···,\lambda_m)$</p>
+<hr />
+<h2 id="55">5.5 实对称矩阵的对角化</h2>
+<h3 id="_10">定理</h3>
+<p><strong>定理一：</strong></p>
+<p>实对称矩阵的特征值都是实数。</p>
+<p><strong>定理二：</strong></p>
+<p>实对称矩阵属于不同特征值的特征向量是正交的。</p>
+<p><strong>定理三：</strong></p>
+<p>若$A$是一个$n$阶实对称矩阵，则存在$n$阶正交矩阵$Q$，使得</p>
+<p>$$Q^{-1}AQ=diag(\lambda_1,\lambda_2,···,\lambda_n)$$</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例：设$A=\begin{pmatrix}<br />
+{2}&amp;{2}&amp;{-2}\\   <br />
+{2}&amp;{5}&amp;{-4}\\   <br />
+{-2}&amp;{-4}&amp;{5} <br />
+\end{pmatrix}$<br />
+求正交矩阵$Q$，使得$Q^{-1}AQ$为对角矩阵，并求出该对角矩阵。</strong></p>
+<p><img alt="Alt text" src="../image/1.7.10.JPG" /></p>
+</div>
+<hr />
+<h2 id="56">5.6 双线性函数和二次型</h2>
+<h3 id="_11">双线性函数</h3>
+<p>如果$V\times V$到$F$上的映射$f$满足$\forall \alpha,\beta \in V,\forall k \in F:$</p>
+<p>$$f(\alpha,k_1\beta_1 +k_2\beta_2)=k_1f(\alpha,\beta_1)+k_2f(\alpha ,\beta_2)$$</p>
+<p>$$f(k_1\alpha_1+k_2\alpha_2,\beta)=k_1f(\alpha_1,\beta)+k_2f(\alpha_2,\beta)$$</p>
+<p>即对于$\alpha,\beta$都是线性函数，则称$f$为<strong>双线性函数</strong>。（典例：欧氏空间的内积）</p>
+<h3 id="_12">度量矩阵</h3>
+<p>设基</p>
+<p>$$B=\{e_1,e_2,···,e_n\}$$</p>
+<p>向量$\alpha$的坐标</p>
+<p>$$X=(x_1,x_2,···,x_n)^T$$</p>
+<p>向量$\beta$的坐标</p>
+<p>$$Y=(y_1,y_2,···,y_n)^T$$</p>
+<p>则</p>
+<p>$$f(\alpha,\beta)=f(\sum\limits_{i=1}^{n}x_ie_i,\sum\limits_{j=1}^{n}y_je_j)=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}x_iy_jf(e_i,e_j)$$</p>
+<p>令</p>
+<p>$$a_{ij}=f(e_i,e_j)$$</p>
+<p>则</p>
+<p>$$f(\alpha,\beta)=\sum\limits_{i=1}^{n}x_i(a_{i1}y_1+a_{i2}y_2+···+a_{in}y_n)=(x_1,x_2,···,x_n)\begin{pmatrix}
+ a_{11}y_1+a_{12}y_2+···+a_{1n}y_n\\
+ a_{21}y_1+a_{22}y_2+···+a_{2n}y_n \\
+ ······\\
+ a_{n1}y_1+a_{n2}y_2+···+a_{nn}y_n<br />
+\end{pmatrix}=(x_1,x_2,···,x_n)\begin{pmatrix}
+a_{11}&amp;a_{12}&amp;···&amp;a_{1n}\\
+a_{21}&amp;a_{22}&amp;···&amp;a_{2n}\\
+···&amp;&amp;&amp;···\\
+a_{n1}&amp;a_{n2}&amp;···&amp;a_{nn}
+\end{pmatrix}
+\begin{pmatrix}
+y_1\\
+y_2\\
+···\\
+y_n
+\end{pmatrix}=X^TAY$$</p>
+<p>其中矩阵$A$称为双线性函数$f(\alpha,\beta)$在基$B$下的<strong>度量矩阵</strong>。</p>
+<h3 id="_13">相合</h3>
+<p><strong>引入：</strong></p>
+<p>设双线性函数$f(\alpha,\beta)$在基$B_1$下的度量矩阵为$A$，在基$B_2$下的度量矩阵为$B$，若基$B_1$到基$B_2$的变换矩阵为$C$，则</p>
+<p>$$B=C^TAC$$</p>
+<p><strong>定义：</strong></p>
+<p>若存在可逆矩阵$C$，使得</p>
+<p>$$B=C^TAC$$</p>
+<p>则称$n$阶矩阵$A$<strong>相合于</strong>$B$（记作$A\simeq B$）</p>
+<p>即：双线性函数不同基下的度量矩阵是相合的。</p>
+<h3 id="_14">二次型</h3>
+<p>$n$元二次齐次多项式</p>
+<p>$$f(x_1,x_2,···,x_n)=a_{11}x_1^2+2a_{12}x_1x_2+···+2a_{1n}x_1x_n+a_{22}x_2^2+2a_{23}x_2x_3+···+2a_{2n}x_2x_n+···+a_{n-1,n-1}x_{n-1}^2+2a_{n-1,n}x_{n-1}x_{n}+a_{nn}x_n^2$$</p>
+<p>叫做数域$F$上的<strong>二次型</strong>。</p>
+<p>如果令$a_{ij}=a_{ji}$，则</p>
+<p>$$f(x_1,x_2,···,x_n)=X^TAX$$</p>
+<p>其中$X=(x_1,x_2,···，x_n)^T,A=(a_{ij})_{n\times n}$为实对称矩阵，即上述二次型所对应的矩阵。</p>
+<p>$n$元二次型与$n$维线性空间上的对称双线性函数$f(\alpha,\alpha)$一一对应，也就是和对称矩阵一一对应（对称双线性函数的度量矩阵为对称矩阵）。</p>
+<p>令$X=CY$，即对$X$作坐标变换，变换矩阵为$C$。</p>
+<p>则</p>
+<p>$$X^TAX=Y^T(C^TAC)Y$$</p>
+<p>$C^TAC$为与$A$相合的另一度量矩阵。</p>
+<p>如果</p>
+<p>$$C^TAC=diag(d_1,d_2,···,d_n)$$</p>
+<p>则</p>
+<p>$$Y^T(C^TAC)Y=d_1y_1^2+d_2y_2^2+···+d_ny_n^2$$</p>
+<p>是$f(\alpha,\alpha)$最简单的坐标表示式，即<strong>标准形</strong>。</p>
+<p>对于任意一个实对称矩阵，都存在可逆矩阵$C$，使得</p>
+<p>$$C^TAC=diag(d_1,d_2,···,d_n)$$</p>
+<p>这个对角阵是$A$的<strong>相合标准形</strong>。</p>
+<hr />
+<h2 id="57">5.7 实二次型的标准形 实对称矩阵的相合标准形</h2>
+<h3 id="_15">主轴定理</h3>
+<p>对于任一个$n$元二次型</p>
+<p>$$f(x_1,x_2,···,x_n)=X^TAX$$</p>
+<p>都存在正交变换$X=QY$，使得</p>
+<p>$$X^TAX=Y^T(Q^TAQ)Y=\lambda_1y_1^2+\lambda_2y_2^2+···+\lambda_ny_n^2$$</p>
+<p>其中$\lambda_1,\lambda_2,···,\lambda_n$是实对称矩阵$A$的$n$个特征值，$Q$的$n$个列向量是$A$的$n$个单位正交的特征向量。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例：三种方法将二次型化为不同的标准形</strong>  <br />
+<strong>设三元二次齐次函数$f(x_1,x_2,x_3)=2x_1x_2-2x_1x_3+2x_2x_3$，将其化为标准形，并求坐标变换的变换矩阵$C$。</strong></p>
+<p><strong>法一：主轴定理</strong></p>
+<p><img alt="Alt text" src="../image/1.7.11.JPG" /></p>
+<p><strong>法二：配方法</strong></p>
+<p><img alt="Alt text" src="../image/1.7.12.JPG" /></p>
+<p><strong>法三：初等变换</strong></p>
+<p><img alt="Alt text" src="../image/1.7.13.JPG" /></p>
+</div>
+<h3 id="_16">惯性指数与惯性定理</h3>
+<p>实对称矩阵$A$的相合标准形</p>
+<p>$$diag=(1,···,1,-1,···,-1,0,···,0)$$</p>
+<p>称为$A$的<strong>相合规范形</strong>。</p>
+<p>$+1$的个数称为$A$的<strong>正惯性指数</strong>；$-1$的个数称为$A$的<strong>负惯性指数</strong>。</p>
+<p><strong>惯性定理：</strong></p>
+<p>实对称矩阵$A$的正负惯性指数是由$A$唯一确定的。</p>
+<hr />
+<h2 id="58">5.8 正定二次型与正定矩阵 其它有定二次型</h2>
+<h3 id="_17">正定二次型与正定矩阵</h3>
+<p>如果$n$元二次型对任意$X\neq 0$恒有</p>
+<p>$$X^TAX&gt;0$$</p>
+<p>则该二次型称为<strong>正定二次型</strong>，矩阵$A$称为<strong>正定矩阵</strong>。</p>
+<p><strong>等价命题：</strong></p>
+<p>(1) $X^TAX$是正定二次型（$A$是正定矩阵）</p>
+<p>(2) $A$的正惯性指数为$n$</p>
+<p>(3) 存在可逆矩阵$P$，使得$A=P^TP$</p>
+<p>(4) $A$的$n$个特征值都大于零</p>
+<p>(5) $A$的$n$个顺序主子式（左上角主子式）都大于零</p>
+<p>(6) 二次型化为$d_1x_1^2+d_2x_2^2+···+d_nx_n^2$的形式后$d_1,d_2,···,d_n$均大于零</p>
+<p><strong>推导命题：</strong></p>
+<p>若$A$为正定矩阵，则：</p>
+<p>(1) $A^{-1}$也为正定矩阵</p>
+<p>(2) $A$的主对角元均大于零</p>
+<p>(3) $|A|=0$</p>
+<p>(4) $A$的任何一个$k$阶主子式均大于零（(1)(2)为特殊情况）</p>
+<p>(5) 存在正定矩阵$B$，使得$A=B^2$</p>
+<h3 id="_18">其他二次型</h3>
+<p>若对于$\forall X\neq 0$</p>
+<p>(1) $X^TAX&lt;0$： <strong>负定二次型</strong></p>
+<p>(2) $X^TAX\geqslant 0$：<strong>半正定二次型</strong></p>
+<p>(3) $X^TAX\leqslant 0$：<strong>半负定二次型</strong></p>
+<p>(4) 其余：<strong>不定二次型</strong></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter4/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 4.行列式">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                4.行列式
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../Linear%20Algebra2/Chapter1/" class="md-footer__link md-footer__link--next" aria-label="下一页: 1.线性映射">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                1.线性映射
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

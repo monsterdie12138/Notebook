@@ -1,0 +1,1871 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Mathematics/Mathematical%20Analysis2/Chapter2/">
+      
+      
+        <link rel="prev" href="../Chapter1/">
+      
+      
+        <link rel="next" href="../Chapter3/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>2.函数项级数 - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CLibre+Baskerville:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Libre Baskerville"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter2" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.函数项级数
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Computer%20Science/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Mathematics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Mathematical%20Analysis1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数学分析Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学分析Ⅱ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学分析Ⅱ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.数项级数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    2.函数项级数
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    2.函数项级数
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 函数项级数的基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 函数项级数的基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数列的相关定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数项级数的相关定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一致收敛的相关定义
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 一致收敛
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 一致收敛">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      一致收敛的性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      一致收敛的判别
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 幂级数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 幂级数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      幂级数的相关定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      幂级数的性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数的幂级数展开
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.Euclid空间
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.多元函数的微分学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.重积分
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.曲线积分与曲面积分
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.Fourier级数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Linear%20Algebra1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    线性代数Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Linear%20Algebra2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    线性代数Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Physics1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Physics2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    普通物理学Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Discrete%20Mathematics/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    离散数学理论基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Probability/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    概率论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Computer%20Science/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 函数项级数的基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 函数项级数的基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数列的相关定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数项级数的相关定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一致收敛的相关定义
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 一致收敛
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 一致收敛">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      一致收敛的性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      一致收敛的判别
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 幂级数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 幂级数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      幂级数的相关定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      幂级数的性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数的幂级数展开
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter2">Chapter2 函数项级数</h1>
+<hr />
+<h2 id="21">2.1 函数项级数的基本概念</h2>
+<h3 id="_1">函数列的相关定义</h3>
+<p><strong>函数列：</strong></p>
+<p>设 $E\subseteq R$，$f_1,f_2,···,f_n,···$ 是定义在 $E$ 上的一系列函数，这一列函数称为 $E$ 上的一个<strong>函数列</strong>，记作$\{f_n\}$。  </p>
+<p>设 $x_0\in E$，若 $\{f_n(x_0)\}$ 收敛（$n\rightarrow\infty$），则称函数列 $\{f_n\}$ 在<strong>点 $x_0$ 处收敛</strong>。  </p>
+<p>称 $\{x_0\in E|\{f_n(x_0)\}$收敛$\}$ 为 $\{f_n\}$ 的<strong>收敛域</strong>。  </p>
+<p>设 $D$ 为 $\{f_n\}$ 的收敛域，则可定义  </p>
+<p>$$f:D\rightarrow R$$</p>
+<p>$$x\mapsto \lim\limits_{n\rightarrow \infty}f_n(x)$$<br />
+称 $f$ 为 $\{f_n\}$ 在 $D$ 上的<strong>极限函数</strong>，即 $\{f_n\}$ 在 $D$ 上收敛于 $f$。  </p>
+<h3 id="_2">函数项级数的相关定义</h3>
+<p><strong>函数项级数：</strong></p>
+<p>设 $E\subseteq R$，$\{u_n(x)\}$ 是定义在 $E$ 上的一个函数列，取表达式（形式和）  </p>
+<p>$$u_1(x)+u_2(x)+···+u_n(x)+···,~x\in E$$</p>
+<p>为 $E$ 上的<strong>函数项级数</strong>，记作 $\sum\limits_{n=1}^{\infty}u_n(x)$ 或 $\sum u_n(x)$。  </p>
+<p>设 </p>
+<p>$$S_n(x)=\sum\limits_{k=1}^nu_n(x)$$</p>
+<p>$\{S_n(x)\}$ 为 $\sum u_n(x)$ 的<strong>部分和函数列</strong>。  </p>
+<p>设 $x_0\in E$，若 $\{S_n(x)\}$ 在点 $x_0$ 收敛（或发散），则称 $\sum u_n(x)$ 在点 $x_0$ 收敛（或发散），$\sum u_n(x)$ 的收敛域定义为 $\{S_n(x)\}$ 的收敛域。</p>
+<p>设 $D\subseteq E$，若 $\{S_n(x)\}$ 在 $D$ 上收敛，其极限函数为 $S(x)$，则称函数项级数 $\sum u_n(x)$ 在 $D$上收敛，其和函数为 $S(x)$，记作 </p>
+<p>$$\sum u_n(x)=S(x),~x\in D$$</p>
+<p><strong>综上：研究函数项级数 $\sum\limits_{n=1}^{\infty}u_n(x)$ 的性质，实际上就是在研究函数列 $\{S_n(x)\}$ 的性质。</strong></p>
+<h3 id="_3">一致收敛的相关定义</h3>
+<p><strong>点态收敛：</strong></p>
+<p>$ \forall \varepsilon&gt;0$，$\forall x\in D$，$\exists N_{(\varepsilon,x)}\in N^*$，使得当 $n&gt;N$ 时，有 $|f_n(x)-f(x)|&lt;\varepsilon$</p>
+<p><strong>一致收敛：</strong></p>
+<p>$\forall \varepsilon&gt;0$，$\exists N_{\varepsilon}\in N^*$，使得当 $n&gt;N$ 时，对于 $\forall x\in D$，有 $|f_n(x)-f(x)|&lt;\varepsilon$</p>
+<p><strong>内闭一致收敛：</strong></p>
+<p>设函数列 $\{f_n\}$ 和 $f$ 定义在区间 $I$ 上，若对于 $I$ 的任何一个闭子区间 $[a,b]$，都有 $\{f_n\}$ 在 $[a,b]$ 上一致收敛于 $f$，则称 $\{f_n\}$ 在 $I$ 上<strong>内闭一致收敛</strong>。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例：证明：$f_n(x)=x^n$ 在 $[0,1]$ 上不一致收敛。</strong>  </p>
+<p>$f(x)=\begin{cases}
+0,~~~~0\leqslant x&lt;1\\
+1,~~~~x=1
+\end{cases}$<br />
+取 $\varepsilon_0=\frac{1}{2}$，$\forall N\in N^*$，取 $n=N+1$，取 $x=(\frac{1}{2})^{\frac{1}{n}}$<br />
+有 $|f_n(x)-f(x)|=\frac{1}{2}\geqslant \varepsilon_0$<br />
+因此不一致收敛。</p>
+</div>
+<hr />
+<h2 id="22">2.2 一致收敛</h2>
+<h3 id="_4">一致收敛的性质</h3>
+<p><strong>连续性定理：</strong></p>
+<p>若函数列 $\{f_n(x)\}$ 满足：  </p>
+<ul>
+<li>在 $[a,b]$ 上一致收敛于 $f$  </li>
+<li>每一项 $f_n(x)$ 都在 $[a,b]$ 上连续  </li>
+</ul>
+<p>则其极限函数 $f$ 也在 $[a,b]$ 上连续。 </p>
+<p>若函数项级数 $\sum\limits_{n=1}^{\infty}u_n(x)$ 满足：  </p>
+<ul>
+<li>在 $[a,b]$ 上一致收敛于 $S(x)$  </li>
+<li>每一项 $u_n(x)$ 都在 $[a,b]$ 上连续</li>
+</ul>
+<p>则其和函数 $S(x)$ 也在 $[a,b]$ 上连续，且对于任意 $x_0\in[a,b]$，成立  </p>
+<p>$$\lim\limits_{x\rightarrow x_0}\sum\limits_{n=1}^{\infty}u_n(x)=\sum\limits_{n=1}^{\infty}\lim\limits_{x\rightarrow x_0}u_n(x)$$  </p>
+<p>即<strong>极限运算和无限求和计算可以交换次序。</strong>  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>若任意 $u_n(x)$ 在 $(a,b)$ 上连续，只要 $\sum u_n(x)$ <strong>内闭一致收敛</strong>于 $S(x)$，就足以保证 $S(x)$ 在 $(a,b)$ 上连续。</p>
+</div>
+<p><strong>逐项积分定理：</strong></p>
+<p>若函数列 $\{f_n(x)\}$ 满足：  </p>
+<ul>
+<li>在 $[a,b]$ 上一致收敛于 $f$  </li>
+<li>每一项 $f_n(x)$ 都在 $[a,b]$ 上连续  </li>
+</ul>
+<p>则其极限函数 $f$ 在 $[a,b]$ 上可积。</p>
+<p>若函数项级数 $\sum\limits_{n=1}^{\infty}u_n(x)$ 满足：  </p>
+<ul>
+<li>在 $[a,b]$ 上一致收敛于 $S(x)$</li>
+<li>每一项 $u_n(x)$ 都在 $[a,b]$ 上连续</li>
+</ul>
+<p>则其和函数 $S(x)$ 在 $[a,b]$ 上可积，且  </p>
+<p>$$\int_a^b\sum\limits_{n=1}^{\infty}u_n(x)dx=\sum\limits_{n=1}^{\infty}\int_a^bu_n(x)dx$$</p>
+<p>即<strong>积分运算可以和无限求和运算交换顺序</strong>。  </p>
+<p><strong>逐项求导定理：</strong></p>
+<p>设函数列 $\{f_n\}$ 满足：</p>
+<ul>
+<li>$f_n(x)$ 在 $[a,b]$ 上有连续的导数  </li>
+<li>$\{f_n\}$ 在 $[a,b]$ 上点态收敛于 $f$  </li>
+<li>$\{f_n'\}$ 在 $[a,b]$ 上一致收敛  </li>
+</ul>
+<p>则 $f$ 在 $[a,b]$ 上可导。</p>
+<p>设函数项级数 $\sum u_n(x)$ 满足：  </p>
+<ul>
+<li>任意一项 $u_n(x)$ 在 $[a,b]$ 上有连续的导数  </li>
+<li>$\sum u_n(x)$ 在 $[a,b]$ 上点态收敛于 $S(x)$  </li>
+<li>$\sum u_n'(x)$ 在 $[a,b]$ 上一致收敛  </li>
+</ul>
+<p>则 $S(x)$ 在 $[a,b]$ 上可导，且  </p>
+<p>$$\frac{d}{dx}\sum\limits_{n=1}^{\infty}u_n(x)=\sum\limits_{n=1}^{\infty}\frac{d}{dx}u_n(x)$$ </p>
+<p>即<strong>求导运算可以和无限求和运算交换次序</strong>。  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>若 $\sum u_n(x)$ 在 $(a,b)$ 上收敛于 $S(x)$，且每个 $u_n(x)$ 在 $(a,b)$ 上都有连续的导数，则只要 $\sum u_n'(x)$ 在 $(a,b)$ 上内闭一致收敛，就足以保证 $S(x)$ 在 $(a,b)$ 上可导。</p>
+</div>
+<h3 id="_5">一致收敛的判别</h3>
+<p><strong>充要条件一：</strong></p>
+<p>$\{f_n\}$ 在收敛域 $D$ 上一致收敛于 $f$ 的充要条件是：  </p>
+<p>$$\lim\limits_{n\rightarrow\infty}\sup\limits_{x\in D}|f_n(x)-f(x)|=0$$</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例1：令 $f_n(x)=nxe^{-nx^2},$，$x\in(0,+\infty)$，判别 $\{f_n\}$ 在 $(0,+\infty)$ 上的一致收敛性。</strong>  </p>
+<p>极限函数 $f(x)=0$<br />
+令 $M_n=\sup\{|f_n(x)-f(x)|:x\in (0,+\infty)\}=\sup\{nxe^{-nx^2}:x\in(0,+\infty)\}$<br />
+取 $x=\frac{1}{\sqrt{n}}$<br />
+则 $M_n\geqslant\frac{\sqrt{n}}{e}$，不趋于0<br />
+$\{f_n\}$ 不一致收敛<br />
+（或者可以通过求导的方式直接算出 $nxe^{-nx^2}$ 的最大值，也就是 $M_n$）  </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例2：设 $S_0(x)$ 在 $[0,a]$ 上连续，令 $S_n(x)=\int_0^xS_{n-1}(t)dt$，证明：${S_n(x)}$ 在 $[0,a]$ 上一致收敛于 $0$。</strong>  </p>
+<p>令 $M_n=\sup\{|S_n(x)|:x\in[0,a]\}$<br />
+由 $S_0\in C[0,a]$，可知 $S_0$ 有界<br />
+$\exists k&gt;0$ 使得 $|S_0(x)|\leqslant k$<br />
+$|S_1(x)|\leqslant kx$<br />
+$|S_2(x)|\leqslant k·\frac{x^2}{2}$<br />
+······<br />
+$|S_n(x)|\leqslant k·\frac{x^n}{n!}$<br />
+$M_n\leqslant k·\frac{a^n}{n!}$<br />
+$\lim\limits_{n\rightarrow\infty}M_n=0$<br />
+因此一致收敛。 </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例3：设 $S'(x)$ 在区间 $(a,b)$ 上连续，$S_n(x)=n[S(x+\frac{1}{n})-S(x)]$，证明：${S_n(x)}$ 在区间 $(a,b)$ 上一致收敛于 $S'(x)$。</strong>  </p>
+<p>对于 $\forall [c,d]\subseteq(a,b)$，$S'(x)$ 在 $[c,d]$ 上一致连续 <br />
+$\Longrightarrow \forall\varepsilon&gt;0$，$\exists \delta&gt;0$，当 $x'$，$x''\in[c,d]$ 时，只要 $|x'-x''|&lt;\delta$，就有 $|S'(x')-S'(x'')|&lt;\varepsilon$<br />
+令 $N=\frac{1}{\delta}$，当 $n&gt;N$ 时，$\forall x\in[c,d]$，由Lagrange中值定理：<br />
+$\exists \xi\in(x,x+\frac{1}{n})$，使得 $S_n(x)=\frac{S(x+\frac{1}{n})-S(x)}{(x+\frac{1}{n})-x}=S'(\xi)$<br />
+于是由 $|\xi-x|\leqslant\frac{1}{n}&lt;\frac{1}{N}=\delta$<br />
+有 $|S_n(x)-S'(x)|=|S'(\xi)-S'(x)|&lt;\varepsilon$</p>
+</div>
+<p><strong>充要条件二：</strong></p>
+<p>$\{f_n\}$ 在收敛域 $D$ 上一致收敛于 $f$ 的充要条件是：对任意数列 ${x_n}$，$x_n\in D$，成立  </p>
+<p>$$\lim\limits_{n\rightarrow\infty}(f_n(x_n)-f(x_n))=0$$</p>
+<p>该充要条件常用于判断函数列的不一致收敛。  </p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例：证明函数列 $\{f_n\}$，$f_n(x)=x^n$ 在 $[0,1)$ 上不一致收敛。</strong>  </p>
+<p>$f=0$<br />
+取 $x_n=1-\frac{1}{n}\in[0,1)$<br />
+$f_n(x_n)-f(x_n)=(1-\frac{1}{n})^n\longrightarrow\frac{1}{e}(n\rightarrow\infty)$<br />
+因此该函数列在 $[0,1)$ 上不一致收敛。    </p>
+</div>
+<p><strong>Cauchy收敛准则：</strong></p>
+<p>$\sum u_n(x)$ 在收敛域 $D$ 上一致收敛的充要条件是：  </p>
+<p>$\forall \varepsilon&gt;0$，$\exists N_{(\varepsilon)}\in N^*$，$\forall n&gt;N$，$\forall p\in Z^+$，$\forall x\in D$，有 $|u_{n+1}(x)+···+u_{n+p}(x)|&lt;\varepsilon$</p>
+<p>若取 $p=1$，则可得到函数项级数一致收敛的必要条件为 $\{u_n(x)\}$ 在 $D$ 上一致收敛于 $0$。  </p>
+<p>推论：$\sum u_n(x)$ 在 $D$ 上一致收敛于 $S(x)\Longleftrightarrow\lim\limits_{n\rightarrow\infty}\sup\limits_{x\in D}{|S_n(x)-S(x)|}=0$  </p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例：求 $\sum\limits_{n=0}^{\infty}x^n$ 的收敛域，并判断其在收敛域内的一致收敛性。</strong>  </p>
+<p>$S_n(x)=\begin{cases}
+\frac{1-x^{n+1}}{1-x}, x\neq 1\\
+n+1, x=1
+\end{cases}$<br />
+当且仅当 $|x|&lt;1$ 时，$S_n(x)$ 收敛，且 $S(x)=\frac{1}{1-x}$<br />
+$\sup\limits_{|x|&lt;1}\{|S_n(x)-S(x)|\}=\sup\limits_{|x|&lt;1}\{|\frac{x^{n+1}}{1-x}|\}$<br />
+取 $x=1-\frac{1}{n}$ 满足 $|x|&lt;1$<br />
+则上式 $\geqslant \frac{(1-\frac{1}{n})^{n+1}}{\frac{1}{n}}=n(1-\frac{1}{n})^n(1-\frac{1}{n})$，发散到 $+\infty$<br />
+由Cauchy收敛原理：该函数项级数在收敛域 $(-1,1)$ 内不一致收敛。  </p>
+</div>
+<p><strong>Weierstrass判别法：</strong></p>
+<p>设 $D$ 上的函数项级数 $\sum u_n$，若存在收敛的正项级数 $\sum a_n$，使得存在 $N\in N^*$，对于任意 $n&gt;N$ 及$x\in D$，都有 $|u_n(x)|\leqslant a_n$，则 $\sum u_n(x)$ 在 $D$ 上一致收敛。</p>
+<p>$\sum a_n$ 也称作 $\sum u_n(x)$ 的<strong>优级数</strong>。</p>
+<p><strong>Dirichlet判别法：</strong></p>
+<p>若函数项级数 $\sum u_n(x)$，$\sum v_n(x)$ 满足：  </p>
+<ul>
+<li>$\sum u_n(x)$ 的部分和数列 $\{S_n(x)\}$ 在 $D$ 上一致有界，即存在 $N\in N^*$，对于 $\forall n&gt;N$ 及 $\forall x\in D$，都有 $|S_n(x)|=|\sum\limits_{k=1}^{n}u_k(x)|\leqslant M$  </li>
+<li>对于 $\forall x\in D$，$\{v_n(x)\}$ 关于 $n$ 单调，且 $\{v_n(x)\}$ 在 $D$ 上一致收敛于 $0$</li>
+</ul>
+<p>则 $\sum u_n(x)v_n(x)$ 在 $D$ 上一致收敛。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例：若 $\{a_n\}$ 单调收敛于 $0$，求证：$\sum a_n\cos nx$ 在 $(0,2\pi)$ 上内闭一致收敛。</strong>  </p>
+<p>任取闭区间 $[a,b]\subseteq (0,2\pi)$<br />
+存在 $\theta$ 使得 $\sin \frac{x}{2}$ 取最小<br />
+令 $v_n(x)=a_n$，$u_n(x)=\cos nx$<br />
+$|2\sin \frac{x}{2}\sum\limits_{k=1}^n\cos kx|=|\sum\limits_{k=1}^n(\sin(k+\frac{1}{2})x-\sin(k-\frac{1}{2})x)|\leqslant 2$<br />
+$|\sum\limits_{k=1}^nu_k(x)|\leqslant\frac{1}{2\sin \frac{x}{2}}\leqslant\frac{1}{\sin \frac{\theta}{2}}$<br />
+$\sum u_n(x)$ 的部分和数列一致有界<br />
+$\sum v_n(x)$ 关于 $n$ 单调趋于 $0$<br />
+由Dirichlet判别法：该函数项级数在 $(0,2\pi)$ 上内闭一致收敛。  </p>
+</div>
+<p><strong>Abel判别法：</strong></p>
+<p>若函数项级数 $\sum u_n(x)$，$\sum v_n(x)$ 满足：  </p>
+<ul>
+<li>$\sum u_n(x)$ 在 $D$ 上一致收敛  </li>
+<li>对于 $\forall x\in D$，$\{v_n(x)\}$ 关于 $n$单调，且 $\{v_n(x)\}$ 在 $D$ 上一致有界</li>
+</ul>
+<p>则 $\sum u_n(x)v_n(x)$ 在 $D$ 上一致收敛。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例1：若 $\sum a_n$ 收敛，求证：$\sum a_nx^n$ 在 $[0,1]$ 上一致收敛。</strong>  </p>
+<p>令 $u_n(x)=a_n$<br />
+则$\sum u_n(x)$ 在 $[0,1]$ 上一致收敛<br />
+令 $v_n(x)=x^n$<br />
+则对 $\forall x\in D$，$\{v_n(x)\}$ 关于 $n$ 单调，且 $|x^n|\leqslant 1$ 一致有界<br />
+由Abel判别法：该函数项级数在 $[0,1]$ 上一致收敛。  </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例2：判断 $\sum\frac{(-1)^n(x+n)^n}{n^{n+1}}$，$x\in [0,1]$ 的一致收敛性。</strong>  </p>
+<p>令 $u_n(x)=\frac{(-1)^n}{n}$<br />
+则 $\sum u_n(x)$ 一致收敛<br />
+令 $v_n(x)=(\frac{x+n}{n})^n=(1+\frac{x}{n})^n$<br />
+取对数求导可得：$\{v_n(x)\}$ 关于 $n$ 单调递增<br />
+$v_n(x)\leqslant v_n(1)=(1+\frac{1}{n})^n\leqslant e$<br />
+$\{v_n(x)\}$ 一致有界<br />
+由Abel判别法：该函数项级数在 $[0,1]$ 上一致收敛。  </p>
+</div>
+<hr />
+<h2 id="23">2.3 幂级数</h2>
+<h3 id="_6">幂级数的相关定义</h3>
+<p><strong>幂级数：</strong></p>
+<p>称形如  </p>
+<p>$$\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n=a_0+a_1(x-x_0)+···+a_n(x-x_0)^n+···$$  </p>
+<p>的函数项级数为<strong>幂级数</strong>。其中 $a_i$ 为常数，称为幂级数的<strong>级数</strong>，$x_0$ 也是常数。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>我们一般研究 $x_0=0$ 时的情形：$\sum\limits_{n=0}^{\infty}a_nx^n=a_0+a_1x+···+a_nx^n+···$。</p>
+</div>
+<p><strong>收敛半径：</strong></p>
+<p>令 </p>
+<p>$$A=\lim\limits_{n\rightarrow\infty}\sqrt[n]{|a_n|}$$</p>
+<p>或 </p>
+<p>$$A=\lim\limits_{n\rightarrow\infty}|\frac{a_{n+1}}{a_n}|$$</p>
+<p>定义 </p>
+<p>$$R=\frac{1}{A}$$</p>
+<p>则： </p>
+<ul>
+<li>当 $|x|&lt;R$ 时，$\sum a_nx^n$ 在 $x$ 处<strong>绝对收敛</strong>  </li>
+<li>当 $|x|&gt;R$ 时，$\sum a_nx^n$ 在 $x$ 处<strong>发散</strong>  </li>
+<li>当 $|x|=R$ 时，$\sum a_nx^n$<strong>可能收敛，也可能发散</strong>  </li>
+</ul>
+<p>称 $R$ 为幂级数的<strong>收敛半径</strong>，$(-R,R)$ 为幂级数的<strong>收敛区间</strong>。  </p>
+<ul>
+<li>若 $R=0$，则幂级数仅在 $x=0$ 处收敛  </li>
+<li>若 $R=+\infty$，则幂级数在任意 $x$ 处收敛</li>
+</ul>
+<h3 id="_7">幂级数的性质</h3>
+<p><strong>Abel第一定理：</strong></p>
+<p>若幂级数 $\sum a_nx^n$ 在点 $\xi$ 处收敛，则对于任意满足 $|x|&lt;\xi$ 的 $x$，必有幂级数在点 $x$ 处绝对收敛。</p>
+<p><strong>Abel第二定理：</strong></p>
+<p>若幂级数 $\sum a_nx^n$ 的收敛半径 $R&gt;0$，则：  </p>
+<ul>
+<li>幂级数 $\sum a_nx^n$ 在 $(-R,R)$ 内闭一致收敛.  </li>
+<li>若幂级数 $\sum a_nx^n$ 在 $x=R$ 处收敛，则其在$[0,R]$ 上一致收敛.（$x=-R$ 同理）</li>
+</ul>
+<p><strong>连续性：</strong></p>
+<p><strong>幂级数在其收敛域上连续。</strong>  </p>
+<p>设 $\sum\limits_{n=0}^{\infty}a_nx^n$ 的收敛半径为 $R$，则其和函数在 $(-R,R)$ 上连续.</p>
+<p>若 $\sum\limits_{n=0}^{\infty}a_nx^n$ 在 $x=R$（或 $-R$）收敛，则其和函数在 $x=R$（或 $-R$）左（右）连续.  </p>
+<p><strong>逐项可积性：</strong></p>
+<p><strong>幂级数在包含于收敛域中的任意闭区间上可以逐项求积分.</strong>  </p>
+<p>$\forall a$，$b$ 位于 $\sum\limits_{n=0}^{\infty}a_nx^n$ 的收敛域中，都有：  </p>
+<p>$$\int_a^b(\sum\limits_{n=0}^{\infty}a_nx^n)dx=\sum\limits_{n=0}^{\infty}\int_a^b(a_nx^n)dx$$  </p>
+<p>特别地：取 $a=0$，$b=x$，$x$在收敛域内，有：  </p>
+<p>$$\int_0^x(\sum\limits_{n=0}^{\infty}a_nt^n)dt=\sum\limits_{n=0}^{\infty}\frac{a_n}{n+1}x^{n+1}$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>逐项积分所得幂级数 $\sum\limits_{n=0}^{\infty}\frac{a_n}{n+1}x^{n+1}$ 与原幂级数 $\sum\limits_{n=0}^{\infty}a_nx^n$ 具有相同的收敛半径，但收敛域有可能扩大。  </p>
+</div>
+<p><strong>逐项可导性：</strong></p>
+<p>设 $\sum\limits_{n=0}^{\infty}a_nx^n$ 的收敛半径为 $R$，则其在 $(-R,R)$ 上可逐项求导，即：  </p>
+<p>$$\frac{d}{dx}(\sum\limits_{n=0}^{\infty}a_nx^n)=\sum\limits_{n=0}^{\infty}na_nx^{n-1}$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>逐项求导所得幂级数 $\sum\limits_{n=0}^{\infty}na_nx^{n-1}$ 与原幂级数 $\sum\limits_{n=0}^{\infty}a_nx^n$ 具有相同的收敛半径，但收敛域有可能缩小。 </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例1：求 $\sum\limits_{n=1}^{\infty}(-1)^{n-1}n^2x^n$ 的和函数。</strong>  </p>
+<p>收敛域为 $(-1,1)$<br />
+设和函数为 $S(x)$<br />
+$S(x)=x\sum\limits_{n=1}^{\infty}(-1)^{n-1}n^2x^{n-1}$<br />
+记为$xf(x)$，$x\in(-1,1)$<br />
+有 $\int_0^xf(t)dt=\sum\limits_{n=1}^{\infty}(-1)^{n-1}n^2\int_0^xt^{n-1}dt=\sum\limits_{n=1}^{\infty}(-1)^{n-1}nx^n=x\sum\limits_{n=1}^{\infty}(-1)^{n-1}nx^{n-1}$<br />
+记为 $xg(x)$<br />
+则 $\int_0^xg(t)dt=\sum\limits_{n=1}^{\infty}(-1)^{n-1}n·\frac{x^n}{n}=\frac{x}{1+x}$<br />
+$g(x)=(\frac{x}{1+x})'=\frac{1}{(1+x)^2}$<br />
+$f(x)=(xg(x))'=\frac{1-x}{(1+x)^3}$<br />
+$S(x)=xf(x)=\frac{x-x^2}{(1+x)^3}$  </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例2：求 $\sum\limits_{n=1}^{\infty}(-1)^{n-1}\frac{x^{2n+1}}{(2n)^2-1}$ 的收敛域及和函数。</strong>  </p>
+<p>令 $u_n(x)=(-1)^{n-1}\frac{x^{2n+1}}{(2n)^2-1}$<br />
+则 $|\frac{u_{n+1}(x)}{u_n(x)}|$ 趋于 $x^2$<br />
+由比式判别法：$|x|&gt;1$ 时，$\sum u_n(x)$ 发散<br />
+$|x|&lt;1$ 时，$\sum u_n(x)$ 收敛<br />
+收敛半径为 $1$<br />
+当 $|x|=1$ 时，$\sum|u_n(x)|=\sum\frac{1}{(2n)^2-1}$ 收敛<br />
+故收敛域为 $[-1,1]$<br />
+令 $S(x)$ 为和函数，先考虑 $x\in(-1,1)$<br />
+则对于 $\forall x\in(-1,1)$
+$S'(x)=\sum\limits_{n=1}^{\infty}(-1)^{n-1}\frac{x^{2n}}{2n-1}=x\sum\limits_{n=1}^{\infty}(-1)^{n-1}\frac{x^{2n-1}}{2n-1}$<br />
+记为 $xf(x)$<br />
+$f'(x)=\sum\limits_{n=1}^{\infty}(-1)^{n-1}x^{2n-2}=\frac{1}{1+x^2}$<br />
+可推出 $f(x)=\int_0^xf'(t)dt+f(0)=\arctan x$<br />
+于是 $S(x)=\int_0^xS'(t)dt+S(0)=\frac{1}{2}x^2\arctan x-\frac{x}{2}+\frac{1}{2}\arctan x$<br />
+由于上式在 $-1$，$1$ 处均连续<br />
+因此结合幂级数和函数的连续性，可知<br />
+$S(x)=\frac{1}{2}x^2\arctan x-\frac{x}{2}+\frac{1}{2}\arctan x$  </p>
+</div>
+<h3 id="_8">函数的幂级数展开</h3>
+<p><strong>Taylor级数：</strong></p>
+<p>设 $f$ 在点 $x_0$ 无穷次可导，称  </p>
+<p>$$\sum\limits_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n$$  </p>
+<p>为 $f$ 在点 $x_0$ 处的<strong>Taylor级数</strong>。</p>
+<p>若存在 $r&gt;0$，使得  </p>
+<p>$$f(x)=\sum\limits_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n$$  </p>
+<p>对于 $\forall x\in(x_0-r,x_0+r)$ 恒成立，则称 $f$ 在 $(x_0-r,x_0+r)$ 上<strong>可以展开成Taylor级数</strong>。此时的Taylor级数被称为 $f$ 的<strong>Taylor展开式（幂级数展开式）</strong>。</p>
+<p>若已知 </p>
+<p>$$f(x)=\sum\limits_{n=0}^{\infty}a_n(x-x_0)^n,~x\in(x_0-r,x_0+r),~r&gt;0$$</p>
+<p>则必有 </p>
+<p>$$a_n=\frac{f^{(n)}(x_0)}{n!}$$</p>
+<p>其称为 $f$ 在点$x_0$ 处的<strong>Taylor系数</strong>。</p>
+<p><strong>函数展开成Taylor级数的条件：</strong></p>
+<p><strong>充要条件：余项趋于0</strong> </p>
+<p>$$f(x)=T_n(x)+R_n(x)=\sum\limits_{k=0}^n\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+R_n(x)$$</p>
+<p>其中 $R_n(x)$ 为余项。  </p>
+<p>$$\lim\limits_{n\rightarrow\infty}f(x)=\lim\limits_{n\rightarrow\infty}T_n(x)+\lim\limits_{n\rightarrow\infty}R_n(x)$$  </p>
+<p>$$f(x)=Taylor+\lim\limits_{n\rightarrow\infty}R_n(x)$$  </p>
+<p>$f$ 在收敛域内等于其Taylor级数当且仅当 $\lim\limits_{n\rightarrow\infty}R_n(x)=0$。</p>
+<p><strong>充分条件：导数的一致有界</strong></p>
+<p>若对于 $\forall x\in(x_0-r,x_0+r)$，当 $n$ 充分大时，有 $|f^{(n)}(x)|\leqslant M$，即一致有界，则对于 $\forall x\in(x_0-r,x_0+r)$，有 $f$ 等于其Taylor级数。</p>
+<p><strong>初等函数的Maclaurin展开式：</strong></p>
+<ul>
+<li>
+<p>$e^x=\sum\limits_{n=0}^{\infty}\frac{1}{n!}x^n=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+···+\frac{x^n}{n!}+···$，$x\in R$  </p>
+</li>
+<li>
+<p>$\sin x=\sum\limits_{n=1}^{\infty}\frac{(-1)^{n-1}}{(2n-1)!}x^{2n-1}=x-\frac{x^3}{3!}+\frac{x^5}{5!}-···+(-1)^n\frac{x^{2n+1}}{(2n+1)!}+···$，$x\in R$</p>
+</li>
+<li>
+<p>$(1+x)^{\alpha}=\sum\limits_{n=0}^{\infty}\begin{pmatrix}\alpha\\n\end{pmatrix}x^n=1+\sum\limits_{n=1}^{\infty}\frac{\alpha(\alpha-1)···(\alpha-n+1)}{n!}x^n$，$x\in\begin{cases}(-1,1),~~~\alpha\leqslant-1\\
+(-1,1],~~~ -1&lt;\alpha&lt;0\\ 
+[-1,1],~~~\alpha&gt;0\end{cases}$  </p>
+</li>
+<li>
+<p>$\ln(1+x)=\sum\limits_{n=0}^{\infty}\frac{(-1)^n}{n+1}x^{n+1}=x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+···+(-1)^{n-1}\frac{x^n}{n}+···$，$x\in(-1,1]$  </p>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例1：求 $f(x)=\frac{1}{x^2}$ 在 $x=1$ 处的Taylor展开式。</strong>  </p>
+<p>$\frac{1}{x}=\frac{1}{1+(x-1)}=\sum\limits_{n=0}^{\infty}(-1)^n(x-1)^n$，$x\in(0,2)$<br />
+逐项求导：$-\frac{1}{x^2}=\sum\limits_{n=0}^{\infty}(-1)^nn(x-1)^{n-1}$<br />
+$\frac{1}{x^2}=-\sum\limits_{n=0}^{\infty}(-1)^nn(x-1)^{n-1}$，$x\in(0,2)$  </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>例2：求 $f(x)=\frac{1}{3+5x-2x^2}$ 的Maclaurin展开式。</strong>  </p>
+<p>$f(x)=\frac{1}{(3-x)(1+2x)}=\frac{1}{7}(\frac{1}{3-x}+\frac{2}{1+2x})$<br />
+由于 $\frac{1}{3-x}=\frac{1}{3}·\frac{1}{1+(-\frac{x}{3})}=\frac{1}{3}\sum\limits_{n=0}^{\infty}(\frac{x}{3})^n$，$x\in(-3,3)$<br />
+$\frac{1}{1+2x}=\sum\limits_{n=0}^{\infty}(-1)^n(2x)^n$，$x\in(-\frac{1}{2},\frac{1}{2})$<br />
+所以当 $x\in(-\frac{1}{2},\frac{1}{2})$时<br />
+$f(x)=\frac{1}{7}\sum\limits_{n=0}^{\infty}[\frac{1}{3^{n+1}}+(-1)^n2^{n+1}]x^n$  </p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter1/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 1.数项级数">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                1.数项级数
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Chapter3/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.Euclid空间">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                3.Euclid空间
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>
