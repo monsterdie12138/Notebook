@@ -6,7 +6,7 @@ body {
 /* 设置加粗词语的粗细为 900 */
 strong, b {
     font-weight: 900 !important;
-    text-shadow: 0.3px 0 0 currentColor, -0.3px 0 0 currentColor, 0 0.3px 0 currentColor, 0 -0.3px 0 currentColor;
+    text-shadow: 0.2px 0 0 currentColor, -0.2px 0 0 currentColor, 0 0.2px 0 currentColor, 0 -0.2px 0 currentColor;
 }
 
 /* 确保标题文字保持加粗 */
