@@ -1,0 +1,19 @@
+/* 设置全局文字粗细为 900 */
+body {
+    font-weight: 900 !important;
+}
+
+/* 设置加粗词语的粗细为 900 */
+strong, b {
+    font-weight: 900 !important;
+    text-shadow: 0.2px 0 0 currentColor, -0.2px 0 0 currentColor, 0 0.2px 0 currentColor, 0 -0.2px 0 currentColor;
+}
+
+/* 确保标题文字保持加粗 */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 900 !important;
+}
+
+code {
+    font-weight: 900 !important;
+}

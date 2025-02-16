@@ -1,0 +1,199 @@
+site_name: Monsterdie's Notebook
+
+site_url: https://monsterdie12138.github.io/Notebook/
+
+theme:
+  name: material
+  language: zh
+  custom_dir: overrides
+  font: 
+    text: Noto Serif SC
+    code: Libre Baskerville
+  logo: stylesheets/logo.jpg
+  favicon: stylesheets/logo.jpg
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - navigation.prune
+    - search.suggest
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+  
+  palette:    
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      accent: deep purple
+      primary: white
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      accent: deep purple
+      primary: black
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+extra:
+  analytics:
+    provider: google
+    property: G-J49VTEQR8G
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+  social:
+    - icon: fontawesome/brands/github 
+      link: https://github.com/monsterdie12138
+      name: Writer on Github
+
+copyright: Copyright &copy; 2024 - Now Monsterdie
+
+repo_url: https://github.com/monsterdie12138/Notebook
+repo_name: Monsterdie's Notebook
+      
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions: 
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - md_in_html
+
+nav: 
+  - Home: index.md
+  - Mathematics:
+    - '': Mathematics/index.md
+    - 数学分析Ⅰ: 
+      - 1.数列极限: Mathematics/Mathematical Analysis1/Chapter1.md
+      - 2.函数极限与连续函数: Mathematics/Mathematical Analysis1/Chapter2.md
+      - 3.微分: Mathematics/Mathematical Analysis1/Chapter3.md
+      - 4.微分中值定理及其应用: Mathematics/Mathematical Analysis1/Chapter4.md
+      - 5.不定积分: Mathematics/Mathematical Analysis1/Chapter5.md
+      - 6.定积分: Mathematics/Mathematical Analysis1/Chapter6.md
+      - 7.反常积分: Mathematics/Mathematical Analysis1/Chapter7.md
+    - 数学分析Ⅱ: 
+      - 1.数项级数: Mathematics/Mathematical Analysis2/Chapter1.md
+      - 2.函数项级数: Mathematics/Mathematical Analysis2/Chapter2.md
+      - 3.Euclid空间: Mathematics/Mathematical Analysis2/Chapter3.md
+      - 4.多元函数的微分学: Mathematics/Mathematical Analysis2/Chapter4.md
+      - 5.重积分: Mathematics/Mathematical Analysis2/Chapter5.md
+      - 6.曲线积分与曲面积分: Mathematics/Mathematical Analysis2/Chapter6.md
+      - 7.Fourier级数: Mathematics/Mathematical Analysis2/Chapter7.md
+    - 线性代数Ⅰ:
+      - 1.线性空间与内积空间: Mathematics/Linear Algebra1/Chapter1.md
+      - 2.线性映射: Mathematics/Linear Algebra1/Chapter2.md
+      - 3.矩阵: Mathematics/Linear Algebra1/Chapter3.md
+      - 4.行列式: Mathematics/Linear Algebra1/Chapter4.md
+      - 5.特征值、特征向量与矩阵的标准形: Mathematics/Linear Algebra1/Chapter5.md
+    - 线性代数Ⅱ:
+      - 1.线性映射: Mathematics/Linear Algebra2/Chapter1.md
+      - 2.本征值、本征向量和不变子空间: Mathematics/Linear Algebra2/Chapter2.md
+      - 3.内积空间: Mathematics/Linear Algebra2/Chapter3.md
+      - 4.内积空间上的算子: Mathematics/Linear Algebra2/Chapter4.md
+      - 5.复向量空间上的算子: Mathematics/Linear Algebra2/Chapter5.md
+      - 6.实向量空间上的算子: Mathematics/Linear Algebra2/Chapter6.md
+      - 7.空间几何: Mathematics/Linear Algebra2/Chapter7.md
+    - 普通物理学Ⅰ:
+      - 1.动力学: Mathematics/Physics1/Chapter1.md
+      - 2.机械波: Mathematics/Physics1/Chapter2.md
+      - 3.狭义相对论: Mathematics/Physics1/Chapter3.md
+      - 4.热学: Mathematics/Physics1/Chapter4.md
+    - 普通物理学Ⅱ:
+      - 1.电荷与库仑定律: Mathematics/Physics2/Chapter1.md
+      - 2.电场: Mathematics/Physics2/Chapter2.md
+      - 3.高斯定理: Mathematics/Physics2/Chapter3.md
+      - 4.电势能与电势: Mathematics/Physics2/Chapter4.md
+      - 5.电容与电介质: Mathematics/Physics2/Chapter5.md
+      - 6.恒定电流: Mathematics/Physics2/Chapter6.md
+      - 7.磁场: Mathematics/Physics2/Chapter7.md
+      - 8.法拉第电磁感应定律: Mathematics/Physics2/Chapter8.md
+      - 9.电感与材料的磁性质: Mathematics/Physics2/Chapter9.md
+      - 10.Maxwell方程组: Mathematics/Physics2/Chapter10.md
+      - 11.几何光学: Mathematics/Physics2/Chapter11.md
+      - 12.波动光学: Mathematics/Physics2/Chapter12.md
+      - 13.衍射与光栅: Mathematics/Physics2/Chapter13.md
+      - 14.偏振: Mathematics/Physics2/Chapter14.md
+      - 15.物质波: Mathematics/Physics2/Chapter15.md
+    - 离散数学理论基础:
+      - 1.逻辑与证明: Mathematics/Discrete Mathematics/Chapter1.md
+      - 2.结构: Mathematics/Discrete Mathematics/Chapter2.md
+      - 3.算法: Mathematics/Discrete Mathematics/Chapter3.md
+      - 4.数论: Mathematics/Discrete Mathematics/Chapter4.md
+      - 5.归纳与递归: Mathematics/Discrete Mathematics/Chapter5.md
+      - 6.计数: Mathematics/Discrete Mathematics/Chapter6.md
+      - 7.计数进阶: Mathematics/Discrete Mathematics/Chapter7.md
+      - 8.关系: Mathematics/Discrete Mathematics/Chapter8.md
+      - 9.图: Mathematics/Discrete Mathematics/Chapter9.md
+      - 10.树: Mathematics/Discrete Mathematics/Chapter10.md
+    - 概率论:
+      - 1.事件及其概率: Mathematics/Probability/Chapter1.md
+      - 2.随机变量与分布函数: Mathematics/Probability/Chapter2.md
+      - 3.数字特征: Mathematics/Probability/Chapter3.md
+      - 4.概率极限理论: Mathematics/Probability/Chapter4.md
+  
+  - Computer Science:
+    - Computer Science/index.md
+    - 高级数据结构与算法分析:
+      - 1.AVL树，Splay树与均摊分析: Computer Science/ADS/Chapter1.md
+      - 2.红黑树与B+树: Computer Science/ADS/Chapter2.md
+      - 3.左式堆与斜堆: Computer Science/ADS/Chapter3.md
+      - 4.倒排索引: Computer Science/ADS/Chapter4.md
+      - 5.二项堆: Computer Science/ADS/Chapter5.md
+      - 6.回溯法: Computer Science/ADS/Chapter6.md
+      - 7.分治法: Computer Science/ADS/Chapter7.md
+      - 8.动态规划: Computer Science/ADS/Chapter8.md
+      - 9.贪心算法: Computer Science/ADS/Chapter9.md
+      - 10.NP完全性: Computer Science/ADS/Chapter10.md
+      - 11.近似算法: Computer Science/ADS/Chapter11.md
+      - 12.局部搜索: Computer Science/ADS/Chapter12.md
+      - 13.随机算法: Computer Science/ADS/Chapter13.md
+      - 14.并行算法: Computer Science/ADS/Chapter14.md
+      - 15.外部排序: Computer Science/ADS/Chapter15.md
+    - 人工智能引论:
+      - 1.逻辑与推理: Computer Science/AID/Chapter1.md
+      - 2.搜索与求解: Computer Science/AID/Chapter2.md
+      - 3.机器学习: Computer Science/AID/Chapter3.md
+      - 4.深度学习: Computer Science/AID/Chapter4.md
+      - 5.强化学习: Computer Science/AID/Chapter5.md
+      - 6.人工智能博弈: Computer Science/AID/Chapter6.md
+    - 计算机系统Ⅱ:
+      - 1.ISA: Computer Science/System2/Chapter1.md
+      - 2.Pipelining: Computer Science/System2/Chapter2.md
+      - 3.Hazard: Computer Science/System2/Chapter3.md
+      - 4.Inst Scheduling: Computer Science/System2/Chapter4.md
+      - 5.OS Structures: Computer Science/System2/Chapter5.md
+      - 6.Processes: Computer Science/System2/Chapter6.md
+      - 7.CPU Scheduling: Computer Science/System2/Chapter7.md
+      - 8.Inter-Process Communication: Computer Science/System2/Chapter8.md
+      - 9.Threads: Computer Science/System2/Chapter9.md
+      - 10.Synchronization: Computer Science/System2/Chapter10.md
+      - 11.Deadlocks: Computer Science/System2/Chapter11.md
