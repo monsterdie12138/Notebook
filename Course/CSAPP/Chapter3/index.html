@@ -8,25 +8,25 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/CSAPP/Chapter1/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Course/CSAPP/Chapter3/">
       
       
       
       
-      <link rel="icon" href="../../stylesheets/logo.jpg">
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
     
     
       
-        <title>Ⅰ 计算机系统漫游 A Tour of Computer Systems - Monsterdie's Notebook</title>
+        <title>Ⅲ 程序的机器级表示 Machine-Level Representation of Programs - Monsterdie's Notebook</title>
       
     
     
   
-      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,14 +52,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CLibre+Baskerville:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Libre Baskerville"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Source Code Pro"}</style>
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#i-a-tour-of-computer-systems" class="md-skip">
+        <a href="#iii-machine-level-representation-of-programs" class="md-skip">
           跳转至
         </a>
       
@@ -111,9 +111,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
       
-  <img src="../../stylesheets/logo.jpg" alt="logo">
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ⅰ 计算机系统漫游 A Tour of Computer Systems
+              Ⅲ 程序的机器级表示 Machine-Level Representation of Programs
             
           </span>
         </div>
@@ -233,7 +233,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -252,7 +252,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../Mathematics/" class="md-tabs__link">
+        <a href="../../../Mathematics/" class="md-tabs__link">
           
   
   Mathematics
@@ -270,13 +270,40 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../Computer%20Science/" class="md-tabs__link">
+        <a href="../../../Computer%20Science/" class="md-tabs__link">
           
   
   Computer Science
 
         </a>
       </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../CS61A/Lec1/" class="md-tabs__link">
+          
+  
+  Course
+
+        </a>
+      </li>
+    
+  
+
     
   
 
@@ -309,9 +336,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
       
-  <img src="../../stylesheets/logo.jpg" alt="logo">
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
 
     </a>
     Monsterdie's Notebook
@@ -338,7 +365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -374,7 +401,7 @@
         
   
   
-    <a href="../../Mathematics/" class="md-nav__link">
+    <a href="../../../Mathematics/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -416,7 +443,7 @@
         
   
   
-    <a href="../../Computer%20Science/" class="md-nav__link">
+    <a href="../../../Computer%20Science/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -428,6 +455,53 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../CS61A/Lec1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Course
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
   
 
       
@@ -462,47 +536,176 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#31-a-historical-perspective" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 历史观点 A Historical Perspective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-program-encodings" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 程序编码 Program Encodings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 程序编码 Program Encodings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      程序翻译的过程
+      寄存器
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
+  <a href="#33-data-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 数据格式 Data Formats
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 数据格式 Data Formats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      存储设备的层次结构
+      数据类型大小
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
+  <a href="#34-accessing-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 访问信息 Accessing Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 访问信息 Accessing Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      操作系统层面的抽象
+      整数寄存器（通用目的寄存器）
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      虚拟内存
+      操作数格式
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#amdahl" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#mov" class="md-nav__link">
     <span class="md-ellipsis">
-      Amdahl 定律
+      数据传送指令MOV
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushpop" class="md-nav__link">
+    <span class="md-ellipsis">
+      入栈指令PUSH与出栈指令POP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-arithmetic-and-logical-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 算术与逻辑操作 Arithmetic and Logical Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 算术与逻辑操作 Arithmetic and Logical Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#leaq" class="md-nav__link">
+    <span class="md-ellipsis">
+      地址加载指令leaq
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      一元和二元操作指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#128" class="md-nav__link">
+    <span class="md-ellipsis">
+      128位操作指令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 控制 Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 控制 Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件码
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -524,43 +727,116 @@
   
 
 
-<h1 id="i-a-tour-of-computer-systems">Ⅰ 计算机系统漫游 A Tour of Computer Systems</h1>
+<h1 id="iii-machine-level-representation-of-programs">Ⅲ 程序的机器级表示   Machine-Level Representation of Programs</h1>
 <hr />
-<h3 id="_1">程序翻译的过程</h3>
-<p><img alt="alt text" src="../image/1.1.1.jpg" /></p>
+<h2 id="31-a-historical-perspective">3.1 历史观点  A Historical Perspective</h2>
+<p>略。</p>
+<hr />
+<h2 id="32-program-encodings">3.2 程序编码  Program Encodings</h2>
+<h3 id="_1">寄存器</h3>
 <ul>
-<li><strong>预处理器</strong>：根据以字符#开头的命令，修改源程序，例如：<code>#include &lt;stdio.h&gt;</code>命令暗示预处理器读取对应头文件中的内容，并将其插入源程序中。</li>
-<li><strong>编译器</strong>：将修改后的源程序翻译成汇编语言。</li>
-<li><strong>汇编器</strong>：将汇编语言翻译成机器语言指令，并打包成可重定位目标程序，对应二进制文件。</li>
-<li><strong>链接器</strong>：将可重定位目标程序和预编译好了的目标文件进行合并，得到可执行目标文件，例如：程序调用<code>printf</code>函数，其有提供一个单独的预编译好了的目标文件<code>printf.o</code>。</li>
+<li><strong>程序计数器（PC）</strong>：存放下一条将要被执行的指令的地址。（在 x86-64 中用 %rip 表示）</li>
+<li><strong>整数计数器</strong>：存放 64 位的值，一共 16 个。</li>
+<li><strong>条件码寄存器</strong>：存放最近执行的算术或逻辑指令的状态信息。</li>
+<li><strong>向量寄存器</strong>：存放一个或多个整数或浮点数。</li>
 </ul>
-<h3 id="_2">存储设备的层次结构</h3>
-<p><img alt="alt text" src="../image/1.1.2.jpg" /></p>
-<p>主要思想：上一层的存储器作为低一层的存储器的高速缓存。</p>
-<h3 id="_3">操作系统层面的抽象</h3>
-<p><img alt="alt text" src="../image/1.1.3.jpg" /></p>
+<hr />
+<h2 id="33-data-formats">3.3 数据格式  Data Formats</h2>
+<h3 id="_2">数据类型大小</h3>
+<p><img alt="alt text" src="../image/3.3.1.jpg" /></p>
+<p>Intel 用术语“字”表示 16 个 bit，称 32 位数为“双字”，称 64 位数为“四字”。</p>
+<hr />
+<h2 id="34-accessing-information">3.4 访问信息  Accessing Information</h2>
+<h3 id="_3">整数寄存器（通用目的寄存器）</h3>
+<p><img alt="alt text" src="../image/3.4.1.jpg" /></p>
 <ul>
-<li><strong>进程</strong>：操作系统对一个正在运行的程序的一种抽象，在一个系统上可以同时交错运行多个进程，而每个进程都好像在单独使用硬件，操作系统实现这种交错执行的机制称为上下文切换。在进程之下还可以细分出线程，一个进程实际上可以由多个称为线程的执行单元组成。</li>
-<li><strong>虚拟内存</strong>：操作系统对每个进程单独使用的内存的一种抽象，又称虚拟地址空间，这实际上是一种假象。</li>
-<li><strong>文件</strong>：即字节序列，每个I/O设备都可以看作文件。</li>
+<li>对于生成小于 8 字节结果的指令，寄存器中剩余字节有以下规则：生成 1 字节或 2 字节结果的指令会保持剩下的字节不变；生成 4 字节结果的指令会将高 4 位置为 0。</li>
+<li>%rsp 为栈指针，用来指明运行时栈的结束位置。</li>
 </ul>
-<h3 id="_4">虚拟内存</h3>
-<p><img alt="alt text" src="../image/1.1.4.jpg" /></p>
+<h3 id="_4">操作数格式</h3>
+<p><img alt="alt text" src="../image/3.4.2.jpg" /></p>
+<h3 id="mov">数据传送指令MOV</h3>
+<p>作用：把数据从源位置复制到目的位置，不做任何变化，两个位置不能全是内存。</p>
 <ul>
-<li><strong>只读代码/数据</strong>：直接按照可执行文件的内容初始化。</li>
-<li><strong>运行时堆</strong>：当调用<code>malloc</code>之类的函数时，运行时堆会进行动态地扩展和收缩。</li>
-<li><strong>共享库</strong>：存放像C标准库和数学库之类的代码/数据。</li>
-<li><strong>用户栈</strong>：实现函数调用，可以动态地扩展和收缩。</li>
-<li><strong>内核虚拟内存</strong>：为内核保留的无法读写的禁区。</li>
+<li><strong>movb</strong>：传送 1 个字节</li>
+<li><strong>movw</strong>：传送 2 个字节</li>
+<li><strong>movl</strong>：传送 4 个字节</li>
+<li><strong>movq</strong>：传送 8 个字节</li>
+<li><strong>movabsq</strong>：传送 8 个字节（绝对）</li>
 </ul>
-<h3 id="amdahl">Amdahl 定律</h3>
-<p>当对系统某个部分加速时，其对系统整体性能的影响取决于该部分的重要性和加速程度。</p>
+<p>MOV 指令只会更新目的操作数指定的寄存器字节或者内存位置，唯一的例外是 movl 指令以寄存器作为目的时，会将该寄存器的高位全设为 0。</p>
+<p>常规的 movq 指令只能以表示为 32 位补码数字的立即数作为源操作数，然后符号扩展为 64 位。但 movabsq 指令能直接以 64 位立即数作为源操作数，并且只能以寄存器为目的。</p>
+<p>以下两类 MOV 指令将较小的源值复制到较大的目的。MOVZ 类进行零扩展，MOVS 类指令进行符号扩展。</p>
 <ul>
-<li>$\alpha$：系统某部分所需执行时间与总执行时间的比例</li>
-<li>$k$：该部分的性能提升比例</li>
-<li>$S$：加速比 $S=\frac{1}{(1-\alpha)+\frac{\alpha}{k}}$</li>
+<li><strong>movzbw</strong>：零扩展，1 个字节到 2 个字节</li>
+<li><strong>movzbl</strong>：零扩展，1 个字节到 4 个字节</li>
+<li><strong>movzbq</strong>：零扩展，1 个字节到 8 个字节</li>
+<li><strong>movzwl</strong>：零扩展，2 个字节到 4 个字节</li>
+<li><strong>movzwq</strong>：零扩展，2 个字节到 8 个字节<br />
+$~$</li>
+<li><strong>movsbw</strong>：符号扩展，1 个字节到 2 个字节</li>
+<li><strong>movsbl</strong>：符号扩展，1 个字节到 4 个字节</li>
+<li><strong>movsbq</strong>：符号扩展，1 个字节到 8 个字节</li>
+<li><strong>movswl</strong>：符号扩展，2 个字节到 4 个字节</li>
+<li><strong>movswq</strong>：符号扩展，2 个字节到 8 个字节</li>
+<li><strong>movslq</strong>：符号扩展，4 个字节到 8 个字节</li>
+<li><strong>cltq</strong>：符号扩展，%eax 到 %rax，无操作数</li>
 </ul>
-<p>Amdahl 定律的主要观点：要想显著加速整个系统，必须提升全系统中相当大的部分的速度。</p>
+<h3 id="pushpop">入栈指令PUSH与出栈指令POP</h3>
+<ul>
+<li><strong>pushq $S$</strong>：将 8 个字节压入栈（栈指针 -8 并传送数据至内存）</li>
+<li><strong>popq $D$</strong>：将 8 个字节弹出栈（栈指针 +8 并传送内存中的对应数据至寄存器$D$）</li>
+</ul>
+<hr />
+<h2 id="35-arithmetic-and-logical-operations">3.5 算术与逻辑操作  Arithmetic and Logical Operations</h2>
+<h3 id="leaq">地址加载指令leaq</h3>
+<p>作用：将有效地址写到目的操作数，或者简洁地描述算术操作。</p>
+<h3 id="_5">一元和二元操作指令</h3>
+<ul>
+<li><strong>INC</strong>：自加 1</li>
+<li><strong>DEC</strong>：自减 1</li>
+<li><strong>NEG</strong>：数值取反</li>
+<li><strong>NOT</strong>：按位取反
+$~$</li>
+<li><strong>ADD</strong>：加</li>
+<li><strong>SUB</strong>：减</li>
+<li><strong>IMUL</strong>：乘</li>
+<li><strong>XOR</strong>：异或</li>
+<li><strong>OR</strong>：或</li>
+<li><strong>AND</strong>：与</li>
+<li><strong>SAL</strong>：左移</li>
+<li><strong>SAR</strong>：算术右移</li>
+<li><strong>SHR</strong>：逻辑右移</li>
+</ul>
+<h3 id="128">128位操作指令</h3>
+<ul>
+<li><strong>imulq $S$</strong>：有符号全乘法
+  第一个 64 位参数存在 %rax 中，另一个为 $S$，乘积的高 64 位存在 %rdx 中，低 64 位存在 %rax 中。</li>
+<li><strong>mulq $S$</strong>：无符号全乘法
+  数据存放位置同 imulq</li>
+<li><strong>idivq $S$</strong>：有符号除法
+  被除数的高 64 位存在 %rdx 中，低 64 位存在 %rax 中，除数为 $S$，商存在 %rax 中，余数存在 %rdx 中。</li>
+<li><strong>divq $S$</strong>：无符号除法
+  数据存放位置同 idivq</li>
+<li><strong>cqto</strong>：转换 16 字节，隐含读出 %rax 的符号位，并将它复制到 %rdx 的所有位</li>
+</ul>
+<hr />
+<h2 id="36-control">3.6 控制  Control</h2>
+<h3 id="_6">条件码</h3>
+<p>条件码寄存器各自只有 1 位，描述最近的算数或逻辑操作的属性。除了 leaq 指令以外，其余的算数逻辑操作指令都会设置相应的条件码。</p>
+<ul>
+<li><strong>CE（进位标志）</strong>：最近的操作使最高位产生了进位</li>
+<li><strong>ZF（零标志）</strong>：最近的操作结果为 0</li>
+<li><strong>SF（符号标志）</strong>：最近的操作结果为负数</li>
+<li><strong>OF（溢出标志）</strong>：最近的操作导致补码溢出</li>
+</ul>
+<p>以下两个指令只会设置条件码，而不会改变其他寄存器：</p>
+<ul>
+<li><strong>CMP $S_1$，$S_2$</strong>：基于 $S_2-S_1$ 设置条件码，分为 cmpb，cmpw，cmpl，cmpq</li>
+<li><strong>TEST $S_1$，$S_2$</strong>：基于 $S_1\&amp;S_2$ 设置条件码，分为 testb，testw，testl，testq</li>
+</ul>
+<p><code>testq %rax,%rax</code>用于检查 %rax 是正数/负数/零。</p>
+<p>条件码</p>
 
 
 
@@ -673,10 +949,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
       
     
   </body>
