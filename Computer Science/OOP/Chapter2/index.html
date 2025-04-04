@@ -1,0 +1,1564 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/OOP/Chapter2/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Chapter2 - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter2-c" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Mathematics/" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Course/" class="md-tabs__link">
+          
+  
+  Course
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Course/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Course
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Pointer 指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Reference 引用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-const" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Const 常量
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 新式循环与数组
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 类型转换
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 杂项
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter2-c">Chapter2 c++基础</h1>
+<hr />
+<h2 id="21-pointer">2.1 Pointer 指针</h2>
+<p><strong>指针类型：</strong></p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span><span class="w">                </span><span class="c1">//p1是指向int的指针</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">int</span><span class="o">**</span><span class="w"> </span><span class="n">p2</span><span class="p">;</span><span class="w">               </span><span class="c1">//p2是指向int指针的指针</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p3</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w">            </span><span class="c1">//p3是数组，数组元素是int指针</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">p4</span><span class="p">)[</span><span class="mi">10</span><span class="p">];</span><span class="w">          </span><span class="c1">//p4是指针，指向一个数组，数组元素是int</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">f1</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span><span class="kt">char</span><span class="p">);</span><span class="w">    </span><span class="c1">//f1是指针，指向一个输入为int和char，输出为int的函数</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="nf">f2</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w">           </span><span class="c1">//f2是函数，输入为int，返回为int指针</span>
+</span></code></pre></div>
+<p><strong>空指针：</strong></p>
+<p>c++中<code>NULL</code>，<code>0</code>，<code>nullptr</code>意义等价：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">type</span><span class="w"> </span><span class="o">*</span><span class="n">p1</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">type</span><span class="w"> </span><span class="o">*</span><span class="n">p2</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">type</span><span class="w"> </span><span class="o">*</span><span class="n">p3</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
+</span></code></pre></div>
+<p><strong><code>void*</code>指针：</strong></p>
+<p><code>void*</code>指针的值是一个内存地址，但该内存存放的数据类型未知，即<code>void*</code>指针是能够接受任何数据类型的特殊指针。</p>
+<p><code>void*</code>指针最重要的用途是作为函数的参数，向函数传递一个类型可变的对象；另一种用途是从函数返回一个无类型的对象。</p>
+<p>在<code>void*</code>指针解引用之前，必须显式地将<code>void*</code>指针转换成某种数据类型的指针后使用。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">pi</span><span class="o">=&amp;</span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">pv</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">pd</span><span class="o">=&amp;</span><span class="n">d</span><span class="p">;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">pv</span><span class="o">=&amp;</span><span class="n">i</span><span class="p">;</span><span class="w">              </span><span class="c1">//正确，地址的传递</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">pv</span><span class="o">=</span><span class="n">pi</span><span class="p">;</span><span class="w">              </span><span class="c1">//正确，地址的传递</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">pv</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w">    </span><span class="c1">//错误，pv指向的数据类型未知，无法解析</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="n">pv</span><span class="o">=</span><span class="n">pd</span><span class="p">;</span><span class="w">              </span><span class="c1">//正确，地址的传递</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span><span class="p">)</span><span class="n">pv</span><span class="p">;</span><span class="w"> </span><span class="c1">//正确，在解引用之前进行了显示转换，声明指向的数据类型为double</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p><strong><code>begin()</code>&amp;<code>end()</code>：</strong></p>
+<p><code>begin()</code>和<code>end()</code>是<code>&lt;iterator&gt;</code>头文件的两个函数，前者返回指向数组第一个元素的指针，后者返回指向数组最后一个元素的<strong>下一个位置</strong>的指针。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>使用<code>begin()</code>和<code>end()</code>遍历数组<code>a</code>：</strong></p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">};</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="n">begin</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="n">p</span><span class="o">!=</span><span class="n">end</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="n">p</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">{</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">p</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p><strong><code>new</code>&amp;<code>delete</code>：</strong></p>
+<p><code>new</code>用于动态分配内存，返回指针：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">p1</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w">     </span><span class="c1">//用法一：分配type大小的内存</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">p2</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w">  </span><span class="c1">//用法二：分配type大小的内存并初始化数据为x</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">p3</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">type</span><span class="p">[</span><span class="n">n</span><span class="p">];</span><span class="w">  </span><span class="c1">//用法三：分配n个type大小的内存（数组）</span>
+</span></code></pre></div>
+<p><code>delete</code>用于释放内存：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">delete</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span><span class="w">       </span><span class="c1">//用法一：释放p1指向的内存</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">p2</span><span class="p">;</span><span class="w">     </span><span class="c1">//用法二：释放p2指向的数组内存</span>
+</span></code></pre></div>
+<p><strong>智能指针：</strong></p>
+<p>智能指针定义在<code>&lt;memory&gt;</code>头文件，和普通指针的区别在于，智能指针会负责自动释放所指向的内存，无需调用<code>free</code>或<code>delete</code>。有以下类型：</p>
+<ul>
+<li><code>auto_ptr</code>：
+  （已废弃）</li>
+<li><code>shared_ptr</code>：
+  多个<code>shared_ptr</code>可以指向同一个对象，当最后一个<code>shared_ptr</code>被销毁时，对象才被释放</li>
+<li><code>unique_ptr</code>：
+  确保同一时间只有一个<code>unique_ptr</code> 拥有该对象，不能复制，但可以移动</li>
+</ul>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">//x_ptr表示auto_ptr，shared_ptr或unique_ptr</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">x_ptr</span><span class="o">&lt;</span><span class="n">type</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span><span class="w">             </span><span class="c1">//定义智能指针p1，类型为type</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">x_ptr</span><span class="o">&lt;</span><span class="n">type</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p2</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span><span class="w">         </span><span class="c1">//定义智能指针p2，类型为type，初始化为p1</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">x_ptr</span><span class="o">&lt;</span><span class="n">type</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p3</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="c1">//定义智能指针p3，类型为type，初始化为new type(x)</span>
+</span></code></pre></div>
+<p>同类型的<code>auto_ptr</code>，<code>shared_ptr</code>之间可以相互赋值，但<code>unique_ptr</code>不行，因为同一时间只有一个<code>unique_ptr</code> 拥有该对象：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">9</span><span class="p">));</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p2</span><span class="o">=</span><span class="n">p1</span><span class="p">;</span><span class="w"> </span><span class="c1">//错误，地址new int(9)只能存在一个unique_ptr中</span>
+</span></code></pre></div>
+</div>
+<p>智能指针和普通指针之间不能随意赋值，但可以通过<code>get()</code>函数获取智能指针中的指针后，再赋值给普通指针：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">ip</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">             </span><span class="c1">//普通指针（裸指针）</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sp</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">8</span><span class="p">));</span><span class="w"> </span><span class="c1">//智能指针</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">sp</span><span class="o">=&amp;</span><span class="n">x</span><span class="p">;</span><span class="w">                          </span><span class="c1">//错误，普通指针赋给智能指针</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">sp</span><span class="o">=</span><span class="n">ip</span><span class="p">;</span><span class="w">                          </span><span class="c1">//错误，普通指针赋给智能指针</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">ip</span><span class="o">=</span><span class="n">sp</span><span class="p">;</span><span class="w">                          </span><span class="c1">//错误，智能指针赋给普通指针</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">ip</span><span class="o">=</span><span class="n">sp</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w">                    </span><span class="c1">//正确</span>
+</span></code></pre></div>
+</div>
+<p><strong><code>weak_ptr</code>弱指针：</strong></p>
+<p>弱指针<code>weak_ptr</code>也是智能指针的一种，主要用于协助共享指针<code>shared_ptr</code>。</p>
+<p>弱指针不占用内存，没有解引用操作，但能够提供对一个或多个共享指针拥有的对象的访问，且不参与引用计数，可以用来解决两个共享指针相互引用产生的deadlock。</p>
+<hr />
+<h2 id="22-reference">2.2 Reference 引用</h2>
+<p>引用即别名，是对对象的另一种访问方式。</p>
+<p><strong>左值引用：类型&amp; 引用名=变量名</strong></p>
+<p>针对左值（单一变量）使用：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ir</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="w">  </span><span class="c1">//ir和i是同一实体的不同名称</span>
+</span></code></pre></div>
+</div>
+<p><strong>右值引用：类型&amp;&amp; 引用名=表达式</strong></p>
+<p>针对右值（常量或表达式等即将销毁的临时对象）使用：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">double</span><span class="w"> </span><span class="n">r</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kt">double</span><span class="o">&amp;</span><span class="w"> </span><span class="n">lr1</span><span class="o">=</span><span class="n">r</span><span class="p">;</span><span class="w">      </span><span class="c1">//正确，变量名是左值</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kt">double</span><span class="o">&amp;</span><span class="w"> </span><span class="n">lr2</span><span class="o">=</span><span class="n">r</span><span class="o">+</span><span class="mi">10</span><span class="p">;</span><span class="w">   </span><span class="c1">//错误，左值引用只能是单一变量</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="kt">double</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">rr</span><span class="o">=</span><span class="n">r</span><span class="p">;</span><span class="w">      </span><span class="c1">//错误，右值引用不能是单一变量</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kt">double</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">rr</span><span class="o">=</span><span class="n">r</span><span class="o">+</span><span class="mi">10</span><span class="p">;</span><span class="w">   </span><span class="c1">//正确，rr是保存r+10计算结果（20）的临时内存单元的别名</span>
+</span></code></pre></div>
+</div>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>引用不是值，不占用内存；</li>
+<li>引用在声明时必须初始化（除了函数的参数列表或者类的定义）；</li>
+<li>引用的绑定在运行时不能修改（重新赋值）；</li>
+<li>引用不能嵌套（因为引用某个引用实际上就是指向同一个值）；</li>
+<li>指针不能指向引用变量，但引用可以指向指针变量；</li>
+<li>没有引用类型的数组；</li>
+<li>若一个变量声明为type&amp;，则必须用一个类型为type或者能转换为type类型的变量（或对象）来赋值。</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">},</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">r1</span><span class="p">)[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">;</span><span class="w">    </span><span class="c1">//正确，r1是具有10个int的数组的引用</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">r2</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w">       </span><span class="c1">//正确，r2是数组元素的引用</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">r3</span><span class="p">)[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="n">b</span><span class="p">;</span><span class="w">  </span><span class="c1">//正确，r3是具有10个int指针的数组的引用</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">r4</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">;</span><span class="w">      </span><span class="c1">//错误，r4是引用数组，每个数组元素都是引用，是不合法的</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">r1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w">            </span><span class="c1">//正确，数组引用的用法</span>
+</span></code></pre></div>
+</div>
+<hr />
+<h2 id="24-const">2.4 Const 常量</h2>
+<p><strong><code>const</code>&amp;<code>constexpr</code>:</strong></p>
+<p><code>const</code>可以在编译时确定，也可以在运行时确定。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">class_size</span><span class="o">=</span><span class="mi">12</span><span class="p">;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">finalgrade</span><span class="p">[</span><span class="n">class_size</span><span class="p">]</span>
+</span></code></pre></div>
+这里的<code>const</code>是编译时刻的const，编译时就替换成常量，因此下面的静态数组定义正确。</p>
+<p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kt">double</span><span class="w"> </span><span class="n">classaverage</span><span class="p">[</span><span class="n">size</span><span class="p">];</span>
+</span></code></pre></div>
+这里的<code>const</code>是运行时刻的<code>const</code>，只有运行时输入<code>x</code>才知道常量的值，但后面的静态数组在编译时就要知道大小来分配内存，因此会报错。</p>
+</div>
+<p><code>constexpr</code>必须在编译时确定。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="n">size</span><span class="p">();</span><span class="w">     </span><span class="c1">//正确，n在执行函数size()时取得</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="o">=</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="c1">//错误，程序编译时不知道size()的值，因为并没有运行</span>
+</span></code></pre></div>
+</div>
+<p>表达式可以出现在常量的定义语句中，<code>const</code>的定义语句可以有变量名，但<code>constexpr</code>的定义语句不能有变量。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i1</span><span class="o">=</span><span class="mi">10</span><span class="o">+</span><span class="n">k</span><span class="o">+</span><span class="mi">6</span><span class="p">;</span><span class="w">      </span><span class="c1">//正确</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i1</span><span class="o">=</span><span class="mi">10</span><span class="o">+</span><span class="n">k</span><span class="o">+</span><span class="mi">6</span><span class="p">;</span><span class="w">  </span><span class="c1">//错误</span>
+</span></code></pre></div>
+</div>
+<p><strong>常量与指针的限定关系：</strong></p>
+<ul>
+<li><code>type* const p</code>：
+  指针<code>p</code>本身是常量，不能改变指向的地址，但可以改变指向的对象</li>
+<li><code>type const *p</code>：
+  可以改变指向的地址，但不能通过<code>p</code>改变指向的对象</li>
+<li><code>const type* p</code>：
+  可以改变指向的地址，但不能通过<code>p</code>改变指向的对象</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>type const *p</code>和<code>const type* p</code>指向的对象虽然不能通过<code>p</code>修改，但如果有其他指针指向同样的对象，那么只要指向的对象类型不是const，就可以通过其他指针修改。
+<code>type* const p</code>不能指向const。</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pc</span><span class="o">=</span><span class="s">&quot;aaaa&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">//正确，pc本身是常量，但可以改变指向的对象</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">pc</span><span class="o">=</span><span class="s">&quot;bbbb&quot;</span><span class="p">;</span><span class="w">              </span><span class="c1">//错误，pc是地址</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="o">*</span><span class="n">pc</span><span class="o">=</span><span class="s">&quot;a&quot;</span><span class="p">;</span><span class="w">                </span><span class="c1">//错误，&quot;a&quot;的类型是const char*，*pc的类型是char</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="o">*</span><span class="n">pc</span><span class="o">=</span><span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="w">                </span><span class="c1">//正确</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="o">*</span><span class="p">(</span><span class="n">pc</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="sc">&#39;b&#39;</span><span class="p">;</span><span class="w">            </span><span class="c1">//正确</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">pc</span><span class="o">++=</span><span class="sc">&#39;y&#39;</span><span class="p">;</span><span class="w">               </span><span class="c1">//错误，pc++是地址</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="mi">28</span><span class="p">;</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pi</span><span class="o">=&amp;</span><span class="n">b</span><span class="p">;</span><span class="w">       </span><span class="c1">//错误，pi指向的对象可变，但b是常量</span>
+</span></code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">78</span><span class="p">;</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="mi">28</span><span class="p">;</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="mi">18</span><span class="p">;</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">pi</span><span class="o">=&amp;</span><span class="n">a</span><span class="p">;</span><span class="w">   </span><span class="c1">//正确，这里写const int* pi = &amp;c;也没有问题</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="o">*</span><span class="n">pi</span><span class="o">=</span><span class="mi">58</span><span class="p">;</span><span class="w">             </span><span class="c1">//错误，pi指向常量，不能修改</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">pi</span><span class="o">=&amp;</span><span class="n">b</span><span class="p">;</span><span class="w">              </span><span class="c1">//正确</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="o">*</span><span class="n">pi</span><span class="o">=</span><span class="mi">68</span><span class="p">;</span><span class="w">             </span><span class="c1">//错误，pi指向常量，不能修改</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="n">pi</span><span class="o">=&amp;</span><span class="n">c</span><span class="p">;</span><span class="w">              </span><span class="c1">//正确</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="o">*</span><span class="n">pi</span><span class="o">=</span><span class="mi">88</span><span class="p">;</span><span class="w">             </span><span class="c1">//错误，无论指向的是否是常量，都不能通过pi进行修改</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="n">c</span><span class="o">=</span><span class="mi">98</span><span class="p">;</span><span class="w">               </span><span class="c1">//正确</span>
+</span></code></pre></div>
+</div>
+<p><strong>顶层const&amp;底层const：</strong></p>
+<p>顶层const包括：所有数据类型定义的常量和本身是常量的指针。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">//第一种顶层const</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">p</span><span class="o">=&amp;</span><span class="n">b</span><span class="p">;</span><span class="c1">//第二种顶层const</span>
+</span></code></pre></div>
+</div>
+<p>底层const包括：所有指向常量对象的指针和常量引用。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="o">=&amp;</span><span class="n">c</span><span class="p">;</span><span class="c1">//第一种底层const</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">r</span><span class="o">=</span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="c1">//第二种底层const</span>
+</span></code></pre></div>
+</div>
+<p><strong>字符串：</strong></p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">;</span>
+</span></code></pre></div>
+<p><code>s</code>是一个指针，指向字符串常量。实际上这里的类型应该是<code>const char*</code>，但编译器会自动将考虑为常量。</p>
+<p>字符串实际上是可以修改的，但不同的编译器处理不同，也有可能报错，因此尽量不要修改。</p>
+<p>随意修改的写法是：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[]</span><span class="o">=</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">;</span>
+</span></code></pre></div>
+<p><strong>类型转换：</strong></p>
+<p>变量可以当作常量处理，因为常量比变量更加严格；反过来不行。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">15</span><span class="p">;</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">f</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span><span class="w">                  </span><span class="c1">//正确，f参数为常量地址，&amp;a为变量地址</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="p">;</span><span class="w">          </span><span class="c1">//正确，常量初始化</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="n">f</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span><span class="w">                  </span><span class="c1">//正确，f参数和&amp;b都为常量地址</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w">                  </span><span class="c1">//错误，常量之后不能再改变</span>
+</span></code></pre></div>
+</div>
+<p>如果函数的参数要求是常量，则该参数在函数内部无法修改：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="p">{</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>这种写法是错误的。</p>
+</div>
+<hr />
+<p><strong><code>auto</code>和<code>decltype</code>：</strong></p>
+<p><code>auto</code>和<code>decltype</code>能从变量或表达式中自动推断出数据类型。</p>
+<p><strong><code>auto</code>:</strong></p>
+<p><code>auto</code>忽略所有引用，对于const只保留底层const，忽略所有顶层const：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="o">+</span><span class="mi">8</span><span class="p">;</span><span class="w">             </span><span class="c1">//相当于int x=3+8;         </span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="k">auto</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="sc">&#39;s&#39;</span><span class="p">;</span><span class="w">             </span><span class="c1">//相当于char c=&#39;s&#39;;</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">auto</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="s">&quot;abcde&quot;</span><span class="p">;</span><span class="w">         </span><span class="c1">//相当于const char* s=&quot;abcde&quot;;</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="k">auto</span><span class="w"> </span><span class="n">z</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="mf">3.8</span><span class="p">;</span><span class="w">           </span><span class="c1">//相当于double z=x+3.8;</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ic</span><span class="o">=</span><span class="n">i</span><span class="p">,</span><span class="o">&amp;</span><span class="n">rc</span><span class="o">=</span><span class="n">ic</span><span class="p">;</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="k">auto</span><span class="w"> </span><span class="n">pi</span><span class="o">=&amp;</span><span class="n">i</span><span class="p">;</span><span class="w">             </span><span class="c1">//相当于int* pi=&amp;i;</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="k">auto</span><span class="w"> </span><span class="n">pc</span><span class="o">=&amp;</span><span class="n">ic</span><span class="p">;</span><span class="w">            </span><span class="c1">//相当于const int* pc=&amp;ic; 保留底层指针const</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="k">auto</span><span class="w"> </span><span class="n">rrc</span><span class="o">=</span><span class="n">rc</span><span class="p">;</span><span class="w">            </span><span class="c1">//相当于int rrc=rc; 原本rc的类型是const int&amp;，忽略引用再忽略顶层const就是int</span>
+</span></code></pre></div>
+</div>
+<p>用<code>auto</code>设置引用类型时，初始值中的顶层const会被保留：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ic</span><span class="o">=</span><span class="n">l</span><span class="p">;</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ri</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="w">             </span><span class="c1">//正确，相当于int&amp; ri=i;</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rc</span><span class="o">=</span><span class="n">ic</span><span class="p">;</span><span class="w">            </span><span class="c1">//正确，相当于const int&amp; rc=ic; 初始值中的顶层const被保留</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">r0</span><span class="o">=</span><span class="mf">4.3</span><span class="p">;</span><span class="w">           </span><span class="c1">//错误，左值引用不能指向一个常量</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="k">auto</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">r0</span><span class="o">=</span><span class="mf">4.3</span><span class="p">;</span><span class="w">          </span><span class="c1">//正确，右值引用可以指向一个常量，相当于double&amp;&amp; r0=4.3;</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">r1</span><span class="o">=</span><span class="mf">4.3</span><span class="p">;</span><span class="w">     </span><span class="c1">//正确，const引用可以绑定到右值，相当于const double&amp; r1=4.3;</span>
+</span></code></pre></div>
+</div>
+<p><code>auto</code>可以同时定义多个变量，但数据类型只能有一种：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">auto</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span><span class="w">     </span><span class="c1">//正确</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mf">3.2</span><span class="p">;</span><span class="w">         </span><span class="c1">//错误</span>
+</span></code></pre></div>
+</div>
+<p><strong><code>decltype</code>:</strong></p>
+<p>语法：</p>
+<p>decltype(表达式1) 变量 = 表达式2</p>
+<p><code>decltype</code>用表达式1的结果类型定义变量，用表达式2的值初始化变量。</p>
+<p>当表达式1是变量时，<code>decltype</code>不会忽略顶层const和引用；用双括号把表达式括起来时，定义的一定是引用。</p>
+<p><strong><code>auto</code>和<code>decltype</code>推断数组：</strong></p>
+<p>当表达式是一个数组时，<code>auto</code>推断出的数据类型是指向数组第一个元素的指针；<code>decltype</code>推断出来的数据类型是相同类型的数组：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="k">auto</span><span class="w"> </span><span class="n">p1</span><span class="o">=</span><span class="n">a</span><span class="p">;</span><span class="w">          </span><span class="c1">//相当于int* p1</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="k">decltype</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="n">p2</span><span class="p">;</span><span class="w">     </span><span class="c1">//相当于int p2[5]</span>
+</span></code></pre></div>
+</div>
+<p><strong><code>decltype(auto)</code>:</strong></p>
+<p>当我们使用<code>decltype</code>时，可能会写出</p>
+<p><code>decltype(long expression) a=long expression;</code></p>
+<p>的形式，<code>long expression</code>被重复输入，比较麻烦，因此<code>decltype(auto)</code>对此进行了改进，可以等效地写成</p>
+<p><code>decltype(auto) a=long expression;</code></p>
+<hr />
+<h2 id="25">2.5 新式循环与数组</h2>
+<p><strong><code>begin</code>，<code>end</code>和基于范围的<code>for</code>循环：</strong></p>
+<p><code>begin</code>，<code>end</code>和基于范围的<code>for</code>循环操作的对象都是一组同类型的连续数据，称为<strong>序列</strong>，包括数组、{}列表、字符串等。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>计算数组元素的平方，统计字符串中的字符个数并将所有的字母改为大写。</strong></p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="cp">#include</span><span class="cpf">&lt;string&gt;</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="p">{</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">(</span><span class="s">&quot;Hello,world!&quot;</span><span class="p">);</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="o">:</span><span class="n">a</span><span class="p">)</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-28-15"><a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>
+</span><span id="__span-28-16"><a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="n">begin</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="n">p</span><span class="o">!=</span><span class="n">end</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="n">p</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-28-17"><a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-28-18"><a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">p</span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-28-19"><a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-28-20"><a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-28-21"><a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a>
+</span><span id="__span-28-22"><a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="o">:</span><span class="n">s</span><span class="p">)</span>
+</span><span id="__span-28-23"><a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-28-24"><a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">c</span><span class="p">;</span>
+</span><span id="__span-28-25"><a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-28-26"><a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-28-27"><a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a>
+</span><span id="__span-28-28"><a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="n">begin</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="n">p</span><span class="o">!=</span><span class="n">end</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="n">p</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-28-29"><a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-28-30"><a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">p</span><span class="p">;</span>
+</span><span id="__span-28-31"><a id="__codelineno-28-31" name="__codelineno-28-31" href="#__codelineno-28-31"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-28-32"><a id="__codelineno-28-32" name="__codelineno-28-32" href="#__codelineno-28-32"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p><strong><code>vector</code>和<code>valarray</code>:</strong></p>
+<p><code>vector</code>来自头文件<code>&lt;vector&gt;</code>，能够定义动态数组。</p>
+<p>语法：</p>
+<p>vector &lt;数据类型&gt; 数组名{初始列表};
+vector &lt;数据类型&gt; 数组名={初始列表};
+vector &lt;数据类型&gt; 数组名(数组元素个数);</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="cp">#include</span><span class="cpf">&lt;vector&gt;</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="p">{</span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="w">    </span><span class="n">vector</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v1</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">},</span><span class="n">v2</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">},</span><span class="n">v3</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">    </span><span class="n">v1</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">v2</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">v1</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">v1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="w">        </span><span class="n">v3</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">v1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">v2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="w">    </span><span class="n">v3</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-29-15"><a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="w">    </span><span class="n">v3</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">=</span><span class="n">v3</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-29-16"><a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">:</span><span class="n">v3</span><span class="p">)</span>
+</span><span id="__span-29-17"><a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-29-18"><a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">x</span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-29-19"><a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-29-20"><a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p><code>valarray</code>来自头文件<code>&lt;valarray&gt;</code>，与<code>vector</code>的语法和行为类似，但其支持数组整体的操作，因此比<code>vector</code>效率更高。</p>
+<hr />
+<h2 id="26">2.6 类型转换</h2>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">ival</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">ival</span><span class="o">=</span><span class="mf">3.54</span><span class="o">+</span><span class="mi">3</span><span class="p">;</span>
+</span></code></pre></div>
+<p>编译器的处理过程如下：</p>
+<ul>
+<li>将<code>int 3</code>转换成<code>double 3.00</code></li>
+<li>计算得到结果6.54</li>
+<li>将等号右边的类型转换成等号左边的类型，直接去掉小数部分，即6.54变成6，并赋值给<code>ival</code></li>
+</ul>
+</div>
+<p><strong>隐式类型转换：</strong></p>
+<ul>
+<li>第一种：
+  在混合类型的算术表达式中，最宽的数据类型为最终类型。</li>
+</ul>
+<pre class="mermaid"><code>graph LR
+A[char, signed char, unsigned char]
+B[short, unsigned short]
+C[bool]
+D[int, unsigned int]
+E[long]
+F[float]
+G[double]
+H[long double]
+A--&gt;D
+B--&gt;D
+C--&gt;D--&gt;E--&gt;F--&gt;G--&gt;H</code></pre>
+<ul>
+<li>
+<p>第二种：
+  用一种类型的表达式赋值给另一种类型的对象，被赋值的类型为最终类型。</p>
+</li>
+<li>
+<p>第三种：
+  把一个表达式传给一个函数调用，表达式的类型与形参的类型不同，形参的类型为最终类型。</p>
+</li>
+<li>
+<p>第四种：
+  从一个函数返回一个值赋给某个变量，该变量的类型与函数返回类型不同，函数返回类型为最终类型。</p>
+</li>
+</ul>
+<p><strong>显式类型转换：</strong></p>
+<ul>
+<li><code>static_cast&lt;type&gt;(expression)</code>：静态转换</li>
+<li><code>dynamic_cast&lt;type&gt;(expression)</code>：动态转换</li>
+<li><code>const_cast&lt;type&gt;(expression)</code>：常量转换（移除或添加const）</li>
+<li><code>reinterpret_cast&lt;type&gt;(expression)</code>：不相关的类型转换（将整型转换成指针等）</li>
+</ul>
+<p><strong>引用传递：</strong></p>
+<p>应用一：交换变量值</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="p">{</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="o">=</span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">    </span><span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">    </span><span class="n">b</span><span class="o">=</span><span class="n">temp</span><span class="p">;</span>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p>应用二：返回多值</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rSquare</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rCube</span><span class="p">)</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="p">{</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">&gt;</span><span class="mi">20</span><span class="o">&amp;&amp;</span><span class="n">n</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="w">    </span><span class="n">rSquare</span><span class="o">=</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="w">    </span><span class="n">rCube</span><span class="o">=</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p><strong>函数默认参数：</strong></p>
+<p>函数声明和定义同时存在时，仅声明中才能出现默认的说明。</p>
+<p>函数默认参数只能默认全部或者部分右边的参数，即一旦某个参数开始指定默认值，其右边的所有参数都必须指定默认值。</p>
+<p>在调用具有默认参数值的函数时，若某个实参默认，其右边的所有实参都应默认。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">i2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">i3</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="p">{</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i1</span><span class="o">+</span><span class="n">i2</span><span class="o">+</span><span class="n">i3</span><span class="p">;</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="p">}</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="n">f</span><span class="p">();</span><span class="w">        </span><span class="c1">//正确，i1=1，i2=2，i3=0</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w">       </span><span class="c1">//正确，i1=3，i2=2，i3=0</span>
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span><span class="w">     </span><span class="c1">//正确，i1=2，i2=3，i3=0</span>
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="n">f</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span><span class="w">   </span><span class="c1">//正确，i1=4，i2=5，i3=6</span>
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="n">f</span><span class="p">(,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span><span class="w">    </span><span class="c1">//错误，i1缺省，而右边的i2，i3没有</span>
+</span></code></pre></div>
+</div>
+<p>可以用表达式作为默认参数，但局部变量不能作为默认参数值。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s">&quot;tom&quot;</span><span class="p">;</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="kt">double</span><span class="w"> </span><span class="n">h</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">len</span><span class="o">=</span><span class="mf">1.1</span><span class="p">;</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">dog</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">dogname</span><span class="o">=</span><span class="n">name</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="n">hight</span><span class="o">=</span><span class="n">h</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="n">len</span><span class="p">)</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="p">{</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;Dogname:&quot;</span><span class="o">&lt;&lt;</span><span class="n">dogname</span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Hight:&quot;</span><span class="o">&lt;&lt;</span><span class="n">h</span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">Length:&quot;</span><span class="o">&lt;&lt;</span><span class="n">len</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="p">}</span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="p">{</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="w">    </span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Jake&quot;</span><span class="p">;</span><span class="w">    </span><span class="c1">//修改全局变量，改变实参的默认值</span>
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">h</span><span class="o">=</span><span class="mf">2.1</span><span class="p">;</span><span class="w">   </span><span class="c1">//局部变量h隐藏了全局变量h，对实参的默认值没有影响</span>
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="w">    </span><span class="n">dog</span><span class="p">();</span>
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p><strong>函数重载：</strong></p>
+<p>函数重载指的是，允许在同一作用域（程序）内定义多个同名函数，这些同名函数可以有不同的返回类型、参数类型、参数数量、函数功能。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="p">{</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">?</span><span class="n">x</span><span class="o">:-</span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="p">}</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="kt">float</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="p">{</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&gt;?</span><span class="n">x</span><span class="o">:-</span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="p">}</span>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="kt">double</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="p">{</span>
+</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&gt;?</span><span class="n">x</span><span class="o">:-</span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="p">}</span>
+</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a>
+</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a><span class="p">{</span>
+</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">abs</span><span class="p">(</span><span class="mi">-9</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-35-19"><a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">abs</span><span class="p">(</span><span class="mf">-9.9f</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-35-20"><a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">abs</span><span class="p">(</span><span class="mf">-9.8</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-35-21"><a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p>调用函数如果遇到函数重载的情况，则按照以下优先顺序来匹配函数：</p>
+<ul>
+<li>准确匹配，无需任何转换或只需平凡转换（如数组名到指针、函数名到函数指针、变量到常量等）</li>
+<li>利用提升（如<code>bool-&gt;int</code>,<code>short-&gt;int</code>,<code>float-&gt;double</code>等）</li>
+<li>标准转换（如<code>int&lt;-&gt;double</code>,<code>double&lt;-&gt;long double</code>,<code>int-&gt;unsigned int</code>,<code>T*-&gt;void*</code>等）</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1">//记作f1</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="p">{</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="p">}</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="c1">//记作f2</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="p">{</span>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="w">    </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">s</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="p">}</span>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-36-14"><a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a><span class="p">{</span>
+</span><span id="__span-36-15"><a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="sc">&#39;A&#39;</span><span class="p">;</span>
+</span><span id="__span-36-16"><a id="__codelineno-36-16" name="__codelineno-36-16" href="#__codelineno-36-16"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-36-17"><a id="__codelineno-36-17" name="__codelineno-36-17" href="#__codelineno-36-17"></a><span class="w">    </span><span class="kt">short</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-36-18"><a id="__codelineno-36-18" name="__codelineno-36-18" href="#__codelineno-36-18"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">ff</span><span class="o">=</span><span class="mf">3.4</span><span class="p">;</span>
+</span><span id="__span-36-19"><a id="__codelineno-36-19" name="__codelineno-36-19" href="#__codelineno-36-19"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;123456789&quot;</span><span class="p">;</span>
+</span><span id="__span-36-20"><a id="__codelineno-36-20" name="__codelineno-36-20" href="#__codelineno-36-20"></a>
+</span><span id="__span-36-21"><a id="__codelineno-36-21" name="__codelineno-36-21" href="#__codelineno-36-21"></a><span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w">           </span><span class="c1">//f1，利用提升</span>
+</span><span id="__span-36-22"><a id="__codelineno-36-22" name="__codelineno-36-22" href="#__codelineno-36-22"></a><span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">           </span><span class="c1">//f1，准确匹配</span>
+</span><span id="__span-36-23"><a id="__codelineno-36-23" name="__codelineno-36-23" href="#__codelineno-36-23"></a><span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="w">           </span><span class="c1">//f1，利用提升</span>
+</span><span id="__span-36-24"><a id="__codelineno-36-24" name="__codelineno-36-24" href="#__codelineno-36-24"></a><span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="n">ff</span><span class="p">);</span><span class="w">          </span><span class="c1">//f1，标准转换</span>
+</span><span id="__span-36-25"><a id="__codelineno-36-25" name="__codelineno-36-25" href="#__codelineno-36-25"></a><span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">);</span><span class="w">         </span><span class="c1">//f1，利用提升</span>
+</span><span id="__span-36-26"><a id="__codelineno-36-26" name="__codelineno-36-26" href="#__codelineno-36-26"></a><span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w">           </span><span class="c1">//f1，准确匹配</span>
+</span><span id="__span-36-27"><a id="__codelineno-36-27" name="__codelineno-36-27" href="#__codelineno-36-27"></a><span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">);</span><span class="w">    </span><span class="c1">//f2，准确匹配</span>
+</span><span id="__span-36-28"><a id="__codelineno-36-28" name="__codelineno-36-28" href="#__codelineno-36-28"></a><span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">           </span><span class="c1">//f2，准确匹配</span>
+</span><span id="__span-36-29"><a id="__codelineno-36-29" name="__codelineno-36-29" href="#__codelineno-36-29"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p>函数重载时每个函数的参数表唯一（参数类型，参数顺序或者参数个数有所不同，不包括返回类型）。</p>
+<p>当形参是顶层const时，一方面，const限定的形参在函数内无法修改；另一方面，实参传递忽略顶层const，即虽然形参定义的数据类型是const，但可以传非const实参。</p>
+<p>当函数的返回值是一个引用时，不能修改返回值。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">[],</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="p">{</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="p">}</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="p">{</span>
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">};</span>
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="w">    </span><span class="n">index</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">=</span><span class="mi">90</span><span class="p">;</span><span class="w">  </span><span class="c1">//错误，不能修改返回值</span>
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p><strong>内联函数：</strong></p>
+<p>内联函数是一种特殊的函数，在函数调用时，编译器会将函数代码直接插入到调用的地方，而不是通过传统的函数调用机制（如跳转到函数地址和返回）来执行。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="p">{</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="o">&lt;</span><span class="n">b</span><span class="o">?</span><span class="n">a</span><span class="o">:</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><code>int minval=min(i,j);</code>在编译时将被展开为<code>int minval=i&lt;j?i:j;</code>。</p>
+</div>
+<p>注意事项：</p>
+<ul>
+<li>内联函数在调用前必须要有完整的定义</li>
+<li>内联函数不能有<code>for</code>，<code>while</code>，<code>switch</code>等复杂结构</li>
+<li>内联函数不能递归</li>
+</ul>
+<p><strong>Lambda表达式：</strong></p>
+<p>Lambda表达式实际上是一种匿名内联函数，使用起来更加方便。</p>
+<p>语法：</p>
+<p><code>[capture](parameters)[mutable]-&gt;return_type{statement};</code></p>
+<p>capture:</p>
+<p>capture称为<strong>捕获列表</strong>，如果Lambda表达式要使用其父作用域的变量，就可以将其写到[ ]中，然后在函数体内就可以直接使用。</p>
+<p>捕获变量分为：</p>
+<ul>
+<li>值捕获：使用外部变量的值而不修改</li>
+<li>引用捕获：修改外部变量的值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>捕获列表</th>
+<th>含义说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ ]</td>
+<td>不捕获任何外部变量</td>
+</tr>
+<tr>
+<td>[=]</td>
+<td>值捕获所有外部变量</td>
+</tr>
+<tr>
+<td>[&amp;]</td>
+<td>引用捕获所有外部变量</td>
+</tr>
+<tr>
+<td>[x,&amp;y]</td>
+<td>值捕获x，引用捕获y</td>
+</tr>
+<tr>
+<td>[&amp;,x]</td>
+<td>值捕获x，引用捕获其余外部变量</td>
+</tr>
+<tr>
+<td>[=,&amp;x]</td>
+<td>引用捕获x，值捕获其余外部变量</td>
+</tr>
+</tbody>
+</table>
+<p>parameters:</p>
+<p>parameters为Lambda表达式的形参表，和普通函数一样。</p>
+<p>-&gt;return _type:</p>
+<p>-&gt;return _type为Lambda表达式的返回类型</p>
+<p>statement:</p>
+<p>statement为Lambda表达式的函数体，可以使用形参表的形参和捕获列表的外部变量。</p>
+<p>mutable:</p>
+<p>在默认情况下，Lambda表达式值捕获的变量可看作const，如果想要修改则可以使用mutable选项取消Lambda表达式的常量性，然后就可以修改了。</p>
+<p><strong>广义捕获：</strong></p>
+<p>为捕获的外部变量指定新名称的方式称为广义捕获。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="k">auto</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="o">&amp;</span><span class="n">r</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">xx</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="p">{</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">    </span><span class="n">r</span><span class="o">+=</span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">xx</span><span class="o">+</span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="p">};</span>
+</span></code></pre></div>
+<p>调用一次<code>y</code>后，返回7，<code>x</code>的值变为6。</p>
+</div>
+<p><strong>命名空间：</strong></p>
+<p>命名空间是一种组织代码的方式，将程序的构成要素（变量名、数据类型、函数等）局限在某名字框定的范围内部，内部相互可见，可以直接引用，外部则要应用名字限定才能引用。</p>
+<p>语法：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">namespace</span><span class="w"> </span><span class="nn">name</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="p">{</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="w">    </span><span class="n">members</span><span class="p">;</span>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li><code>namespace</code>：定义名字空间的关键字</li>
+<li><code>name</code>：程序员指定的名字空间的名字</li>
+<li><code>members</code>：名字空间的成员，包括变量定义、函数声明、函数定义、结构声明、类声明等</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">namespace</span><span class="w"> </span><span class="nn">ABC</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="p">{</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="w">    </span><span class="k">typedef</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">house_price</span><span class="p">;</span>
+</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">student</span>
+</span><span id="__span-41-6"><a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-41-7"><a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a><span class="w">        </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-41-8"><a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-41-9"><a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-41-10"><a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</span><span id="__span-41-11"><a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-41-12"><a id="__codelineno-41-12" name="__codelineno-41-12" href="#__codelineno-41-12"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-41-13"><a id="__codelineno-41-13" name="__codelineno-41-13" href="#__codelineno-41-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-41-14"><a id="__codelineno-41-14" name="__codelineno-41-14" href="#__codelineno-41-14"></a><span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-41-15"><a id="__codelineno-41-15" name="__codelineno-41-15" href="#__codelineno-41-15"></a><span class="p">}</span>
+</span><span id="__span-41-16"><a id="__codelineno-41-16" name="__codelineno-41-16" href="#__codelineno-41-16"></a><span class="kt">int</span><span class="w"> </span><span class="n">ABC</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</span><span id="__span-41-17"><a id="__codelineno-41-17" name="__codelineno-41-17" href="#__codelineno-41-17"></a><span class="p">{</span>
+</span><span id="__span-41-18"><a id="__codelineno-41-18" name="__codelineno-41-18" href="#__codelineno-41-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="o">?</span><span class="n">a</span><span class="o">:</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-41-19"><a id="__codelineno-41-19" name="__codelineno-41-19" href="#__codelineno-41-19"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p>可以通过作用域限定符<code>::</code>访问名字空间的成员，语法为<code>name::identifier</code>：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="p">{</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="w">    </span><span class="n">ABC</span><span class="o">::</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">           </span><span class="c1">//访问ABC空间中的count</span>
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span><span class="w">            </span><span class="c1">//main函数中的count与ABC空间中的count无关</span>
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="w">    </span><span class="n">ABC</span><span class="o">::</span><span class="n">student</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w">         </span><span class="c1">//用ABC空间中的student结构定义s</span>
+</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a><span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">age</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span>
+</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="n">ABC</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span><span class="w">    </span><span class="c1">//调用ABC中的min函数</span>
+</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p>可以使用<code>using name::identifier</code>引用名字空间的单个成员：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="p">{</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">ABC</span><span class="o">::</span><span class="n">count</span><span class="p">;</span>
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="w">    </span><span class="n">count</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span><span class="w">    </span><span class="c1">//重复定义</span>
+</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a><span class="w">    </span><span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<p>可以使用<code>using namespace name</code>引用名字空间的全体成员：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="p">{</span>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">ABC</span><span class="p">;</span>
+</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span><span class="w">    </span><span class="c1">//重复定义</span>
+</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a><span class="w">    </span><span class="n">student</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+</span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a><span class="w">    </span><span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+</span><span id="__span-44-7"><a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">age</span><span class="o">=</span><span class="n">min</span><span class="p">(</span><span class="mi">43</span><span class="p">,</span><span class="mi">32</span><span class="p">);</span>
+</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<h2 id="21">2.1 杂项</h2>
+<p><strong>数据类型扩展：</strong></p>
+<p>c++对c的<code>struct</code>，<code>union</code>，<code>enum</code>进行了扩展。</p>
+<p>在c中，结构名、联合名、枚举名不是类型：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">some_struct</span><span class="p">{...};</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">some_struct</span><span class="w"> </span><span class="n">struct_var</span><span class="p">;</span>
+</span></code></pre></div>
+<p>在c++中，结构名、联合名、枚举名是类型：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">some_struct</span><span class="p">{...};</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="n">some_struct</span><span class="w"> </span><span class="n">struct_var</span><span class="p">;</span>
+</span></code></pre></div>
+<p>c++允许在<code>struct</code>，<code>union</code>，<code>enum</code>内部设置函数。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">A</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="p">{</span>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">setX</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="w">        </span><span class="n">x</span><span class="o">=</span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-47-7"><a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-47-8"><a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a><span class="p">};</span>
+</span><span id="__span-47-9"><a id="__codelineno-47-9" name="__codelineno-47-9" href="#__codelineno-47-9"></a>
+</span><span id="__span-47-10"><a id="__codelineno-47-10" name="__codelineno-47-10" href="#__codelineno-47-10"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-47-11"><a id="__codelineno-47-11" name="__codelineno-47-11" href="#__codelineno-47-11"></a><span class="p">{</span>
+</span><span id="__span-47-12"><a id="__codelineno-47-12" name="__codelineno-47-12" href="#__codelineno-47-12"></a><span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span><span id="__span-47-13"><a id="__codelineno-47-13" name="__codelineno-47-13" href="#__codelineno-47-13"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-47-14"><a id="__codelineno-47-14" name="__codelineno-47-14" href="#__codelineno-47-14"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-47-15"><a id="__codelineno-47-15" name="__codelineno-47-15" href="#__codelineno-47-15"></a><span class="w">        </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">setX</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-47-16"><a id="__codelineno-47-16" name="__codelineno-47-16" href="#__codelineno-47-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-47-17"><a id="__codelineno-47-17" name="__codelineno-47-17" href="#__codelineno-47-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>上述程序只在c++中合法。</p>
+</div>
+<p><strong><code>enum</code>和<code>enum class</code>：</strong></p>
+<p><code>enum</code>是c使用的枚举（enumeration），作用域不受定义它的{}限制，容易出现重定义错误；</p>
+<p><code>enum class</code>是c++使用的枚举器（enumerator），作用域局限在定义它的{}中，不容易出现重定义错误。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">color</span><span class="p">{</span><span class="n">black</span><span class="p">,</span><span class="n">white</span><span class="p">,</span><span class="n">red</span><span class="p">};</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">color1</span><span class="p">{</span><span class="n">black1</span><span class="p">,</span><span class="n">white1</span><span class="p">,</span><span class="n">red1</span><span class="p">};</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="kt">bool</span><span class="w"> </span><span class="n">black</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span><span class="w">   </span><span class="c1">//错误，不能通过编译</span>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="kt">bool</span><span class="w"> </span><span class="n">black1</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span><span class="w">  </span><span class="c1">//正确</span>
+</span></code></pre></div>
+</div>
+<p><strong><code>assert</code>断言：</strong></p>
+<p><code>assert</code>是一种能检测错误的宏，可以对表达式的结果进行判断，如果为假则退出程序，有利于debug。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">assert</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="s">&quot;Division by zero error!&quot;</span><span class="p">);</span>
+</span></code></pre></div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

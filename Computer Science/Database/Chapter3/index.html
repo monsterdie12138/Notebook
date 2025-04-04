@@ -1,0 +1,1266 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/Database/Chapter3/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Chapter3 - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter3-introduction-to-sql" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter3
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Mathematics/" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Course/" class="md-tabs__link">
+          
+  
+  Course
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Course/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Course
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-sql-data-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 SQL Data Definition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-basic-query-structure-of-sql-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Basic Query Structure of SQL Queries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Basic Query Structure of SQL Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-query-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Query Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌套子查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="嵌套子查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    <span class="md-ellipsis">
+      where子句的嵌套子查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from" class="md-nav__link">
+    <span class="md-ellipsis">
+      from子句的嵌套子查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    <span class="md-ellipsis">
+      select子句的嵌套子查询
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter3-introduction-to-sql">Chapter3 Introduction to SQL</h1>
+<hr />
+<h2 id="31-sql-data-definition">3.1 SQL Data Definition</h2>
+<p><strong>Domain Types:</strong></p>
+<ul>
+<li><code>char(n)</code>: 定长字符串，n为字符串长度</li>
+<li><code>varchar(n)</code>: 变长字符串，n为最大字符串长度</li>
+<li><code>int</code>: 整数</li>
+<li><code>smallint</code>: 小整数</li>
+<li><code>numeric(p, d)</code>: 定点数，p为总位数，d为小数位数</li>
+<li><code>real precision</code>: 单精度浮点数</li>
+<li><code>double precision</code>: 双精度浮点数</li>
+<li><code>float(n)</code>: 浮点数，n为精度</li>
+</ul>
+<hr />
+<h2 id="32-basic-query-structure-of-sql-queries">3.2 Basic Query Structure of SQL Queries</h2>
+<h3 id="initialization">Initialization</h3>
+<p><strong><code>create table</code> 创建表格：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">r</span><span class="w">                  </span><span class="o">#</span><span class="w"> </span><span class="n">r为表格名字</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="p">(</span><span class="n">A1</span><span class="w"> </span><span class="n">D1</span><span class="p">,</span><span class="w"> </span><span class="n">A2</span><span class="w"> </span><span class="n">D2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">An</span><span class="w"> </span><span class="n">Dn</span><span class="p">,</span><span class="w">  </span><span class="o">#</span><span class="w"> </span><span class="n">A为属性</span><span class="err">，</span><span class="n">D为数据类型</span><span class="w"> </span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="p">(</span><span class="n">integrity</span><span class="o">-</span><span class="n">constraint1</span><span class="p">),</span><span class="w">    </span><span class="o">#</span><span class="w"> </span><span class="err">完整性约束</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">(</span><span class="n">integrity</span><span class="o">-</span><span class="n">constraint2</span><span class="p">),</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="p">...,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">(</span><span class="n">integrity</span><span class="o">-</span><span class="n">constraintn</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">instructor</span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">ID</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">dept_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">salary</span><span class="w"> </span><span class="nb">numeric</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<p><strong>Integrity Constraints 完整性约束：</strong></p>
+<p>完整性约束1：设定主键<code>primary key</code>：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">)</span>
+</span></code></pre></div>
+<p>也可以直接放在数据类型后面：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">course_id</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>设定主键的属性取值不能为空，否则报错。</p>
+</div>
+<p>完整性约束2：设定外键<code>foreign key</code>：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">dept_name</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">department</span>
+</span></code></pre></div>
+<p>可以设置外键的删除/更新绑定：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">dept_name</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">delete</span><span class="o">/</span><span class="k">update</span><span class="w"> </span><span class="k">cascade</span><span class="w">     </span><span class="o">#</span><span class="w"> </span><span class="err">同步删除</span><span class="o">/</span><span class="err">更新</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">dept_name</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">delete</span><span class="o">/</span><span class="k">update</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">null</span><span class="w">    </span><span class="o">#</span><span class="w"> </span><span class="err">设定为</span><span class="k">NULL</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">dept_name</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">delete</span><span class="o">/</span><span class="k">update</span><span class="w"> </span><span class="k">restrict</span><span class="w">    </span><span class="o">#</span><span class="w"> </span><span class="err">拒绝删除</span><span class="o">/</span><span class="err">更新</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">dept_name</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">delete</span><span class="o">/</span><span class="k">update</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="o">#</span><span class="w"> </span><span class="err">设定为默认值</span>
+</span></code></pre></div>
+<p>完整性约束3：设定非空<code>not null</code>：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span>
+</span></code></pre></div>
+<h3 id="basic-query-structure">Basic Query Structure</h3>
+<p><strong>Updates to Tables:</strong></p>
+<ul>
+<li>insert
+  <div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;10101&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Srinivasan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Comp. Sci.&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">65000</span><span class="p">)</span>
+</span></code></pre></div></li>
+<li>delete
+  <div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">delete</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">student</span>
+</span></code></pre></div></li>
+<li>drop
+  <div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">drop</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">r</span>
+</span></code></pre></div></li>
+<li>alter
+  <div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">#</span><span class="w"> </span><span class="err">向表格</span><span class="n">r中添加属性</span><span class="err">，名字为</span><span class="n">A</span><span class="err">，域为</span><span class="n">D</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">drop</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">#</span><span class="w"> </span><span class="err">从表格</span><span class="n">r中删除属性A</span>
+</span></code></pre></div></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>delete from</code>将表格内容清空，<code>drop table</code>将表格删除。</p>
+</div>
+<p><strong>Basic Query Structure:</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">select</span><span class="w"> </span><span class="n">A1</span><span class="p">,</span><span class="w"> </span><span class="n">A2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">An</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">from</span><span class="w"> </span><span class="n">r1</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">rm</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">where</span><span class="w"> </span><span class="n">P</span>
+</span></code></pre></div>
+<ul>
+<li>$A$：属性</li>
+<li>$r$：表</li>
+<li>$P$：谓词</li>
+</ul>
+<p>查询结果为一个relation，即一张表格。</p>
+<p><strong><code>select</code> Cause:</strong></p>
+<p><code>select</code>列出所有想在查询结果中了解的属性，对应关系代数中的投影算子：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SQL大小写不敏感。</p>
+</div>
+<p><code>select</code>默认不去重，可以用关键词<code>distinct</code>去重，或者<code>all</code>不去重：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">dept_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">select</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="n">dept_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span></code></pre></div>
+<p>使用星号表示选择所有属性：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span></code></pre></div>
+<p>属性可以是没有<code>from</code>子句的字面量，返回的是一列元素均为该字面量的表格：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">select</span><span class="w"> </span><span class="s1">&#39;437&#39;</span>
+</span></code></pre></div>
+<p>属性可以是有<code>from</code>子句的字面量，返回的是将原本表格全部填充为该字面量的表格：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">select</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span></code></pre></div>
+<p>属性可以包含算术运算符（要求属性的域支持该运算），得到的表格中该属性下的值也会进行相应的运算：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">select</span><span class="w"> </span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="o">/</span><span class="mi">12</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span></code></pre></div>
+<p><strong><code>where</code> Cause:</strong></p>
+<p><code>where</code>子句用于过滤查询结果，对应关系代数中的选择算子：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">dept_name</span><span class="o">=</span><span class="s1">&#39;Comp. Sci.&#39;</span>
+</span></code></pre></div>
+<p>可以使用<code>and</code>、<code>or</code>、<code>not</code>等逻辑运算符：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">dept_name</span><span class="o">=</span><span class="s1">&#39;Comp. Sci.&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">salary</span><span class="o">&gt;</span><span class="mi">70000</span>
+</span></code></pre></div>
+<p><strong><code>from</code> Cause:</strong></p>
+<p><code>from</code>子句用于指定查询的表格，可以指定多个表格，对应关系代数中的笛卡尔积算子：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="p">,</span><span class="w"> </span><span class="n">teaches</span>
+</span></code></pre></div>
+<p><strong>Rename Operation:</strong></p>
+<p><code>as</code>用于给表格重命名，对应关系代数中的重命名算子：</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>在<code>instructor</code>表格中找出工资高于某位<code>Comp. Sci.</code>系教授的名字：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">salary</span><span class="o">&gt;</span><span class="n">S</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">dept_name</span><span class="o">=</span><span class="s1">&#39;Comp. Sci.&#39;</span>
+</span></code></pre></div>
+</div>
+<p><code>as</code>可以被省略：</p>
+<p><code>instructor as T</code>$\equiv$<code>instructor T</code></p>
+<p><strong>String Operation:</strong></p>
+<p><code>like</code>用于匹配字符，其使用：</p>
+<ul>
+<li><code>%</code>：匹配任意长度的字符串</li>
+<li><code>_</code>：匹配一个字符</li>
+</ul>
+<p>可使用\进行转义：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">like</span><span class="w"> </span><span class="s1">&#39;100\%&#39;</span><span class="w"> </span><span class="k">escape</span><span class="w"> </span><span class="s1">&#39;\&#39;</span>
+</span></code></pre></div>
+<p>上例匹配了字符串<code>100%</code>。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>在instructor中找到所有含有dar的名字：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%dar%&#39;</span>
+</span></code></pre></div>
+<p><code>Intro%</code>：以"Intro"开头的字符串
+<code>%Comp%</code>：包含"Comp"的字符串
+<code>___</code>： 三个字符的字符串
+<code>___%</code>：至少三个字符的字符串</p>
+</div>
+<p><strong>Ordering the Display of Tuples:</strong></p>
+<p><code>order by</code>指定一个属性，输出的表格元素按照该属性的字母顺序排列：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">name</span>
+</span></code></pre></div>
+<p>可以使用<code>desc</code>进行降序排列，<code>asc</code>进行升序排列，默认为升序排列：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">desc</span>
+</span></code></pre></div>
+<p>可以使用多个属性进行排序：</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="w"> </span><span class="n">name</span>
+</span></code></pre></div>
+<hr />
+<p><strong>比较运算符<code>between</code>:</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询所有工资在90000-100000的教授：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="k">where</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="mi">90000</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">100000</span>
+</span></code></pre></div>
+</div>
+<p><strong>Tuple Comparison:</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询所有生物课：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="n">course_id</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="p">,</span><span class="n">teaches</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">where</span><span class="w"> </span><span class="p">(</span><span class="n">instructor</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span><span class="n">dept_name</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="n">teaches</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span><span class="s1">&#39;Biology&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<p><strong>集合操作<code>union</code>,<code>intersect</code>,<code>except</code>:</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询所有在2017秋学期或2018春学期开设的课程：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">course_id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">sem</span><span class="o">=</span><span class="s1">&#39;Fall&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2017</span><span class="p">)</span><span class="k">union</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">course_id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">sem</span><span class="o">=</span><span class="s1">&#39;Spring&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2018</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>查询所有在2017秋学期和2018春学期都开设的课程：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">course_id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">sem</span><span class="o">=</span><span class="s1">&#39;Fall&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2017</span><span class="p">)</span><span class="k">intersect</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">course_id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">sem</span><span class="o">=</span><span class="s1">&#39;Spring&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2018</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>查询所有在2017秋学期开设但2018春学期没有开设的课程：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">course_id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">sem</span><span class="o">=</span><span class="s1">&#39;Fall&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2017</span><span class="p">)</span><span class="k">except</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">course_id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">sem</span><span class="o">=</span><span class="s1">&#39;Spring&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2018</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<p>集合操作默认去重，如果想要保留重复则需要加关键词<code>all</code>，例如<code>union all</code>，<code>intersect all</code>，<code>except all</code>。</p>
+<p><strong>空值<code>null</code>:</strong></p>
+<p><code>null</code>有两重含义，一是unknown，二是not exist。</p>
+<p>任何包含<code>null</code>的算术表达式的结果都是<code>null</code>。</p>
+<p><code>is null</code>和<code>is not null</code>用于判断值是否为<code>null</code>。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询所有工资为<code>null</code>的教授：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="w"> </span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="k">where</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span>
+</span></code></pre></div>
+</div>
+<p><code>unknown</code>为<code>true</code>和<code>false</code>以外的第三种结果，包含<code>null</code>的比较式结果均为<code>unknown</code>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>null=null</code>结果也为<code>unknown</code>。</p>
+</div>
+<p>对于布尔运算符：</p>
+<ul>
+<li><code>and</code></li>
+<li><code>(true and unknown)=unknown</code></li>
+<li><code>(false and unknown)=false</code></li>
+<li><code>(unknown and unknown)=unknown</code></li>
+<li><code>or</code></li>
+<li><code>(unknown or true)=true</code></li>
+<li><code>(unknown or false)=unknown</code></li>
+<li><code>(unknown or unknown)=unknown</code></li>
+</ul>
+<p>在查询中，要保证<code>where</code>返回的元组为当前确定的真值，因此<code>unknown</code>会被当做<code>false</code>。</p>
+<p><strong>聚合函数<code>max</code>,<code>min</code>,<code>avg</code>,<code>sum</code>,<code>count</code>:</strong></p>
+<p>聚合函数包括<code>max</code>，<code>min</code>，<code>avg</code>，<code>sum</code>，<code>count</code>等，处理的对象是一个属性列下的所有值组成的多重集合，不去重。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询计算机科学系教授的平均工资：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="k">where</span><span class="w"> </span><span class="n">dept_name</span><span class="o">=</span><span class="s1">&#39;Comp.Sci&#39;</span>
+</span></code></pre></div>
+<p><strong>查询在2018春学期授课的教授数：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="w"> </span><span class="n">ID</span><span class="p">)</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="k">from</span><span class="w"> </span><span class="n">teaches</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="k">where</span><span class="w"> </span><span class="n">semester</span><span class="o">=</span><span class="s1">&#39;Spring&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2018</span>
+</span></code></pre></div>
+<p><strong>查询<code>course</code>表格的元组个数：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span>
+</span></code></pre></div>
+</div>
+<p><strong>分组<code>group by</code>:</strong></p>
+<p><code>group by</code>后面跟一个属性名，以此为依据进行分组，在这个属性上的值相同则分到同一组。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询每个系教授的平均工资：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_salary</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">dept_name</span>
+</span></code></pre></div>
+</div>
+<p>在有<code>group by</code>的语句中，<code>select</code>之后放分类属性和聚合属性，不能放其他属性，否则会报错。</p>
+<p><code>having</code>位于<code>group by</code>之后，与<code>where</code>的作用类似，用于约束。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询平均工资高于42000的院系：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_salary</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">dept_name</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="k">having</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">42000</span>
+</span></code></pre></div>
+</div>
+<p><code>having</code>虽然与<code>where</code>类似，但不能随意移动并相互替换，否则会报错。</p>
+<h3 id="_1">嵌套子查询</h3>
+<p>一套由<code>select</code>，<code>from</code>和<code>where</code>组成的查询语句返回的是一张表，其可以参与另一张表的构建，出现在<code>select</code>，<code>from</code>或者<code>where</code>的后面。</p>
+<h4 id="where"><code>where</code>子句的嵌套子查询</h4>
+<p>格式：\<attribute> \<operation> (\<subquery>)</p>
+<p><strong>集合从属<code>in</code>,<code>not in</code>:</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询所有在2017秋学期和2018春学期都开设的课程：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">course_id</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="k">from</span><span class="w"> </span><span class="n">section</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="k">where</span><span class="w"> </span><span class="n">semester</span><span class="o">=</span><span class="s1">&#39;Fall&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2017</span><span class="w"> </span><span class="k">and</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="w">      </span><span class="n">course_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">course_id</span>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="w">                    </span><span class="k">from</span><span class="w"> </span><span class="n">section</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="w">                    </span><span class="k">where</span><span class="w"> </span><span class="n">semester</span><span class="o">=</span><span class="s1">&#39;Spring&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2018</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>查询所有在2017秋学期开设但2018春学期没有开设的课程：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">course_id</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="k">from</span><span class="w"> </span><span class="n">section</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="k">where</span><span class="w"> </span><span class="n">semester</span><span class="o">=</span><span class="s1">&#39;Fall&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2017</span><span class="w"> </span><span class="k">and</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">      </span><span class="n">course_id</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">course_id</span>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">                        </span><span class="k">from</span><span class="w"> </span><span class="n">section</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="w">                        </span><span class="k">where</span><span class="w"> </span><span class="n">semester</span><span class="o">=</span><span class="s1">&#39;Spring&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2018</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<p><code>in</code>和<code>not in</code>后面可以直接跟集合。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询所有名字既不是Mozart也不是Einstein的教授：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Mozart&#39;</span><span class="p">,</span><span class="s1">&#39;Einstein&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<p>从属关系的属性可以不止一个。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询所有上过ID为10101的教授所授课程的学生数：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="w"> </span><span class="n">ID</span><span class="p">)</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="k">from</span><span class="w"> </span><span class="n">takes</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="k">where</span><span class="w"> </span><span class="p">(</span><span class="n">course_id</span><span class="p">,</span><span class="n">sec_id</span><span class="p">,</span><span class="n">semester</span><span class="p">,</span><span class="k">year</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">course_id</span><span class="p">,</span><span class="n">sec_id</span><span class="p">,</span><span class="n">semester</span><span class="p">,</span><span class="k">year</span>
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="w">                                           </span><span class="k">from</span><span class="w"> </span><span class="n">teaches</span>
+</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a><span class="w">                                           </span><span class="k">where</span><span class="w"> </span><span class="n">teaches</span><span class="p">.</span><span class="n">ID</span><span class="o">=</span><span class="mi">10101</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<p><strong>集合比较<code>some</code>,<code>all</code>:</strong></p>
+<p>F \<comp> some $r\Leftrightarrow \exist t\in r$ such that (F \<comp> $t$)</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询工资比某个生物系教授高的教授：</strong></p>
+<p>写法一：
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">name</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="n">instructor</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">S</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="k">where</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">salary</span><span class="o">&gt;</span><span class="n">S</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">dept_name</span><span class="o">=</span><span class="s1">&#39;Biology&#39;</span>
+</span></code></pre></div></p>
+<p>写法二：
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="k">where</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="k">some</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">salary</span>
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="w">                     </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a><span class="w">                     </span><span class="k">where</span><span class="w"> </span><span class="n">dept_name</span><span class="o">=</span><span class="s1">&#39;Biology&#39;</span><span class="p">)</span>
+</span></code></pre></div></p>
+</div>
+<p>F \<comp> all $r\Leftrightarrow\forall t\in r$ (F \<comp> $t$)</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询工资比所有生物系教授都高的教授：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="k">where</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="k">all</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">salary</span>
+</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="w">                   </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a><span class="w">                   </span><span class="k">where</span><span class="w"> </span><span class="n">dept_name</span><span class="o">=</span><span class="s1">&#39;Biology&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>=some</code>与<code>in</code>等价
+<code>&lt;&gt;some</code>与<code>not in</code>不等价
+<code>&lt;&gt;all</code>与<code>not in</code>等价
+<code>=all</code>与<code>in</code>不等价</p>
+</div>
+<p><strong>空表判断<code>exists</code>,<code>not exists</code>:</strong></p>
+<p>若表格$r$不为空，则<code>exists r</code>为真；若表格$r$为空，则<code>not exists r</code>为真。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询所有在2017秋学期和2018春学期都开设的课程：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">select</span><span class="w"> </span><span class="n">course_id</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="k">from</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">S</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="k">where</span><span class="w"> </span><span class="n">semester</span><span class="o">=</span><span class="s1">&#39;Fall&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2017</span><span class="w"> </span><span class="k">and</span><span class="w"> </span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="w">      </span><span class="k">exists</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="w">             </span><span class="k">from</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span>
+</span><span id="__span-45-6"><a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a><span class="w">             </span><span class="k">where</span><span class="w"> </span><span class="n">semester</span><span class="o">=</span><span class="s1">&#39;Spring&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2018</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">course_id</span><span class="o">=</span><span class="n">T</span><span class="p">.</span><span class="n">course_id</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Definition</p>
+<p><strong>Correlation Name 关联名称:</strong>
+外层查询中定义的表别名或变量，例如上例中的<code>S</code>。<code>S</code>的数据范围是<code>section</code>表的全部数据。
+但是，由于外层查询的<code>where</code>子句中有<code>semester='Fall' and year=2017</code>，所以外层查询只会处理<code>section</code>表中满足这些条件的行。
+内层查询中的<code>S.course_id</code>引用的是外层查询当前处理的行中的<code>course_id</code>。
+<strong>Correlated Subquery 相关子查询:</strong>
+即为内层查询，引用关联名称。</p>
+</div>
+<p>当处理集合与集合的包含关系时，由于有等价式$X-Y=\emptyset\Leftrightarrow X\subseteq Y$，因此可以考虑使用<code>except</code>和<code>not exists</code>。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询上过所有生物系课程的学生：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">ID</span><span class="p">,</span><span class="n">S</span><span class="p">.</span><span class="n">name</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">S</span>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="k">where</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">exists</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="n">course_id</span>
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="w">                  </span><span class="k">from</span><span class="w"> </span><span class="n">course</span>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="w">                  </span><span class="k">where</span><span class="w"> </span><span class="n">dept_name</span><span class="o">=</span><span class="s1">&#39;Biology&#39;</span><span class="p">)</span>
+</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a><span class="w">                  </span><span class="k">except</span>
+</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a><span class="w">                 </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">course_id</span>
+</span><span id="__span-46-8"><a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a><span class="w">                  </span><span class="k">from</span><span class="w"> </span><span class="n">takes</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span>
+</span><span id="__span-46-9"><a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a><span class="w">                  </span><span class="k">where</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">ID</span><span class="o">=</span><span class="n">T</span><span class="p">.</span><span class="n">ID</span><span class="p">))</span>
+</span></code></pre></div>
+</div>
+<p><strong>唯一性判断<code>unique</code>:</strong></p>
+<p><code>unique</code>判断一张表格中的元素是否有重复。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询所有在2017年最多只上过一次的课：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">select</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">course_id</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="k">where</span><span class="w"> </span><span class="k">unique</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="n">course_id</span>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="w">             </span><span class="k">from</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">R</span>
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="w">             </span><span class="k">where</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">course_id</span><span class="o">=</span><span class="n">R</span><span class="p">.</span><span class="n">course_id</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="k">year</span><span class="o">=</span><span class="mi">2017</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<h4 id="from"><code>from</code>子句的嵌套子查询</h4>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询那些平均工资高于42000的院系的平均工资：</strong></p>
+<p>写法一：
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="n">avg_salary</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avg_salary</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="w">      </span><span class="k">from</span><span class="w"> </span><span class="n">instructors</span>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="w">      </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">dept_name</span><span class="p">)</span>
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="k">where</span><span class="w"> </span><span class="n">avg_salary</span><span class="o">&gt;</span><span class="mi">42000</span>
+</span></code></pre></div></p>
+<p>写法二：
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="n">avg_salary</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="w">      </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a><span class="w">      </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">dept_name</span><span class="p">)</span>
+</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a><span class="w">      </span><span class="k">as</span><span class="w"> </span><span class="n">dept_avg</span><span class="p">(</span><span class="n">dept_name</span><span class="p">,</span><span class="n">avg_salary</span><span class="p">)</span>
+</span><span id="__span-49-6"><a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a><span class="k">where</span><span class="w"> </span><span class="n">avg_salary</span><span class="o">&gt;</span><span class="mi">42000</span>
+</span></code></pre></div></p>
+</div>
+<p><strong>临时重命名<code>with</code>:</strong></p>
+<p><code>with</code>用于定义临时表格，该表格只能在<code>with</code>所在的查询语句中可用。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询拥有最多预算的院系：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">with</span><span class="w"> </span><span class="n">max_budget</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="w">     </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">budget</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="w">      </span><span class="k">from</span><span class="w"> </span><span class="n">department</span><span class="p">)</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a><span class="k">select</span><span class="w"> </span><span class="n">department</span><span class="p">.</span><span class="n">name</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="k">from</span><span class="w"> </span><span class="n">department</span><span class="p">,</span><span class="n">max_budget</span>
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a><span class="k">where</span><span class="w"> </span><span class="n">department</span><span class="p">.</span><span class="n">budget</span><span class="o">=</span><span class="n">max_budget</span><span class="p">.</span><span class="n">value</span>
+</span></code></pre></div>
+<p><strong>查询总工资比平均总工资高的院系：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">with</span><span class="w"> </span><span class="n">dept_total</span><span class="p">(</span><span class="n">dept_name</span><span class="p">,</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">as</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="w">     </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="k">sum</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="w">      </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a><span class="w">      </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">dept_name</span><span class="p">)</span>
+</span><span id="__span-51-5"><a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a><span class="w">     </span><span class="n">dept_total_avg</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">as</span>
+</span><span id="__span-51-6"><a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a><span class="w">     </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span id="__span-51-7"><a id="__codelineno-51-7" name="__codelineno-51-7" href="#__codelineno-51-7"></a><span class="w">      </span><span class="k">from</span><span class="w"> </span><span class="n">dept_total</span><span class="p">)</span>
+</span><span id="__span-51-8"><a id="__codelineno-51-8" name="__codelineno-51-8" href="#__codelineno-51-8"></a><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span>
+</span><span id="__span-51-9"><a id="__codelineno-51-9" name="__codelineno-51-9" href="#__codelineno-51-9"></a><span class="k">from</span><span class="w"> </span><span class="n">dept_total</span><span class="p">,</span><span class="n">dept_total_avg</span>
+</span><span id="__span-51-10"><a id="__codelineno-51-10" name="__codelineno-51-10" href="#__codelineno-51-10"></a><span class="k">where</span><span class="w"> </span><span class="n">dept_total</span><span class="p">.</span><span class="n">value</span><span class="o">&gt;</span><span class="n">dept_total_avg</span><span class="p">.</span><span class="n">value</span>
+</span></code></pre></div>
+</div>
+<h4 id="select"><code>select</code>子句的嵌套子查询</h4>
+<p><code>select</code>子句的嵌套子查询又称为Scalar Subquery。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>查询各院系的教授人数：</strong></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">select</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="w">       </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="w">        </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span>
+</span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a><span class="w">        </span><span class="k">where</span><span class="w"> </span><span class="n">department</span><span class="p">.</span><span class="n">dept_name</span><span class="o">=</span><span class="n">instructor</span><span class="p">.</span><span class="n">dept_name</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a><span class="w">       </span><span class="k">as</span><span class="w"> </span><span class="n">num_instructors</span>
+</span><span id="__span-52-6"><a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a><span class="k">from</span><span class="w"> </span><span class="n">department</span>
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在这个例子中，关联名称是<code>department</code>。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果使用<code>group by</code>，则查询结果不同。假设某个院系没有教授，则上例中依然会如实反馈，而使用<code>group by</code>则无法反馈。</p>
+</div>
+<p>若子查询返回的表格中有超过一个元组则会报错。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>
