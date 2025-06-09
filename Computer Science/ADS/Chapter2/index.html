@@ -1219,7 +1219,50 @@
         
   
   
-    <a href="../../Database/Chapter4/" class="md-nav__link">
+    <a href="../../System3/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅲ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../DB/Chapter1/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1527,7 +1570,7 @@ $sizeof(x)=1+2sizeof(child)\geqslant 2^{bh(x)}-1$  </p>
 <li>根节点要么直接是一个叶子，要么有$[2,M]$个孩子</li>
 <li>除了根节点或叶子的其他节点有$[\lceil \frac{M}{2}\rceil,M]$个孩子</li>
 <li>所有的叶子深度相同</li>
-<li>每个非根的叶子有$[\lceil \frac{M}{2}\rceil,M]$个键值</li>
+<li>每个非根的叶子有$[\lceil \frac{M}{2}\rceil-1,M-1]$个键值</li>
 <li>每个非叶子节点的第$i$个索引为其第$i+1$个子树中的最小键值</li>
 <li>键值按升序排列</li>
 </ul>

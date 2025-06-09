@@ -835,7 +835,12 @@
 </span></code></pre></div>
 </div>
 <p><strong>默认构造函数：</strong></p>
-<p>默认构造函数可以是无参函数，也可以是为所有的形参都提供了默认值的构造函数。</p>
+<p>默认构造函数可以是：</p>
+<ul>
+<li>类内定义的无参构造函数</li>
+<li>类内没有定义任何构造函数时系统自动提供的无参构造函数</li>
+<li>所有的形参都提供了默认值的构造函数（缺省构造函数）。</li>
+</ul>
 <p>在以下情况中，系统使用默认构造函数：</p>
 <ul>
 <li>一个类没有定义任何构造函数</li>
@@ -1079,7 +1084,7 @@
 </span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="p">{</span>
 </span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="n">x</span><span class="o">=</span><span class="n">o</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
 </span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span><span class="n">A</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">A</span><span class="o">&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w">    </span><span class="c1">//3.赋值复制函数</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span><span class="n">A</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">A</span><span class="o">&amp;</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w">    </span><span class="c1">//3.复制赋值函数</span>
 </span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">    </span><span class="p">{</span>
 </span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">        </span><span class="n">x</span><span class="o">=</span><span class="n">o</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
 </span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">    </span><span class="p">}</span>

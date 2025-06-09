@@ -536,9 +536,11 @@
 <hr />
 <p><strong>Address Binding:</strong></p>
 <p>在程序的不同阶段，地址的形式会有所不同：</p>
-<p>源代码阶段：符号化地址（symbolic address）</p>
-<p>编译阶段：可重定位地址（relocatable address）</p>
-<p>链接阶段：绝对地址（absolute address）</p>
+<ul>
+<li>源代码阶段：符号化地址（symbolic address）</li>
+<li>编译阶段：可重定位地址（relocatable address）</li>
+<li>链接阶段：绝对地址（absolute address）</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>绝对地址依然是虚拟地址。
@@ -546,15 +548,27 @@
 </div>
 <p><strong>Virtual &amp; Physical Address Space:</strong></p>
 <p>虚拟地址（virtual address），又称逻辑地址（logical address），是由CPU生成的地址。</p>
-<p>物理地址（physical address）是由内存单元索引时使用的地址。</p>
+<p>物理地址（physical address）是由内存单元实际识别的地址。</p>
+<p>在编译时刻和加载时刻，va和pa一致，因为程序的内存位置在这两个阶段是确定的；在运行时刻，进程可能会被OS移到不同的内存区域，va和pa就不再相同，而是需要进行转换。</p>
 <p><strong>Memory Management Unit (MMU):</strong></p>
 <p><img alt="alt text" src="../image/4.1.png" /></p>
-<p>MMU是将虚拟地址映射成物理地址的硬件单元。</p>
-<p>考虑最简单的映射方式：MMU将虚拟地址加上一个偏移量得到物理地址，那么这个偏移量一般存放在<strong>relocation register</strong>中。</p>
+<p>MMU是运行时刻将va映射成pa的硬件单元。</p>
+<p>考虑最简单的映射方式：MMU将va加上一个偏移量得到pa，那么这个偏移量一般存放在<strong>relocation register</strong>中，也就是va对应的起始pa（va一般从0开始映射）。</p>
 <p><strong>Dynamic Loading:</strong></p>
-<p>动态加载的意思是，执行程序时并不一次性将整个程序载入mem，而是在需要的时候才加载，例如需要使用某个函数，则将该函数的代码加载到mem中。</p>
+<p>动态加载的意思是，执行程序时并不一次性将整个程序载入内存，而是在需要的时候才加载，例如需要使用某个函数，则将该函数的代码加载到内存中。</p>
+<p>好处：未使用的代码不会被加载，可以节约内存空间，适用于处理大量代码但不常用的情况；不需要额外的OS支持，可以通过程序设计来实现。</p>
+<p><strong>Dynamic Linking:</strong></p>
+<p>动态链接的意思是，在运行时刻才按需链接代码库。</p>
+<p>程序调用库函数时，会使用一个<strong>stub</strong>来查找库函数的内存地址。</p>
+<p>好处：适用于共享库。</p>
 <p><strong>Contiguous Allocation:</strong></p>
-<p>mem的分配可以是连续分配，给每个进程分配一块连续的内存空间。有以下几种分配策略：</p>
+<p>内存的分配可以是连续分配。在这种情况下，通常先将内存分成内核进程（低地址）和用户进程（高地址）两部分，给每个进程分配一块连续的内存空间。</p>
+<p>连续分配的保护机制主要依赖于relocation register，这个我们之前提到过，存放的是偏移量，但这只是笼统的说法，实际上其还分为：</p>
+<ul>
+<li>base register: 存储起始pa，即偏移量</li>
+<li>limit register: 存储界限值，va不能超过这个值</li>
+</ul>
+<p>有以下几种分配策略：</p>
 <ul>
 <li>first-fit: 找到第一块空闲且足够大的空间就进行分配</li>
 <li>best-fit: 在空闲且足够大的空间中，找到最小的空间进行分配</li>
@@ -569,28 +583,33 @@
 <p>分页的思路是将物理内存分成固定大小的内存块，称为<strong>frame</strong>；将虚拟内存分成同样大小的内存块，称为<strong>page</strong>。page通过<strong>页表（page table）</strong> 映射到frame。这样一来，虚拟内存的每个page映射到的frame不需要是连续的，也就不存在外部碎片化的问题。</p>
 <p>分页的缺点是<strong>内部碎片化（internal fragmentation）</strong>，分配的内存块大小超过进程的实际需要，导致内存块内部的剩余空间无法使用。</p>
 <p><strong>Address Translation:</strong></p>
-<p>在分页中，虚拟地址分成两个部分：</p>
+<p>在分页中，va分成两个部分：</p>
 <ul>
 <li>page number 页号：作为页表的索引，得到对应的物理地址的frame number</li>
 <li>page offset 页内偏移：与frame number结合得到物理地址</li>
 </ul>
 <p><img alt="alt text" src="../image/4.2.png" /></p>
 <p><strong>Frame Table：</strong></p>
-<p>页框表记录了物理内存中frame的使用情况。包括每个frame是否被占用，被哪个进程的哪一个page占用等。</p>
+<p>页框表记录的是物理内存中frame的使用情况。包括每个frame是否被占用，被哪个进程的哪一个page占用等，通常存放在内存中。</p>
+<p><img alt="alt text" src="../image/4.4.png" /></p>
 <p><strong>Page Table:</strong></p>
-<p>页表记录的是某个进程的page到frame的映射关系，能通过逻辑地址的page number找到对应的frame number。</p>
+<p>页表记录的是某个进程的page到frame的映射关系，能通过page number找到对应的frame number。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>页框表是所有进程共享的，页表是每个进程独有的。</p>
 </div>
-<p><img alt="alt text" src="../image/4.3.png" /></p>
-<p>页表通常放在mem中，由<strong>page-table base register (PTBR)</strong>
-存放页表的物理地址，由<strong>page-table length register (PTLR)</strong> 存放页表的大小。</p>
-<p>这样实现页表之后，每次遇到访存的指令，实际上需要两次访存：第一次查表得到需要的物理地址，第二次与物理地址上的数据交互。为了减少访存次数，可以使用TLB。</p>
+<p>页表通常放在内存中，需要连续，由<strong>page-table base register (PTBR)</strong>
+存放页表的pa，由<strong>page-table length register (PTLR)</strong> 存放页表的大小。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>RISC-V架构中的<code>satp</code>寄存器起到的就是PTBR的作用。</p>
+</div>
+<p>这样实现页表之后，每次遇到访存的指令，实际上需要两次访存：第一次查表得到需要的pa，第二次与pa上的数据交互。为了减少访存次数，可以使用TLB。</p>
 <p><strong>Translation Look-Aside Buffer (TLB):</strong></p>
 <p>TLB本质上是一个页表的cache，存放最近使用的页表项。</p>
+<p>TLB依托<strong>associative memory 关联存储</strong>进行快速查找，可以一次性并行搜索多项，提高查询效率。</p>
 <p><strong>Address-Space Identifier (ASID):</strong></p>
-<p>由于页表是每个进程独有的，因此进程上下文切换时，页表和TLB都需要改变，频繁的进程切换会导致TLBmiss的概率增大（首次访问必然miss）。</p>
+<p>由于页表是每个进程独有的，因此进程上下文切换时，页表和TLB都需要改变，频繁的进程切换会导致TLB miss的概率增大（首次访问必然miss）。</p>
 <p>能否在进程切换时不去清空TLB？解决方法是使用ASID。ASID唯一标识了每个进程，因此，只要TLB中的页表项也标识了对应的ASID，那么相当于TLB中存放了多个进程的页表项，进程切换时也不需要清空TLB。</p>
 <p><strong>Effective Access Time (EAT):</strong></p>
 <div class="admonition example">
@@ -600,6 +619,100 @@
 TLB miss：两次访存（20ns）
 EAT = 0.8 * 10 + 0.2 * 20 = 12ns</p>
 </div>
+<p><strong>Memory Protection:</strong></p>
+<p>如何保证内存不会被非法访问？</p>
+<p>事实上，每一个页表项都包含一些内存保护相关的位：</p>
+<ul>
+<li><strong>present bit</strong>：表示该页表项是否有效</li>
+<li><strong>NX bit</strong>：将内存区域划分为代码存储区和数据存储区，防止数据被误执行</li>
+<li><strong>PXN bit</strong>：限制特权模式访问用户态代码（否则会导致permission fault）</li>
+</ul>
+<p><strong>Hierarchical Page Tables:</strong></p>
+<p>在分级页表中，只有最后一级页表存储页号到帧号的映射关系，其他级别的页表只存储下一层页表的物理地址。</p>
+<p>分级页表能大大减小页表的大小。</p>
+<p><img alt="alt text" src="../image/4.6.png" /></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>假设虚拟地址空间为16KB，物理内存大小为32KB，页大小为1KB，页表项最高位为VALID位，下图为页表内容：</strong></p>
+<p><img alt="alt text" src="../image/4.8.png" /></p>
+<p><strong>给出以下va，求其映射的pa：</strong></p>
+<p><img alt="alt text" src="../image/4.9.png" /></p>
+<p>14位va，其中10位为页内偏移，4位为索引号。</p>
+<p>15位pa，其中10位为页内偏移，5位为物理帧号。</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>va</th>
+<th>索引号</th>
+<th>页内偏移</th>
+<th>页表项</th>
+<th>VALID位</th>
+<th>pa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0x3986</td>
+<td>14</td>
+<td>0x186</td>
+<td>0x00000000</td>
+<td>0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0x2bc6</td>
+<td>10</td>
+<td>0x3c6</td>
+<td>0x80000013</td>
+<td>1</td>
+<td>0x4fc6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0x1e37</td>
+<td>7</td>
+<td>0x237</td>
+<td>0x00000000</td>
+<td>0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0x0671</td>
+<td>1</td>
+<td>0x271</td>
+<td>0x00000000</td>
+<td>0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0x1bc9</td>
+<td>6</td>
+<td>0x3c9</td>
+<td>0x00000000</td>
+<td>0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Hashed Page Tables:</strong></p>
+<p>虚拟页号通过哈希函数映射到物理帧号。</p>
+<p>哈希页表中存储多个元素，每个元素包括：虚拟页号、物理帧号、指向下一元素的指针。</p>
+<p>查找过程为：将虚拟页号经过哈希函数映射得到对应的哈希值，然后遍历对应的哈希链，比较其中每一个元素的虚拟页号与当前页号是否一致，如果一致则返回对应的物理帧号，否则通过该元素中下一元素的指针沿着链表继续查找。</p>
+<p><img alt="alt text" src="../image/4.5.png" /></p>
+<p><strong>Inverted Page Tables:</strong></p>
+<p>倒排页表与之前的页表不同的是，之前的页表只能从va找到对应pa，而倒排页表在原有功能上还可以从pa找到对应va。</p>
+<p>每一个物理帧对应一个页表项，页表项包含对应的进程ID和虚拟页号。</p>
+<p>缺点：从va到pa要遍历整张倒排页表；一个物理帧只能对应一个进程的一个虚拟页。</p>
+<p><img alt="alt text" src="../image/4.7.png" /></p>
+<p><strong>Swapping:</strong></p>
+<p>当内存不够时，进程可能会被交换到磁盘上，等到之后需要运行这个进程再重新加载到内存中。</p>
+<p>swapping会增加上下文切换的开销。</p>
 
 
 
