@@ -917,6 +917,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.Advanced SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Chapter6/" class="md-nav__link">
         
   
@@ -1023,6 +1044,15 @@
   <a href="#75-multivalued-dependency-mvd" class="md-nav__link">
     <span class="md-ellipsis">
       7.5 Multivalued Dependency (MVD)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-additional-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.6 Additional Issues
     </span>
   </a>
   
@@ -1163,6 +1193,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14.Concurrency Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15.Recovery System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1286,6 +1358,15 @@
   <a href="#75-multivalued-dependency-mvd" class="md-nav__link">
     <span class="md-ellipsis">
       7.5 Multivalued Dependency (MVD)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-additional-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.6 Additional Issues
     </span>
   </a>
   
@@ -1573,6 +1654,7 @@ $(ABC)^+=ABC$</p>
 <p>可以同时满足3NF，无损分解和依赖保持。</p>
 <hr />
 <h2 id="75-multivalued-dependency-mvd">7.5 Multivalued Dependency (MVD)</h2>
+<p><strong>Multivalued Dependency:</strong></p>
 <p>设属性集合$\alpha$和$\beta$是$R$的子集，称$R$上存在<strong>多值依赖</strong></p>
 <p>$$\alpha\rightarrow\rightarrow\beta$$</p>
 <p>当且仅当对于任何实例$r$，只要存在元组$t_1$和$t_2$满足$t_1[\alpha]=t_2[\alpha]$，就存在另外两个元组$t_3$和$t_4$，满足：</p>
@@ -1582,6 +1664,43 @@ $(ABC)^+=ABC$</p>
 <p>$$t_3[R-\beta]=t_2[R-\beta]$$</p>
 <p>$$t_4[R-\beta]=t_1[R-\beta]$$</p>
 <p><img alt="alt text" src="../image/7.12.png" /></p>
+<p>上面的定义还有如下的版本：</p>
+<p>如果$R$的属性分成三个非空子集$Y$，$Z$，$W$，我们称</p>
+<p>$$Y\rightarrow\rightarrow Z$$</p>
+<p>当且仅当对于任何实例$r$，如果存在</p>
+<p>$$&lt;y_1,z_1,w_1&gt;\in r \text{ and }&lt;y_1,z_2,w_2&gt;\in r$$</p>
+<p>就有</p>
+<p>$$&lt;y_1,z_1,w_2&gt;\in r \text{ and }&lt;y_1,z_2,w_1&gt;\in r$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>由对称性：也有$Y\rightarrow\rightarrow W$。</p>
+</div>
+<p><strong>Theory of MVD:</strong></p>
+<p>函数依赖一定是多值依赖，即</p>
+<p>$$\alpha\rightarrow\beta\Longrightarrow\alpha\rightarrow\rightarrow\beta$$</p>
+<p><strong>Fourth Normal Form (4NF):</strong></p>
+<p>对于一个$R$，其有函数依赖和多值依赖的集合$D$。如果$D^+$中的每一个多值依赖$\alpha\rightarrow\rightarrow\beta$至少满足以下条件之一：</p>
+<ul>
+<li>$\alpha\rightarrow\rightarrow\beta$是平凡的（$\beta\subseteq\alpha$或$\alpha\cup\beta=R$）</li>
+<li>$\alpha$是$R$的超键</li>
+</ul>
+<p>如果一个$R$是4NF，则它一定是BCNF。</p>
+<p><strong>Restriction of Multivalued Dependency:</strong></p>
+<p>$D$在$R_i$上的restriction记作$D_i$，包含：</p>
+<ul>
+<li>$D^+$中所有只包含$R_i$属性的函数依赖</li>
+<li>所有如下形式的$\alpha\rightarrow\rightarrow(\beta\cap R_i)$，其中，$\alpha\in R_i$且$\alpha\rightarrow\rightarrow\beta\in D^+$</li>
+</ul>
+<p><strong>4NF Decomposition Algorithm:</strong></p>
+<p><img alt="alt text" src="../image/7.14.png" /></p>
+<p>保证分解出来的$R_i$均为4NF，且为无损分解。</p>
+<hr />
+<h2 id="76-additional-issues">7.6 Additional Issues</h2>
+<p><img alt="alt text" src="../image/7.15.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>上图为AI生成，请仔细甄别。</p>
+</div>
 
 
 

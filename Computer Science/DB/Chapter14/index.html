@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/DB/Chapter18/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/DB/Chapter14/">
       
       
+        <link rel="prev" href="../Chapter13/">
+      
+      
+        <link rel="next" href="../Chapter15/">
       
       
       <link rel="icon" href="../../../stylesheets/logo.jpg">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Chapter18 - Monsterdie's Notebook</title>
+        <title>14.Concurrency Control - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter18-concurrency-control" class="md-skip">
+        <a href="#chapter14-concurrency-control" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter18
+              14.Concurrency Control
             
           </span>
         </div>
@@ -266,10 +270,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../" class="md-tabs__link">
           
   
@@ -415,6 +421,72 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -434,11 +506,11 @@
         
   
   
-    <a href="../../" class="md-nav__link">
+    <a href="../../FPA/Chapter1/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Computer Science
+    程序设计与算法基础
   </span>
   
 
@@ -448,6 +520,713 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../FDS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据结构基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../AID/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System3/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅲ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据库系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            数据库系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.Introduction to Database Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.Introduction to Relational Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.Introduction to SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.Intermediate SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.Advanced SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.Database Design using the E-R Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.Normalization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.Physical Storage Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9.Data Storage Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10.Indexing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11.Query Processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12.Query Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13.Transactions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    14.Concurrency Control
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    14.Concurrency Control
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#141-lock-based-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.1 Lock-Based Protocols
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142-deadlock-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      14.2 Deadlock Handling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-granularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Granularity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insert-and-delete-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insert and Delete Operations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15.Recovery System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -522,27 +1301,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lock-based-protocols" class="md-nav__link">
+  <a href="#141-lock-based-protocols" class="md-nav__link">
     <span class="md-ellipsis">
-      Lock-Based Protocols
+      14.1 Lock-Based Protocols
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deadlock-handling" class="md-nav__link">
+  <a href="#142-deadlock-handling" class="md-nav__link">
     <span class="md-ellipsis">
-      Deadlock Handling
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tree-protocols" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tree Protocols
+      14.2 Deadlock Handling
     </span>
   </a>
   
@@ -585,11 +1355,9 @@
 
 
 <p><span style="font-family: 'Times New Roman';"></p>
-<h1 id="chapter18-concurrency-control">Chapter18 Concurrency Control</h1>
+<h1 id="chapter14-concurrency-control">Chapter14 Concurrency Control</h1>
 <hr />
-<p>是否有协议，只要所有的事务都遵守，就可以满足可串行化和可恢复两个条件？</p>
-<hr />
-<h2 id="lock-based-protocols">Lock-Based Protocols</h2>
+<h2 id="141-lock-based-protocols">14.1 Lock-Based Protocols</h2>
 <p>访问数据需要获得相应的锁。</p>
 <ul>
 <li><strong>exclusive lock (X) 排他锁</strong>：可以同时获得数据的读和写权限</li>
@@ -597,7 +1365,7 @@
 </ul>
 <p><strong>Lock-Compatibility Matrix:</strong></p>
 <p><img alt="alt text" src="../image/18.1.png" /></p>
-<p>这个矩阵表明：同一个数据上可以有多个共享锁，分别被不同事务持有，但最多只能有一个排他锁，且有排他锁时不能有共享锁。</p>
+<p>这个矩阵表明：同一个数据上可以有多个共享锁，分别被不同事务持有；但最多只能有一个排他锁，且有排他锁时不能有共享锁。</p>
 <p><strong>Two-Phase Locking Protocol:</strong></p>
 <p>两阶段封锁协议分为：</p>
 <ul>
@@ -607,14 +1375,14 @@
 <p><img alt="alt text" src="../image/18.2.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>这里的两个阶段是针对于同一事务而言，而不是整体而言。因此，不同事务的lock point（该事务获得最后一个锁的时间）也不尽相同。</p>
+<p>这里的两个阶段是针对于同一事务而言，而不是整体而言。因此，不同事务的<strong>lock point</strong>（该事务获得最后一个锁的时间）也不尽相同。</p>
 </div>
 <p>两阶段封锁协议最优雅的地方在于其保证了<strong>冲突可串行化</strong>。也就是说，只要所有事务都遵循两阶段封锁协议，即一开始先获得锁，一旦开始释放锁就不能再获得锁，就一定是冲突可串行化的。</p>
 <p>此外，串行化的结果也可以根据达到lock point的顺序来决定。</p>
-<div class="admonition tip proof">
-<p class="admonition-title">Tip</p>
-<p>冲突可串行化$\Longleftrightarrow$前驱图无环
-如果前驱图有环，因为一个箭头对应的前后操作是冲突的，意味着一个T1先放锁T2再加锁的过程（LP(T1)<LP(T2)），而另一个箭头意味着T2先放锁T1再加锁的过程（LP(T1)>LP(T2)），这在两阶段封锁协议下是矛盾的。
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p>冲突可串行化$\Longleftrightarrow$前驱图无环<br />
+如果前驱图有环，因为一个箭头对应的前后操作是冲突的，意味着一个T1先放锁T2再加锁的过程（LP(T1)&lt;LP(T2)），而另一个箭头意味着T2先放锁T1再加锁的过程（LP(T1)&gt;LP(T2)），这在两阶段封锁协议下是矛盾的。
 因此，由反证法即可得证。</p>
 <p><img alt="alt text" src="../image/18.3.png" /></p>
 <p>至于按照lock point的顺序排序，同样结合前驱图，lock point最小的事务一定是最早加锁的事务，入度为0，最早执行；去掉这个事务，剩下的事务以此类推。</p>
@@ -623,8 +1391,9 @@
 <p class="admonition-title">Note</p>
 <p>如果重新定义lock point为释放第一个锁的时间，那么同样可以得到一个可能不同的串行结果。</p>
 </div>
-<p>然而，当前的两阶段封锁协议<strong>并不能保证可恢复</strong>，需要<strong>严格两阶段封锁</strong>，即X锁需要在事务提交后才能释放，这样可以做到无级联恢复。</p>
-<p>此外，还有<strong>强两阶段封锁</strong>，即X锁和S锁都需要在事务提交后才能释放。此时，串行次序也可以根据事务提交的顺序来决定。</p>
+<p>然而，两阶段封锁协议<strong>并不能保证无死锁</strong>。</p>
+<p>然而，当前的两阶段封锁协议<strong>并不能保证可恢复</strong>，需要<strong>严格两阶段封锁（strict two-phase locking）</strong>，即X锁需要在事务提交后才能释放，这样可以做到无级联恢复。</p>
+<p>此外，还有<strong>强两阶段封锁（rigorous two-phase locking）</strong>，即X锁和S锁都需要在事务提交后才能释放。此时，串行次序也可以根据事务提交的顺序来决定。</p>
 <p>两阶段封锁协议是冲突可串行化的充分条件，但不是必要条件。一个很简单的反例就是：每个事务各自访问的数据都不同，那么一定是冲突可串行化的，但一个事务怎么访问对应的数据是随意的，也就是说不一定遵循两阶段封锁协议。</p>
 <p><strong>Lock Conversions:</strong></p>
 <p>在原本的两阶段封锁协议上进一步修改，允许锁的转换。因此，两阶段有所更新：</p>
@@ -633,35 +1402,23 @@
 <li><strong>Shrinking Phase</strong>: 事务可以释放锁，或者将X锁转换为S锁（lock-downgrade）</li>
 </ul>
 <p>该协议同样是冲突可串行化的。</p>
+<p><strong>Automatic Acquisition of Locks:</strong></p>
+<p>事务在读写时的加锁不需要显示声明。</p>
+<p>read：</p>
+<p><img alt="alt text" src="../image/18.12.png" /></p>
+<p>write:</p>
+<p><img alt="alt text" src="../image/18.13.png" /></p>
 <p><strong>Lock Table:</strong></p>
 <p>事务在数据上的锁由数据结构lock table集中维护。</p>
 <p><img alt="alt text" src="../image/18.4.png" /></p>
 <p>我们可以将lock table看作一个哈希表，每一个数据都会对应一个哈希值，在图中用白色矩形表示；不同的数据可能会有相同的哈希值，这些数据相连，即图中的每一行。</p>
 <p>对于每一个数据，其各自底下有相应的上锁的事务和等待的事务。上锁的事务用深蓝色方形表示，等待的事务用浅蓝色方形表示。</p>
-<hr />
-<h2 id="deadlock-handling">Deadlock Handling</h2>
-<p><img alt="alt text" src="../image/18.5.png" /></p>
-<p><strong>Deadlock Prevention:</strong></p>
-<ul>
-<li>对于每个事务，要么一次性获得全部需要的锁，要么什么锁都不要，只是等待；</li>
-<li>对所有数据添加偏序关系，一个事务对数据的上锁顺序也要严格按照偏序关系来进行。</li>
-</ul>
-<p><strong>Timeout-Based Schemes:</strong></p>
-<p>等待超过一定时间就撤回。</p>
-<p><strong>Wait-Die:</strong></p>
-<p>对每个事务分配一个时间戳，表示其“年龄”，年老的事务可以等待年轻的事务，但年轻的事务一旦无法立刻得到想要的锁就会立刻重开。</p>
-<p><strong>Wound-Wait:</strong></p>
-<p>同样也有年龄的概念，年轻的事务可以等待年老的事务，但年老的事务一旦无法立刻得到想要的锁就会“杀死”年轻的事务来抢夺锁，迫使年轻的事务重开。</p>
-<p><strong>Deadlock Detection:</strong></p>
-<p>由于lock table包含所有的锁信息，因此可以定期检查是否有死锁。通过<strong>wait-for graph</strong>来检查，若发现成环则选择性撤回某些事务。</p>
-<p><img alt="alt text" src="../image/18.6.png" /></p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p><img alt="alt text" src="../image/18.7.png" /></p>
-</div>
-<hr />
-<h2 id="tree-protocols">Tree Protocols</h2>
-<p>如果对事务有先验知识，可以使用树协议。</p>
+<p><strong>Graph-Based Protocols:</strong></p>
+<p>图协议对数据项组成的集合$D=\{d_1,d_2,...,d_h\}$加上了偏序关系。</p>
+<p>如果数据项$d_i\rightarrow d_j$，那么任何一个要访问$d_i$和$d_j$的事务，必须先访问$d_i$再访问$d_j$。</p>
+<p>此时，$D$应当看作有向无环图，称为<strong>database graph</strong>。</p>
+<p><strong>Tree Protocol:</strong></p>
+<p>树协议是图协议的一种。如果对事务有先验知识，可以使用树协议。</p>
 <p><img alt="alt text" src="../image/18.8.png" /></p>
 <p>树协议的图是针对每个事务而言的，每个节点都是一个数据。</p>
 <ul>
@@ -670,21 +1427,96 @@
 <li>可以随时释放锁；</li>
 <li>同一个数据不能释放锁后再加锁</li>
 </ul>
-<p>树协议既可以保证冲突可串行化，又可以保证没有死锁；但树协议不能保证可恢复性和无级联调度，也会对许多不必要访问的数据上锁。</p>
+<p>树协议既可以保证<strong>冲突可串行化</strong>，又可以保证<strong>没有死锁</strong>；但树协议<strong>不能保证可恢复性和无级联调度</strong>，也会对许多不必要访问的数据上锁。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>不能通过两阶段封锁协议生成的调度，可能可以通过树协议生成；
 不能通过树协议生成的调度，可能可以通过两阶段封锁协议生成。</p>
 </div>
 <hr />
+<h2 id="142-deadlock-handling">14.2 Deadlock Handling</h2>
+<p><img alt="alt text" src="../image/18.11.png" /></p>
+<p><strong>Deadlock Prevention:</strong></p>
+<p>以下是一些预防策略：</p>
+<ul>
+<li>对于每个事务，要么一次性获得全部需要的锁，要么什么锁都不要，只是等待；</li>
+<li>对所有数据添加偏序关系，一个事务对数据的上锁顺序也要严格按照偏序关系来进行（例如树协议）。</li>
+</ul>
+<p><strong>Timeout-Based Schemes:</strong></p>
+<p>等待超过一定时间就回滚，但有时并没有死锁，也会迫使不必要的回滚。</p>
+<p>依然存在starvation的可能。</p>
+<p><strong>Wait-Die:</strong></p>
+<p>非抢占式（non-preemptive）</p>
+<p>对每个事务分配一个时间戳，表示其“年龄”，年老的事务可以等待年轻的事务，但年轻的事务一旦无法立刻得到想要的锁就会立刻回滚重开。</p>
+<p><strong>Wound-Wait:</strong></p>
+<p>抢占式（preemptive）</p>
+<p>同样也有年龄的概念，年轻的事务可以等待年老的事务，但年老的事务一旦无法立刻得到想要的锁就会“杀死”年轻的事务来抢夺锁，迫使年轻的事务回滚重开。</p>
+<p>比wait-die产生的回滚次数少。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>wait-die和wound-wait都保证年老的事务比年轻的事务优先级更高，避免starvation。</p>
+</div>
+<p><strong>Deadlock Detection:</strong></p>
+<p>由于lock table包含所有的锁信息，因此可以定期检查是否有死锁。</p>
+<p>通过<strong>wait-for graph</strong>来检查，节点为事务，有向边表示事务的等待，若发现成环则表示存在死锁（充要条件）。</p>
+<p><img alt="alt text" src="../image/18.6.png" /></p>
+<p><strong>Deadlock Recovery:</strong></p>
+<p>当检测到死锁时，一些事务（victim）需要回滚。回滚分为：</p>
+<ul>
+<li>total rollback: 回滚到事务开始时</li>
+<li>partial rollback: 回滚直到释放某个其他事务等待的锁</li>
+</ul>
+<p>依然会有starvation的可能。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><img alt="alt text" src="../image/18.7.png" /></p>
+</div>
+<hr />
 <h2 id="multiple-granularity">Multiple Granularity</h2>
 <p>在数据库中，锁可以加在一条记录的一个属性上，可以加在一整条记录上，可以加在一整张表上，可以加在一个表空间上，这些都是不同的粒度。</p>
+<ul>
+<li>细粒度（fine granularity）：
+  并发度较好，但锁的开销较大</li>
+<li>粗粒度（coarse granularity）：
+  并发度较差，但锁的开销较小</li>
+</ul>
+<p>例如，在下图中，粒度从粗到细依次为数据库→表空间→表→记录。</p>
 <p><img alt="alt text" src="../image/18.9.png" /></p>
-<p>在多粒度情况下，只有S锁和X锁是不够的，还需要<strong>意向锁</strong>。例如，某个事务想对某个r加X锁，则其祖先节点粒度上需要留下一点“痕迹”，即IX锁；IS锁同理。</p>
+<p>在多粒度情况下，只有S锁和X锁是不够的，还需要引入<strong>意向锁（intention lock）</strong>，分为以下三种：</p>
+<ul>
+<li>intention-shared (IS): 表示当前节点的更低级节点上会使用S锁；通俗来讲，一个事务对某个节点有IS锁，表示该事务需要读某个子节点</li>
+<li>intention-exclusive (IX): 表示当前节点的更低级节点上会使用S锁或X锁；通俗来讲，一个事务对某个节点有IX锁，表示该事务需要写某个子节点</li>
+<li>shared and intention-exclusive (SIX): 表示当前节点被显式锁定为S模式，但更低级的节点可能使用X锁；通俗来讲，就是S锁+IX锁</li>
+</ul>
 <p><img alt="alt text" src="../image/18.10.png" /></p>
+<p>当事务$T_i$要对某个节点$Q$上锁时，需要遵循以下规则：</p>
+<ul>
+<li>遵循compatibility matrix</li>
+<li>先要从根节点开始锁</li>
+<li>$T_i$只有对$Q$的父节点加IX锁或IS锁，才能对$Q$加S锁或IS锁</li>
+<li>$T_i$只有对$Q$的父节点加IX锁或SIX锁，才能对$Q$加X锁、IX锁或SIX锁</li>
+<li>一旦之前释放过任何锁，就不能再进行上锁（两阶段）</li>
+<li>只有$Q$的子节点都没有$T_i$的锁，才能释放$Q$的锁</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>上锁从根到叶子，释放锁从叶子到根。</p>
+</div>
 <hr />
 <h2 id="insert-and-delete-operations">Insert and Delete Operations</h2>
 <p>对于之前的read和write，都是针对已有的数据加锁；但考虑insert和delete，其涉及数据的存在性变化，如何加锁？</p>
+<p>如果要删除一个数据项，需要先加X锁；如果要插入一个数据项，会自动加X锁。</p>
+<p><strong>Handling Phantoms:</strong></p>
+<p>对于之前的幽灵问题，有如下解决方法：</p>
+<p>让表格关联一个额外的数据项，该数据想可以表示表格的元信息。如果一个事务需要扫描表格，则需要先获得该数据项的S锁；如果一个事务需要插入或删除记录，则需要先获得该数据项的X锁。</p>
+<p>但是，这样会降低并发度。</p>
+<p><strong>Index Locking Protocol:</strong></p>
+<p>索引锁定协议也可以解决幽灵问题。</p>
+<p>每一张表格至少含有一个索引，一个事务要访问记录，需要根据索引路径寻找，并且对索引叶子节点加S锁；而对于进行插入、更新或删除的事务，需要更新索引，并获得相应索引叶子节点的X锁。</p>
+<p>同时，还需要遵守两阶段封锁协议。</p>
+<p><strong>Next-Key Locking Protocol:</strong></p>
+<p>next-key锁定协议与索引锁定协议不同之处在于，其并不将整个索引叶子节点都上锁，而是以索引项的粒度上锁。</p>
+<p>例如，如果第一个叶子节点的值为3, 5, 8, 11, 14，第二个叶子节点的值为18, 24, 38, 55，现在有范围查询[7, 16]，那么会对8, 11, 14, 18这四个索引项加S锁。接下来，如果要插入15或者7，都会导致冲突。</p>
 
 
 
@@ -813,6 +1645,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter13/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 13.Transactions">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                13.Transactions
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Chapter15/" class="md-footer__link md-footer__link--next" aria-label="下一页: 15.Recovery System">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                15.Recovery System
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#123-other-optimization-techniques" class="md-skip">
+        <a href="#75-multivalued-dependency-mvd" class="md-skip">
           跳转至
         </a>
       
@@ -520,9 +520,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#123-other-optimization-techniques" class="md-nav__link">
+  <a href="#75-multivalued-dependency-mvd" class="md-nav__link">
     <span class="md-ellipsis">
-      12.3 Other Optimization Techniques
+      7.5 Multivalued Dependency (MVD)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-additional-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.6 Additional Issues
     </span>
   </a>
   
@@ -548,68 +557,54 @@
 
   <h1>Mid</h1>
 
-<h2 id="123-other-optimization-techniques">12.3 Other Optimization Techniques</h2>
-<p><strong>Cost-Based Join Order Selection:</strong></p>
-<p>对于一连串表格的连接$r_1\Join r_2\Join...\Join r_n$，寻找代价最小的连接次序。</p>
-<p>使用的是<strong>动态规划</strong>的思想。</p>
-<p><img alt="alt text" src="../image/16.5.png" /></p>
-<p><strong>Left Deep Join Trees:</strong></p>
-<p>可以用树形结构来表示连接次序：</p>
-<p><img alt="alt text" src="../image/16.6.png" /></p>
-<p>左边的树为左深连接树，满足严格线性，即连接节点的右子树始终是一个原始表格，而不是中间结果。</p>
-<p>左深连接树能更好地利用索引，适合pipelining。</p>
-<p><strong>Heuristic Optimization:</strong></p>
+<h2 id="75-multivalued-dependency-mvd">7.5 Multivalued Dependency (MVD)</h2>
+<p><strong>Multivalued Dependency:</strong></p>
+<p>设属性集合$\alpha$和$\beta$是$R$的子集，称$R$上存在<strong>多值依赖</strong></p>
+<p>$$\alpha\rightarrow\rightarrow\beta$$</p>
+<p>当且仅当对于任何实例$r$，只要存在元组$t_1$和$t_2$满足$t_1[\alpha]=t_2[\alpha]$，就存在另外两个元组$t_3$和$t_4$，满足：</p>
+<p>$$t_1[\alpha]=t_2[\alpha]=t_3[\alpha]=t_4[\alpha]$$</p>
+<p>$$t_3[\beta]=t_1[\beta]$$</p>
+<p>$$t_4[\beta]=t_2[\beta]$$</p>
+<p>$$t_3[R-\beta]=t_2[R-\beta]$$</p>
+<p>$$t_4[R-\beta]=t_1[R-\beta]$$</p>
+<p><img alt="alt text" src="../image/7.12.png" /></p>
+<p>上面的定义还有如下的版本：</p>
+<p>如果$R$的属性分成三个非空子集$Y$，$Z$，$W$，我们称</p>
+<p>$$Y\rightarrow\rightarrow Z$$</p>
+<p>当且仅当对于任何实例$r$，如果存在</p>
+<p>$$<y_1,z_1,w_1>\in r \text{ and }<y_1,z_2,w_2>\in r$$</p>
+<p>就有</p>
+<p>$$<y_1,z_1,w_2>\in r \text{ and }<y_1,z_2,w_1>\in r$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>由对称性：也有$Y\rightarrow\rightarrow W$。</p>
+</div>
+<p><strong>Theory of MVD:</strong></p>
+<p>函数依赖一定是多值依赖，即</p>
+<p>$$\alpha\rightarrow\beta\Longrightarrow\alpha\rightarrow\rightarrow\beta$$</p>
+<p><strong>Fourth Normal Form (4NF):</strong></p>
+<p>对于一个$R$，其有函数依赖和多值依赖的集合$D$。如果$D^+$中的每一个多值依赖$\alpha\rightarrow\rightarrow\beta$至少满足以下条件之一：</p>
 <ul>
-<li>优先进行选择</li>
-<li>优先进行投影</li>
-<li>优先进行限制条件比较严格的连接</li>
-<li>连接时采用左深连接树结构</li>
+<li>$\alpha\rightarrow\rightarrow\beta$是平凡的（$\beta\subseteq\alpha$或$\alpha\cup\beta=R$）</li>
+<li>$\alpha$是$R$的超键</li>
 </ul>
-<p><strong>Nested Subqueries:</strong></p>
-<p>例如：</p>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">where</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="o">*</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">              </span><span class="k">from</span><span class="w"> </span><span class="n">teaches</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">              </span><span class="k">where</span><span class="w"> </span><span class="n">instructor</span><span class="p">.</span><span class="n">ID</span><span class="o">=</span><span class="n">teaches</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">teaches</span><span class="p">.</span><span class="k">year</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span>
-</span></code></pre></div>
-<p>像<code>instructor</code>表那样同时出现在外层和内层查询中的变量称为<strong>correlated variable（相关变量）</strong>。</p>
-<p>如果对于<code>instructor</code>表中的每一条记录，内层查询都要执行一次，这称为<strong>correlated evaluation（相关执行）</strong>。</p>
-<p>显然，相关执行的效率是很低下的。对于这种情况，最好的方法就是转换成表格的连接：</p>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="p">,</span><span class="n">teaches</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">where</span><span class="w"> </span><span class="n">instructor</span><span class="p">.</span><span class="n">ID</span><span class="o">=</span><span class="n">teaches</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">teaches</span><span class="p">.</span><span class="k">year</span><span class="o">=</span><span class="mi">2022</span>
-</span></code></pre></div>
-<p>对应的关系代数式为：</p>
-<p>$$\Pi_{\text{name}}(\text{instructor}\Join_{\text{instructor.ID=teaches.ID}\wedge\text{teaches.year=2022}}\text{teaches})$$</p>
-<p>但是，如果不去重，那么后者会有重复，因为<code>teaches.ID</code>会有重复。为了去重（即达到和原本一样的效果），可以考虑使用<strong>semijoin（半连接）</strong>。</p>
-<p>对于半连接$r⋉s$，其本质上是在对$r$的元组进行筛选，只有能和$s$中某个元组连接的元组才会被保留。</p>
-<p>因此，上一个关系代数式可以改写为：</p>
-<p>$$\Pi_{\text{name}}(\text{instructor}⋉_{\text{instructor.ID=teaches.ID}\wedge\text{teaches.year=2022}}\text{teaches})$$</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>类似的还有<strong>anti-semijoin（反半连接）</strong>，符号为$\overline{⋉}$，其本质上是对$r$的元组进行筛选，只有不能和$s$中某个元组连接的元组才会被保留。</p>
+<p>如果一个$R$是4NF，则它一定是BCNF。</p>
+<p><strong>Restriction of Multivalued Dependency:</strong></p>
+<p>$D$在$R_i$上的restriction记作$D_i$，包含：</p>
+<ul>
+<li>$D^+$中所有只包含$R_i$属性的函数依赖</li>
+<li>所有如下形式的$\alpha\rightarrow\rightarrow(\beta\cap R_i)$，其中，$\alpha\in R_i$且$\alpha\rightarrow\rightarrow\beta\in D^+$</li>
+</ul>
+<p><strong>4NF Decomposition Algorithm:</strong></p>
+<p><img alt="alt text" src="../image/7.14.png" /></p>
+<p>保证分解出来的$R_i$均为4NF，且为无损分解。</p>
+<hr />
+<h2 id="76-additional-issues">7.6 Additional Issues</h2>
+<p><img alt="alt text" src="../image/7.15.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>上图为AI生成，请仔细甄别。</p>
 </div>
-<p>以上操作称为<strong>decorrelation（去相关）</strong>。</p>
-<p><strong>Materialized Views:</strong></p>
-<p>物化视图是有实际存储数据的视图，相当于从原表格衍生出来的一张真实的表。</p>
-<p>物化视图的代价是需要维持与原表格对应的数据，即同步更新。</p>
-<p>一种方法是：一旦原表格数据发生变化，就重新生成一次物化视图。</p>
-<p>另一种方法是<strong>incremental view maintenance（增量视图维护）</strong>，只修改物化视图局部的数据。接下来，我们来看看增量视图维护时涉及到的运算。</p>
-<p>Join Operation:</p>
-<p>假设物化视图$v=r\Join s$，然后$r$有更新，从$r_{\text{old}}$变成$r_{\text{new}}$。</p>
-<p>若更新为插入$i_r$，则$r_{\text{new}}\Join s$可以被写成$(r_{\text{old}}\cup i_r)\Join s$，也即$(r_{\text{old}}\Join s)\cup(i_r\Join s)$</p>
-<p>并的前者即为原本的物化视图，因此只需要算出$i_r\Join s$再加到原本的物化视图中即可：</p>
-<p>$$v_{\text{new}}=v_{\text{old}}\cup(i_r\Join s)$$</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>对于删除同理：</p>
-<p>$$v_{\text{new}}=v_{\text{old}}-(d_r\Join s)$$</p>
-</div>
-<p>Selection:</p>
-<p>假设物化视图$v=\sigma_{\theta}(r)$，则：</p>
-<p>$$v_{\text{new}}=v_{\text{old}}\cup\sigma_{\theta}(i_r)$$</p>
-<p>$$v_{\text{new}}=v_{\text{old}}-\sigma_{\theta}(d_r)$$</p>
 
 
 
