@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/DB/Chapter16/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/DB/Chapter12/">
       
       
+        <link rel="prev" href="../Chapter11/">
+      
+      
+        <link rel="next" href="../Chapter13/">
       
       
       <link rel="icon" href="../../../stylesheets/logo.jpg">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Chapter16 - Monsterdie's Notebook</title>
+        <title>12.Query Optimization - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter16-query-optimization" class="md-skip">
+        <a href="#chapter12-query-optimization" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter16
+              12.Query Optimization
             
           </span>
         </div>
@@ -266,10 +270,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../" class="md-tabs__link">
           
   
@@ -415,6 +421,72 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -434,11 +506,11 @@
         
   
   
-    <a href="../../" class="md-nav__link">
+    <a href="../../FPA/Chapter1/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Computer Science
+    程序设计与算法基础
   </span>
   
 
@@ -448,6 +520,641 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../FDS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据结构基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../AID/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System3/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅲ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据库系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            数据库系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.Introduction to Database Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.Introduction to Relational Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.Introduction to SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.Intermediate SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.Database Design using the E-R Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.Normalization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.Physical Storage Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9.Data Storage Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10.Indexing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11.Query Processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    12.Query Optimization
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    12.Query Optimization
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121-transformation-of-relational-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.1 Transformation of Relational Expressions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#122-statistical-information-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.2 Statistical Information Estimation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123-other-optimization-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.3 Other Optimization Techniques
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13.Transactions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -522,62 +1229,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#generating-equivalent-expressions" class="md-nav__link">
+  <a href="#121-transformation-of-relational-expressions" class="md-nav__link">
     <span class="md-ellipsis">
-      Generating Equivalent Expressions
+      12.1 Transformation of Relational Expressions
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#statistical-information-estimation" class="md-nav__link">
+  <a href="#122-statistical-information-estimation" class="md-nav__link">
     <span class="md-ellipsis">
-      Statistical Information Estimation
+      12.2 Statistical Information Estimation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#choosing-evaluation-plans" class="md-nav__link">
+  <a href="#123-other-optimization-techniques" class="md-nav__link">
     <span class="md-ellipsis">
-      Choosing Evaluation Plans
+      12.3 Other Optimization Techniques
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#additional-optimization-techniques" class="md-nav__link">
-    <span class="md-ellipsis">
-      Additional Optimization Techniques
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Additional Optimization Techniques">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nested-subqueries" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nested Subqueries
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#materialized-views" class="md-nav__link">
-    <span class="md-ellipsis">
-      Materialized Views
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -600,9 +1274,9 @@
 
 
 <p><span style="font-family: 'Times New Roman';"></p>
-<h1 id="chapter16-query-optimization">Chapter16 Query Optimization</h1>
+<h1 id="chapter12-query-optimization">Chapter12 Query Optimization</h1>
 <hr />
-<h2 id="generating-equivalent-expressions">Generating Equivalent Expressions</h2>
+<h2 id="121-transformation-of-relational-expressions">12.1 Transformation of Relational Expressions</h2>
 <p>两个关系代数式等价当且仅当对每个合法的数据库上都产生相同的结果。</p>
 <p>1.选择的分解：</p>
 <p>$$\sigma_{\theta_1\wedge\theta_2}(E)\equiv\sigma_{\theta_1}(\sigma_{\theta_2}(E))$$</p>
@@ -610,7 +1284,7 @@
 <p>$$\sigma_{\theta_1}(\sigma_{\theta_2}(E))\equiv\sigma_{\theta_2}(\sigma_{\theta_1}(E))$$</p>
 <p>3.投影的省略：</p>
 <p>$$\Pi_{L_1}(\Pi_{L_2}(...(\Pi_{L_n}(E))))\equiv\Pi_{L_1}(E)$$</p>
-<p>4.选择与笛卡尔积/$\theta$连接的结合：</p>
+<p>4.选择与笛卡尔积/条件连接的结合：</p>
 <p>$$\sigma_{\theta}(E_1\times E_2)\equiv E_1\Join_{\theta}E_2$$</p>
 <p>$$\sigma_{\theta_1}(E_1\Join_{\theta_2}E_2)\equiv E_1\Join_{\theta_1\wedge\theta_2}E_2$$</p>
 <p>5.条件连接的交换：</p>
@@ -628,53 +1302,36 @@
 <p>$$\Pi_{L1\cup L_2}(E_1\Join_{\theta}E_2)\equiv (\Pi_{L_1}(E_1))\Join_{\theta}(\Pi_{L_2}(E_2))$$</p>
 <p>(b) 设$L_1$和$L_2$各自只包含$E_1$和$E_2$的属性，$L_3$表示$E_1$参与条件连接但不在$L_1\cup L_2$中的属性，$L_4$表示$E_2$参与条件连接但不在$L_1\cup L_2$中的属性：</p>
 <p>$$\Pi_{L_1\cup L_2}(E_1\Join_{\theta}E_2)\equiv \Pi_{L_1\cup L_2}((\Pi_{L_1\cup L_3}(E_1))\Join_{\theta}(\Pi_{L2\cup L_4}(E_2)))$$</p>
-<ol>
-<li>集合交并的交换：</li>
-</ol>
+<p>9.集合交并的交换：</p>
 <p>$$E_1\cap E_2\equiv E_2\cap E_1$$</p>
 <p>$$E_1\cup E_2\equiv E_2\cup E_1$$</p>
-<ol>
-<li>集合交并的结合：</li>
-</ol>
+<p>10.集合交并的结合：</p>
 <p>$$E_1\cap(E_2\cap E_3)\equiv(E_1\cap E_2)\cap E_3$$</p>
 <p>$$E_1\cup(E_2\cup E_3)\equiv(E_1\cup E_2)\cup E_3$$</p>
-<ol>
-<li>选择算子对集合操作的分配：</li>
-</ol>
+<p>11.选择算子对集合操作的分配：</p>
 <p>$$\sigma_{\theta}(E_1-E_2)\equiv\sigma_{\theta}(E_1)-\sigma_{\theta}(E_2)$$</p>
 <p>$$\sigma_{\theta}(E_1\cap E_2)\equiv\sigma_{\theta}(E_1)\cap\sigma_{\theta}(E_2)$$</p>
 <p>$$\sigma_{\theta}(E_1\cup E_2)\equiv\sigma_{\theta}(E_1)\cup\sigma_{\theta}(E_2)$$</p>
 <p>$$\sigma_{\theta}(E_1-E_2)\equiv\sigma_{\theta}(E_1)-E_2$$</p>
 <p>$$\sigma_{\theta}(E_1\cap E_2)\equiv\sigma_{\theta}(E_1)\cap E_2$$</p>
 <p>注意：后两个式子对于$\cup$不成立。</p>
-<ol>
-<li>投影算子对集合并的分配：</li>
-</ol>
+<p>12.投影算子对集合并的分配：</p>
 <p>$$\Pi_{L}(E_1\cup E_2)\equiv(\Pi_{L}(E_1))\cup(\Pi_{L}(E_2))$$</p>
-<ol>
-<li>选择算子在聚合上的分配，要求$\theta$只包含分组属性：</li>
-</ol>
+<p>13.选择算子在聚合上的分配，要求$\theta$只包含分组属性：</p>
 <p>$$\sigma_{\theta}(<em _theta="\theta">G\gamma_A(E))\equiv _G\gamma_A(\sigma</em>(E))$$</p>
-<ol>
-<li>全外连接的交换：</li>
-</ol>
+<p>14.全外连接的交换：</p>
 <p>$$E_1⟗E_2\equiv E_2⟗E_1$$</p>
 <p>左/右外连接不可交换，但有：</p>
 <p>$$E_1⟕E_2\equiv E_2⟖E_1$$</p>
-<ol>
-<li>选择算子在左/右外连接上的分配，要求$\theta_1$只包含$E_1$的属性：</li>
-</ol>
-<p>$$\sigma_{\theta_1}(E_1⟕<em _theta_1="\theta_1">{\theta}E_2)\equiv(\sigma</em>E_2$$}(E_1))⟕_{\theta</p>
-<p>$$\sigma_{\theta_1}(E_2⟖<em _theta="\theta">{\theta}E_1)\equiv E_2⟖</em>(E_1))$$}(\sigma_{\theta_1</p>
-<ol>
-<li>有时候外连接可以被替换成内连接，要求$\theta_1$在$E_2$上是null rejecting的：</li>
-</ol>
-<p>$$\sigma_{\theta_1}(E_1⟕<em _theta_1="\theta_1">{\theta}E_2)\equiv\sigma</em>E_2)$$}(E_1\Join_{\theta</p>
-<p>$$\sigma_{\theta_1}(E_1⟖<em _theta_1="\theta_1">{\theta}E_2)\equiv\sigma</em>E_2)$$}(E_1\Join_{\theta</p>
-<p><strong>Join Ordering:</strong></p>
-<p>优先生成更小的中间表。</p>
+<p>15.选择算子在左/右外连接上的分配，要求$\theta_1$只包含$E_1$的属性：</p>
+<p>$$\sigma_{\theta_1}(E_1⟕_{\theta}E_2)\equiv(\sigma_{\theta_1}(E_1))⟕_{\theta}E_2$$</p>
+<p>$$\sigma_{\theta_1}(E_2⟖_{\theta}E_1)\equiv E_2⟖_{\theta}(\sigma_{\theta_1}(E_1))$$</p>
+<p>16.有时候外连接可以被替换成内连接，要求$\theta_1$在$E_2$上是null rejecting的：</p>
+<p>$$\sigma_{\theta_1}(E_1⟕_{\theta}E_2)\equiv\sigma_{\theta_1}(E_1\Join_{\theta}E_2)$$</p>
+<p>$$\sigma_{\theta_1}(E_1⟖_{\theta}E_2)\equiv\sigma_{\theta_1}(E_1\Join_{\theta}E_2)$$</p>
 <hr />
-<h2 id="statistical-information-estimation">Statistical Information Estimation</h2>
+<h2 id="122-statistical-information-estimation">12.2 Statistical Information Estimation</h2>
+<p><strong>Statistic Information for Cost Estimation:</strong></p>
 <p>用于查询优化代价估算的统计信息：</p>
 <ul>
 <li>$n_r$：表格$r$中的元组数</li>
@@ -693,10 +1350,10 @@
 <li>否则，满足要求的记录大约有$n_r\cdot\frac{v-\min(A,r)}{\max(A,r)-\min(A,r)}$</li>
 </ul>
 <p><strong>Size Estimation od Complex Selections:</strong></p>
-<p>我们称$r$中一条记录满足条件$\theta$的概率为$\theta$的<strong>selectivity（中选率）</strong>。$s_i$为满足条件的$\theta_i$的记录数。</p>
+<p>我们称$r$中一条记录满足条件$\theta$的概率为$\theta$的<strong>selectivity（中选率）</strong>。若$s_i$为满足条件$\theta_i$的记录数，则$\theta_i$的selectivity为$\frac{s_i}{n_r}$。</p>
 <ul>
 <li>$\sigma_{\theta_1\wedge\theta_2\wedge...\wedge\theta_n}(r)$：满足要求的记录数大约为$n_r\cdot\frac{s_1\cdot s_2\cdot...\cdot s_n}{n_r^n}$</li>
-<li>$\sigma_{\theta_1\vee\theta_2\vee...\vee\theta_n}(r)$：满足要求的记录数大约为$n_r(1-(1-\frac{s_1}{n_r})(1-\frac{s_2}{n_r})...(1-\frac{s_n}{n_r}))$</li>
+<li>$\sigma_{\theta_1\vee\theta_2\vee...\vee\theta_n}(r)$：满足要求的记录数大约为$n_r\cdot(1-(1-\frac{s_1}{n_r})(1-\frac{s_2}{n_r})...(1-\frac{s_n}{n_r}))$</li>
 <li>$\sigma_{\neg\theta}(r)$：满足要求的记录数大约为$n_r-\text{size}(\sigma_{\theta}(r))$</li>
 </ul>
 <div class="admonition note">
@@ -705,16 +1362,30 @@
 </div>
 <p><strong>Estimation of Size of Joins:</strong></p>
 <p>对于笛卡尔积$r\times s$，结果一共有$n_r\cdot n_s$条记录，每条记录长度为$l_r+l_s$。</p>
-<p>对于自然连接$r\Join s$，如果$r$和$s$没有公共属性，那么和笛卡尔积的结果相同。</p>
-<p>如果$r$和$s$的公共属性是$R$的key，那么对于$s$的每一条记录，其最多只会和$r$中一条记录连接，因此，结果不会超过$n_s$条记录。</p>
+<p>对于自然连接$r\Join s$，如果$r$和$s$没有公共属性，那么和笛卡尔积的结果相同。（也可以返回空表，这里没有统一标准）</p>
+<p>如果$r$和$s$的公共属性是$r$的key，那么对于$s$的每一条记录，其最多只会和$r$中一条记录连接，因此，结果不会超过$n_s$条记录。</p>
 <p><img alt="alt text" src="../image/16.2.png" /></p>
 <p>如果$r$和$s$的公共属性是$s$的foreign key，指向$r$，则结果一共有$n_s$条记录。（不考虑foreign key为null的情况）</p>
 <p><img alt="alt text" src="../image/16.3.png" /></p>
 <p>如果$r$和$s$的公共属性不是key或foreign key，固定$r$中一条记录，则公共属性确定，$s$中大约有$\frac{n_s}{V(A,s)}$条记录可以与之连接，现在$r$中有$n_r$条记录，因此结果大约有$\frac{n_r\cdot n_s}{V(A,s)}$条记录。</p>
 <p>同样的，反过来也能得到$\frac{n_r\cdot n_s}{V(A,r)}$的结果，两个结果中更小的一个一般是更精确的一个。</p>
 <p><img alt="alt text" src="../image/16.4.png" /></p>
+<p><strong>Size Estimation of Other Operations:</strong></p>
+<p>对于投影操作$\Pi_A(r)$，结果估计为$V(A,r)$。</p>
+<p>对于聚合操作$_G\gamma_A(r)$，结果估计为$V(G,r)$。</p>
+<p>对于集合操作：</p>
+<p>如果在同一张表上，将其转换成selection。例如：$\sigma_{\theta_1}(r)\cup\sigma_{\theta_2}(r)$可以转换成$\sigma_{\theta_1\text{or}\theta_2}(r)$。</p>
+<p>如果不在同一张表上：</p>
+<ul>
+<li>$r\cup s$的大小估计为$n_r+n_s$</li>
+<li>$r\cap s$的大小估计为$\min(n_r,n_s)$</li>
+<li>$r-s$的大小估计为$n_r$</li>
+</ul>
+<p>这三个估计都及其不精确，但都提供了上界。</p>
+<p>对于左外连接$r⟕s$，大小估计为$n_{r\Join s}+n_r$。（右外连接同理）</p>
+<p>对于全外连接$r⟗s$，大小估计为$n_{r\Join s}+n_r+n_s$。</p>
 <hr />
-<h2 id="choosing-evaluation-plans">Choosing Evaluation Plans</h2>
+<h2 id="123-other-optimization-techniques">12.3 Other Optimization Techniques</h2>
 <p><strong>Cost-Based Join Order Selection:</strong></p>
 <p>对于一连串表格的连接$r_1\Join r_2\Join...\Join r_n$，寻找代价最小的连接次序。</p>
 <p>使用的是<strong>动态规划</strong>的思想。</p>
@@ -731,9 +1402,7 @@
 <li>优先进行限制条件比较严格的连接</li>
 <li>连接时采用左深连接树结构</li>
 </ul>
-<hr />
-<h2 id="additional-optimization-techniques">Additional Optimization Techniques</h2>
-<h3 id="nested-subqueries">Nested Subqueries</h3>
+<p><strong>Nested Subqueries:</strong></p>
 <p>例如：</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">select</span><span class="w"> </span><span class="n">name</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">from</span><span class="w"> </span><span class="n">instructor</span>
@@ -759,12 +1428,12 @@
 <p>类似的还有<strong>anti-semijoin（反半连接）</strong>，符号为$\overline{⋉}$，其本质上是对$r$的元组进行筛选，只有不能和$s$中某个元组连接的元组才会被保留。</p>
 </div>
 <p>以上操作称为<strong>decorrelation（去相关）</strong>。</p>
-<h3 id="materialized-views">Materialized Views</h3>
+<p><strong>Materialized Views:</strong></p>
 <p>物化视图是有实际存储数据的视图，相当于从原表格衍生出来的一张真实的表。</p>
 <p>物化视图的代价是需要维持与原表格对应的数据，即同步更新。</p>
 <p>一种方法是：一旦原表格数据发生变化，就重新生成一次物化视图。</p>
 <p>另一种方法是<strong>incremental view maintenance（增量视图维护）</strong>，只修改物化视图局部的数据。接下来，我们来看看增量视图维护时涉及到的运算。</p>
-<p><strong>Join Operation:</strong></p>
+<p>Join Operation:</p>
 <p>假设物化视图$v=r\Join s$，然后$r$有更新，从$r_{\text{old}}$变成$r_{\text{new}}$。</p>
 <p>若更新为插入$i_r$，则$r_{\text{new}}\Join s$可以被写成$(r_{\text{old}}\cup i_r)\Join s$，也即$(r_{\text{old}}\Join s)\cup(i_r\Join s)$</p>
 <p>并的前者即为原本的物化视图，因此只需要算出$i_r\Join s$再加到原本的物化视图中即可：</p>
@@ -774,7 +1443,7 @@
 <p>对于删除同理：</p>
 <p>$$v_{\text{new}}=v_{\text{old}}-(d_r\Join s)$$</p>
 </div>
-<p><strong>Selection:</strong></p>
+<p>Selection:</p>
 <p>假设物化视图$v=\sigma_{\theta}(r)$，则：</p>
 <p>$$v_{\text{new}}=v_{\text{old}}\cup\sigma_{\theta}(i_r)$$</p>
 <p>$$v_{\text{new}}=v_{\text{old}}-\sigma_{\theta}(d_r)$$</p>
@@ -906,6 +1575,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter11/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 11.Query Processing">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                11.Query Processing
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Chapter13/" class="md-footer__link md-footer__link--next" aria-label="下一页: 13.Transactions">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                13.Transactions
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

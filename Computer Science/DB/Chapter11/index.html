@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/DB/Chapter6/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/DB/Chapter11/">
       
       
-        <link rel="prev" href="../Chapter4/">
+        <link rel="prev" href="../Chapter10/">
       
       
-        <link rel="next" href="../Chapter7/">
+        <link rel="next" href="../Chapter12/">
       
       
       <link rel="icon" href="../../../stylesheets/logo.jpg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>6.Database Design using the E-R Model - Monsterdie's Notebook</title>
+        <title>11.Query Processing - Monsterdie's Notebook</title>
       
     
     
@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter6-database-design-using-the-er-model" class="md-skip">
+        <a href="#chapter11-query-processing" class="md-skip">
           跳转至
         </a>
       
@@ -134,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6.Database Design using the E-R Model
+              11.Query Processing
             
           </span>
         </div>
@@ -914,30 +914,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    6.Database Design using the E-R Model
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -946,89 +926,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#61-entity-relationship-model-er-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.1 Entity-Relationship Model (ER Model)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#62-complex-attributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.2 Complex Attributes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#63-mapping-cardinalities" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.3 Mapping Cardinalities
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#64-primary-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.4 Primary Key
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#65-reducing-er-diagrams-to-relational-schemas" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.5 Reducing ER Diagrams to Relational Schemas:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#66-extended-er-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.6 Extended ER Features
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#67-alternative-notations-for-modeling-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.7 Alternative Notations for Modeling Data
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1122,10 +1019,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Chapter11/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    11.Query Processing
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1134,6 +1051,71 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#111-measures-of-query-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1 Measures of Query Cost
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112-selection-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2 Selection Operation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113-sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3 Sorting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#114-join-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.4 Join Operation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#115-other-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.5 Other Operations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1265,63 +1247,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#61-entity-relationship-model-er-model" class="md-nav__link">
+  <a href="#111-measures-of-query-cost" class="md-nav__link">
     <span class="md-ellipsis">
-      6.1 Entity-Relationship Model (ER Model)
+      11.1 Measures of Query Cost
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#62-complex-attributes" class="md-nav__link">
+  <a href="#112-selection-operation" class="md-nav__link">
     <span class="md-ellipsis">
-      6.2 Complex Attributes
+      11.2 Selection Operation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#63-mapping-cardinalities" class="md-nav__link">
+  <a href="#113-sorting" class="md-nav__link">
     <span class="md-ellipsis">
-      6.3 Mapping Cardinalities
+      11.3 Sorting
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#64-primary-key" class="md-nav__link">
+  <a href="#114-join-operation" class="md-nav__link">
     <span class="md-ellipsis">
-      6.4 Primary Key
+      11.4 Join Operation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#65-reducing-er-diagrams-to-relational-schemas" class="md-nav__link">
+  <a href="#115-other-operations" class="md-nav__link">
     <span class="md-ellipsis">
-      6.5 Reducing ER Diagrams to Relational Schemas:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#66-extended-er-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.6 Extended ER Features
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#67-alternative-notations-for-modeling-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.7 Alternative Notations for Modeling Data
+      11.5 Other Operations
     </span>
   </a>
   
@@ -1346,178 +1310,322 @@
 
 
 <p><span style="font-family: 'Times New Roman';"></p>
-<h1 id="chapter6-database-design-using-the-er-model">Chapter6 Database Design using the ER Model</h1>
+<h1 id="chapter11-query-processing">Chapter11 Query Processing</h1>
 <hr />
-<p><img alt="alt text" src="../image/6.24.png" /></p>
-<h2 id="61-entity-relationship-model-er-model">6.1 Entity-Relationship Model (ER Model)</h2>
-<p>ER模型全称<strong>实体关系模型（entity-relationship model）</strong>，通过<strong>ER图（ER diagram）</strong> 表示，其包含三个基本元素：</p>
-<ul>
-<li>实体（集合）</li>
-<li>关系（集合）</li>
-<li>（关系/实体）属性</li>
-</ul>
-<p><strong>Entity Sets:</strong></p>
-<p><strong>实体（entity）</strong> 是一个对象，比如instructorA，studentB等。<strong>实体集合（entity set）</strong> 由具有共同属性的实体组成，比如instructor集合，student集合等。</p>
-<p>实体集合在ER图中用矩形表示，下划线表示主键：</p>
-<p><img alt="alt text" src="../image/6.1.png" /></p>
-<p><strong>Relationship Sets:</strong></p>
-<p><strong>关系（relationship）</strong> 存在于两个及以上实体之间，如一个instructor实体和一个student实体之间存在advisor关系。上升一步，instructor集合和student集合之间的所有advisor关系组成advisor<strong>关系集合（relationship set）</strong>。</p>
-<p>关系集合在ER图中用菱形表示：</p>
-<p><img alt="alt text" src="../image/6.2.png" /></p>
-<p>关系集合也可以有自己的属性，就像实体集合有自己的属性一样。例如advisor关系集合可以有date属性，表示instructor和student之间何时形成advisor关系。</p>
-<p>关系集合的属性在ER图中用矩形+虚线表示：</p>
-<p><img alt="alt text" src="../image/6.3.png" /></p>
-<p><strong>Roles:</strong></p>
-<p>如果关系集合涉及到的实体集合为同一个，则需要区分角色。例如prereq关系集合，其实体集合都是course集合，需要区分先修课和后修课。</p>
-<p>角色在ER图中在标注在线上：</p>
-<p><img alt="alt text" src="../image/6.4.png" /></p>
-<p><strong>Degree:</strong></p>
-<p>关系集合的度是指涉及到的实体集合的数量。二元关系是最常见的，三元关系也可以表示成多个二元关系，只是用三元关系比较好解释。比如student、instructor、project三者形成的关系。</p>
-<p>在ER图中，多元关系的表示与二元关系同理：</p>
-<p><img alt="alt text" src="../image/6.5.png" /></p>
+<p><img alt="alt text" src="../image/15.1.png" /></p>
 <hr />
-<h2 id="62-complex-attributes">6.2 Complex Attributes</h2>
-<p>某些属性可以进一步细分，例如address可以细分成street、city、state、postal_code等。因此，属性可以分成<strong>简单属性（simple）</strong>和<strong>复合属性（composite）</strong>。</p>
-<p>某些属性可以对应多值，例如一个person实体对应的phone_number可以有两个。因此，属性可以分为<strong>单值属性（single-valued）</strong>和<strong>多值属性（multivalued）</strong>。</p>
-<p>某些属性可以由其他的属性确定，例如age可以由date_of_birth确定。因此，这种属性称为<strong>派生属性（derived）</strong>。</p>
-<p>复合属性在ER图中用缩进标明，多值属性在ER图中用{ }标明，派生属性在ER图中用( )标明。</p>
-<p><img alt="alt text" src="../image/6.6.png" /></p>
-<h2 id="63-mapping-cardinalities">6.3 Mapping Cardinalities</h2>
-<p>对于一个给定的二元关系集合，每个实体能和多少个实体相关联，分为以下四种情况：</p>
+<h2 id="111-measures-of-query-cost">11.1 Measures of Query Cost</h2>
+<p>以<strong>磁盘访问时间</strong>为主，其又分成：</p>
 <ul>
-<li>one to one</li>
-<li>one to many</li>
-<li>many to one</li>
-<li>many to many</li>
+<li><strong>transfer</strong>：一次block数据传输的时间记为$t_T$，次数记为$b$</li>
+<li><strong>seek</strong>：一次磁头移动定位的时间记为$t_S$，次数记为$S$</li>
 </ul>
-<p><img alt="alt text" src="../image/6.7.png" /></p>
-<p><img alt="alt text" src="../image/6.8.png" /></p>
+<p>总耗时：</p>
+<p>$$b<em>t_T + S</em>t_S$$</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>实体也可以不参与任何关系，即不连线。</p>
+<p>一般情况下，一个block的写操作比读操作要慢，但为了简单起见，假设二者transfer时间相同。<br />
+同样的，算法分析中忽略了CPU时间。</p>
 </div>
-<p>在ER图中，one对应的那一边带箭头，many对应的那一边不带箭头：</p>
-<p><img alt="alt text" src="../image/6.20.png" /></p>
+<hr />
+<h2 id="112-selection-operation">11.2 Selection Operation</h2>
+<p><strong>Algorithm1: Linear Search (File Scan)</strong></p>
+<p>遍历所有记录，检查每条记录是否满足条件，这是适用范围最广的算法。</p>
+<p>最差情况下，seek次数为1（假定连续存储），transfer次数为$b_r$（$b_r$为表格占用的总block数），因此，总开销为：</p>
+<p>$$b_r*t_T+t_S$$</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>对于三元关系，最多只能有一个箭头，否则会引起歧义。</p>
+<p>如果查询目标唯一，那么一旦查到满足条件的记录即可停止。平均开销为：</p>
+<p>$$(\frac{b_r}{2})*t_T+t_S$$</p>
 </div>
-<p><strong>Total and Partial Participation:</strong></p>
-<p>如果一个实体集合的每个实体都参与到了关系集合中，则称为<strong>全部参与（total participation）</strong>；否则称为<strong>部分参与（partial participation）</strong>。</p>
-<p>全部参与在ER图中用双线段表示：</p>
-<p><img alt="alt text" src="../image/6.21.png" /></p>
-<p><strong>Notation for Expressing More Complex Constraints:</strong></p>
-<p>可以通过a..b的形式表示约束，a表示每个实体集合中每个实体最少要参与的关系数，b表示最多能参与的关系数：</p>
-<p><img alt="alt text" src="../image/6.22.png" /></p>
-<p>左边的0..*表示每个instructor可以不参与advisor关系，也可以参与无限多的advisor关系；右边的1..1表示每个student必须参与且只能参与一个advisor关系。</p>
-<hr />
-<h2 id="64-primary-key">6.4 Primary Key</h2>
-<p><strong>Primary Key for Relationship Sets:</strong></p>
-<p>一个关系集合的主键包括两部分，一部分是<strong>关系集合本身的属性</strong>，另一部分是<strong>其涉及的所有实体集合的主键的并</strong>。</p>
-<p>事实上，关系集合的主键取决于关系集合的映射基数：</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>二分查找一般不起作用，因为数据不一定排好序后存储，除非配合索引使用。</p>
+</div>
+<p>除了顺序扫描，还可以使用索引进行查询。</p>
+<p><strong>Algorithm2: Primary B+ Tree Index, Equality on Key</strong></p>
 <ul>
-<li>one to one：任意一个实体集合的主键都可以直接等同于关系集合的主键</li>
-<li>one to many/many to one：many一边的实体集合的主键可以直接等同于关系集合的主键</li>
-<li>many to many：实体集合的主键的并可以直接作为关系集合的主键</li>
+<li>B+树索引</li>
+<li>search key即为查询属性</li>
+<li>记录在表中按search key顺序存储（primary）</li>
+<li>查询结果唯一（equality）</li>
 </ul>
-<p><strong>Weak Entity Sets:</strong></p>
-<p>假设实体集合section的主键为{course_id，semester，year，sec_id}，其和另一个实体集合course（主键为{course_id}）通过关系集合sec_course相关联。</p>
-<p>不难发现，如果将section，course和sec_course三者整体考虑（即考虑sec_course的主键），则section主键中的course_id属性是冗余的。</p>
-<p>这种情况下，section实体集合是依赖于course实体集合的，我们将section实体集合称为<strong>弱实体集合（weak entity set）</strong>，course实体集合称为<strong>标识性实体集合（identifying entity set）</strong>，sec_course关系集合称为<strong>标识性关系集合（identifying relationship set）</strong>。弱实体集合依赖于标识性实体集合。</p>
-<p>在ER图中，弱实体集合冗余的主键属性并不写出（因为标识性实体集合已经标明了），只用虚线标明剩下的主键属性（称为<strong>discriminator/partial key</strong>），弱实体集合的矩形框和标识性关系集合的菱形框全部用双线段表示：</p>
-<p><img alt="alt text" src="../image/6.23.png" /></p>
+<p><img alt="alt text" src="../image/15.2.png" /></p>
+<p>假设B+树索引的高度为$h_i$，那么查询过程要经过$h_i$个索引节点（block），transfer次数为$h_i$，同时还有一次记录数据的transfer，因此transfer次数为$h_i+1$。</p>
+<p>由于索引节点和记录数据对应的block并不是顺序排列的，因此seek次数也为$h_i+1$。</p>
+<p>总开销为：</p>
+<p>$$(h_i+1)*(t_T+t_S)$$</p>
+<p><strong>Algorithm3: Primary B+ Tree Index, Equality on Nonkey</strong></p>
+<ul>
+<li>B+树索引</li>
+<li>search key即为查询属性</li>
+<li>记录在表中按search key顺序存储</li>
+<li>查询结果不唯一</li>
+</ul>
+<p><img alt="alt text" src="../image/15.3.png" /></p>
+<p>与A2相比，transfer次数多了，假设满足条件的记录分布在$b$个block中，那么transfer次数为$h_i+b$。</p>
+<p>但是，seek次数不变，还是$h_i+1$，因为记录顺序存储，不管是在物理空间上还是在search key层面上。</p>
+<p>总开销为：</p>
+<p>$$(h_i+b)*t_T+(h_i+1)*t_S$$</p>
+<p><strong>Algorithm4: Secondary B+ Tree Index, Equality on Key</strong></p>
+<ul>
+<li>B+树索引</li>
+<li>search key即为查询属性</li>
+<li>记录在表中并不按search key顺序存储</li>
+<li>查询结果唯一</li>
+</ul>
+<p><img alt="alt text" src="../image/15.4.png" /></p>
+<p>实际上其与A2的seek次数和transfer次数都一样，因为实际差别只有记录在表中存储的顺序不同，但因为查询结果唯一，因此只需要锁定一个block，并没有影响。</p>
+<p>总开销为：</p>
+<p>$$(h_i+1)*(t_T+t_S)$$</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>虽然在ER图中如此表示，但弱实体集合的主键依然不变（其下用虚线标明的partial key和冗余的写在标识性实体集合之下的属性），标识性关系集合的主键和弱实体集合的主键是一样的。</p>
+<p><strong>Algorithm4': Secondary B+ Tree Index, Equality on Nonkey</strong></p>
+<ul>
+<li>B+树索引</li>
+<li>search key即为查询属性</li>
+<li>记录在表中并不按search key顺序存储</li>
+<li>查询结果不唯一</li>
+</ul>
+<p><img alt="alt text" src="../image/15.5.png" /></p>
+<p>假设有$n$个记录block中存储着满足条件的记录，所有的block在物理空间上都没有关联。因此，seek次数和transfer次数都为$h_i+n$。</p>
+<p>总开销为：</p>
+<p>$$(h_i+n)*(t_T+t_S)$$</p>
 </div>
+<p><strong>Algorithm5: Primary B+ Tree Index, Comparison</strong></p>
+<ul>
+<li>B+树索引</li>
+<li>search key即为查询属性</li>
+<li>记录在表中按search key顺序存储</li>
+<li>范围查询</li>
+</ul>
+<p><img alt="alt text" src="../image/15.6.png" /></p>
+<p>与A3类似，总开销为：</p>
+<p>$$(h_i+b)*t_T+(h_i+1)*t_S$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当查询为$\sigma_{A\leqslant V}(r)$时，可以选择直接顺序扫描，总开销为：</p>
+<p>$$b*t_T+t_S$$</p>
+</div>
+<p><strong>Algorithm6: Secondary B+ Tree Index, Comparison</strong></p>
+<ul>
+<li>B+树索引</li>
+<li>search key即为查询属性</li>
+<li>记录在表中并不按search key顺序存储</li>
+<li>范围查询</li>
+</ul>
+<p><img alt="alt text" src="../image/15.7.png" /></p>
+<p>与A4'类似，总开销为：</p>
+<p>$$(h_i+n)*(t_T+t_S)$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当查询为$\sigma_{A\leqslant V}(r)$时，可以选择直接顺序扫描，总开销为：</p>
+<p>$$b*t_T+t_S$$</p>
+</div>
+<p><strong>Conclusion:</strong></p>
+<p><img alt="alt text" src="../image/15.13.png" /></p>
+<p>此外，还有</p>
+<ul>
+<li>
+<p>conjunction: $\sigma_{\theta_1\wedge\theta_2\wedge...\wedge\theta_n}(r)$</p>
+</li>
+<li>
+<p><strong>A7: Conjunctive Selection using One Index</strong><br />
+    看看哪个$\theta_i$上用索引开销最小，再将筛选后的结果线性扫描，检查其他属性的要求</p>
+</li>
+<li><strong>A8: Conjunctive Selection using Composite Index</strong></li>
+<li><strong>A9: Conjunctive Selection by Intersection of Identifiers</strong>
+    能使用索引的条件先将记录筛选出来取交集，然后线性扫描检查无法使用索引的条件</li>
+<li>disjunction: $\sigma_{\theta_1\vee\theta_2\vee...\vee\theta_n}(r)$：与A9类似，只是取并集</li>
+<li>negation: $\sigma_{\neg\theta}(r)$：直接线性扫描</li>
+</ul>
+<p>总体上的思想就是线性扫描与索引相结合，随机应变。</p>
 <hr />
-<h2 id="65-reducing-er-diagrams-to-relational-schemas">6.5 Reducing ER Diagrams to Relational Schemas:</h2>
-<p>ER图可以转换成一系列表格，对于每一个实体集合或关系集合就可以转换成单独的一张表（以该实体集合或关系集合命名）。</p>
-<p><strong>Representing Entity Sets:</strong></p>
-<p>对于强实体集合：</p>
-<p>可以直接转换成一张表，表的属性就是集合的属性。</p>
-<p>对于弱实体集合：</p>
-<p>也可以直接转换成一张表，但是表的属性并不能只看ER图中该实体集合下方的属性，因为还有冗余的主键属性写在标识性实体集合下方。</p>
-<p><strong>Representing Complex Attributes:</strong></p>
-<p>对于复合属性：</p>
-<p>将复合属性拆分成简单属性作为表格的属性。</p>
-<p>对于多值属性：</p>
-<p>单独转换成一张表，表的属性包括实体集合的主键和这个多值属性。例如，一个ID对应多个phone_number，那么针对phone_number可以单独转换成一张表，表的属性包括ID和phone_number，包括元组(22222,456-7890)，(22222,123-4567)等。</p>
-<p>对于派生属性：</p>
-<p>直接忽略，不写在表格中。</p>
+<h2 id="113-sorting">11.3 Sorting</h2>
+<p>大多数情况下，内存无法容纳所有待排序的记录，因此需要用到<strong>外部排序</strong>。<a href="../../ADS/Chapter15/">跳转指路</a></p>
+<p><img alt="alt text" src="../image/15.8.png" /></p>
+<p>起始参数：内存的block数$M$。</p>
+<p><strong>步骤一：产生run（归并段）</strong></p>
+<p>重复以下过程：</p>
+<ul>
+<li>将$M$个block大小的记录读入内存；</li>
+<li>排序；</li>
+<li>得到第$i$条run，记为$R_i$，写回磁盘。</li>
+</ul>
+<p>假设表格总占用的block数为$b_r$，则生成的run数为：</p>
+<p>$$N=\lceil\frac{b_r}{M}\rceil$$</p>
+<p>transfer次数：</p>
+<p>$$2*b_r$$</p>
+<p>seek次数：</p>
+<p>$$2*N$$</p>
+<p><strong>步骤二：归并run</strong></p>
+<p>情况一：如果$N&lt;M$：</p>
+<p>在内存中使用$N$个block作为输入，1个block作为输出，并将每个run的第一个block读入内存。</p>
+<p>重复以下过程：</p>
+<ul>
+<li>在内存的$N$个block中找到最小的记录，写入输出block；如果输出block满了，则写回磁盘；</li>
+<li>将刚刚的记录从内存中（$N$个block之一）删除，实际上可以用指针的移动表示；</li>
+<li>如果$N$个block中有一个block的记录已经被删光了（指针移动到末尾），那么从对应的run中读入下一个block。</li>
+</ul>
+<p>直到所有的run都被读完为止，也就是说$N$个block全部清空。</p>
+<p>transfer次数：</p>
+<p>$$2*b_r$$</p>
+<p>seek次数：</p>
+<p>$$2*b_r$$</p>
+<p>情况二：如果$N\geqslant M$：</p>
+<p>一次只能进行$M-1$个run的归并（内存剩下一个block作为输出），因此需要归并$\lceil\log_{M-1}(\frac{b_r}{M})\rceil$次。</p>
+<p>transfer次数：</p>
+<p>$$2*\lceil\log_{M-1}(\frac{b_r}{M})\rceil$$</p>
+<p>seek次数：</p>
+<p>$$2*\lceil\log_{M-1}(\frac{b_r}{M})\rceil$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>上述表达式对于$N&lt;M$的情况也成立。</p>
+</div>
+<p>综上，考虑完整过程。</p>
+<p>transfer次数为：</p>
+<p>$$b_r+2b_r*\lceil\log_{M-1}(\frac{b_r}{M})\rceil$$</p>
+<p>seek次数为：</p>
+<p>$$2\lceil\frac{b_r}{M}\rceil+2b_r*\lceil\log_{M-1}(\frac{b_r}{M})\rceil-b_r$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>无论是transfer还是seek，原本都应该是步骤一的结果加上步骤二的结果。但我们假设最后一次归并后最终的排序结果并不需要写回磁盘，而是传递给诸如上层操作等，那么就可以减少一次整体transfer和整体seek，即$b_r$。</p>
+</div>
+<p><strong>Advanced Version:</strong></p>
+<p>如果归并时，每一个run分配到的内存的block不止一个，可以减少transfer次数和seek次数，记分配到的block数为$b_b$。（输出block数也改为$b_b$）</p>
+<p>那么，一次归并的run数为$\lfloor\frac{M}{b_b}\rfloor-1$</p>
+<p>综上：transfer次数为：</p>
+<p>$$b_r+2b_r*\lceil\log_{\lfloor\frac{M}{b_b}\rfloor-1}(\frac{b_r}{M})\rceil$$</p>
+<p>对于每一次归并，seek次数减少为$2\lceil\frac{b_r}{b_b}\rceil$</p>
+<p>综上：seek次数为：</p>
+<p>$$2\lceil\frac{b_r}{M}\rceil+2\lceil\frac{b_r}{b_b}\rceil*(\lceil\log_{\lfloor\frac{M}{b_b}\rfloor-1}(\frac{b_r}{M})\rceil)-\lceil\frac{b_r}{b_b}\rceil$$</p>
+<hr />
+<h2 id="114-join-operation">11.4 Join Operation</h2>
+<p><strong>Nested-Loop Join:</strong></p>
+<p>简而言之，就是做两层循环。</p>
+<p><img alt="alt text" src="../image/15.9.png" /></p>
+<p>此时，$r$称为<strong>outer relation</strong>，$s$称为<strong>inner relation</strong>。</p>
+<p>设$r$有$n_r$条记录，$b_r$个block；$s$有$n_s$条记录，$b_s$个block。假设最坏情况下，内存只能给两张表各提供一个block，则</p>
+<p>transfer次数为：</p>
+<p>$$b_r+n_r*b_s$$</p>
+<p>seek次数为：</p>
+<p>$$b_r+n_r$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果较小的那一张表可以完全放入内存，则应当将其作为inner relation。这个时候transfer次数减少为$b_r+b_s$，seek次数减少为$2$。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在这种情况下，小的表格作为outer relation，大的表格作为inner relation。</p>
+</div>
+<p><strong>Block Nested-Loop Join：</strong></p>
+<p>四层循环，先确定一对block，再在两个block之间逐条记录地连接。</p>
+<p><img alt="alt text" src="../image/15.10.png" /></p>
+<p>注意，里面的两层循环只在内存中进行，因此没有transfer和seek开销。同样假设如上的最坏情况。</p>
+<p>transfer次数为：</p>
+<p>$$b_r+b_r*b_s$$</p>
+<p>seek次数为：</p>
+<p>$$2*b_r$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>最好情况下，所有记录都能读进内存，此时的transfer次数为$b_r+b_s$，seek次数为$2$。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果内存大小为$M$个block，使用$M-2$个block放outer relation，剩下两个block分别放inner relation和输出。此时的transfer次数为$b_r+b_s*\lceil\frac{b_r}{M-2}\rceil$，seek次数为$2\lceil\frac{b_r}{M-2}\rceil$。</p>
+</div>
+<p><strong>Indexed Nested-Loop Join:</strong></p>
+<p>针对连接属性上有索引的情况。</p>
+<p>对于外关系$r$的每一个记录$t_r$，使用索引去寻找内关系$s$中每一个能连接的记录$t_s$。</p>
+<p>在最坏情况下，对于$r$的每一个block，都要seek一次，transfer一次。设根据一个$t_r$通过索引寻找所有匹配的$t_s$的总时间为$c$，则总开销为：</p>
+<p>$$b_r*(t_T+t_S)+n_r*c$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当两个表在连接属性上都有索引时，使用更小的表格作为outer relation。</p>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><strong>写出以下实体集合转换成表格后的属性。</strong></p>
-<p><img alt="alt text" src="../image/6.6.png" /></p>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">instructor</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="n">first_name</span><span class="p">,</span><span class="n">middle_initial</span><span class="p">,</span><span class="n">last_name</span><span class="p">,</span><span class="n">street_number</span><span class="p">,</span><span class="n">street_name</span><span class="p">,</span><span class="n">apt_number</span><span class="p">,</span><span class="n">city</span><span class="p">,</span><span class="k">state</span><span class="p">,</span><span class="n">zip</span><span class="p">,</span><span class="n">date_of_birth</span><span class="p">)</span>
-</span></code></pre></div>
+<p><strong>假设<code>student</code>表有5000条记录，占100个block；<code>takes</code>表有10000条记录，占400个block。<code>takes</code>表上有B+树索引，每个索引节点有20个索引项。计算使用block nested-loop join和indexed nested-loop join的开销。</strong></p>
+<p>block nested-loop join:</p>
+<p>小表格<code>student</code>作为outer relation，大表格<code>takes</code>作为inner relation。<br />
+transfer次数：100+100*400=40100<br />
+seek次数：2*100=200</p>
+<p>indexed nested-loop join:</p>
+<p>B+树的树高为$\lceil\log_{\lceil\frac{21}{2}\rceil}10000\rceil=4$<br />
+每一次索引需要走5个block，4个索引block，1个记录block <br />
+transfer次数和seek次数均为100+5000*5=25100</p>
 </div>
-<p><strong>Representing Relationship Sets:</strong></p>
-<p>对于many to many：</p>
-<p>将关系集合转换成一张表，这张表的属性包括两个实体集合的主键（其余属性可加）和关系集合的所有属性。</p>
-<p>对于many to one/one to many：</p>
-<p>如果many一方的实体集合是<strong>全部参与</strong>的，那么只要将many一方转换成一张表，然后在这张表上再加上one一方的主键和关系集合的所有属性，就可以表示这一关系。</p>
-<p>对于one to one：</p>
-<p>可以随意挑选一个实体集合作为上述的“many”一方，然后加上另一方的主键和关系集合的属性。</p>
+<p><strong>Merge-Join:</strong></p>
+<p>针对两张表在连接属性上都已经排好序的情况。</p>
+<p>这个时候，两张表格都各自有一个移动的指针，每个记录都只会进入内存一次。</p>
+<p><img alt="alt text" src="../image/15.11.png" /></p>
+<p>transfer次数为：</p>
+<p>$$b_r+b_s$$</p>
+<p>seek次数为：</p>
+<p>$$b_r+b_s$$</p>
+<p>如果内存分别给$r$和$s$分配的block数不是一个而是$b_b$个，则transfer次数不变，seek次数变为：</p>
+<p>$$\lceil\frac{b_r}{b_b}\rceil+\lceil\frac{b_s}{b_b}\rceil$$</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>对于many to one/one to many/one to one，“many”乙方如果是部分参与的，则需要考虑null填充的情况。</p>
+<p>优化问题：</p>
+<p>假设可用内存的block数不是2个而是$M$个，那么如何根据两张表格的大小来分配这$M$个block呢？<br />
+实际上应该按照两张表格大小开根号后的比值按比例划分，能最小化开销，可以尝试用数学方法推导。</p>
+</div>
+<p><strong>Hash-Join:</strong></p>
+<p><img alt="alt text" src="../image/15.12.png" /></p>
+<p>将大表格的连接细化成小表格的连接。</p>
+<p>对于表格$r$，在连接属性上应用哈希函数$h$，将其划分成$n$个bucket；同理，对于表格$s$，在连接属性上也应用相同的$h$，划分出来的bucket数也为$n$。</p>
+<p>接下来，只要对应的bucket进行单层循环的连接即可，因为只有对应的bucket中才会有连接属性相同的记录。</p>
+<p>具体操作如下：</p>
+<p>分片阶段：</p>
+<p>一个一个block读到内存，对每条记录计算哈希函数值，每一个可能的值都需要内存中有对应的缓冲块，计算好哈希函数值的记录就被放到对应的缓冲块中，缓冲块满了则写回磁盘。</p>
+<p>连接阶段：</p>
+<p>把$s$的每个bucket读入内存，然后一块一块地将$r$的对应bucket的block读入内存，进行连接。</p>
+<p>$h$和$n$的选择是有讲究的，一般要求$s$的每个bucket的内容都可以完整放入内存。因此，$n$至少要满足$n\geqslant\lceil\frac{b_s}{M}\rceil$。此时，$r$称为<strong>probe input</strong>，$s$称为<strong>build input</strong>。</p>
+<p>问题：</p>
+<p>如果$b_s$很大，$M$很小，那么需要设计很大的$n$，这也带来了更大的缓冲区需求，因为分片阶段每个bucket都需要一个block作为缓冲区，怎么办？</p>
+<p>因此，如果需要一次性完成分片阶段，有不等式$M&gt;\frac{b_s}{M}+1$，$M&gt;\sqrt{b_s}$</p>
+<p>解决方法：<strong>recursive partioning</strong>，即不断地分片，直到每个bucket都能放入内存为止。</p>
+<p>代价估算（不考虑recursive partitioning）：</p>
+<p>对于transfer：</p>
+<p>在分片阶段，$r$和$s$都各自需要被完整读入内存进行分组，然后写回磁盘，因此transfer次数为$2*(b_r+b_s)$。</p>
+<p>在连接阶段，同样的，$r$和$s$都各自需要被完整读入内存进行连接（虽然这里是以bucket的顺序读入的），transfer次数为$b_r+b_s$。</p>
+<p>但是别忘了，对于每一个bucket，其都可能超出整数个block一点点，对于分片阶段的写回和连接阶段的读入，实际还要考虑那些不够满的block。设哈希函数一共分成$n_h$个bucket，则还有$4*n_h$次额外的transfer（两张表两个阶段）。</p>
+<p>综上，transfer次数为：</p>
+<p>$$3*(b_r+b_s)+4*n_h$$</p>
+<p>对于seek：</p>
+<p>假设输入和输出的单位有$b_b$个block的大小，则分片阶段的seek次数为$2(\lceil\frac{b_r}{b_b}\rceil+\lceil\frac{b_s}{b_b}\rceil)$。而在连接阶段，由于一个bucket是顺序存储的，因此seek次数为$2*n_h$。</p>
+<p>综上，seek次数为：</p>
+<p>$$2(\lceil\frac{b_r}{b_b}\rceil+\lceil\frac{b_s}{b_b}\rceil)+2*n_h$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>$n_h$项一般可以忽略。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>考虑recursive partitioning的情况：</p>
+<p>transfer次数：</p>
+<p>$$2(b_r+b_s)\lceil\log_{\lfloor\frac{M}{b_b}\rfloor-1}(\frac{b_s}{M})\rceil+(b_r+b_s)$$</p>
+<p>seek次数：</p>
+<p>$$2(\lceil\frac{b_r}{b_b}+\lceil\frac{b_s}{b_b}\rceil\rceil)\lceil\log_{\lfloor\frac{M}{b_b}\rfloor-1}(\frac{b_s}{M})\rceil$$</p>
 </div>
 <hr />
-<h2 id="66-extended-er-features">6.6 Extended ER Features</h2>
-<p><strong>Specialization:</strong></p>
-<p><strong>特化（specialization）</strong> 指的是一个实体集合派生多个子实体集合，每个子实体集合有自己额外的属性，或者参与自己的关系，是一种<strong>自上而下</strong>的设计过程。</p>
-<p>子实体集合继承父实体集合的所有属性和关系。有以下两种特化方式：</p>
-<ul>
-<li><strong>重叠特化（overlapping）：</strong> 子实体集合之间有重叠，即一个实体可以同时属于多个子实体集合。例如下图中，一个person既可以属于instructor，又可以属于student。</li>
-<li><strong>不相交特化（disjoint）：</strong> 子实体集合之间没有重叠，即一个实体只能属于一个子实体集合。例如下图中，一个employee要么属于instructor，要么属于secretary。</li>
-</ul>
-<p><img alt="alt text" src="../image/6.25.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>注意此处两种特化方式的箭头表示。</p>
-</div>
-<p>对于特化的实体集合，有两种转换成表格的方式：</p>
-<ul>
-<li>
-<p>方法一：父实体集合正常转换，子实体集合只包含父实体集合的主键和子实体集合的独有属性。</p>
-</li>
-<li>
-<p>person(ID, name, street, city)</p>
-</li>
-<li>student(ID, tot_credits)</li>
-<li>
-<p>employee(ID, salary)</p>
-<p>缺点：例如获得一个student的完整信息需要查两张表</p>
-</li>
-<li>
-<p>方法二：每一个实体集合都包含完整属性。</p>
-</li>
-<li>
-<p>person(ID, name, street, city)</p>
-</li>
-<li>student(ID, name, street, city, tot_credits)</li>
-<li>
-<p>employee(ID, name, street, city, salary)</p>
-<p>缺点：对于既是student又是employee的实体，name, street, city等属性冗余。</p>
-</li>
-</ul>
-<p><strong>Generalization:</strong></p>
-<p><strong>概化（generalization）</strong> 是特化的逆操作，将多个子实体集合归纳成一个更高一层的实体集合，是一种<strong>自下而上</strong>的设计过程。在ER图中的表示与特化一致。</p>
-<p><strong>Completeness Constraints:</strong></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>注意区分完全性约束（completeness）和完整性约束（integrity）。</p>
-</div>
-<p>在特化和概化中，如果高层级的实体集合一定属于低层级的某个实体集合，则称为<strong>total</strong>，否则称为<strong>partial</strong>。默认为partial。</p>
+<h2 id="115-other-operations">11.5 Other Operations</h2>
+<p><strong>Duplicate Elimination:</strong></p>
+<p>去重有两种实现方式。</p>
+<p>一种是排序，重复的记录会排在一起。</p>
+<p>另一种是哈希，重复的记录会进入同一个bucket。</p>
 <p><strong>Aggregation:</strong></p>
-<p>假设student，instructor和project之间存在proj_guide的三元关系，现在有一个新的三元关系eval_for，我们会发现proj_guide和eval_for之间存在冗余，每一个eval_for关系会对应到唯一的一个proj_guide关系，但部分proj_guide关系并不对应到eval_for关系。所以并不能单纯丢弃proj_guide关系集合。</p>
-<p><img alt="alt text" src="../image/6.26.png" /></p>
-<p>对于这种冗余的情况，我们采用<strong>聚合（aggregation）</strong> 的方法，将关系看作一个抽象的实体，也就是允许存在关系之间的关系。</p>
-<p><img alt="alt text" src="../image/6.27.png" /></p>
-<hr />
-<h2 id="67-alternative-notations-for-modeling-data">6.7 Alternative Notations for Modeling Data</h2>
-<p><img alt="alt text" src="../image/6.28.png" /></p>
+<p>聚合的实现与去重类似，排序或者哈希能将同组的记录聚集在一起，然后再进行聚合操作。</p>
+<p>优化：<strong>partial aggregation</strong></p>
+<p>在运行生成阶段和中间合并阶段，提前计算部分聚合值，减少最终计算的开销。比较好的应用有<code>count</code>，<code>min</code>，<code>max</code>，<code>sum</code>等。</p>
+<p><strong>Set Operations:</strong></p>
+<p>先通过哈希函数将两张表分别分成$n$组。对于每一划分$i$，在$r_i$上另建一个哈希索引：</p>
+<ul>
+<li>$r\cup s$：如果$s_i$中的记录不在索引上，就加入索引，保留索引上的记录作为结果；最后$n$组结果之和即为最终结果。</li>
+<li>$r\cap s$：逐一检查$s_i$中的记录是否已经出现在索引上，保留$s_i$中已经在索引上的记录作为结果；最后$n$组结果之和即为最终结果。</li>
+<li>$r-s$：如果$s_i$中的记录在索引上，则从索引上删除，保留索引上的记录作为结果；最后$n$组结果之和即为最终结果</li>
+</ul>
 
 
 
@@ -1651,7 +1759,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../Chapter4/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 4.Intermediate SQL">
+          <a href="../Chapter10/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 10.Indexing">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1661,20 +1769,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                4.Intermediate SQL
+                10.Indexing
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Chapter7/" class="md-footer__link md-footer__link--next" aria-label="下一页: 7.Normalization">
+          <a href="../Chapter12/" class="md-footer__link md-footer__link--next" aria-label="下一页: 12.Query Optimization">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                7.Normalization
+                12.Query Optimization
               </div>
             </div>
             <div class="md-footer__button md-icon">
