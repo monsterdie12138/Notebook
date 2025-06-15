@@ -1432,7 +1432,7 @@
 </ul>
 </li>
 </ul>
-<p>例如，下图就是一个immediate database modification的例子。$B_A$在对应事务提交之后刷写回磁盘，而$B_C$在对应事务提交之前刷写回磁盘。</p>
+<p>例如，下图就是一个immediate database modification的例子。$B$在对应事务提交之后刷写回磁盘，而$B_C$在对应事务提交之前刷写回磁盘。</p>
 <p><img alt="alt text" src="../image/19.8.png" /></p>
 <p><strong>Transaction Commit:</strong></p>
 <p>当提交日志写回稳定存储器后，事务就被认为是提交了，之前所有相关日志已经写回稳定存储器。</p>

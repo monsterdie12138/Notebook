@@ -1467,7 +1467,7 @@
 <li>除了根节点或叶子的其他节点有$[\lceil \frac{n}{2}\rceil,n]$个孩子</li>
 <li>每个非根的叶子有$[\lceil \frac{n-1}{2}\rceil,n-1]$个键值</li>
 </ul>
-<p>在数据库中，B+树索引的每一个节点都单独保存在一个block中。这说明B+树的$n$很大，进一步说明B+树很矮，查找效率高。弱一共有$K$格search key值，则树高不会超过$\lceil\log_{\lceil\frac{n}{2}\rceil}K\rceil$。</p>
+<p>在数据库中，B+树索引的每一个节点都单独保存在一个block中。这说明B+树的$n$很大，进一步说明B+树很矮，查找效率高。若一共有$K$个search key值，则树高不会超过$\lceil\log_{\lceil\frac{n}{2}\rceil}K\rceil$。</p>
 <p><strong>Node Structure:</strong></p>
 <p>对于B+树索引的一个节点：</p>
 <p><img alt="alt text" src="../image/14.7.png" /></p>

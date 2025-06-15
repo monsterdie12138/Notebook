@@ -1485,7 +1485,7 @@
 <p>在多粒度情况下，只有S锁和X锁是不够的，还需要引入<strong>意向锁（intention lock）</strong>，分为以下三种：</p>
 <ul>
 <li>intention-shared (IS): 表示当前节点的更低级节点上会使用S锁；通俗来讲，一个事务对某个节点有IS锁，表示该事务需要读某个子节点</li>
-<li>intention-exclusive (IX): 表示当前节点的更低级节点上会使用S锁或X锁；通俗来讲，一个事务对某个节点有IX锁，表示该事务需要写某个子节点</li>
+<li>intention-exclusive (IX): 表示当前节点的更低级节点上会使用S锁或X锁；通俗来讲，一个事务对某个节点有IX锁，表示该事务需要读或写某个子节点</li>
 <li>shared and intention-exclusive (SIX): 表示当前节点被显式锁定为S模式，但更低级的节点可能使用X锁；通俗来讲，就是S锁+IX锁</li>
 </ul>
 <p><img alt="alt text" src="../image/18.10.png" /></p>
