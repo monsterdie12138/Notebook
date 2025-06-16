@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/System3/Chapter11/">
       
       
+        <link rel="prev" href="../Chapter10/">
+      
+      
+        <link rel="next" href="../../DB/Chapter1/">
       
       
       <link rel="icon" href="../../../stylesheets/logo.jpg">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Chapter11 - Monsterdie's Notebook</title>
+        <title>11.TLP and MIMD - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter11-thread-level-parallelism-tlp-and-multiple-instruction-multiple-data-mimd" class="md-skip">
+        <a href="#chapter11-tlp-and-mimd" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter11
+              11.TLP and MIMD
             
           </span>
         </div>
@@ -266,10 +270,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../" class="md-tabs__link">
           
   
@@ -415,6 +421,72 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -434,11 +506,11 @@
         
   
   
-    <a href="../../" class="md-nav__link">
+    <a href="../../FPA/Chapter1/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Computer Science
+    程序设计与算法基础
   </span>
   
 
@@ -448,6 +520,620 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../FDS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据结构基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../AID/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅲ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统Ⅲ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.Fundamentals of Quantitative Design and Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.ILP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.Memory Hierarchy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.Main Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.Virtual Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.File System Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.File System Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.Mass Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9.IO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10.DLP and SIMD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    11.TLP and MIMD
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    11.TLP and MIMD
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#111-shared-memory-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1 Shared Memory System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112-message-passing-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2 Message Passing System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113-cache-coherence" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3 Cache Coherence
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../DB/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据库系统
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -522,27 +1208,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#shared-memory-system" class="md-nav__link">
+  <a href="#111-shared-memory-system" class="md-nav__link">
     <span class="md-ellipsis">
-      Shared Memory System
+      11.1 Shared Memory System
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#message-passing-system" class="md-nav__link">
+  <a href="#112-message-passing-system" class="md-nav__link">
     <span class="md-ellipsis">
-      Message Passing System
+      11.2 Message Passing System
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cache-coherence" class="md-nav__link">
+  <a href="#113-cache-coherence" class="md-nav__link">
     <span class="md-ellipsis">
-      Cache Coherence
+      11.3 Cache Coherence
     </span>
   </a>
   
@@ -567,13 +1253,15 @@
 
 
 <p><span style="font-family: 'Times New Roman';"></p>
-<h1 id="chapter11-thread-level-parallelism-tlp-and-multiple-instruction-multiple-data-mimd">Chapter11 Thread-Level Parallelism (TLP) and Multiple Instruction Multiple Data (MIMD)</h1>
+<h1 id="chapter11-tlp-and-mimd">Chapter11 TLP and MIMD</h1>
 <hr />
-<h2 id="shared-memory-system">Shared Memory System</h2>
+<h2 id="111-shared-memory-system">11.1 Shared Memory System</h2>
 <p><img alt="alt text" src="../image/11.1.png" /></p>
+<p>$~$</p>
 <p><strong>Uniform Memory Access (UMA):</strong></p>
 <p>所有处理器对任何内存的访问都没有偏好。</p>
 <p><img alt="alt text" src="../image/11.3.png" /></p>
+<p>$~$</p>
 <p><strong>Non Uniform Memory Access (NUMA):</strong></p>
 <p>每个处理器都有自己对应的本地内存，虽然能访问所有内存，但访问本地内存的速度更快。</p>
 <p><img alt="alt text" src="../image/11.4.png" /></p>
@@ -582,18 +1270,23 @@
 <p class="admonition-title">Note</p>
 <p>关于UMA和NUMA，在不同书中有不同的叫法。UMA又称为<strong>symmetric multiprocessor (SMP)</strong>或<strong>centralized shared-memory multiprocessor</strong>，NUMA又称为<strong>distributed shared-memory multiprocessor (DSP)</strong>。</p>
 </div>
+<p>$~$</p>
 <p><strong>Cache Only Memory Access (COMA):</strong></p>
 <p>没有内存，只有缓存。</p>
 <p><img alt="alt text" src="../image/11.5.png" /></p>
-<h2 id="message-passing-system">Message Passing System</h2>
-<p><img alt="alt text" src="../image/11.2.png" /></p>
+<p>$~$</p>
 <hr />
-<h2 id="cache-coherence">Cache Coherence</h2>
+<h2 id="112-message-passing-system">11.2 Message Passing System</h2>
+<p><img alt="alt text" src="../image/11.2.png" /></p>
+<p>$~$</p>
+<hr />
+<h2 id="113-cache-coherence">11.3 Cache Coherence</h2>
 <p><strong>memory consistency</strong>和<strong>cache coherence</strong>中文翻译过来都被笼统地称为一致性，但两者有很大差别。</p>
 <p>memory consistency指的是不同CPU对内存的访问有读写顺序的约束。例如，本来第一个CPU写数据，第二个CPU读数据，读到的是之前写入的数据；但如果第二个CPU错误地先进行了读取，就会破坏一致性。</p>
 <p>cache coherence见下面的例子：</p>
 <p>例如，CPU A和B有各自的缓存和公共的内存。A和B先后从内存读出数据X的内容（0）写到缓存上，之后A修改X的内容为1，采用write through的策略同时更改了自己的缓存和内存，然而此时B的缓存中X的值仍为0，这就造成了不一致的情况。</p>
 <p><img alt="alt text" src="../image/11.6.png" /></p>
+<p>$~$</p>
 <p><strong>Snoopy Coherence Protocol:</strong></p>
 <p>适用于处理UMA的cache coherence问题的协议。</p>
 <p>如果采用write through的策略，会有以下四种读写情况：</p>
@@ -631,30 +1324,30 @@
 <p><strong>会发生怎样的改变，注意这些指令不是顺序执行，而是分别考虑。</strong></p>
 <p><img alt="alt text" src="../image/11.12.png" /></p>
 <p><strong>C0, R, A100:</strong></p>
-<p>C0 read miss
-memory returns 0100 to c0
-C0.0(S, A100, 0100)</p>
+<p>C0 read miss<br />
+memory returns 0100 to c0<br />
+C0.0(S, A100, 0100)  </p>
 <p><strong>C0, R, A10C:</strong></p>
-<p>C0 read miss
-C2 write back A10C
-memory A10C, 010C → 020C
-C2.3(S, A10C, 020C)
-memory returns 020C to C0
-C0.3(S, A10C, 020C)</p>
+<p>C0 read miss<br />
+C2 write back A10C<br />
+memory A10C, 010C → 020C<br />
+C2.3(S, A10C, 020C)<br />
+memory returns 020C to C0<br />
+C0.3(S, A10C, 020C)  </p>
 <p><strong>C1, W, A104, 0204:</strong></p>
-<p>C1 write hit
-C0 invalidation
-C0.1(I, A104, 0104)
-C2 invalidation
-C2.1(I, A104, 0104)
-C1.1(M, A104, 0204)</p>
+<p>C1 write hit<br />
+C0 invalidation<br />
+C0.1(I, A104, 0104)<br />
+C2 invalidation<br />
+C2.1(I, A104, 0104)<br />
+C1.1(M, A104, 0204)  </p>
 <p><strong>C0, W, A118, 0308:</strong></p>
-<p>C0 write miss
-C0 write back A108
-memory A108, 0108 → 0208 
-memory returns 0118 to C0
-C0.2 (M, A118, 0118)
-C0.2 (M, A118, 0308)</p>
+<p>C0 write miss<br />
+C0 write back A108<br />
+memory A108, 0108 → 0208<br />
+memory returns 0118 to C0<br />
+C0.2 (M, A118, 0118)<br />
+C0.2 (M, A118, 0308)  </p>
 </div>
 <p><strong>Directory Protocol:</strong></p>
 <p>适用于处理NUMA的cache coherence问题的协议。</p>
@@ -786,6 +1479,44 @@ C0.2 (M, A118, 0308)</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter10/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 10.DLP and SIMD">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                10.DLP and SIMD
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../DB/Chapter1/" class="md-footer__link md-footer__link--next" aria-label="下一页: 1.Introduction to Database Systems">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                1.Introduction to Database Systems
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

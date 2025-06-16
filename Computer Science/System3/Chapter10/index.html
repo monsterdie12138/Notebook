@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/System3/Chapter10/">
       
       
+        <link rel="prev" href="../Chapter9/">
+      
+      
+        <link rel="next" href="../Chapter11/">
       
       
       <link rel="icon" href="../../../stylesheets/logo.jpg">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Chapter10 - Monsterdie's Notebook</title>
+        <title>10.DLP and SIMD - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter10-data-level-parallelism-dlp-and-single-instruction-multiple-data-simd" class="md-skip">
+        <a href="#chapter10-dlp-and-simd" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter10
+              10.DLP and SIMD
             
           </span>
         </div>
@@ -266,10 +270,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../" class="md-tabs__link">
           
   
@@ -415,6 +421,72 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -434,11 +506,11 @@
         
   
   
-    <a href="../../" class="md-nav__link">
+    <a href="../../FPA/Chapter1/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Computer Science
+    程序设计与算法基础
   </span>
   
 
@@ -448,6 +520,644 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../FDS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据结构基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../AID/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅲ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统Ⅲ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.Fundamentals of Quantitative Design and Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.ILP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.Memory Hierarchy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.Main Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.Virtual Memory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.File System Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.File System Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.Mass Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9.IO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    10.DLP and SIMD
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    10.DLP and SIMD
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#101-vector-processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.1 Vector Processor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-array-processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      10.2 Array Processor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.2 Array Processor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interconnection-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interconnection Network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-stage-interconnection-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single-Stage Interconnection Network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-stage-interconnection-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Stage Interconnection Network
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11.TLP and MIMD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../DB/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据库系统
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -522,37 +1232,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vector-processor" class="md-nav__link">
+  <a href="#101-vector-processor" class="md-nav__link">
     <span class="md-ellipsis">
-      Vector Processor
+      10.1 Vector Processor
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Vector Processor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cray-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      CRAY-1
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#array-processor" class="md-nav__link">
+  <a href="#102-array-processor" class="md-nav__link">
     <span class="md-ellipsis">
-      Array Processor
+      10.2 Array Processor
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Array Processor">
+    <nav class="md-nav" aria-label="10.2 Array Processor">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -606,9 +1301,9 @@
 
 
 <p><span style="font-family: 'Times New Roman';"></p>
-<h1 id="chapter10-data-level-parallelism-dlp-and-single-instruction-multiple-data-simd">Chapter10 Data-Level Parallelism (DLP) and Single Instruction Multiple Data (SIMD)</h1>
+<h1 id="chapter10-dlp-and-simd">Chapter10 DLP and SIMD</h1>
 <hr />
-<h2 id="vector-processor">Vector Processor</h2>
+<h2 id="101-vector-processor">10.1 Vector Processor</h2>
 <p><strong>Processing Methods:</strong></p>
 <ul>
 <li>horizontal processing method: 按顺序依次处理</li>
@@ -632,8 +1327,10 @@
 <p>向量内部的每一个元素的计算可以并行执行。总共有$1$个数据依赖，进行$2$次功能切换。</p>
 <p>vertical and horizontal processing method:</p>
 <p>假设每$n$个元素一组，$N=S\times n+r$，则一共$S+1$组。总共有$S+1$次数据依赖，进行$2S+2$次功能切换。</p>
-<h3 id="cray-1">CRAY-1</h3>
+<p>$~$</p>
+<p><strong>CRAY-1:</strong></p>
 <p><img alt="alt text" src="../image/10.1.png" /></p>
+<p>$~$</p>
 <p><strong>Instruction Types:</strong></p>
 <ul>
 <li>向量与向量的运算（6拍）</li>
@@ -646,6 +1343,7 @@
 <p class="admonition-title">Note</p>
 <p>这里的拍数指的是得到第一个元素/转移第一个元素的时间。由于向量处理器内部是有流水线的，因此在第一个元素计算出来之后，每过一拍出下一个元素。例如，单纯考虑一个操作，$N$位的向量相加一共需要$6+(N-1)$拍。</p>
 </div>
+<p>$~$</p>
 <p><strong>Improve the Performance of Vector Processor:</strong></p>
 <ul>
 <li>对于不同功能单元增加硬件数量</li>
@@ -653,6 +1351,7 @@
 <li>循环开采技术（recycling mining technology）</li>
 <li>多处理器系统</li>
 </ul>
+<p>$~$</p>
 <p><strong>Vector Chaining Technology:</strong></p>
 <p>将多个向量指令的执行过程重叠，前一条指令的部分结果可立即被下一条指令使用，无需等待全部完成。</p>
 <p>仍以之前的$D=A\times(B+C)$为例，假设$B$和$C$都已经提前存放到寄存器$V_0$和$V_1$中，总共需要以下三条指令：</p>
@@ -675,34 +1374,40 @@
 <p>如果三条指令顺序执行：</p>
 <p>$$[(1+6+1)+(N-1)]+[(1+6+1)+(N-1)]+[(1+7+1)+(N-1)]=3N+22$$</p>
 <p>如果指令1和指令2并行，然后顺序执行指令3：</p>
-<p>$$\max{[(1+6+1)+(N-1)],[(1+6+1)+(N-1)]}+[(1+7+1)+(N-1)]=2N+15$$</p>
+<p>$$\max\{[(1+6+1)+(N-1)],[(1+6+1)+(N-1)]\}+[(1+7+1)+(N-1)]=2N+15$$</p>
 <p>如果在上面的基础上采用向量链接技术：</p>
 <p>当$V_0+V_1$的第一个元素计算出来后就可以参与指令3，而无需等待$V_0+V_1$的所有元素都计算出来。</p>
-<p>$$\max{(1+6+1),(1+6+1)}+(1+7+1)+(N-1)=N+16$$</p>
+<p>$$\max\{(1+6+1),(1+6+1)\}+(1+7+1)+(N-1)=N+16$$</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>不知道为什么指令3在例题中需要7拍，而不是6拍。</p>
 </div>
+<p>$~$</p>
 <hr />
-<h2 id="array-processor">Array Processor</h2>
+<h2 id="102-array-processor">10.2 Array Processor</h2>
 <p>多核系统下，不同CPU由阵列机组织在一起。</p>
 <p>最常见的结构如下：</p>
 <p><img alt="alt text" src="../image/10.4.png" /></p>
 <p>处理器形成8×8的处理器阵列，指令通过广播的方式传递。</p>
+<p>$~$</p>
 <p><strong>Processor and Memory:</strong></p>
 <p>distributed memory：每个处理器都有一个高优先级的内存。</p>
 <p><img alt="alt text" src="../image/10.5.png" /></p>
 <p>centralized shared memory：每个处理器对于所有内存的访问优先级相同。</p>
 <p><img alt="alt text" src="../image/10.6.png" /></p>
+<p>$~$</p>
 <h3 id="interconnection-network">Interconnection Network</h3>
 <p>网络的作用是连接不同的处理器和内存。</p>
+<p>$~$</p>
 <p><strong>Classification of Interconnection Network:</strong></p>
 <ul>
 <li>static network: 初始化后就无法改变网络连接情况</li>
 <li>dynamic network：随着系统运行可以改变网络连接情况</li>
 </ul>
+<p>$~$</p>
 <h3 id="single-stage-interconnection-network">Single-Stage Interconnection Network</h3>
 <p>形式化定义：$N$个节点，函数$f$将其连接，使得任意两个节点直接或间接相连，这里的节点可以是处理器，也可以是内存。</p>
+<p>$~$</p>
 <p><strong>Cube Network:</strong></p>
 <p>将$N$编码为二进制，一共$n$位（$n=\log N$），因此每一个节点表示为$P_{n-1}...P_i...P_1P_0$</p>
 <p>函数$f$一共有$n$个，其中$0\leqslant i\leqslant n-1$：</p>
@@ -717,6 +1422,7 @@
 <p>通过以上三次连接，每个节点都与其他节点直接或间接相连，最远相差$3$条线，推广到一般情况是$n$条线：</p>
 <p><img alt="alt text" src="../image/10.10.png" /></p>
 <p>通过这个例子，我们也可以得知“Cube”这个名字的由来。</p>
+<p>$~$</p>
 <p><strong>PM2I Network:</strong></p>
 <p>同样使用上面定义的$n$，函数$f$一共有$2n$个，但实际上$i=n-1$时对应的两个一样，其中$0\leqslant i\leqslant n-1$：</p>
 <p>$$PM2_{+i}(j)=(j+2^i)\mod N$$</p>
@@ -724,6 +1430,7 @@
 <p>仍然以8个节点为例：</p>
 <p><img alt="alt text" src="../image/10.11.png" /></p>
 <p>每两个节点最远相差$2$条线，推广到一般情况是$n-1$条线。</p>
+<p>$~$</p>
 <p><strong>Shuffle Exchange Network:</strong></p>
 <p>同样使用上面定义的$n$，函数$f$分成shuffle和exchange两部分。</p>
 <p>对于shuffle部分：</p>
@@ -735,21 +1442,25 @@
 <p>也只需要进行一次exchange，得到结果：</p>
 <p><img alt="alt text" src="../image/10.13.png" /></p>
 <p>每两个节点最远相差$2n-1$条线，也就是最小的节点和最大的节点之间的距离。</p>
+<p>$~$</p>
 <h3 id="multi-stage-interconnection-network">Multi-Stage Interconnection Network</h3>
 <p>将单极网络串联在一起就形成了多级网络。</p>
 <p><img alt="alt text" src="../image/10.14.png" /></p>
+<p>$~$</p>
 <p><strong>Switch:</strong></p>
 <p>一个记为$m\times n$的开关有$m$个输入端口和$n$个输出端口。</p>
 <p>一个$2\times 2$的双功能开关：</p>
 <p><img alt="alt text" src="../image/10.15.png" /></p>
 <p>一个$2\times 2$的四功能开关：</p>
 <p><img alt="alt text" src="../image/10.16.png" /></p>
+<p>$~$</p>
 <p><strong>Three-Stage Cube Network:</strong></p>
 <p><img alt="alt text" src="../image/10.17.png" /></p>
 <p>三层对应的$f$分别是$Cube_0$，$Cube_1$和$Cube_2$。</p>
 <p>这里假设开关都是$2\times 2$的双功能开关，并且采用级控制（每一层的开关状态保持一致），那么整体的网络连接布局一共有$2^3=8$种。</p>
 <p><img alt="alt text" src="../image/10.18.png" /></p>
 <p>纵轴表示节点，横轴表示开关状态，因此表格展示的是在不同开关状态下的节点连接情况。</p>
+<p>$~$</p>
 <p><strong>Loop-Level Parallelism:</strong></p>
 <p>循环有时候可以看作向量的运算，只要循环之间没有依赖就行。</p>
 <p>例如：</p>
@@ -909,6 +1620,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter9/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 9.IO">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                9.IO
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Chapter11/" class="md-footer__link md-footer__link--next" aria-label="下一页: 11.TLP and MIMD">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                11.TLP and MIMD
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
