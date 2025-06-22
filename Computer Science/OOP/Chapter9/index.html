@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/OOP/Chapter10/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/OOP/Chapter9/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Chapter10 - Monsterdie's Notebook</title>
+        <title>Chapter9 - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chapter10" class="md-skip">
+        <a href="#chapter9" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter10
+              Chapter9
             
           </span>
         </div>
@@ -522,27 +522,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#101-io" class="md-nav__link">
+  <a href="#91-io" class="md-nav__link">
     <span class="md-ellipsis">
-      10.1 IO流和流类库
+      9.1 IO流和流类库
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#102-io" class="md-nav__link">
+  <a href="#92-io" class="md-nav__link">
     <span class="md-ellipsis">
-      10.2 IO流类的成员函数
+      9.2 IO流类的成员函数
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#103" class="md-nav__link">
+  <a href="#93" class="md-nav__link">
     <span class="md-ellipsis">
-      10.3 文件操作
+      9.3 文件操作
     </span>
   </a>
   
@@ -567,10 +567,10 @@
 
 
 <p><span style="font-family: 'Times New Roman';"></p>
-<h1 id="chapter10">Chapter10 流和文件</h1>
+<h1 id="chapter9">Chapter9 流和文件</h1>
 <hr />
-<h2 id="101-io">10.1 IO流和流类库</h2>
-<p><strong>流：</strong></p>
+<h2 id="91-io">9.1 IO流和流类库</h2>
+<p><strong>流（stream）：</strong></p>
 <p>流指的是数据从一个设备流向另一个设备。</p>
 <p>流本质上是一个对象，在使用前被建立，在使用后被删除。数据的输入/输出就是从流中提取数据/向流中插入数据。</p>
 <p><strong>预定义流对象：</strong></p>
@@ -601,7 +601,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="102-io">10.2 IO流类的成员函数</h2>
+<h2 id="92-io">9.2 IO流类的成员函数</h2>
 <p><strong><code>istream</code>流中的常用成员函数：</strong></p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">istream</span><span class="o">:</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ios</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
@@ -664,7 +664,7 @@
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="k">while</span><span class="p">((</span><span class="n">c</span><span class="o">=</span><span class="n">cin</span><span class="p">.</span><span class="n">get</span><span class="p">())</span><span class="o">!=</span><span class="sc">&#39;\n&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">cout</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w">     </span><span class="c1">//L1</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="n">cout</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="n">cout</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="sc">&#39;t&#39;</span><span class="p">).</span><span class="n">put</span><span class="p">(</span><span class="sc">&#39;h&#39;</span><span class="p">).</span><span class="n">put</span><span class="p">(</span><span class="sc">&#39;i&#39;</span><span class="p">).</span><span class="n">put</span><span class="p">(</span><span class="sc">&#39;s&#39;</span><span class="p">).</span><span class="n">put</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="n">cout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="mi">-1</span><span class="p">)).</span><span class="n">put</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="n">cout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="mi">-1</span><span class="p">).</span><span class="n">put</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>输入输出示例：</p>
@@ -736,7 +736,7 @@
 <p>也就是说，<code>setf(ios::internal)</code>没有发挥作用，这是因为其无法覆盖之前的<code>setf(ios::right)</code>。但是，<code>setf(ios::left)</code>和<code>setf(ios::right)</code>是互斥的，因此后者可以覆盖前者。</p>
 <p>此外，浮点数默认四舍五入到六位，如果末尾为0则默认不输出，因此L3本来四舍五入为-1234.90，输出变成-1234.9。</p>
 </div>
-<p><strong>操纵符：</strong></p>
+<p><strong>操纵符（manipulator）：</strong></p>
 <p>操纵符与格式状态类似，但写法更加简洁。（需要头文件<code>&lt;iomanip&gt;</code>）</p>
 <p>例如，上面的例子中，用操纵符的写法可以写成：</p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">left</span><span class="o">&lt;&lt;</span><span class="n">setfill</span><span class="p">(</span><span class="sc">&#39;*&#39;</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">c</span><span class="o">&lt;&lt;</span><span class="s">&quot;----L1&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
@@ -747,7 +747,7 @@
 </span></code></pre></div>
 <p>输出结果一样。</p>
 <hr />
-<h2 id="103">10.3 文件操作</h2>
+<h2 id="93">9.3 文件操作</h2>
 <p><strong>文件与流：</strong></p>
 <p>用流操作文件的过程有以下四步：</p>
 <ul>
