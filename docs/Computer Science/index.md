@@ -8,6 +8,22 @@ comments: true
 
 <div class="grid cards" markdown>
 
+-   :material-language-c:{ .lg .middle } __程序设计与算法基础__
+
+    ---
+
+    
+
+    [:octicons-arrow-right-24: Getting started](FPA/Chapter1.md)
+
+-   :material-graph:{ .lg .middle } __数据结构基础__
+
+    ---
+
+    
+
+    [:octicons-arrow-right-24: Getting started](FDS/Chapter1.md)
+
 -   :material-family-tree:{ .lg .middle } __高级数据结构与算法分析__
 
     ---
@@ -24,6 +40,14 @@ comments: true
     吴飞 潘云鹤
 
     [:octicons-arrow-right-24: Getting started](AID/Chapter1.md)
+
+-   :material-cpu-64-bit:{ .lg .middle } __计算机系统Ⅰ__
+
+    ---
+
+    
+
+    [:octicons-arrow-right-24: Getting started](System1/Chapter1.md)
 
 -   :material-cpu-64-bit:{ .lg .middle } __计算机系统Ⅱ__
 

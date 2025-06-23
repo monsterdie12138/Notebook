@@ -8,7 +8,7 @@ theme:
   custom_dir: overrides
   font: 
     text: Noto Serif SC
-    code: Libre Baskerville
+    code: Source Code Pro
   logo: stylesheets/logo.jpg
   favicon: stylesheets/logo.jpg
   features:
@@ -87,6 +87,13 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - md_in_html
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 nav: 
   - Home: index.md
@@ -161,7 +168,17 @@ nav:
       - 4.概率极限理论: Mathematics/Probability/Chapter4.md
   
   - Computer Science:
-    - Computer Science/index.md
+    - '': Computer Science/index.md
+    - 程序设计与算法基础:
+      - 1.C语言基础: Computer Science/FPA/Chapter1.md
+      - 2.排序: Computer Science/FPA/Chapter2.md
+      - 3.C语言进阶: Computer Science/FPA/Chapter3.md
+      - 4.数据结构与文件: Computer Science/FPA/Chapter4.md
+      - 附录：题目整理: Computer Science/FPA/Appendix.md
+    - 数据结构基础:
+      - 1.基本数据结构: Computer Science/FDS/Chapter1.md
+      - 2.图: Computer Science/FDS/Chapter2.md
+      - 3.排序与哈希: Computer Science/FDS/Chapter3.md
     - 高级数据结构与算法分析:
       - 1.AVL树，Splay树与均摊分析: Computer Science/ADS/Chapter1.md
       - 2.红黑树与B+树: Computer Science/ADS/Chapter2.md
@@ -185,6 +202,12 @@ nav:
       - 4.深度学习: Computer Science/AID/Chapter4.md
       - 5.强化学习: Computer Science/AID/Chapter5.md
       - 6.人工智能博弈: Computer Science/AID/Chapter6.md
+    - 计算机系统Ⅰ:
+      - 1.Computer System and Information Representation: Computer Science/System1/Chapter1.md
+      - 2.Foundations of Digital Logic: Computer Science/System1/Chapter2.md
+      - 3.Combinational Logic Design: Computer Science/System1/Chapter3.md
+      - 4.Sequential Logic Design: Computer Science/System1/Chapter4.md
+      - 5.Instruction Set Architecture: Computer Science/System1/Chapter5.md
     - 计算机系统Ⅱ:
       - 1.ISA: Computer Science/System2/Chapter1.md
       - 2.Pipelining: Computer Science/System2/Chapter2.md
@@ -197,3 +220,51 @@ nav:
       - 9.Threads: Computer Science/System2/Chapter9.md
       - 10.Synchronization: Computer Science/System2/Chapter10.md
       - 11.Deadlocks: Computer Science/System2/Chapter11.md
+    - 计算机系统Ⅲ:
+      - 1.Fundamentals of Quantitative Design and Analysis: Computer Science/System3/Chapter1.md
+      - 2.ILP: Computer Science/System3/Chapter2.md
+      - 3.Memory Hierarchy: Computer Science/System3/Chapter3.md
+      - 4.Main Memory: Computer Science/System3/Chapter4.md
+      - 5.Virtual Memory: Computer Science/System3/Chapter5.md
+      - 6.File System Interface: Computer Science/System3/Chapter6.md
+      - 7.File System Implementation: Computer Science/System3/Chapter7.md
+      - 8.Mass Storage: Computer Science/System3/Chapter8.md
+      - 9.IO: Computer Science/System3/Chapter9.md
+      - 10.DLP and SIMD: Computer Science/System3/Chapter10.md
+      - 11.TLP and MIMD: Computer Science/System3/Chapter11.md
+    - 数据库系统:
+      - 1.Introduction to Database Systems: Computer Science/DB/Chapter1.md
+      - 2.Introduction to Relational Model: Computer Science/DB/Chapter2.md
+      - 3.Introduction to SQL: Computer Science/DB/Chapter3.md
+      - 4.Intermediate SQL: Computer Science/DB/Chapter4.md
+      - 5.Advanced SQL: Computer Science/DB/Chapter5.md
+      - 6.Database Design using the E-R Model: Computer Science/DB/Chapter6.md
+      - 7.Normalization: Computer Science/DB/Chapter7.md
+      - 8.Physical Storage Systems: Computer Science/DB/Chapter8.md
+      - 9.Data Storage Structures: Computer Science/DB/Chapter9.md
+      - 10.Indexing: Computer Science/DB/Chapter10.md
+      - 11.Query Processing: Computer Science/DB/Chapter11.md
+      - 12.Query Optimization: Computer Science/DB/Chapter12.md
+      - 13.Transactions: Computer Science/DB/Chapter13.md
+      - 14.Concurrency Control: Computer Science/DB/Chapter14.md
+      - 15.Recovery System: Computer Science/DB/Chapter15.md
+    - 面向对象程序设计:
+      - 1.c++语法基础: Computer Science/OOP/Chapter1.md
+      - 2.类与对象: Computer Science/OOP/Chapter2.md
+      - 3.继承: Computer Science/OOP/Chapter3.md
+      - 4.多态: Computer Science/OOP/Chapter4.md
+      - 5.运算符重载: Computer Science/OOP/Chapter5.md
+      - 6.模板与STL: Computer Science/OOP/Chapter6.md
+      - 7.异常: Computer Science/OOP/Chapter7.md
+      - 8.流和文件: Computer Science/OOP/Chapter8.md
+  
+  - Course:
+    - '': Course/index.md
+    - CS61A:
+      - Part1: Course/CS61A/Part1.md
+      - Part2: Course/CS61A/Part2.md
+      - Part3: Course/CS61A/Part3.md
+      - Part4: Course/CS61A/Part4.md
+      - Appendix1: Course/CS61A/Appendix1.md
+      - Appendix2: Course/CS61A/Appendix2.md
+      - Appendix3: Course/CS61A/Appendix3.md
