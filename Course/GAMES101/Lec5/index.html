@@ -1,0 +1,1570 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Course/GAMES101/Lec5/">
+      
+      
+        <link rel="prev" href="../Lec4/">
+      
+      
+        <link rel="next" href="../Lec6/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>5.Ray Tracing - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lec5-ray-tracing" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5.Ray Tracing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Mathematics/" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Computer%20Science/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Course
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Computer%20Science/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Course
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../CS61A/Part1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CS61A
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../CS231N/Part1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CS231N
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GAMES101
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            GAMES101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.Transformation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.Rasterization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.Shading
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.Geometry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    5.Ray Tracing
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    5.Ray Tracing
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whitted-style-ray-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whitted-Style Ray Tracing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Whitted-Style Ray Tracing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whitted-style-ray-tracing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whitted-Style Ray Tracing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ray-surface-intersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ray-Surface Intersection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accelerating-ray-surface-intersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accelerating Ray-Surface Intersection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radiometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiometry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Radiometry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rendering-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Rendering Equation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Tracing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Path Tracing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monte-carlo-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monte Carlo Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-tracing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Tracing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.Animation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whitted-style-ray-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whitted-Style Ray Tracing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Whitted-Style Ray Tracing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whitted-style-ray-tracing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whitted-Style Ray Tracing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ray-surface-intersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ray-Surface Intersection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accelerating-ray-surface-intersection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accelerating Ray-Surface Intersection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radiometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiometry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Radiometry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rendering-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Rendering Equation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Tracing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Path Tracing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monte-carlo-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monte Carlo Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-tracing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Tracing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="lec5-ray-tracing">Lec5 Ray Tracing 光线追踪</h1>
+<p>光栅化和光线追踪是两种不同的成像方法。光栅化虽然速度很快，但质量不高；而光线追踪与之相反。</p>
+<hr />
+<h2 id="whitted-style-ray-tracing">Whitted-Style Ray Tracing</h2>
+<h3 id="whitted-style-ray-tracing_1">Whitted-Style Ray Tracing</h3>
+<p><strong>Ray Casting:</strong></p>
+<p>假设：相机是点，光源也是点。</p>
+<p>从相机开始，假设面前有像素组成的屏幕，相机先和每个像素连线，一个像素得到一条光线，延伸出去，和场景中最近的物体相交（已经解决了深度测试的问题），说明看到了这个物体。</p>
+<p>然后物体上的这个点再和光源连线，看看能不能连通，如果能连通，说明这个点被光源照亮了，形成有效光路；否则就是阴影点。</p>
+<p>这个时候，观察方向，光源方向和法线方向都有了，就可以着色了。</p>
+<p><img alt="alt text" src="../image/5.1.png" /></p>
+<p><strong>Recursive Ray Tracing:</strong></p>
+<p>上述只是光线弹射一次的情况，Whitted-Style Ray Tracing允许光线递归地多次投射。</p>
+<p>还是和刚刚的例子一样，但我们假设球体是玻璃材质，那么一部分光线会被反射，到达三角形；另一部分光线会折射，穿过球体，到达长方形：</p>
+<p><img alt="alt text" src="../image/5.2.png" /></p>
+<p>着色也会发生变化。每个弹射的点都要和光源连线，因为光源会打到每个点上，从而汇聚光线：</p>
+<p><img alt="alt text" src="../image/5.3.png" /></p>
+<h3 id="ray-surface-intersection">Ray-Surface Intersection</h3>
+<p>需要解决的第一个技术问题是：光线和物体的相交问题。</p>
+<p>光线的数学定义：起点$o$ + 方向$d$ + 参数$t$，即：</p>
+<p>$$r(t)=o+td$$</p>
+<p><strong>Ray Intersection with Sphere:</strong></p>
+<p>光线和球体的交点怎么求？</p>
+<p><img alt="alt text" src="../image/5.4.png" /></p>
+<p>球体的定义：</p>
+<p>$$(p-c)^2-R^2=0$$</p>
+<p>交点就是同时满足两个式子的点，因此将光线方程代入球体方程：</p>
+<p>$$(o+td-c)^2-R^2=0$$</p>
+<p>解得：</p>
+<p>$$t=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$</p>
+<p>其中$a=d\cdot d$，$b=2(o-c)\cdot d$，$c=(o-c)\cdot (o-c)-R^2$。保留正实根。</p>
+<p>同样可以推广到所有隐式表面。</p>
+<p><strong>Ray Intersection with Triangle:</strong></p>
+<p>对于显式几何，常常使用三角形网格来表示。在这种情况下，最简单的方法是对每个三角形求交，如果有交点就取最近的那个。</p>
+<p>对于单一的三角形，其肯定在一个平面内，我们可以考虑光线先与平面求交，然后判断交点是否在三角形内。</p>
+<p><img alt="alt text" src="../image/5.5.png" /></p>
+<p>平面可以用一个法向量$N$和一个点$p'$定义。只要点$p$满足：</p>
+<p>$$p:(p-p')\cdot N=0$$</p>
+<p>那么$p$就在该平面上，上述即为平面方程。</p>
+<p>$p$用$o+td$代入：</p>
+<p>$$t=\frac{(p'-o)\cdot N}{d\cdot N}$$</p>
+<p>然后再判断在不在三角形内就行（叉乘的方法、重心坐标的方法……）。</p>
+<p><strong>Möller Trumbore Algorithm:</strong></p>
+<p>Möller Trumbore Algorithm是一种更高效的求交方法，直接和三角形求交。</p>
+<p>考虑重心坐标：</p>
+<p>$$\vec{O}+t\vec{D}=(1-b_1-b_2)\vec{P_0}+b_1\vec{P_1}+b_2\vec{P_2}$$</p>
+<p>有三个变量要解。使用Cramer法则求解线性方程组：</p>
+<p>$$\begin{pmatrix}
+    t\
+    b_1\
+    b_2
+\end{pmatrix}=\frac{1}{\vec{S_1}\cdot\vec{E_1}}\begin{pmatrix}
+    \vec{S_2}\cdot\vec{E_2}\
+    \vec{S_1}\cdot\vec{S}\
+    \vec{S_2}\cdot\vec{D}
+\end{pmatrix}$$</p>
+<p>其中：</p>
+<p>$$\vec{E_1}=\vec{P_1}-\vec{P_0}$$</p>
+<p>$$\vec{E_2}=\vec{P_2}-\vec{P_0}$$</p>
+<p>$$\vec{S}=\vec{O}-\vec{P_0}$$</p>
+<p>$$\vec{S_1}=\vec{D}\times\vec{E_2}$$</p>
+<p>$$\vec{S_2}=\vec{S}\times\vec{E_1}$$</p>
+<p>解出来后要判断是否合理，$t,b_1,b_2$都要非负。</p>
+<h3 id="accelerating-ray-surface-intersection">Accelerating Ray-Surface Intersection</h3>
+<p><strong>Bounding Volume:</strong></p>
+<p>可以考虑用一个长方体包围复杂的物体，先和长方体求交，如果没有交点就不用和复杂物体求交了。</p>
+<p>我们将长方体看作三组对面的交集（intersection of 3 pairs of slabs），并使用轴对齐包围盒（Axis-Aligned Bounding Box, 每个面都和正规平面平行，方便计算。</p>
+<p><img alt="alt text" src="../image/5.6.png" /></p>
+<p>以二维为例，看光线和四条直线的交点，位于包围盒中的光线就是线段的交集。</p>
+<p>再从三维情况考虑：光线只有都进入了包围盒三组对面的范围才算真正进入；但只要离开任意一组对面的范围就算真正离开。</p>
+<p>因此对于三组对面，各自计算$t_{\min}$和$t_{\max}$，然后求出$t_{\text{enter}}=\max{t_{\min}}$，$t_{\text{exit}}=\min{t_{\max}}$。</p>
+<p>如果$t_{\text{enter}}\leqslant t_{\text{exit}}$且$t_{\text{exit}}&gt;0$，说明这段时间光线在包围盒内，进一步说明光线和包围盒相交。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>若$t_{\text{exit}}&lt;0$，说明包围盒在光线背后，没有交点；
+若$t_{\text{exit}}&gt;0$但$t_{\text{enter}}&lt;0$，说明光线的起点在包围盒内部，显然有交点。</p>
+</div>
+<p><strong>Uniform Spatial Partitions (Grids):</strong></p>
+<p>我们可以将空间划分为均匀的网格，并判断哪些格子有物体（表面）。</p>
+<p><img alt="alt text" src="../image/5.7.png" /></p>
+<p>对于一条光线，如果它进入的格子是空格子，则可以直接跳过；如果格子内有物体，再检查是否与其相交。</p>
+<p><img alt="alt text" src="../image/5.8.png" /></p>
+<p><strong>KD-Tree:</strong></p>
+<p>当场景物体分布不均匀时，均匀网格的效果不好，因为稀疏的地方没有必要使用过多格子并进行判断。</p>
+<p>KD-Tree给出了一种非均匀划分方法。在做光追之前，对给定的场景构建KD-Tree，简单来说就是沿$x$轴划分、沿$y$轴划分、沿$z$轴划分交替进行，直到达到某个人为设定的标准。</p>
+<p><img alt="alt text" src="../image/5.9.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>类似于格子1和格子2等还会继续划分，但此处为了简单起见没有继续划分。</p>
+</div>
+<p>对于如下图所示的光线，先判断和A是否有交点，如果有则考虑A的划分子节点1和B。</p>
+<p>先和1求交，判断出来和1有交点，因为1是叶子节点，因此和1中的物体求交。</p>
+<p>再和B求交，判断出来和B有交点，那么接着判断B的划分节点2和C。2也是叶子节点，那么之后之后的操作和1类似。</p>
+<p>继续沿着KD-Tree走，和C求交……</p>
+<p><img alt="alt text" src="../image/5.10.png" /></p>
+<p>如果要找最近的物体，那么可以找到所有与物体的交点，保留最近的即可。</p>
+<p><strong>Bounding Volume Hierarchy (BVH):</strong></p>
+<p>对于上述的KD-Tree，其有一个显然的缺点，就是同一个物体可能会被划分到多个格子中，导致重复计算。</p>
+<p>BVH的思想是从物体角度考虑划分，而不是从空间角度考虑划分。</p>
+<p>步骤：</p>
+<ul>
+<li>find bounding box</li>
+<li>recursively split set of objects in two subsets</li>
+<li>recompute the bounding box of the subsets</li>
+<li>stop when necessary</li>
+<li>store objects in each leaf node</li>
+</ul>
+<p><img alt="alt text" src="../image/5.11.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>划分技巧：
+技巧1：纵切最长的轴来让格子长宽高比较均匀。
+技巧2：一串物体排列下来，取中位数的物体作为划分依据，为的是保证物体划分均匀，最后树的深度小。</p>
+</div>
+<hr />
+<h2 id="radiometry">Radiometry</h2>
+<p>之前提到的Whitted-Style Ray Tracing还是不够真实，我们需要引入辐射度量学来更好地度量光照，从而获得更加精确的模型。</p>
+<h3 id="definitions">Definitions</h3>
+<p><strong>Radiant Energy and Flux (Power):</strong></p>
+<p>radiant energy是电磁辐射的能量，记作$Q$。</p>
+<p>radiant flux (power)是单位时间的能量：</p>
+<p>$$\Phi=\frac{dQ}{dt}$$</p>
+<p><strong>Solid Angle:</strong></p>
+<p><img alt="alt text" src="../image/5.12.png" /></p>
+<p>立体角：</p>
+<p>$$w=\frac{A}{r^2}$$</p>
+<p>$$dA=(rd\theta)(r\sin\theta d\phi)=r^2\sin\theta d\theta d\phi$$</p>
+<p>$$dw=\frac{dA}{r^2}=\sin\theta d\theta d\phi$$</p>
+<p><strong>Radiant Intensity:</strong></p>
+<p>radiant intensity更多从发射端考虑，是单位立体角的功率：</p>
+<p>$$I(w)=\frac{d\Phi}{dw}$$</p>
+<p><img alt="alt text" src="../image/5.13.png" /></p>
+<p><strong>Irradiance:</strong></p>
+<p>irradiance更多从接收端考虑，是单位面积的功率：</p>
+<p>$$E(p)=\frac{d\Phi}{dA}$$</p>
+<p><img alt="alt text" src="../image/5.14.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果光线不是垂直入射的，与表面夹角为$\theta$，则有效面积变为$dA\cos\theta$，即对面积进行投影。</p>
+</div>
+<p><strong>Radiance:</strong></p>
+<p>radiance更多从光线传播考虑，是单位面积上单位立体角的功率：</p>
+<p>$$L(p,w)=\frac{d^2\Phi}{dwdA\cos\theta}$$</p>
+<p><img alt="alt text" src="../image/5.15.png" /></p>
+<p>irradiance是单位面积接收到的所有能量，而radiance是在这些能量中一个特定方向上的一部分，也就是说入射的radiance在irradiance的基础上进一步限制了方向：</p>
+<p>$$L(p,w)=\frac{dE(p)}{dw\cos\theta}$$</p>
+<p>intensity是朝着同一方向（立体角）发射出去的所有能量，而出射的radiance在intensity的基础上进一步限制了面积，必须是单位面积发射出去的：</p>
+<p>$$L(p,w)=\frac{dI(p,w)}{dA\cos\theta}$$</p>
+<h3 id="the-rendering-equation">The Rendering Equation</h3>
+<p><strong>Bidirectional Reflectance Distribution Function (BRDF):</strong></p>
+<p>我们用上述定义来理解反射。</p>
+<p><img alt="alt text" src="../image/5.16.png" /></p>
+<p>反射实际上就是能量的走向。光线从$w_i$方向入射，带着能量到达单位面积上并被吸收。已知radiance为$L(w_i)$，则这一小块总共获得的irradiance为：</p>
+<p>$$dE(w_i)=L(w_i)\cos\theta_idw_i$$</p>
+<p>能量被吸收后会往各个方向反射出去，不同的反射方向获得不同的能量比例，而BRDF描述的就是这种能量分布，记作$f$。更概括地说，BRDF描述了光线与物体如何作用，定义了不同材质。</p>
+<p><strong>The Reflectance Equation:</strong></p>
+<p>针对某个反射方向$w_r$，对应获得的能量就是不同入射方向打到这个点的光的能量的积分（贡献的累加）：</p>
+<p>$$L_r(x,w_r)=\int_{H^2}f(x,w_i,w_r)L_i(x,w_i)\cos\theta_idw_i$$</p>
+<p><img alt="alt text" src="../image/5.17.png" /></p>
+<p><strong>The Rendering Equation:</strong></p>
+<p>渲染方程原本反射方程的基础上，考虑了物体自身发光的情况：</p>
+<p>$$L_r(x,w_r)=L_e(x,w_r)+\int_{H^2}L_i(x,w_i)f(x,w_i,w_r)\cos\theta_idw_i$$</p>
+<p><strong>Understanding the Rendering Equation:</strong></p>
+<p>当考虑光多次弹射的情况时，打到物体表面的光就不一定来自光源，而有可能来自其他物体的反射。因此，渲染方程可以写成：</p>
+<p>$$L_r(x,w_r)=L_e(x,w_r)+\int_{H^2}L_r(x',-w_i)f(x,w_i,w_r)\cos\theta_idw_i$$</p>
+<p>因此，不同位置的radiance相互依赖，形成递归。</p>
+<p>在数学上进行极大的简化：</p>
+<p>$$L=E+KL$$</p>
+<p>其中$K$是一个抽象的反射操作符。通过更抽象的变换，可以得到：</p>
+<p>$$L=E+KE+K^2E+K^3E+...$$</p>
+<ul>
+<li>$E$: Emission directly from light source</li>
+<li>$KE$: Direct illumination on surfaces</li>
+<li>$K^2E$: One bounce indirect illumination</li>
+<li>$K^3E$: Two bounce indirect illumination</li>
+<li>...</li>
+</ul>
+<p>这样便可以引入全局光照的概念。全局光照就是光线弹射1次、2次、3次……的总和，即$KE+K^2E+K^3E+...$。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>光栅化做的是$E+KE$，即弹射0次（光源自己）和1次（光源-&gt;物体-&gt;眼睛）。</p>
+</div>
+<hr />
+<h2 id="path-tracing">Path Tracing</h2>
+<h3 id="monte-carlo-integration">Monte Carlo Integration</h3>
+<p>对于定积分$\int_a^bf(x)dx$，如果$f(x)$比较复杂，无法利用解析的方法积分，我们可以用数值积分的方法来近似计算。</p>
+<p>蒙特卡洛积分采用随机采样的方法。在$a$和$b$之间随机取一个$x_i$，计算$f(x_i)$，此时长方形高度为$f(x_i)$，宽度为$(b-a)$，面积为$(b-a)f(x_i)$，近似为积分结果。</p>
+<p>随机采样足够多次，取平均值，就可以得到很好的近似。</p>
+<p>$$\int f(x)dx=\frac{1}{N}\sum\limits_{i=1}^N\frac{f(X_i)}{p(X_i)},X_i\sim p(x)$$</p>
+<p>最常见的采样方法是均匀采样，即$p(x)=\frac{1}{b-a}$。此时，蒙特卡洛积分为$\frac{b-a}{N}\sum\limits_{i=1}^N f(X_i)$。</p>
+<h3 id="path-tracing_1">Path Tracing</h3>
+<p><strong>A Simple Monte Carlo Solution:</strong></p>
+<p>我们知道渲染方程相比Whitted-Style Ray Tracing更加精确，我们的目的就是解出渲染方程中的$L$（其他均已知，包括BRDF）。</p>
+<p>我们先考虑简单场景，只考虑一个点处的渲染方程，只考虑直接光照，不考虑自身发光。</p>
+<p>$$L_r(x,w_r)=\int_{H^2}L_i(x,w_i)f(x,w_i,w_r)\cos\theta_idw_i$$</p>
+<p>这个式子实际上只是一个积分，迁移到蒙特卡洛积分上：</p>
+<p>$$f(x)=L_i(x,w_i)f(x,w_i,w_r)\cos\theta_i$$</p>
+<p>对入射方向使用最简单的半球均匀采样：</p>
+<p>$$p(w_i)=\frac{1}{2\pi}$$
+通过蒙特卡洛积分进行计算，这样就已经可以算出$L_r(x,w_r)$了。</p>
+<p><img alt="alt text" src="../image/5.18.png" /></p>
+<p><strong>Introducing Global Illumination:</strong></p>
+<p>接下来引入间接光照。从我们考虑的点回溯，如果沿着采样的方向，到达的不是光源而是另一个物体怎么办？</p>
+<p><img alt="alt text" src="../image/5.19.png" /></p>
+<p>如图所示，我们研究的点是P，采样入射到P的不同方向的时候采到了来自Q的间接光照。这个时候，我们就要将视线放在PQ之间，要算P接收的来自Q的光，也就是要算Q在PQ方向发出的光。这个时候我们就要递归地考虑光源对Q的直接光照。</p>
+<p>因此，算法改进：</p>
+<p><img alt="alt text" src="../image/5.20.png" /></p>
+<p><strong>Avoiding Explosion:</strong></p>
+<p>考虑我们的采样数$N$，如果递归深度为$D$，那么总的采样数就是$N^D$，会带来指数爆炸。</p>
+<p><img alt="alt text" src="../image/5.21.png" /></p>
+<p>只有当$N=1$时才不会爆炸，所以我们每次只采样一个方向。</p>
+<p>因此，算法改进：</p>
+<p><img alt="alt text" src="../image/5.22.png" /></p>
+<p>虽然只采样一次会有很大的噪声，但不要紧，对于同一个像素，有无数条对应的路径，在像素层面上取平均就行。</p>
+<p>当前的算法才能称为Path Tracing。</p>
+<p><strong>Russian Roulette (RR):</strong></p>
+<p>当前的算法中，递归没有终止条件。但我们不能直接限制弹射次数，因为真实世界的情况就是光弹射无穷多次。</p>
+<p>考虑RR：以一定的概率停止追踪。假设概率为$P$，以概率$P$保留光线，得到的结果除以$P$：$\frac{L_o}{P}$；以概率$1-P$停止追踪，得到的结果为$0$。</p>
+<p>计算期望：</p>
+<p>$$E=P*\frac{L_o}{P}+(1-P)*0=L_o$$</p>
+<p>发现期望依然是$L_o$，因此我们在有机会停下的同时，依然保持了无偏性。</p>
+<p>因此，算法改进：</p>
+<p><img alt="alt text" src="../image/5.23.png" /></p>
+<p><strong>Sampling the Light (Pure Path):</strong></p>
+<p>如果光源很小，需要更多的光线才有可能采样到。为了保证采样的有效性，我们可以考虑在光源上采样。</p>
+<p><img alt="alt text" src="../image/5.24.png" /></p>
+<p>假设光源为二维平面，我们要重写渲染方程，就要重写成在光源表面的积分。我们需要得到$dw$和$dA$之间的关系：</p>
+<p>$$dw=\frac{dA\cos\theta'}{||x'-x||^2}$$</p>
+<p>因此重写渲染方程：</p>
+<p>$$L_r(x,w_r)=\int_{A_{\text{light}}}L_i(x,w_i)f(x,w_i,w_r)\frac{\cos\theta\cos\theta'}{||x'-x||^2}dA$$</p>
+<p>现在，着色点的光由两部分组成：</p>
+<ul>
+<li>light source (direct, no need to have RR，采用光源采样)</li>
+<li>other reflectors (indirect, with RR，采用原本采样)</li>
+</ul>
+<p>因此，算法改进：</p>
+<p><img alt="alt text" src="../image/5.25.png" /></p>
+<p>只要再加上遮挡物判断，就是一个完整的Path Tracing算法了。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Lec4/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 4.Geometry">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                4.Geometry
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lec6/" class="md-footer__link md-footer__link--next" aria-label="下一页: 6.Animation">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                6.Animation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>
