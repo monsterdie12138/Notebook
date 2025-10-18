@@ -740,7 +740,7 @@
 <p>由于NAND-CIRC program的每一行的形式都是$A=\text{NAND}(B,C)$，因此如果program有$s$行，则至多有$3s$个变量。</p>
 <p>因此，我们对这$3s$个变量重命名为$var[0],var[1],var[2],...,var[3s-1]$，规定前$n$个变量对应输入变量，紧接着的$m$个变量对应输出变量，剩下的变量对应中间变量。</p>
 <p>如上重命名后，program的每一行就可以简写为长度为$3$的三元组。例如$(7,2,1)$表示的就是$var[7]=\text{NAND}(var[2],var[1])$。</p>
-<p>我们只需要对这些三元组进行编码。变量数量不超过$3s-1$，因此每个变量的编码长度为$\lceil\log(3s)\rceil$，一个三元组的编码长度为$3\lceil\log(3s)\rceil$。由于program有$s$行，因此整个program的编码长度为$3s\lceil\log(3s)\rceil$。</p>
+<p>我们只需要对这些三元组进行编码。变量数量不超过$3s$，因此每个变量的编码长度为$\lceil\log(3s)\rceil$，一个三元组的编码长度为$3\lceil\log(3s)\rceil$。由于program有$s$行，因此整个program的编码长度为$3s\lceil\log(3s)\rceil$。</p>
 <p>这个program本身可以作为输入给到其他程序。</p>
 <h3 id="eval">EVAL函数</h3>
 <p>考虑函数</p>

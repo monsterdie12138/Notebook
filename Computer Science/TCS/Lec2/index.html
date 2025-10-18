@@ -707,7 +707,7 @@
 <li>NAND-CIRC program</li>
 </ul>
 <p>这些模型是<strong>universal</strong>的，即它们可以计算任意finite function。</p>
-<p>给出函数集合$\mathcal{F}={f_1,f_2,...,f_k}$，若要判断$\mathcal{F}$是否universal，我们只需要判断这些函数能否转换成NAND。</p>
+<p>给出函数集合$\mathcal{F}={f_1,f_2,...,f_k}$，若要判断$\mathcal{F}$是否universal，我们只需要判断NAND能否变成这些函数。</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p>$\begin{cases}
@@ -720,6 +720,7 @@
 \end{cases}$</p>
 <p>这三个函数拼成的集合$\mathcal{F}$是universal的。</p>
 <p>原因：$\text{NAND}(a,b)=\text{IF}(a,\text{IF}(b,\text{ZERO}(a,b),\text{ONE}(a,b)),\text{ONE}(a,b))$</p>
+<p>也就是说，任意一个有限函数都可以转换成函数集合表示。</p>
 </div>
 <h3 id="theorem2">Theorem2</h3>
 <p>对于任意$n,m&gt;0$和任意有限函数$f:{0,1}^n\rightarrow{0,1}^m$，存在一个boolean circuit $C$可以计算$f$。</p>
