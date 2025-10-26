@@ -548,7 +548,7 @@
   
 
 
-<p>&lt;span style="font-family: 'Times New Roman';"</p>
+<p><span style="font-family: 'Times New Roman';"></p>
 <h1 id="lec1-proximal-policy-optimization-ppo">Lec1 Proximal Policy Optimization (PPO)</h1>
 <hr />
 <p>deepmind &amp; openai</p>
@@ -558,15 +558,58 @@
 <p>其中，只有actor可以被控制，剩下的都是一开始就给定。</p>
 <p>policy:</p>
 <p>policy决定了actor的行为。</p>
-<p>记policy为$\pi$，如果使用DRL，那么$\pi$通常是一个神经网络，参数为$\theta$。输入为observation，输出为你可以进行的action，有多少种可以采取的action，就有多少个输出神经元，输出神经元的值表示采取对应action的分数（概率）。</p>
+<p>记policy为$\pi$，如果使用DRL，那么$\pi$通常是一个神经网络，参数为$\theta$。输入为observation，输出为你可以进行的action，<strong>有多少种可以采取的action，就有多少个输出神经元</strong>，输出神经元的值表示采取对应action的分数（概率）。</p>
 <p>一场游戏称为一个episode，每一步的reward之和就是总的reward，记为$R$。</p>
 <p><img alt="alt text" src="../image/1.1.png" /></p>
 <p>一场游戏的$s$和$a$都串起来，记为trajectory $\tau ={s_0,a_0,s_1,a_1,\dots,s_T,a_T}$。</p>
-<p>对于每一个trajectory，如果参数已经给定，都可以计算发生的概率，记作$p_{\theta}(\tau)=p(s1)p_{\theta}(a_1|s_1)p(s_2|s_1,a_1)p_{\theta}(a_2|s2)p(s_3|s_2,a_2)\dots=p(s_1)\prod\limits_{t=1}^Tp_{\theta}(a_t|s_t)p(s_{t+1}|s_t,a_t)$</p>
+<p>对于每一个trajectory，如果参数已经给定，都可以计算发生的概率，记作</p>
+<p>$$p_{\theta}(\tau)=p(s_1)p_{\theta}(a_1|s_1)p(s_2|s_1,a_1)p_{\theta}(a_2|s_2)p(s_3|s_2,a_2)\dots=p(s_1)\prod\limits_{t=1}^Tp_{\theta}(a_t|s_t)p(s_{t+1}|s_t,a_t)$$</p>
 <p>概率取决于env内部的转移概率（无法控制，已经写好）和policy（可以控制，参数为$\theta$）。</p>
 <p><img alt="alt text" src="../image/1.2.png" /></p>
-<p>但其实$R$是一个随机变量，计算的是期望值，需要穷举所有$\tau$，$\overline{R}<em _tau="\tau">{\theta}=\sum\limits</em>(\tau)$}R(\tau)p_{\theta</p>
+<p>但其实$R$是一个随机变量，计算的是期望值，需要穷举所有$\tau$</p>
+<p>$$\overline{R}<em _tau="\tau">{\theta}=\sum\limits</em>(\tau)$$}R(\tau)p_{\theta</p>
 <p>如何去最大化$\overline{R}_{\theta}$呢？就是用policy gradient。</p>
+<p>实际就是梯度下降变成梯度上升</p>
+<p>$$\nabla\overline{R}<em _tau="\tau">{\theta}=\sum\limits</em>(\tau)$$}R(\tau)\nabla p_{\theta</p>
+<p>$R(\tau)$不需要可微，甚至可以是一个黑盒。</p>
+<p>$$\nabla\overline{R}<em _tau="\tau">{\theta}=\sum\limits</em>(\tau)$$}R(\tau)\nabla p_{\theta</p>
+<p>$$=\sum\limits_{\tau}R(\tau)p_{\theta}(\tau)\frac{\nabla p_{\theta}(\tau)}{p_{\theta}(\tau)}$$</p>
+<p>$$=\sum\limits_{\tau}R(\tau)p_{\theta}(\tau)\nabla\log p_{\theta}(\tau)$$</p>
+<p>$$=E_{\tau\sim p_{\theta}(\tau)}[R(\tau)\nabla\log p_{\theta}(\tau)]$$</p>
+<p>$$\approx\frac{1}{N}\sum\limits_{n=1}^N R(\tau_n)\nabla\log p_{\theta}(\tau_n)$$</p>
+<p>$$=\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}R(\tau_n)\nabla\log p_{\theta}(a_t^n|s_t^n)$$</p>
+<p>注意，最后我们用了这个式子，$p_{\theta}(\tau)=p(s_1)p_{\theta}(a_1|s_1)p(s_2|s_1,a_1)p_{\theta}(a_2|s2)p(s_3|s_2,a_2)\dots=p(s_1)\prod\limits_{t=1}^Tp_{\theta}(a_t|s_t)p(s_{t+1}|s_t,a_t)$，取对数之后变成相加，只有和policy相关的部分才有$\theta$，所以只剩下$\sum\limits_{t=1}^{T_n}\log p_{\theta}(a_t^n|s_t^n)$。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>$\nabla\log p_{\theta}(a_t^n|s_t^n)$是动作修正向量的方向，告诉我们沿着个方向更新$\theta$，动作$a_t^n$会变得更有可能被选中。
+$R(\tau_n)$是这个修正向量的权重，奖励越大，权重越大，说明这个轨迹越好，应该更倾向于选择这个轨迹中的动作，因此往$\nabla\overline{R}_{\theta}$的方向走更能增加该动作被选中的概率。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><img alt="alt text" src="../image/1.3.png" /></p>
+<p>在data collection阶段，使用当前的神经网络获得一组轨迹$\tau_1,\tau_2,\dots,\tau_N$，每一个$\tau_n={s_1^n,a_1^n,s_2^n,a_2^n,\dots,s_{T_n}^n,a_{T_n}^n}$，用当前状态输入给神经网络，得到所有动作的概率，然后根据概率采样下一个动作（注意不是直接选择最大概率的动作），轨迹就是这样形成的，同时也获得了每一场游戏的总reward $R(\tau_n)$。</p>
+<p>在update model阶段，给定$\theta$和$s_t^n$，我们就能在网络中前向传播直到$\log p_{\theta}(a_t^n|s_t^n)$，然后反向传播得到$\nabla \log p_{\theta}(a_t^n|s_t^n)$，因此就可以代入梯度计算公式，并更新参数。</p>
+</div>
+<p>一般sample的data只能用一次。</p>
+<p>实际操作的一些细节：</p>
+<p>想一下分类问题，输入$s_t^n$，输出每个行为的概率。</p>
+<p>网络的训练资料从哪里来，从sampling process来。</p>
+<p>minimize cross entropy = maximize log likelihood</p>
+<p>tip1:</p>
+<p>很多游戏的reward都是正数，修改：</p>
+<p>$R(\tau_n)\leftarrow R(\tau_n)-b$</p>
+<p>tip2:</p>
+<p>我们发现，对于同一场游戏，即同一个$\tau_n$，不同的state-action pair，使用同一个$R(\tau_n)$，但实际上不同的pair也是有好有坏，不应该对应同一个reward。</p>
+<p><img alt="alt text" src="../image/1.4.png" /></p>
+<p>就比如说左图，累计7分，第一个pair可能贡献了5分，第二个pair可能没有贡献，第三个pair反而导致了扣分。</p>
+<p>这个理论上通过足够多次的采样可以被抵消掉。</p>
+<p><img alt="alt text" src="../image/1.5.png" /></p>
+<p>我们可以让每个$\tau_n$中每个pair乘上的reward不一样，不再统一为整场游戏的总的reward，而是从这个pair开始到游戏结束的累计reward。</p>
+<p><img alt="alt text" src="../image/1.6.png" /></p>
+<p>对比较未来的奖励进行折扣，离现在越远的奖励权重越小，因为离得越远关系越小。</p>
+<p><img alt="alt text" src="../image/1.7.png" /></p>
+<p>$\sum\limits_{t'=t}^{T_n}\gamma^{t'-t}r_{t'}^n-b$可以记为$A^{\theta}(s_t,a_t)$，叫advantage function。</p>
+<p>描述的是在某个state下采取某个action比其他action好多少。（相对，因为减了个$b$）</p>
 
 
 

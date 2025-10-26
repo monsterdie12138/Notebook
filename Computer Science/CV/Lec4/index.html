@@ -539,15 +539,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#graphcut" class="md-nav__link">
-    <span class="md-ellipsis">
-      Graphcut
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -632,9 +623,37 @@
 </ul>
 <hr />
 <h2 id="robust-estimation">Robust Estimation</h2>
-<hr />
-<h2 id="graphcut">Graphcut</h2>
-<p>notebook交pdf，先转成html再转成pdf。</p>
+<p><strong>Outlier &amp; Inlier:</strong></p>
+<p>outlier：外点，偏离模型非常远的点，脏数据，反义词是inlier.</p>
+<p>因为MSE涉及平方，outlier的误差影响远大于inlier，因此outlier会导致MSE失效。</p>
+<p><img alt="alt text" src="../image/4.3.png" /></p>
+<p>如何减小outlier的影响？</p>
+<p><strong>Robust Functions:</strong></p>
+<ul>
+<li>L1：误差绝对值求和（问题是在零点不可导）</li>
+<li>Huber loss：L1和L2的结合</li>
+</ul>
+<p><img alt="alt text" src="../image/4.4.png" /></p>
+<p><strong>RANSAC:</strong></p>
+<p>random sample consensus 随机采样一致</p>
+<ul>
+<li>随机找两个点得到一条直线</li>
+<li>设定一个阈值，看有多少点离这条直线的距离在阈值范围内，得到票数</li>
+<li>不断重复随机找两个点，得到票数最多的直线</li>
+<li>用所有对该直线投票的点拟合最终的直线</li>
+</ul>
+<p><img alt="alt text" src="../image/4.5.png" /></p>
+<ul>
+<li>好处：可以有效地排除outlier的影响，因为outlier一般不参与该直线的投票</li>
+<li>坏处：如果需要拟合的不是直线而是维度更高的模型（更多参数），每一次随机采样的样本需求会增大，拟合和投票的计算复杂度也会增大</li>
+</ul>
+<p><strong>Ill-Posed Problem:</strong></p>
+<p>例如$\min\limits_x|Ax-b|^2$，$b$的长度就是样本数，$x$的长度就是参数数，如果参数数 &gt; 样本数，$Ax=b$一定会有解，而且有可能有无穷多解，优化的最小值总归是0，这种问题就是病态问题，模型的参数过多，容易过拟合。解决方法是<strong>正则化（regularization）</strong>。</p>
+<p>目标函数加一个约束：</p>
+<p>L1 norm: $|x|_1=\sum |x_i|$</p>
+<p>L2 norm: $|x|_2^2=\sum x_i^2$</p>
+<p>L1 norm会让解变得稀疏化，即很多参数变为0。</p>
+<p>如果把L2 norm放到目标函数中，则优化问题一定会有唯一解。</p>
 
 
 
