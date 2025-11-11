@@ -706,7 +706,7 @@
 <p>那么，只要再加上最后一行 MODANDJUMP 告诉我们的两个参数的取值，就可以确定下来读写头的动作，从而完整地定义出 TM 的转移函数 $\delta$。</p>
 <hr />
 <h2 id="nand-tm-python">NAND-TM 与 Python 的等价性</h2>
-<p>接下来，我们要想办法扩充 NAND-TM 到 Python，通过二者的等价性，最终证明图灵机和 Python 的等价性。</p>
+<p>接下来，我们要想办法强化 NAND-TM 到 Python，通过二者的等价性，最终证明图灵机和 Python 的等价性。</p>
 <p><strong><code>goto</code>:</strong></p>
 <p>对于一个固定行数的 NAND-TM：</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="err">?</span><span class="mi">1</span> <span class="o">=</span> <span class="n">NAND</span><span class="p">(</span><span class="err">?</span><span class="mi">1</span><span class="p">,</span> <span class="err">?</span><span class="mi">1</span><span class="p">)</span>
@@ -752,7 +752,24 @@
 <p>如果以汇编的视角观察 python，那么上述程序已经和 python 很接近了。</p>
 </div>
 <p><strong>多个 index:</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>略</p>
+</div>
 <p><strong>多维数组：</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>略</p>
+</div>
+<p><strong>NAND-RAM:</strong></p>
+<p>NAND-RAM 有以下特性：</p>
+<ul>
+<li>内存：每一格存一个 word，支持随机访问</li>
+<li>寄存器：可以与内存交换数据</li>
+<li>变量从布尔变量变成整数变量</li>
+<li>寄存器支持算术运算</li>
+</ul>
+<p>NAND-TM 和 NAND-RAM 等价，证明略。</p>
 
 
 
