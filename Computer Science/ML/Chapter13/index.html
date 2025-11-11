@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/ML/Lec1/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/ML/Chapter13/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Lec1 - Monsterdie's Notebook</title>
+        <title>Chapter13 - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lec1" class="md-skip">
+        <a href="#chapter13" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lec1
+              Chapter13
             
           </span>
         </div>
@@ -524,111 +524,54 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      基本术语
+      未标记样本
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="基本术语">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      数据
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      任务
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      目标
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      概念学习
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      模型的评估与选择
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="模型的评估与选择">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      经验误差与过拟合
+      生成式方法
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#svm-s3vm" class="md-nav__link">
     <span class="md-ellipsis">
-      评估方法
+      半监督SVM (S3VM)
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      性能度量
+      图半监督学习
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      比较检验
+      基于分歧的方法
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      偏差与方差
+      半监督聚类
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -651,140 +594,46 @@
 
 
 <p><span style="font-family: 'Times New Roman';"></p>
-<h1 id="lec1">Lec1</h1>
-<p><strong>机器学习</strong>是以数据为经验的载体，利用经验数据不断提高性能的计算机系统/程序/算法。</p>
-<hr />
-<h2 id="_1">基本术语</h2>
-<h3 id="_2">数据</h3>
-<ul>
-<li><strong>特征</strong>：又称为属性</li>
-<li><strong>属性值</strong>：特征的取值</li>
-<li><strong>样本维度(dimensionality)</strong>：特征个数</li>
-<li>特征张成的空间：属性空间/特征空间/输入空间</li>
-<li>标记张成的空间：标记空间/输出空间</li>
-<li><strong>示例(instance)/样本(sample)</strong>：一个对象的输入，不含标记</li>
-<li><strong>样例(example)</strong>：示例+标记</li>
-<li><strong>训练集</strong>：一组训练样例</li>
-<li><strong>测试集</strong>：一组测试样例</li>
-</ul>
-<h3 id="_3">任务</h3>
-<p>根据标记的取值情况，可以分为：</p>
-<ul>
-<li><strong>分类任务</strong>：标记为离散值。例如（好瓜，坏瓜）</li>
-<li><strong>回归任务</strong>：标记为连续值。例如瓜的成熟度</li>
-<li><strong>聚类任务</strong>：标记为空值，对示例进行自动分组</li>
-</ul>
-<p>根据标记的完整情况，可以分为：</p>
-<ul>
-<li><strong>监督学习</strong>：所有示例都有标记，例如分类任务，回归任务</li>
-<li><strong>无监督学习</strong>：所有示例都没有标记，例如聚类任务</li>
-<li><strong>半监督学习</strong>：少量示例有标记，大量示例没有标记</li>
-<li><strong>噪音标记学习</strong>：有标记，但不完全准确</li>
-</ul>
-<h3 id="_4">目标</h3>
-<p>机器学习的根本目标是<strong>泛化能力</strong>，也可以理解为：应对未来未见测试样本的能力。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>I.I.D假设：</strong></p>
-<p>历史和未来来自相同分布。</p>
+<h1 id="chapter13">Chapter13 半监督学习</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>不想补了。</p>
 </div>
-<h3 id="_5">概念学习</h3>
-<p>最理想的机器学习是学习到<strong>概念（人类学习，可理解的）</strong>。</p>
-<p><strong>假设空间</strong>是所有可能假设的集合，机器学习就是在这个空间中寻找最能拟合训练数据的假设。</p>
-<p><strong>版本空间</strong>是假设空间的子集，包含所有与训练数据一致的假设，随着训练数据的增多，版本空间会越来越小。</p>
-<p>学习过程中对某种类型假设的偏好称为<strong>归纳偏好</strong>。</p>
-<p><img alt="alt text" src="../image/1.1.png" /></p>
 <hr />
-<h2 id="_6">模型的评估与选择</h2>
-<h3 id="_7">经验误差与过拟合</h3>
-<p><strong>错误率</strong>：错分样本的占比。</p>
-<p><strong>误差</strong>：样本真实输出与预测输出之间的差异。分为<strong>训练（经验）误差</strong>和<strong>测试误差</strong>。</p>
-<p><strong>过拟合</strong>：把训练样本学习得太好，将训练样本本身的特点当做所有样本的一般性质，导致泛化性能下降。</p>
-<p>解决方法：</p>
+<h2 id="_1">未标记样本</h2>
+<p>没有标签的样本称为未标记样本，半监督学习指的是让学习器不依赖外界交互，自动利用未标记样本来提升学习性能。</p>
+<p>半监督学习基于以下两个假设：</p>
 <ul>
-<li>加入正则项</li>
-<li>early stopping</li>
-<li>增大训练数据体量</li>
+<li>聚类假设：假设数据存在簇结构，同一个簇的样本属于同一个类别</li>
+<li>流形假设：假设数据分布在流形结构上，邻近的样本有相似的输出值</li>
 </ul>
-<p><strong>欠拟合</strong>：对训练样本的一般性质尚未学好。</p>
-<p>解决方法：</p>
-<ul>
-<li>决策树：拓展分支</li>
-<li>神经网络：增加训练轮数</li>
-</ul>
-<p><img alt="alt text" src="../image/1.2.png" /></p>
-<h3 id="_8">评估方法</h3>
-<p><strong>留出法(hold-out)：</strong></p>
-<p>直接将数据集分成互斥的训练集和测试集，两个集合尽可能保持数据分布的一致性。</p>
-<p>分层采样，保持类别比例一致。</p>
-<p>一般若干次随机划分，重复实验取平均值。</p>
-<p>训练/测试样本比例通常为2:1~4:1。</p>
-<p><strong>交叉验证(cross-validation)：</strong></p>
-<p>将数据集分层采样划分$k$个大小相似的互斥子集，每次用$k-1$个子集作为训练集，剩下一个子集作为测试集，最终返回$k$个测试结果的均值。</p>
-<p>$k$最常用的取值是10。</p>
-<p><img alt="alt text" src="../image/1.3.png" /></p>
-<p><strong>留一法(LOO)：</strong></p>
-<p>交叉验证的极端，一个数据就是一个子集，不受随机样本划分方式的影响。</p>
-<p><strong>自助法(bootstrapping)：</strong></p>
-<p>？</p>
-<p><strong>调参(parameter tuning)：</strong></p>
-<p>使用<strong>验证集</strong>调参。</p>
-<h3 id="_9">性能度量</h3>
-<p>回归任务最常用的性能度量是<strong>均方误差</strong>：</p>
-<p>$$E(f;D)=\frac{1}{m}\sum\limits_{i=1}^m(f(x_i)-y_i)^2$$</p>
-<p>分类任务最常用的性能度量是<strong>错误率</strong>和<strong>精度</strong>：</p>
-<ul>
-<li>错误率：分错样本占样本总数的比例</li>
-<li>精度：分对样本占样本总数的比例</li>
-</ul>
-<p><strong>混淆矩阵：</strong></p>
-<table>
-<thead>
-<tr>
-<th>$~$</th>
-<th>预测结果是正例</th>
-<th>预测结果是反例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>真实情况是正例</strong></td>
-<td>$TP$</td>
-<td>$FN$</td>
-</tr>
-<tr>
-<td><strong>真实情况是反例</strong></td>
-<td>$FP$</td>
-<td>$TN$</td>
-</tr>
-</tbody>
-</table>
-<p><strong>查准率</strong>：$P=\frac{TP}{TP+FP}$</p>
-<p><strong>查全率</strong>：$R=\frac{TP}{TP+FN}$</p>
-<p><strong>P-R曲线：</strong></p>
-<p><img alt="alt text" src="../image/1.4.png" /></p>
-<p>平衡点是曲线上查准率=查全率时的取值。</p>
-<p><strong>F1度量：</strong></p>
-<p>$$F_1=\frac{2P\times R}{P+R}=\frac{2TP}{\text{样例总数}+TP-TN}$$</p>
-<p>比F1更一般的形式：</p>
-<p><strong>ROC曲线：</strong></p>
-<p>？</p>
-<p><strong>代价敏感错误率：</strong></p>
-<p>现实任务中不同类型的错误所造成的后果可能不同，为了权衡不同类型错误所造成的不同损失，为错误赋予非均等代价。</p>
-<p>因此，我们可以使用<strong>代价矩阵</strong>，其中$cost_{ij}$</p>
-<p>?</p>
-<h3 id="_10">比较检验</h3>
-<p>测试性能是随着测试集的变化而变化的，</p>
-<p><strong>假设检验</strong>为学习器性能比较提供了重要依据。基于其结果我们可以推断出若在测试集上学习器A比B好，则A的泛化性能是否统计意义上由于B，以及这个结论的把握有多大。</p>
-<p><strong>二项检验：</strong></p>
-<p><strong>T检验：</strong></p>
-<h3 id="_11">偏差与方差</h3>
-<p>对测试样本$x$，$y_D$为$x$在数据集中的标记，$y$为$x$的真实标记，$f(x;D)$为训练集$D$上学得的模型$f$在$x$上的预测输出。以回归任务为例，学习算法的期望预为?</p>
-<p>泛化误差可分解为方差、偏差与噪声之和。</p>
-<p><strong>偏差-方差窘境：</strong></p>
-<p>训练不足时，学习器拟合能力弱，此时偏差主导泛化错误率；</p>
-<p>随着训练程度加深，学习器拟合能力逐渐增强，方差逐渐主导泛化错误率。</p>
-<p><img alt="alt text" src="../image/1.5.png" /></p>
+<p><img alt="alt text" src="../image/13.1.png" /></p>
+<hr />
+<h2 id="_2">生成式方法</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>基于高斯混合模型，见其他文件。</p>
+</div>
+<hr />
+<h2 id="svm-s3vm">半监督SVM (S3VM)</h2>
+<p>考虑二分类模型，S3VM试图找到能将两类有标记样本分开，并且穿过数据低密度区域的超平面：</p>
+<p><img alt="alt text" src="../image/13.2.png" /></p>
+<p>（图中的灰色点表示未标记样本）</p>
+<p><strong>TSVM:</strong></p>
+<p>TSVM是S3VM中最著名的一种。</p>
+<p>TSVM尝试将每个未标记样本分别作为正例或反例，然后在所有这些结果中，寻求一个在所有样本（包括有标记样本和进行了标记指派的未标记样本）上间隔最大化的超平面。</p>
+<p><img alt="alt text" src="../image/13.3.png" /></p>
+<hr />
+<h2 id="_3">图半监督学习</h2>
+<p>给定一个数据集，可以将其映射为一个图，每个样本对应一个节点。 节点之间的边的强度表征了样本之间的相似度：</p>
+<p>$$W_{ij}=\begin{cases}
+    \exp(\frac{-|x_i-x_j|_2^2}{2\sigma^2}) &amp; i=j\
+    0 &amp; \text{otherwise}
+\end{cases}$$</p>
+<hr />
+<h2 id="_4">基于分歧的方法</h2>
+<hr />
+<h2 id="_5">半监督聚类</h2>
 
 
 

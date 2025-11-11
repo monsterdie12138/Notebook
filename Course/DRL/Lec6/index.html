@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/temp/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Course/DRL/Lec6/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Temp - Monsterdie's Notebook</title>
+        <title>Lec6 - Monsterdie's Notebook</title>
       
     
     
@@ -94,6 +94,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#lec6-asynchronous-advantage-actor-critic-a3c" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -125,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Temp
+              Lec6
             
           </span>
         </div>
@@ -265,7 +270,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../" class="md-tabs__link">
+        <a href="../../../Computer%20Science/" class="md-tabs__link">
           
   
   Computer Science
@@ -283,7 +288,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Course/" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   Course
@@ -429,7 +434,7 @@
         
   
   
-    <a href="../../" class="md-nav__link">
+    <a href="../../../Computer%20Science/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -471,7 +476,7 @@
         
   
   
-    <a href="../../../Course/" class="md-nav__link">
+    <a href="../../" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -507,6 +512,43 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#advantage-actor-critic-a2c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantage Actor-Critic (A2C)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asynchronous-advantage-actor-critic-a3c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asynchronous Advantage Actor-Critic (A3C)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pathwise-derivative-policy-gradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pathwise Derivative Policy Gradient
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -524,9 +566,61 @@
   
 
 
-  <h1>Temp</h1>
-
-
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="lec6-asynchronous-advantage-actor-critic-a3c">Lec6 Asynchronous Advantage Actor-Critic (A3C)</h1>
+<hr />
+<h2 id="advantage-actor-critic-a2c">Advantage Actor-Critic (A2C)</h2>
+<p><strong>Review-Policy Gradient:</strong></p>
+<p>$$\nabla\overline{R}<em n="1">{\theta}\approx\frac{1}{N}\sum\limits</em>(a_t^n|s_t^n)$$}^N\sum\limits_{t=1}^{T_n}(\sum\limits_{t'=t}^{T_n}\gamma^{t'-t}r_{t'}^n-b)\nabla\log p_{\theta</p>
+<p>很符合直觉：我们先让agent去和环境互动，在某一时刻先看一下采取某个动作的概率，再计算对应的累积回报</p>
+<p>括号里面用$G_t^n-b$来整体表示</p>
+<p>但是，这个$G_t^n$是非常不稳定的。每次算出来的累计回报都不同，$G$是一个随机变量</p>
+<p>能否估计出在某个state采取某个action后$G$的期望值？而不是直接使用采样值？</p>
+<p><strong>Review-Qlearning:</strong></p>
+<p>上述问题要使用Q-learning来解决，有两种function：$V^{\pi}(s)$和$Q^{\pi}(s,a)$</p>
+<p>使用MC或者TD来估计。</p>
+<p>$$E(G_t^n)=Q^{\pi_{\theta}}(s_t^n,a_t^n)$$</p>
+<p>$$b=V^{\pi_{\theta}}(s_t^n)$$</p>
+<p>替换后就结束了。但是，这样就要训练$Q$和$V$两个网络，风险翻倍。</p>
+<p>可以只估测$Q$:</p>
+<p>$$Q^{\pi}(s_t^n,a_t^n)=E[r_t^n+V^{\pi}(s_{t+1}^n)]$$</p>
+<p>我们不考虑期望值：</p>
+<p>$$Q^{\pi}(s_t^n,a_t^n)=r_t^n+V^{\pi}(s_{t+1}^n)$$</p>
+<p>虽然$r$具有随机性，但比$G$好多了。</p>
+<p><strong>整体流程：</strong></p>
+<p><img alt="alt text" src="../image/6.1.png" /></p>
+<p>先有一个$\pi$，和环境互动收集数据，更新$V$的参数，然后套用下面的式子更新$\pi$的参数，以此类推。</p>
+<p><strong>Tip:</strong></p>
+<p>实际要训练的网络有两个，一个是actor网络，输出策略$\pi$，一个是critic网络，输出状态值函数$V$。</p>
+<p>两个网络前面几层是可以共享的，比如cnn之类的：</p>
+<p><img alt="alt text" src="../image/6.2.png" /></p>
+<p>我们一样需要exploration的机制。我们会对$\pi$进行约束，希望其输出的分布的entropy大一点，这样不同的action概率不会差距太大，从而保证一定的探索性。</p>
+<hr />
+<h2 id="asynchronous-advantage-actor-critic-a3c">Asynchronous Advantage Actor-Critic (A3C)</h2>
+<p>RL训练速度很慢，A3C是一个加速方法。</p>
+<p>精髓：同时开很多个worker，把经验集合在一起。</p>
+<p><img alt="alt text" src="../image/6.3.png" /></p>
+<ul>
+<li>copy global parameters</li>
+<li>sample some data</li>
+<li>compute gradients</li>
+<li>update global models</li>
+</ul>
+<p>worker们直接把boss的参数复制过来，大家自己跑自己的，哪个算出来了梯度，就直接更新给boss，与此同时其他的worker参数也更新。</p>
+<hr />
+<h2 id="pathwise-derivative-policy-gradient">Pathwise Derivative Policy Gradient</h2>
+<p>可以想成特别的A2C。</p>
+<p>原本情况下，critic只会告诉actor在某个state下采取某个action是好还是不好；但pathwise derivative policy gradient中，critic会直接告诉actor在某个state下采取哪个action最好。</p>
+<p>我们用$\pi$来求解$a=\argmax\limits_a Q(s,a)$，让actor就是一个solver。</p>
+<p><img alt="alt text" src="../image/6.4.png" /></p>
+<p>也就是说，原本$a=\argmax\limits_a Q(s,a)$不好解的时候，我们用另一个网络来求解。（另一个看法）</p>
+<p>假设我们学得一个$Q$，那么我们要学一个actor $\pi$，使其能解出$a=\argmax\limits_a Q(s,a)$，输入一个$s$，输出一个a$。</p>
+<p>在训练时会把$\pi$和$Q$连起来形成一个大的网络。</p>
+<p><img alt="alt text" src="../image/6.5.png" /></p>
+<p><img alt="alt text" src="../image/6.6.png" /></p>
+<p>个人感觉也就是$\pi$的更新不一样，学得一个$Q$后就把它固定，然后让$\pi$去学一个映射，使得在某个$s$下输出的$a$能让$Q(s,a)$最大。</p>
+<p>从Q-learning到pathwise derivative policy gradient的转变，在伪代码上只需要四处修改：</p>
+<p><img alt="alt text" src="../image/6.7.png" /></p>
 
 
 

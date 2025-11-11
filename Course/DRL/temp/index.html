@@ -526,42 +526,7 @@
 
   <h1>Temp</h1>
 
-<p><strong>PPO:</strong></p>
-<p>全称： Proximal Policy Optimization，邻近策略优化</p>
-<p><strong>重要性采样：</strong></p>
-<p>策略分为on-policy和off-policy两种。on-policy采集数据所用模型和要训练的模型是同一个；而off-policy不然。例如，老师根据一名同学的行为进行奖励或惩罚，这名同学自己调整行为则为on-policy；而其他同学根据这名同学的奖惩情况调整自己的行为则为off-policy。</p>
-<p>如果我们想要求$f(x)$的期望：</p>
-<p>$$
-\begin{align<em>}
-E[f(x)]<em q_x_="q(x)" x_sim="x\sim">{x\sim p(x)} &amp;= \sum\limits_xf(x)p(x)  \
-&amp;= \sum\limits_xf(x)\cdot\frac{p(x)}{q(x)}\cdot q(x)  \
-&amp;= E[f(x)\frac{p(x)}{q(x)}]</em> \
-&amp;\approx \frac{1}{N}\sum\limits_{n=1}^N[f(x)\frac{p(x)}{q(x)}], x\sim q(x)
-\end{align</em>}$$</p>
-<p>实质上，是更换了原本的采样分布。因此，原本的目标函数的梯度公式也可以用重要性采样来改写：</p>
-<p>$$
-\begin{align<em>}
-\text{gradient} &amp;= \frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta}^{GAE}(s_t^n,a_t^n)\nabla[\log(P_{\theta}(a_t^n|s_t^n))]   \
-&amp;\rightarrow \frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)}\nabla[\log(P_{\theta}(a_t^n|s_t^n))] 
-\end{align</em>}
-$$</p>
-<p>其中，$A_{\theta'}^{GAE}(s_t^n,a_t^n)$是观测到其他policy的数据后计算得到的优势函数，用$\nabla[\log(P_{\theta}(a_t^n|s_t^n))]$来更新当前policy，引入$\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)}$来修正分布差异带来的影响。</p>
-<p>我们可以对$\nabla[\log(P_{\theta}(a_t^n|s_t^n))]$进行还原：</p>
-<p>$$
-\begin{align<em>}
-\text{gradient} &amp;= \frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)}\frac{\nabla [P_{\theta}(a_t^n|s_t^n)]}{P_{\theta}(a_t^n|s_t^n)} \
-&amp;= \frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{\nabla [P_{\theta}(a_t^n|s_t^n)]}{P_{\theta'}(a_t^n|s_t^n)}
-\end{align</em>}
-$$</p>
-<p>类似地，还原出简化的目标函数：</p>
-<p>$$\text{Loss} = -\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)}$$</p>
-<p>这样，我们就把on-policy的目标函数变成了off-policy的目标函数，这个时候其他策略采集得到的数据就可以多次利用了。</p>
-<p><strong>进一步约束：</strong></p>
-<p>观测的policy和自身的policy给出的各种action概率分布差别不能太大，不然训练效果不好。例如，老师批评坏学生考试交白卷，但如果是好学生观测并学习，这是没有意义的，因为好学生出现交白卷的action的概率几乎为0。</p>
-<p>添加的约束就是<strong>KL散度</strong>，是描述两个概率分布相似程度的量化指标。分布完全一致则为0，差别越大则KL散度越大。</p>
-<p>$$\text{Loss} = -\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)} + \beta KL(P_{\theta},P_{\theta'})$$</p>
-<p>还有一种使用clip截断函数的形式。$clip(a,b,c)$表示：当$a<b$时，输出$b$；当$a>c$时，输出$c$；否则输出$a$。</p>
-<p>$$\text{Loss}= -\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}\min{A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)},A_{\theta'}^{GAE}(s_t^n,a_t^n)clip\left(\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)},1-\epsilon,1+\epsilon\right)}$$</p>
+<p><span style="font-family: 'Times New Roman';"></p>
 
 
 

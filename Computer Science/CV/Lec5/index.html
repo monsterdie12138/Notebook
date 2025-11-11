@@ -549,6 +549,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matching
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motion-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Estimation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motion Estimation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lucas-kanade-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lucas-Kanade Method
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -631,6 +664,96 @@
 <p>SIFT对于亮度具有不变性，对于旋转，向量会整体平移。</p>
 <p>因此，为了保持旋转不变性，两张图的每个像素的直方图进行朝向归一化，即最大的地方作为向量起点（第一个元素）。</p>
 <p>对于缩放，SIFT和Harris corner是配合使用的，沿用尺度，因此缩放仍然具有不变性。</p>
+<h3 id="matching">Matching</h3>
+<p>现在，两张图片各自有一组特征点和对应的特征向量，如何进行匹配？我们常常使用<strong>距离函数</strong>。</p>
+<p>但是很多时候会有问题。例如，当两张图像出现重复性纹理，前一张图的某个特征点在后一张图中有多个相似的特征点时，匹配有可能出错。</p>
+<p><img alt="alt text" src="../image/5.7.png" /></p>
+<p>如何消除这种不可靠的匹配？</p>
+<p><strong>Ratio Test:</strong></p>
+<p>假设第一张图中的$f_1$和第二张图中的$f_2$距离最近，和第二张图中的$f_2'$距离次近。若</p>
+<p>$$\text{ratio score}=\frac{|f_1-f_2|}{|f_1-f_2'|}$$</p>
+<p>接近1，说明$f_1$和$f_2$、$f_2'$距离相近，匹配不可靠，舍弃该匹配。</p>
+<p><strong>Mutual Nearest Neighbor:</strong></p>
+<p>我们可以反过来，给定第二张图中某个特征点，找第一张图中最接近的特征点。若相互为最近邻，则匹配可靠。</p>
+<ul>
+<li>$f_2$是$f_1$对应到第一张图中的最近邻</li>
+<li>$f_1$是$f_2$对应到第一张图中的最近邻</li>
+</ul>
+<hr />
+<h2 id="motion-estimation">Motion Estimation</h2>
+<p>motion estimation研究的对象是<strong>视频</strong>。目标是<strong>给定一个视频的前后两帧，求得第一帧的每个点在第二帧中对应的位置。</strong></p>
+<p>“点”的定义有两种：</p>
+<ul>
+<li><strong>feature tracking</strong>：研究特征点，目标稀疏</li>
+<li><strong>optical flow</strong>：研究每个像素，目标稠密</li>
+</ul>
+<p>解决这两个问题的传统方法都是 <strong>Lucas-Kanade Method（LK算法）</strong>。</p>
+<h3 id="lucas-kanade-method">Lucas-Kanade Method</h3>
+<p><strong>Modeling:</strong></p>
+<p>LK算法有三个假设：</p>
+<ul>
+<li><strong>small motion</strong>：两帧之间的运动比较小</li>
+<li><strong>brightness constancy</strong>：同一个点在两帧中的亮度不变</li>
+<li><strong>spatial coherence</strong>：相邻点的运动是相似的</li>
+</ul>
+<p>给定$t$时刻的图像（考虑灰度图），点对应的坐标为$(x,y)$，则其灰度值为$I(x,y,t)$。</p>
+<p>假设其在$t+1$时刻移动到了$(x+u,y+v)$，则其灰度值为$I(x+u,y+v,t+1)$。</p>
+<p>我们的目标：对于每个点$(x,y)$，求解对应的$(u,v)$。</p>
+<p>根据brightness constancy假设，有：</p>
+<p>$$I(x,y,t)=I(x+u,y+v,t+1)$$</p>
+<p>$(u,v)$就是我们要求解的运动矢量，对于每个点$(x,y)$，我都要求解。</p>
+<p>根据small motion假设，对右式进行泰勒展开：</p>
+<p>$$I(x+u,y+v,t+1)\approx I(x,y,t) + I_x\cdot u + I_y\cdot v+I_t$$</p>
+<p>其中，$I_x$和$I_y$表示$I$关于$x$和$y$的偏导数，即边缘检测器卷积的结果；$I_t$表示同一个位置$(x,y)$灰度值的变化。</p>
+<p>结合两式得到：</p>
+<p>$$I_x\cdot u + I_y\cdot v + I_t = 0$$</p>
+<p>$$\nabla I\cdot(u,v)^T+I_t=0$$</p>
+<p>根据spatial coherence假设：对于当前关注的点$(x,y)$，考虑5x5的邻域窗口，窗口内有25个方程，这25个方程对应的$(u,v)$近似相同。</p>
+<p>$$\begin{pmatrix}
+    I_x(p_1) &amp; I_y(p_1) \
+    I_x(p_2) &amp; I_y(p_2) \
+    \vdots &amp; \vdots \
+    I_x(p_{25}) &amp; I_y(p_{25})
+\end{pmatrix}
+\begin{pmatrix}
+    u \
+    v
+\end{pmatrix}
+=-\begin{pmatrix}
+    I_t(p_1) \
+    I_t(p_2) \
+    \vdots \
+    I_t(p_{25})
+\end{pmatrix}$$</p>
+<p>形式化为</p>
+<p>$$\underset{25\times 2}{A}\underset{2\times 1}{d}=\underset{25\times 1}{b}$$</p>
+<p>上述方程组的方程个数大于变量个数，大部分情况下没有精确解，因此问题转化为求</p>
+<p>$$\min\limits_d|Ad-b|^2$$</p>
+<p>解析解为</p>
+<p>$$(A^TA)d=A^Tb$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>若假设在这个窗口内，$I_x$和$I_y$的均值为0，则</p>
+<p>$$A^TA=\begin{pmatrix}
+    I_x(p_1)^2+I_x(p_2)^2+\dots+I_x(p_{25})^2 &amp; I_x(p_1)I_y(p_1)+I_x(p_2)I_y(p_2)+\dots+I_x(p_{25})I_y(p_{25}) \
+    I_x(p_1)I_y(p_1)+I_x(p_2)I_y(p_2)+\dots+I_x(p_{25})I_y(p_{25}) &amp; I_y(p_1)^2+I_y(p_2)^2+\dots+I_y(p_{25})^2
+\end{pmatrix}=25
+\begin{pmatrix}
+    Var(x) &amp; Cov(x,y) \
+    Cov(x,y) &amp; Var(y)
+\end{pmatrix}$$</p>
+<p>$A^TA$就是梯度向量的协方差矩阵（的倍数）。</p>
+<p>当$A^TA$满秩时，有唯一解。</p>
+<p>当$A^TA$不满秩时，说明有特征值为0，有无穷多解。联系detection中的知识，存在为0的特征值，说明该点特征非常不明显，这就是有无穷多解的原因，因为LK算法根本无法判断该点的运动。</p>
+</div>
+<p><strong>Coarse-to-Fine Optical Flow Estimation:</strong></p>
+<p>LK算法的三个假设是很严苛的。对于small motion的假设，我们常常通过<strong>降低分辨率</strong>来解决。</p>
+<p>但是，降低分辨率有个问题，就是算出来的运动是不准确的，在低分辨率的图像上得到的位移，放回到高分辨率的图像上时，误差会被放大。</p>
+<p>通过<strong>图像金字塔</strong>来解决这个问题。</p>
+<p><img alt="alt text" src="../image/5.8.png" /></p>
+<p>考虑最上面一层，分辨率最低，在这上面应用LK算法，得到每个点粗略的位移。</p>
+<p>接着，将该位移应用于下一层更高分辨率的图像上。假设上下两层的分辨率差为2倍，上一层图像上某个点向右位移3个像素，则在下一层图像上，该点向右位移6个像素。将该粗略的位移应用于时刻$t$的图像上，再在应用后的图像和时刻$t+1$的图像上使用LK算法，进一步得到更精确的位移，例如算出来1个像素的位移，则在当前这一层上，该点的总位移为6+1=7个像素。</p>
+<p>从上往下不断迭代，获得越来越精确的位移。</p>
 
 
 

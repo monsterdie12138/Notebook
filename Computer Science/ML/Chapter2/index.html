@@ -737,7 +737,7 @@
 <h3 id="cross-validation">交叉验证（cross-validation）</h3>
 <p>将数据集分层采样划分$k$个大小相似的互斥子集，每次用$k-1$个子集作为训练集，剩下一个子集作为测试集，最终返回$k$个测试结果的均值。</p>
 <p>$k$最常用的取值是10。</p>
-<p><img alt="alt text" src="../image/1.3.png" /></p>
+<p><img alt="alt text" src="image/1.3.png" /></p>
 <p>同样的，由于划分存在多种方式，为了减小因样本划分不同而引入的差别，$k$折交叉验证通常随即使用不同的划分重复$p$次，最终的评估结果是这$p$次$k$折交叉验证结果的均值。</p>
 <div class="admonition success">
 <p class="admonition-title">Definition</p>
@@ -798,7 +798,7 @@
 <li>在每个阈值下，重新划分正例和反例，计算相应的查准率和查全率</li>
 <li>以查全率为横坐标，查准率为纵坐标绘制曲线</li>
 </ul>
-<p><img alt="alt text" src="../image/1.4.png" /></p>
+<p><img alt="alt text" src="image/1.4.png" /></p>
 <p>平衡点是曲线上查准率=查全率时的取值。</p>
 <h3 id="f1">F1度量</h3>
 <p>F1度量比平衡点更常用，只有查准率和查全率都高时，F1才高。F1越高，模型性能越好。</p>
@@ -898,7 +898,7 @@
 <p><strong>偏差-方差窘境：</strong></p>
 <p>训练不足时，学习器拟合能力弱，此时偏差主导泛化错误率；</p>
 <p>随着训练程度加深，学习器拟合能力逐渐增强，方差逐渐主导泛化错误率。</p>
-<p><img alt="alt text" src="../image/1.5.png" /></p>
+<p><img alt="alt text" src="image/1.5.png" /></p>
 
 
 
