@@ -583,9 +583,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#perspective-n-point-problem-pnp" class="md-nav__link">
+  <a href="#visual-localization-problem" class="md-nav__link">
     <span class="md-ellipsis">
-      Perspective-n-Point Problem (PnP)
+      Visual Localization Problem
     </span>
   </a>
   
@@ -610,6 +610,24 @@
   <a href="#epipolar-geometry" class="md-nav__link">
     <span class="md-ellipsis">
       Epipolar Geometry 对极几何
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triangulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triangulation 三角化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-frame-structure-from-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-frame Structure from Motion
     </span>
   </a>
   
@@ -641,8 +659,8 @@
 <p><span style="font-family: 'Times New Roman';"></p>
 <h1 id="lec7-structure-from-motion-sfm">Lec7 Structure from Motion (SfM)</h1>
 <hr />
-<p>输入：一个场景不同角度的图片</p>
-<p>输出：场景的三维点云，相机的位置与朝向</p>
+<p>输入：一个场景不同角度的图片，相机内参</p>
+<p>输出：场景的三维点云，相机的位置与朝向（相机外参）</p>
 <p>SfM相关的问题有以下三个：</p>
 <ul>
 <li>如何将世界坐标系下的三维点映射到像素坐标系下的二维点（camera model）</li>
@@ -669,7 +687,7 @@
 \end{bmatrix}$$</p>
 <p>相机在世界坐标系下的位置：</p>
 <p>$$\mathbf{c}_w$$</p>
-<p>相机在世界坐标系下的朝向，表示为3×3的旋转矩阵，每一行表示相机坐标系x、y、z轴在世界坐标系下的朝向：</p>
+<p>相机在世界坐标系下的朝向，表示为 $3\times 3$ 的旋转矩阵，每一行表示相机坐标系的 $x$、$y$、$z$ 轴在世界坐标系下的朝向：</p>
 <p>$$R=\begin{bmatrix}
     r_{11} &amp; r_{12} &amp; r_{13} \
     r_{21} &amp; r_{22} &amp; r_{23} \
@@ -677,11 +695,11 @@
 \end{bmatrix}$$</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>虽然$R$有9个元素，但实际上只有3个自由度。</p>
+<p>$R$ 虽然有 9 个元素，但实际上只有 3 个自由度。</p>
 </div>
 <p>相机坐标系下的三维点可通过以下公式计算得到：</p>
 <p>$$\mathbf{x}_c=R(\mathbf{x}_w-\mathbf{c}_w)=R\mathbf{x}_w-R\mathbf{c}_w=R\mathbf{x}_w+\mathbf{t}$$</p>
-<p>也就是把$\mathbf{x}_w-\mathbf{c}_w$在相机的三个轴上做投影。其中，$\mathbf{t}=-R\mathbf{c}_w$</p>
+<p>也就是对 $\mathbf{x}_w-\mathbf{c}_w$ 在相机的三个轴上做投影。其中，$\mathbf{t}=-R\mathbf{c}_w$</p>
 <p>写成齐次坐标的形式：</p>
 <p>$$\tilde{\mathbf{x}}<em 11="11">c=
 \begin{bmatrix}
@@ -711,16 +729,23 @@
 \end{bmatrix}$$</p>
 <h3 id="_2">透视投影</h3>
 <p>二维平面上的点可以通过以下公式计算得到：</p>
-<p>$$\mathbf{x}_i=\mathbf{f}\cdot\begin{bmatrix}
+<p>$$\mathbf{x}_i=\begin{bmatrix}
+    x_i \
+    y_i \
+\end{bmatrix}=f\cdot\begin{bmatrix}
     \frac{x_c}{z_c} \
     \frac{y_c}{z_c}
 \end{bmatrix}$$</p>
 <h3 id="_3">光栅化</h3>
-<p>设横向的分辨率为$m_x$，纵向的分辨率为$m_y$，横向的像素数量的一半为$c_x$，纵向的像素数量的一半为$c_y$，则像素坐标系下的二维点可以通过以下公式计算得到：</p>
+<p>设横向的分辨率为 $m_x$，纵向的分辨率为 $m_y$，横向的像素数量的一半为 $c_x$，纵向的像素数量的一半为 $c_y$，则像素坐标系下的二维点可以通过以下公式计算得到：</p>
 <p>$$u=m_xx_i+c_x$$</p>
 <p>$$v=m_yy_i+c_y$$</p>
-<p>将透视投影和光栅化合并成齐次坐标的形式：</p>
+<p>将透视投影和光栅化合并，并写成齐次坐标的形式：</p>
 <p>$$\tilde{\mathbf{u}}=\begin{bmatrix}
+    u \
+    v \
+    1
+\end{bmatrix}\cong\begin{bmatrix}
     \tilde{u} \
     \tilde{v} \
     \tilde{w}
@@ -734,13 +759,13 @@
     z_c \
     1
 \end{bmatrix}$$</p>
-<p>其中，内参矩阵即为</p>
+<p>其中，$f_x=m_xf$，$f_y=m_yf$，内参矩阵即为</p>
 <p>$$M_{int}=\begin{bmatrix}
     f_x &amp; 0 &amp; c_x &amp; 0 \
     0 &amp; f_y &amp; c_y &amp; 0 \
     0 &amp; 0 &amp; 1 &amp; 0
 \end{bmatrix}$$</p>
-<p>综上，投影矩阵$P$记为内参矩阵和外参矩阵的乘积：</p>
+<p>综上，投影矩阵 $P$ 记为内参矩阵和外参矩阵的乘积：</p>
 <p>$$P=M_{int}M_{ext}$$</p>
 <p>$$\begin{bmatrix}
     \tilde{u} \
@@ -762,8 +787,8 @@
 <p>输入：多组世界坐标系下的三维点和对应的像素坐标系下的二维点</p>
 <p>输出：内参矩阵和外参矩阵</p>
 <p><img alt="alt text" src="../image/7.1.png" /></p>
-<p>使用<strong>棋盘格</strong>。以棋盘格本身为世界坐标系，那么棋盘格上每一个角点的$\mathbf{x}_w$都是已知的。</p>
-<p>现在拿相机拍一张棋盘格的图像，使用特定算法检测出角点，这样也知道了棋盘格上每一个角点的像素坐标$\mathbf{u}_i$。</p>
+<p>使用<strong>棋盘格</strong>。以棋盘格本身为世界坐标系，那么棋盘格上每一个角点的 $\mathbf{x}_w$ 都是已知的。</p>
+<p>现在拿相机拍一张棋盘格的图像，使用特定算法检测出角点，这样也知道了棋盘格上每一个角点的像素坐标 $\mathbf{u}$。</p>
 <p>由上一部分的公式：</p>
 <p>$$\begin{bmatrix}
     \tilde{u} \
@@ -779,46 +804,57 @@
     z_w \
     1
 \end{bmatrix}$$</p>
-<p>我们可以得到第$i$组对应点提供的两个方程：</p>
+<p>我们可以得到第 $i$ 组对应点提供的两个方程：</p>
 <p>$$u^{(i)}=\frac{p_{11}x_w^{(i)}+p_{12}y_w^{(i)}+p_{13}z_w^{(i)}+p_{14}}{p_{31}x_w^{(i)}+p_{32}y_w^{(i)}+p_{33}z_w^{(i)}+p_{34}}$$</p>
 <p>$$v^{(i)}=\frac{p_{21}x_w^{(i)}+p_{22}y_w^{(i)}+p_{23}z_w^{(i)}+p_{24}}{p_{31}x_w^{(i)}+p_{32}y_w^{(i)}+p_{33}z_w^{(i)}+p_{34}}$$</p>
-<p>把$P$的12个元素展开成列向量$p$，可以用与之前类似的方法，得到</p>
+<p>把 $P$ 的 12 个元素展开成列向量 $p$，可以用与之前类似的方法，得到</p>
 <p><img alt="alt text" src="../image/7.2.png" /></p>
 <p>也就是说，我们要求解</p>
 <p>$$Ap=0$$</p>
-<p>由于$p$尺度无关，因此需要加上约束条件，要么最后一个元素为1，要么$||p||^2=1$。加上约束条件后，一般不会有精确解，因此转变成优化问题，求解</p>
+<p>由于 $p$ 尺度无关，因此需要加上约束条件，要么最后一个元素为 1，要么 $||p||^2=1$。加上约束条件后，一般不会有精确解，因此转变成优化问题，求解</p>
 <p>$$\argmin\limits_p|Ap|^2$$</p>
-<p>解得$p$之后恢复成矩阵$P$，通过<strong>QR分解</strong>获得内参矩阵和外参矩阵。</p>
-<h3 id="perspective-n-point-problem-pnp">Perspective-n-Point Problem (PnP)</h3>
-<p>如果在上面的问题基础之上，内参矩阵已知，只要求外参矩阵（即相机的位置和朝向），则称为PnP问题。</p>
+<p>解得 $p$ 之后恢复成矩阵 $P$，通过 <strong>QR 分解</strong>获得内参矩阵和外参矩阵。</p>
+<h3 id="visual-localization-problem">Visual Localization Problem</h3>
+<p>Visual Localization Problem 也称为 <strong>Perspective-n-Point Problem (PnP)</strong>，其与 camera calibration problem 的区别在于，前者内参矩阵已知，后者内参矩阵未知。</p>
+<p>输入：多组世界坐标系下的三维点和对应的像素坐标系下的二维点，以及内参矩阵</p>
+<p>输出：外参矩阵</p>
 <p><strong>Direct Linear Transform (DLT):</strong></p>
-<p>先像之前那样求出$P$，再解出外参。</p>
+<p>直接像 camera calibration 那样求出 $P$，再解出外参矩阵。</p>
 <p><strong>P3P:</strong></p>
 <p><img alt="alt text" src="../image/7.3.png" /></p>
-<p>给定3对点，其中$A,B,C$为世界坐标系下的三维点，因此$AB,BC,AC$已知。</p>
-<p>我们知道它们分别有对应的像素坐标，由于内参已知，因此可以还原到二维平面上，这个二维平面在三维空间中的位置相对于相机是固定的，因此获得了$A,B,C$三点在相机坐标系下投影到二维平面上的点$a,b,c$。因此$Oa,Ob,Oc$已知。</p>
-<p>已知$Oa,Ob,Oc,AB,BC,AC$，就可以求解出$OA,OB,OC$，也就得到了相机$O$在三维空间中的位置与朝向。</p>
+<p>如图，$a$、$b$、$c$ 为像素坐标系下的二维点，已知。</p>
+<p>像平面到相机光心的距离为 $f$，因此如果把这个平面放在相机坐标系下的三维空间内，那么 $a$、$b$、$c$ 的三维坐标也已知，于是射线 $Oa$、$Ob$、$Oc$ 也已知。</p>
+<p>$A$、$B$、$C$ 为世界坐标系下的三维点，也已知。因此，$AB$、$BC$、$AC$ 也已知。</p>
+<p>在相机坐标系下，$A$、$B$、$C$ 分别在射线 $Oa$、$Ob$、$Oc$ 上，再加上 $AB$、$BC$、$AC$ 的长度限制，就可以解出 $A$、$B$、$C$ 在相机坐标系下的坐标。</p>
+<p>最后，就可以还原出相机在世界坐标系下的位置和朝向，即外参矩阵。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>这样做会得到四组解，还需要额外一对点来确定正确解。</p>
+<p>这样做会得到四组解，还需要额外一对点来确定正确解。因此，对于 visual localization problem，至少需要四对点。</p>
 </div>
 <p><strong>Minimize the Reprojection Error:</strong></p>
-<p>找到最佳的$R$和$t$，能够使</p>
-<p>$$\sum\limits_i|p_i-K(RP_i+t)|^2$$</p>
-<p>取最小值。其中，$p_i$为已知的二维像素坐标，$K(RP_i+t)$将原本的三维点$P_i$投影到二维像素坐标系下。我们希望投影后的点与实际观测到的点尽可能接近。</p>
+<p>转化成优化问题：找到最佳的 $R$ 和 $\mathbf{t}$，能够使</p>
+<p>$$\sum\limits_i|p_i-M_{int}(RP_i+\mathbf{t})|^2$$</p>
+<p>取最小值。其中，$p_i$ 为已知的二维像素坐标，$M_{int}(RP_i+\mathbf{t})$ 将原本的三维点 $P_i$ 投影到二维像素坐标系下。我们希望投影后的点与实际观测到的点尽可能接近。</p>
 <hr />
 <h2 id="q3-structure-from-motion">Q3: Structure from Motion</h2>
 <p>输入：两张图像和对应相机的内参</p>
-<p>输出：重建出的三维点云</p>
-<p>首先，在这两张图像中，运用之前的特征检测与匹配算法，找到若干组匹配的像素坐标系下二维点对$(u_l,u_r)$。由于内参已知，因此可以恢复到二维平面上，也可以恢复到相机坐标系下的三维空间中。</p>
-<p>接下来，我们要想办法求解<strong>两个相机的相对位置与朝向</strong>。</p>
+<p>输出：重建出的三维点云和对应相机的外参</p>
+<p>接下来，我们先想办法求解相机外参，即两个相机相对的平移和旋转（以左相机的相机坐标系为世界坐标系）。</p>
 <h3 id="epipolar-geometry">Epipolar Geometry 对极几何</h3>
-<p>对极几何描述了$u_l$和$u_r$的变换关系，即相机之间的变换关系（$t$和$R$）。</p>
+<ul>
+<li>$\mathbf{u}_l$：三维点 $P$ 在左相机二维像素坐标，与右相机对应点 $\mathbf{u}_r$ 匹配，已知</li>
+<li>$\mathbf{u}_r$：三维点 $P$ 在右相机二维像素坐标，与左相机对应点 $\mathbf{u}_l$ 匹配，已知</li>
+<li>$\mathbf{x}_l$：三维点 $P$ 在左相机坐标系下的三维坐标，未知</li>
+<li>$\mathbf{x}_r$：三维点 $P$ 在右相机坐标系下的三维坐标，未知</li>
+<li>$R$：右相机坐标系相对于左相机坐标系的旋转矩阵，未知</li>
+<li>$\mathbf{t}$：右相机坐标系相对于左相机坐标系的平移向量，未知</li>
+</ul>
+<p>对极几何描述了 $\mathbf{u}_l$ 和 $\mathbf{u}_r$ 的变换关系，即相机之间的变换关系（$\mathbf{t}$ 和 $R$）。</p>
 <p><img alt="alt text" src="../image/7.4.png" /></p>
 <p><strong>极点（epipole）：</strong></p>
-<p>极点在图中表示为$e_l$和$e_r$，是两个相机在对方图像平面上的投影（不一定在画面里）。</p>
+<p>极点在图中表示为 $e_l$ 和 $e_r$，是两个相机在对方图像平面上的投影（不一定在画面里）。</p>
 <p><strong>对极平面（epipolar plane）：</strong></p>
-<p>对极平面由三维点$P$和两个相机中心$O_l$、$O_r$组成。每个三维点都有自己的对极平面。</p>
+<p>对极平面由三维点 $P$ 和两个相机中心 $O_l$、$O_r$ 组成。每个三维点都有自己的对极平面。</p>
 <p>如图所示，对极平面的三条边都有各自的意义：</p>
 <ul>
 <li>$\vec{O_lP}=\mathbf{x}_l$：描述的是三维点$P$在左相机坐标系下的位置</li>
@@ -829,10 +865,10 @@
 <p>假设对极平面的法向量：</p>
 <p>$$\mathbf{n}=\mathbf{t}\times\mathbf{x}_l$$</p>
 <p>此时有</p>
-<p>$$\mathbf{x}_l\cdot(\mathbf{t}\times\mathbf{x}_l)=0$$</p>
+<p>$$\mathbf{x}_l\cdot\mathbf{n}=\mathbf{x}_l\cdot(\mathbf{t}\times\mathbf{x}_l)=0$$</p>
 <p>将点乘和叉乘展开成矩阵形式：</p>
 <p>$$\begin{bmatrix}
-    x_l &amp; y_l &amp; g_l
+    x_l &amp; y_l &amp; z_l
 \end{bmatrix}
 \begin{bmatrix}
     0 &amp; -t_z &amp; t_y \
@@ -844,7 +880,7 @@
     y_l \
     z_l
 \end{bmatrix}=0$$</p>
-<p>中间的矩阵记为$T_{\times}$。设两个相机的相对旋转矩阵为$R$，我们有</p>
+<p>中间的矩阵记为 $T_{\times}$。已知</p>
 <p>$$\mathbf{x}_l=R\mathbf{x}_r+\mathbf{t}$$</p>
 <p>代入上述的矩阵形式，最终得到</p>
 <p>$$\begin{bmatrix}
@@ -860,10 +896,10 @@
     y_r \
     z_r
 \end{bmatrix}=0$$</p>
-<p>我们记中间的矩阵为$E$，称为<strong>本质矩阵（essential matrix）</strong>，它实际上是</p>
+<p>这个公式就是对极约束。我们记中间的矩阵为 $E$，称为<strong>本质矩阵（essential matrix）</strong>，它实际上是</p>
 <p>$$E=T_{\times}R$$</p>
-<p>只要我们知道了$E$，就可以通过<strong>SVD奇异值分解</strong>，把$E$分解为$T$（对应平移）和$R$（对应旋转）。</p>
-<p>问题是如何求解$E$？我们需要获得若干组$(\mathbf{x}_l,\mathbf{x}_r)$来解这个方程，但我们现在只有若干组$(u_l,u_r)$。</p>
+<p>只要我们知道了 $E$，就可以通过 <strong>SVD 奇异值分解</strong>，把 $E$ 分解为 $T_\times$（对应平移）和 $R$（对应旋转）。</p>
+<p>问题是如何求解 $E$？我们需要获得若干组 $(\mathbf{x}_l,\mathbf{x}_r)$ 来解这个方程，但我们现在只有若干组 $(\mathbf{u}_l,\mathbf{u}_r)$。</p>
 <p><strong>Incorporating the Image Coordinates:</strong></p>
 <p>对于左相机：</p>
 <p>$$z_l\begin{bmatrix}
@@ -887,16 +923,16 @@
     y_r \
     z_r
 \end{bmatrix}$$</p>
-<p>其中，$K_l$和$K_r$分别为左、右相机的内参矩阵（已知）。</p>
+<p>其中，$K_l$ 和 $K_r$ 分别为左、右相机的内参矩阵（已知）。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>这里的$K_l$和$K_r$是3×3矩阵，不是之前提到的3×4矩阵，其实本质不变，只是去掉没什么用的最后一列。</p>
+<p>这里的 $K_l$ 和 $K_r$ 是 $3\times 3$ 矩阵，不是之前提到的 $3\times 4$ 矩阵，其实本质不变，只是去掉没什么用的最后一列。</p>
 </div>
 <p>因此</p>
 <p>$$\mathbf{x}_l^T=\begin{bmatrix}
     u_l &amp; v_l &amp; 1
 \end{bmatrix}z_lK_l^{-1T}$$</p>
-<p>$$\mathbf{x}=K_r^{-1}z_r\begin{bmatrix}
+<p>$$\mathbf{x}_r=K_r^{-1}z_r\begin{bmatrix}
     u_r \
     v_r \
     1
@@ -909,12 +945,49 @@
     v_r \
     1
 \end{bmatrix}=0$$</p>
-<p>去掉常数$z_l$和$z_r$，将中间的矩阵记为$F$，称为<strong>基础矩阵（fundamental matrix）</strong>，得到</p>
+<p>去掉常数 $z_l$ 和 $z_r$，将中间的矩阵记为 $F$，称为<strong>基础矩阵（fundamental matrix）</strong>，得到</p>
 <p>$$F=K_l^{-1T}EK_r^{-1}$$</p>
 <p>$$E=K_l^TFK_r^T$$</p>
-<p>有了多组$(u_l,u_r)$，就可以解$F$；解出$F$后，由于内参矩阵已知，可以解$E$；解出$E$后，可以通过SVD分解得到相机的相对变换$t$和$R$。</p>
-<p><strong>三角化（Triangulation）：</strong></p>
-<p>知道了一组对应点$(u_l,u_r)$，以及两个相机的相对位置与朝向$t$和$R$后，就可以得到两条射线，射线交点即为三维点$P$。</p>
+<p>有了多组 $(\mathbf{u}_l,\mathbf{u}_r)$，就可以用类似之前的方法解 $F$；解出 $F$ 后，由于内参矩阵已知，可以解 $E$；解出 $E$ 后，可以通过 SVD 分解得到相机的相对变换 $\mathbf{t}$ 和 $R$。</p>
+<h3 id="triangulation">Triangulation 三角化</h3>
+<p>知道了一组对应点 $(\mathbf{u}_l,\mathbf{u}_r)$，以及两个相机的相对位置与朝向 $\mathbf{t}$ 和 $R$ 后，就可以得到两条射线，射线交点即为三维点 $P$（得到在世界坐标系/左相机坐标系下的三维坐标）。</p>
+<p>多组对应点可以得到多个三维点，最终得到三维点云。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>为什么知道了一个相机的内参和外参，不能直接把图像上的点直接还原到世界坐标系下，而是要通过两个相机的射线求交获得？</strong></p>
+<p>如果考虑从世界坐标系到图像像素坐标系，那么是一个从三维到二维的投影过程，深度信息丢失，因此是<strong>不可逆</strong>的！</p>
+</div>
+<p>但有时候，两条射线并不一定能完美地相交，因此这里依然可以考虑<strong>重投影误差（reprojection error）</strong>。我想要得到一个三维点 $P$，使得它投影回两张图像后，得到的重投影 $(\hat{\mathbf{u}}_l, \hat{\mathbf{u}}_r)$ 和对应的二维点 $(\mathbf{u}_l,\mathbf{u}_r)$ 尽可能接近：</p>
+<p>$$cost(\mathbf{P})=|\mathbf{u}_l-\hat{\mathbf{u}}_l|^2+|\mathbf{u}_r-\hat{\mathbf{u}}_r|^2$$</p>
+<p><img alt="alt text" src="../image/7.5.png" /></p>
+<h3 id="multi-frame-structure-from-motion">Multi-frame Structure from Motion</h3>
+<p>现在考虑多张图像的情况。如何得到三维点云和相机外参？</p>
+<p><img alt="alt text" src="../image/7.6.png" /></p>
+<ul>
+<li>用两张图，按照上述过程得到三维点云和两个相机的外参</li>
+<li>用第三张图和第二张图进行特征匹配</li>
+<li>对于第三张图进行视觉定位，得到第三个相机的外参</li>
+<li>第三张图和第二张图的特征匹配可能会带来新的三维点，加入到点云中</li>
+<li>以此类推</li>
+</ul>
+<p>上述过程称为<strong>序列化（增量式）SfM</strong>，问题是会有累计误差。</p>
+<p>解决方法是：</p>
+<p>$$|\mathbf{u}_l-\hat{\mathbf{u}}_l|^2+|\mathbf{u}_r-\hat{\mathbf{u}}_r|^2$$</p>
+<p>依然是考虑这个重投影误差，但这个时候优化的参数不仅仅只有 $P$ 的三维坐标，还有相机的内外参。</p>
+<p><img alt="alt text" src="../image/7.7.png" /></p>
+<p>按照上述的步骤得到初始的结果后，进行<strong>集束优化（bundle adjustment）</strong>，利用下面的误差同时优化所有的三维点和相机参数：</p>
+<p>$$E(P_{proj},\mathbf{P})=\sum\limits_{i=1}^m\sum\limits_{j=1}^n|u_j^{(i)}-P_{proj}^{(i)}\mathbf{P}_j|^2$$</p>
+<p>变量说明：</p>
+<ul>
+<li>$P_{proj}$：投影矩阵（包含内外参）</li>
+<li>$\mathbf{P}$：三维点</li>
+<li>$m$：相机数量</li>
+<li>$n$：三维点数量</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注意有些点在某些图上是看不到的，这些点不计入重投影误差。</p>
+</div>
 
 
 

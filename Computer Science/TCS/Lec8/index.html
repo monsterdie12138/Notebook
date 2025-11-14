@@ -688,7 +688,7 @@
 <p>假设 TM 有 $k$ 个状态，那么在 NAND-TM 中可以用 $\lceil\log k\rceil$ 个布尔变量来表示当前状态。</p>
 <p>假设 TM 的符号集合为 $\Sigma$，元素个数为 $|\Sigma|$，那么在 NAND-TM 中可以用 $\lceil\log |\Sigma|\rceil$ 个数组来表示纸带。</p>
 <p>例如：</p>
-<p>【【【】】】</p>
+<p><img alt="alt text" src="../image/8.3.png" /></p>
 <p>对于 TM 的四种移动操作 ${L,R,S,H}$，可以分别编码成 ${01,11,10,00}$，也只要两个布尔变量作为 MODANDJUMP 的输入即可。</p>
 <p>相对麻烦的是转移函数 $\delta$：</p>
 <p>$$K\times\Sigma\rightarrow K\times\Sigma\times{L,R,S,H}$$</p>

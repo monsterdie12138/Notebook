@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/%E9%87%8F%E5%AD%90/Lec2/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/Lec8/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Lec2 - Monsterdie's Notebook</title>
+        <title>Lec8 - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lec2" class="md-skip">
+        <a href="#lec8-depth-estimation-and-3d-reconstruction" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lec2
+              Lec8
             
           </span>
         </div>
@@ -515,6 +515,56 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stereo-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stereo Matching
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-view-stereo-mvs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-View Stereo (MVS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      3D Reconstruction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3D Reconstruction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3d-surface-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      3D Surface Reconstruction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -531,14 +581,107 @@
   
 
 
-<h1 id="lec2">Lec2</h1>
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="lec8-depth-estimation-and-3d-reconstruction">Lec8 Depth Estimation and 3D Reconstruction</h1>
 <hr />
+<h2 id="stereo-matching">Stereo Matching</h2>
+<p>输入：两张图像和对应相机的内外参</p>
+<p>输出：深度图</p>
+<p>但是，之前的匹配只针对特征点，现在如果要得到深度图，就需要对每一个像素都进行匹配。</p>
+<p><strong>对极几何：</strong></p>
+<p>利用之前的对极几何，我们可以得到以下信息：</p>
+<p><img alt="alt text" src="../image/8.1.png" /></p>
+<p>若我们想知道左图中的 $X_L$ 在右图中的对应点 $X_R$，设对应的三维点为 $X$，则 $X_R$ 一定在右图的一条直线上，这条直线就是 $O_LX_L$ 在右图中的投影。直线方程：</p>
+<p>$$X_L^TFX_R=0$$</p>
+<p>因此，要匹配左图的某个像素，只要在右图的对应直线范围内搜索即可。</p>
+<p>看两个像素是否匹配，可以直接比较两个像素所在窗口的像素值接近程度，这样做是因为两个相机同时拍摄，光照变化不大。</p>
+<p><strong>视差（Disparity）：</strong></p>
+<p>当两个相机高度一致，焦距一致，朝向一致时，目标直线就是水平线。</p>
+<p><img alt="alt text" src="../image/8.2.png" /></p>
+<p>这个时候，两张图对应像素的 $u$ 坐标不等，$v$ 坐标相等。定义视差为</p>
+<p>$$d=u_L - u_R=\frac{Bf}{z}$$</p>
+<p>其中，$B$ 为相机间距，$f$ 为焦距，$z$ 为深度。</p>
+<p><img alt="alt text" src="../image/8.3.png" /></p>
+<p><strong>图像校正（Image Rectification）：</strong></p>
+<p>当相机不满足上述条件时，可以通过图像校正将图像变换为满足条件的样子（投影变换），从而简化匹配过程。</p>
+<p>综上，stereo matching 的步骤为：</p>
+<ul>
+<li>相机标定（获得内外参）</li>
+<li>图像校正（让相机满足条件）</li>
+<li>像素匹配</li>
+<li>计算视差</li>
+<li>计算深度</li>
+</ul>
+<hr />
+<h2 id="multi-view-stereo-mvs">Multi-View Stereo (MVS)</h2>
+<p>如果给定的图像和相机数量更多，又该如何获得深度图？</p>
+<p>选择一张参考图像（一般选最中间的图），要求解这张图像每个像素的深度。</p>
+<p>若所有相机参数已通过 SfM 获得，那么，对于这张参考图像中的某个像素，我们可以让其尝试不同的深度。如果假设为某个深度，那么可以获得该像素对应的三维点的坐标，再将其投影到其他图像上，看投影点的像素值和参考图像的像素值是否相似。</p>
+<p>只需要找到误差最小时的深度值即可。</p>
+<p><img alt="alt text" src="../image/8.4.png" /></p>
+<p><strong>PatchMatch:</strong></p>
+<p>PatchMatch 是一种加速 MVS 的方法.基于的假设是：相邻像素的某个值相似。</p>
+<p><img alt="alt text" src="../image/8.5.png" /></p>
+<p>第一步：</p>
+<p>对每个像素进行随机匹配，获得随机的值（大部分都是错的）。</p>
+<p>第二步：</p>
+<p>传播。例如图中的红色像素，将其值传播给临近的蓝色像素。若传播后误差减小，则更新蓝色像素的值为传播过来的值，否则保持不变。</p>
+<p>第三步：</p>
+<p>蓝色像素保留了传播过来的值后，在其周围很小的范围内微调值，看看是否能让误差更小，若能则更新。</p>
+<p>重复进行第二步和第三步，直到收敛。</p>
+<p>将 PatchMatch 应用在 MVS 上：随机初始化所有像素的深度值，然后进行传播和微调，直到收敛。</p>
+<hr />
+<h2 id="3d-reconstruction">3D Reconstruction</h2>
+<p><strong>3D Representations:</strong></p>
+<ul>
+<li>点云（point cloud）</li>
+<li>占用率（occupancy）：，每个体素如果被占据则为 1，否则为 0</li>
+<li>距离场（signed distance field, SDF）：三维空间中每个体素到最近表面的距离</li>
+<li>网格（mesh）</li>
+</ul>
+<p><img alt="alt text" src="../image/8.6.png" /></p>
+<div class="admonition success">
+<p class="admonition-title">Definition</p>
+<p><strong>体素：</strong>
+即三维的像素，常用立方体</p>
+</div>
+<h3 id="3d-surface-reconstruction">3D Surface Reconstruction</h3>
+<p>先通过 SfM，可以获得相机的参数。</p>
+<p>再通过 MVS，可以获得每张图像的深度图。</p>
+<p>接下来，如何将多个深度图转换为最终的三维表示？</p>
+<div align="center">
+深度图 → 体素（occupancy/sdf） → 网格
+</div>
+
+<p>$~$</p>
+<p><strong>泊松重建（Poisson Reconstruction）：</strong></p>
+<p>深度图 → 体素</p>
+<p>第一步：将深度图转换为点云。</p>
+<p>每个像素可以知道在三维空间上的哪条射线上（相机参数），再加上深度，就可以知道三维坐标。</p>
+<p>多张图像可以得到多组三维点，合并后形成点云（反投影）。</p>
+<p>第二步：计算点云中每个点的法向量。</p>
+<p>使用 PCA，找到分布最稀疏的方向，即沿着表面的方向，然后就可以得到垂直于表面的方向，即法向量。</p>
+<p>第三步：得到体素表示。</p>
+<p>我们已经知道了点和对应的法向量，每个点的梯度方向应该与法向量方向一致，以此作为目标函数进行优化。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里讲述的泊松重建最后得到的是 0 或 1 的占用率表示。</p>
+</div>
+<p><strong>移动立方体（Marching Cubes）：</strong></p>
+<p>体素 → 网格</p>
+<p>对于二维的情况，假设白色像素为 1，黑色像素为 0，那么边界就会经过黑白相邻的像素边界：</p>
+<p><img alt="alt text" src="../image/8.7.png" /></p>
+<p>对于三维的情况同理，但更复杂一些，有一些特殊的范式：</p>
+<p><img alt="alt text" src="../image/8.8.png" /></p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -586,6 +729,59 @@
     </fieldset>
   </form>
 
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
 
                 
               </article>
