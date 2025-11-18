@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/TCS/temp/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/ML/hw1/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Temp - Monsterdie's Notebook</title>
+        <title>Hw1 - Monsterdie's Notebook</title>
       
     
     
@@ -94,6 +94,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -125,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Temp
+              Hw1
             
           </span>
         </div>
@@ -507,6 +512,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -524,65 +531,85 @@
   
 
 
-  <h1>Temp</h1>
-
-<p><span style="font-family: 'Times New Roman';"></p>
-<p>归约的本质是一个函数映射，设从函数 $F$ 到函数 $G$ 的归约为 $R$，则</p>
-<p>$$R:{0,1}^<em>\rightarrow{0,1}^</em>$$</p>
-<p>$$F(x)=G(R(x))$$</p>
-<p>例如例二：</p>
+<p><span style="font-family: 'Fangsong';"></p>
+<h1 id="1">1</h1>
+<p><strong>10 折交叉验证：</strong></p>
+<p>训练集有 $90$ 个样本，测试集有 $10$ 个样本。</p>
+<p>设测试集中有 $x$ 个正例：</p>
 <ul>
-<li>$\text{HALT}$ 即为 $F$</li>
-<li>$\text{ZEROFUNC}$ 即为 $G$</li>
-<li>$M,x$ 即为 $x$</li>
-<li>$N$ 即为 $R(x)$</li>
+<li>$0\leqslant x&lt;5$：训练样本数较多的类别为正例，因此会有 $10-x$ 个测试样本被分错，错误率为 $\frac{10-x}{10}$</li>
+<li>若 $5&lt;x\leqslant 10$：训练样本数较多的类别为反例。因此会有 $x$ 个测试样本被分错，错误率为 $\frac{x}{10}$</li>
+<li>若 $x=5$：训练样本中正例和反例数目相等，进行随机猜测，错误率为 $0.5$</li>
 </ul>
-<p><strong>Lemma:</strong></p>
-<p>假设函数 $F$ 和 $G$，若存在一个从 $F$ 到 $G$ 的归约 $R$，且 $G$ 可计算，则 $F$ 也可计算。</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>def M_F(x):
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    compute R(x)
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    compute M_G(R(x))
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    return M_G(R(x))
-</span></code></pre></div>
-<p>实际上，我们通常使用其逆否命题：假设函数 $F$ 和 $G$，若存在一个从 $F$ 到 $G$ 的归约 $R$，且 $F$ 不可计算，则 $G$ 也不可计算。</p>
-<p>因此，要证明某个函数不可计算，只要找到一个已知的不可计算的函数，再找到一个归约就行了。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>若存在一个从 $F$ 到 $G$ 的归约 $R$，则说明 $F$ 的计算难度不大于 $G$ 的计算难度。</p>
-</div>
-<p><strong>Rice Theorem:</strong></p>
-<p>给定一个 TM $M$，判断 $M$ 是否满足某个性质 $P$：</p>
-<p>$$P(M)=\begin{cases}
-    1 &amp; \text{if $M$ is a TM which satisfies property $P$} \
-    0 &amp; \text{otherwise}
-\end{cases}$$</p>
-<p>如果 $P$ 是 <strong>semantic and non-trivial</strong> 的，那么上述判定问题不可计算。</p>
-<div class="admonition success">
-<p class="admonition-title">Definition</p>
-<p><strong>functionally equivalent:</strong></p>
-<p>两个 TM $M$ 和 $M'$ 是 functionally equivalent 的，当且仅当对于任意输入 $x$，$M(x)$ 和 $M'(x)$ 都有相同的输出。</p>
-<p><strong>semantic:</strong></p>
-<p>性质 $P$ 是 semantic 的，当且仅当对于任意两个 functionally equivalent 的 TM $M$ 和 $M'$，都有 $P(M)=P(M')$。（$P$ 只关注输入和输出，不关注 TM 本身内容）</p>
-<p><strong>trivial:</strong></p>
-<p>性质 $P$ 是 trivial 的，当且仅当 $P$ 是常数函数（对于所有 TM 都成立，或者对于所有 TM 都不成立）。</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Proof</p>
-<p>使用<strong>归约</strong>。</p>
-<p>定义 TM $M_{\text{INF}}$，其接受一个输入 $x$，但无论输入是什么都不停机。</p>
-<p>假设 $P(M_{\text{INF}})=0$。（可以这么假设是因为：若 $P(M_{\text{INF}})=1$，那么只需要考虑 $P$ 的反性质就行了）</p>
-<p>由于 $P$ 是 non-trivial 的，因此存在 TM $M_{\text{YES}}$，使得 $P(M_{\text{YES}})=1$。</p>
-<p>现在把 $\text{HALT}$ 归纳到 $P$，即将输入 $(M,x)$ 转换为 $N$。$N$ 的构造方式如下：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>def N(y):
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    compute M(x)
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    compute M_YES(y)
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    return M_YES(y)
-</span></code></pre></div>
-<p>那么此时是否有 $\text{HALT}(M,x)=P(N)$？</p>
-<p>若 $\text{HALT}(M,x)=0$，说明 $M$ 在 $x$ 上不停机，那么 $N$ 也不会停机，由于 $P$ 是 semantic 的，因此 $P(N)=P(M_{\text{INF}})=0$。</p>
-<p>若 $\text{HALT}(M,x)=1$，说明 $M$ 在 $x$ 上停机，那么 $N$ 会输出 $M_{\text{YES}}(y)$ 的结果，由于 $P$ 是 semantic 的，因此 $P(N)=P(M_{\text{YES}})=1$。</p>
-<p>综上所述，存在一个从 $\text{HALT}$ 到 $P$ 的归约，因此由于 $\text{HALT}$ 不可计算，推出 $P$ 也不可计算。</p>
-</div>
+<p>综上，10 折交叉验证的期望错误率为 $0.5$。</p>
+<p><strong>留一法：</strong></p>
+<p>训练集有 $99$ 个样本，测试集有 $1$ 个样本。</p>
+<ul>
+<li>测试样本为正例：训练样本中反例更多，预测为反例，错误率为 $1$</li>
+<li>测试样本为反例：训练样本中正例更多，预测为正例，错误率为 $1$</li>
+</ul>
+<p>综上，留一法的期望错误率为 $1$。</p>
+<hr />
+<h1 id="2">2</h1>
+<p>海明距离：两个字符串在对应位置上不同的字符个数。</p>
+<p>理论最优：确定分类器后（$4\times 9$ 的 $01$ 矩阵），任意两个类别之间海明距离的最小值要最大。</p>
+<p>设理论最优时任意两个类别之间的海明距离的最小值为 $d$，则所有类别之间的海明距离之和（$C_4^2$ 组类别对）最小值为 $6d$。</p>
+<p>对于长度为 $9$ 的 ECOC 二元码，考虑每一位，如果两个为 $1$，两个为 $0$，那么可以带来 $4$ 的海明距离；如果一个为 $1$，三个为 $0$（或者反过来），那么可以带来 $3$ 的海明距离；如果四个都为 $1$（或者都为 $0$），那么带来 $0$ 的海明距离。也就是说所有类别之间的海明距离之和最大值为 $9\times 4=36$。</p>
+<p>因此，$d\leqslant 6$。</p>
+<p>可以给出构造，使得 $d=6$：</p>
+<p>$$\begin{bmatrix}
+    1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \
+    1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \
+    0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \
+    0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1
+\end{bmatrix}$$</p>
+<p>上面的矩阵满足任意两个类别（两行）之间的海明距离均为 $6$，即为理论最优的 ECOC 二元码。</p>
+<hr />
+<h1 id="3">3</h1>
+<p><strong>混淆矩阵：</strong></p>
+<table>
+<thead>
+<tr>
+<th>$~$</th>
+<th>预测结果是正例</th>
+<th>预测结果是反例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>真实情况是正例</strong></td>
+<td>$TP=4$</td>
+<td>$FN=2$</td>
+</tr>
+<tr>
+<td><strong>真实情况是反例</strong></td>
+<td>$FP=1$</td>
+<td>$TN=3$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>准确率：</strong></p>
+<p>$$\frac{TP+TN}{TP+TN+FP+FN}=\frac{7}{10}$$</p>
+<p><strong>精确率：</strong></p>
+<p>$$\frac{TP}{TP+FP}=\frac{4}{5}$$</p>
+<p><strong>召回率：</strong></p>
+<p>$$\frac{TP}{TP+FN}=\frac{2}{3}$$</p>
+<p><strong>F1 Score:</strong></p>
+<p>$$F1=\frac{2\times TP}{\text{样例总数}+TP-TN}=\frac{8}{11}$$</p>
+<hr />
+<h1 id="4">4</h1>
+<p>第一次分支：</p>
+<p>$$\text{Ent}(D)=-(\frac{4}{8}\log_2\frac{4}{8}+\frac{4}{8}\log_2\frac{4}{8})=1$$</p>
+<p>$$\text{Gain}(D,\text{年龄})=1-\frac{3}{8}(-(\frac{2}{3}\log_2\frac{2}{3}+\frac{1}{3}\log_2\frac{1}{3}))-\frac{2}{8}(-(0+0))-\frac{3}{8}(-(\frac{2}{3}\log_2\frac{2}{3}+\frac{1}{3}\log_2\frac{1}{3}))\approx0.311$$</p>
+<p>$$\text{Gain}(D,\text{性别})=1-\frac{6}{8}(-(\frac{2}{6}\log_2\frac{2}{6}+\frac{4}{6}\log_2\frac{4}{6}))-\frac{2}{8}(-(0+0))\approx0.311$$</p>
+<p>$$\text{Gain}(D,\text{收入})=1-\frac{3}{8}(-(0+0))-\frac{4}{8}(-(\frac{3}{4}\log_2\frac{3}{4}+\frac{1}{4}\log_2\frac{1}{4}))-\frac{1}{8}(-(0+0))\approx0.594$$</p>
+<p>因此，第一次分支选择“收入”属性。</p>
+<p>第二次分支（“收入”为 $20-40$）：</p>
+<p>$$\text{Ent}(D')=-(\frac{3}{4}\log_2\frac{3}{4}+\frac{1}{4}\log_2\frac{1}{4})\approx0.811$$</p>
+<p>$$\text{Gain}(D',\text{年龄})\approx0.811-\frac{1}{4}(-(0+0))-\frac{3}{4}(-(\frac{2}{3}\log_2\frac{2}{3}+\frac{1}{3}\log_2\frac{1}{3}))\approx0.122$$</p>
+<p>$$\text{Gain}(D',\text{性别})\approx0.811-\frac{2}{4}(-(\frac{1}{2}\log_2\frac{1}{2}+\frac{1}{2}\log_2\frac{1}{2}))-\frac{2}{4}(-(0+0))\approx0.311$$</p>
+<p>因此，第二次分支选择“性别”属性。</p>
+<p><img src="扫描全能王 2025-11-16 16.42_1.jpg" alt="alt text" width="50%"></p>
 
 
 

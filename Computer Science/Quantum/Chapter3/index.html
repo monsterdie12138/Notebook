@@ -1459,7 +1459,17 @@
 <p>$$\text{QFT}|\overline{j_1j_2\dots j_n}\rangle=\frac{1}{\sqrt{2^n}}(|0\rangle+e^{2\pi i\cdot\overline{0.j_n}}|1\rangle)(|0\rangle+e^{2\pi i\cdot\overline{0.j_{n-1}j_n}}|1\rangle)\cdots(|0\rangle+e^{2\pi i\cdot\overline{0.j_1j_2\dots j_n}}|1\rangle)$$</p>
 <div class="admonition tip">
 <p class="admonition-title">Proof</p>
-<p>待补充</p>
+<p>$$
+\begin{align}
+\text{QFT}|j\rangle &amp; =\frac{1}{\sqrt{N}}\sum\limits_{k=0}^{N-1}e^{\frac{2\pi i}{N}\cdot jk}|k\rangle \
+&amp; =\frac{1}{\sqrt{2^n}}\sum\limits_{k_1=0}^1\dots\sum\limits_{k_n=0}^1e^{\frac{2\pi i}{2^n}\cdot j\sum\limits_{l=1}^nk_l2^{n-l}}|k_1\dots k_n\rangle \
+&amp; =\frac{1}{\sqrt{2^n}}\sum\limits_{k_1=0}^1\dots\sum\limits_{k_n=0}^1e^{2\pi ij\sum\limits_{l=1}^nk_l2^{-l}}|k_1\dots k_n\rangle \
+&amp; =\frac{1}{\sqrt{2^n}}\sum\limits_{k_1=0}^1\dots\sum\limits_{k_n=0}^1\bigotimes\limits_{l=1}^n(e^{2\pi ijk_l2^{-l}}|k_l\rangle) \
+&amp; =\frac{1}{\sqrt{2^n}}\bigotimes\limits_{l=1}^n\sum\limits_{k_l=0}^1e^{2\pi ijk_l2^{-l}}|k_l\rangle \
+&amp; =\frac{1}{\sqrt{2^n}}\bigotimes\limits_{l=1}^n(|0\rangle+e^{2\pi ij2^{-l}}|1\rangle) \
+&amp; =\frac{1}{\sqrt{2^n}}(|0\rangle+e^{2\pi i\cdot\overline{0.j_n}}|1\rangle)(|0\rangle+e^{2\pi i\cdot\overline{0.j_{n-1}j_n}}|1\rangle)\cdots(|0\rangle+e^{2\pi i\cdot\overline{0.j_1j_2\dots j_n}}|1\rangle)
+\end{align}
+$$</p>
 </div>
 <p><strong>量子电路实现：</strong></p>
 <p>$$R_k=\begin{bmatrix}
@@ -1467,10 +1477,14 @@
     0 &amp; e^{\frac{2\pi i}{2^k}}
 \end{bmatrix}$$</p>
 <p><img alt="alt text" src="../image/3.1.png" /></p>
-<div class="admonition tip">
-<p class="admonition-title">Proof</p>
-<p>待补充</p>
-</div>
+<p>先看第一位 $|j_1\rangle$。</p>
+<p>经过一个 H 门后，变为</p>
+<p>$$\frac{1}{\sqrt{2}}(|0\rangle+e^{2\pi i\overline{0.j_1}}|1\rangle)$$</p>
+<p>经过一个 $R_2$ 门后，变为</p>
+<p>$$\frac{1}{\sqrt{2}}(|0\rangle+e^{2\pi i\overline{0.j_1j_2}}|1\rangle)$$</p>
+<p>以此类推，最终变为</p>
+<p>$$\frac{1}{\sqrt{2}}(|0\rangle+e^{2\pi i\overline{0.j_1j_2...j_n}}|1\rangle)$$</p>
+<p>其余位同理。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>电路末端的量子态与张量积形式顺序相反，因此还要再加一系列 SWAP 门。</p>

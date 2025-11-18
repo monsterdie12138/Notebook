@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/TCS/temp/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/Lec9/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Temp - Monsterdie's Notebook</title>
+        <title>Lec9 Deep Learning - Monsterdie's Notebook</title>
       
     
     
@@ -94,6 +94,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#lec9-deep-learning" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -125,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Temp
+              Lec9 Deep Learning
             
           </span>
         </div>
@@ -507,6 +512,61 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#machine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Machine Learning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Classifier
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neural-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neural Network
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convolutional-neural-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convolutional Neural Network
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-neural-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training Neural Networks
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -524,65 +584,67 @@
   
 
 
-  <h1>Temp</h1>
-
-<p><span style="font-family: 'Times New Roman';"></p>
-<p>归约的本质是一个函数映射，设从函数 $F$ 到函数 $G$ 的归约为 $R$，则</p>
-<p>$$R:{0,1}^<em>\rightarrow{0,1}^</em>$$</p>
-<p>$$F(x)=G(R(x))$$</p>
-<p>例如例二：</p>
+<h1 id="lec9-deep-learning">Lec9 Deep Learning</h1>
+<hr />
+<p>只有课堂笔记</p>
+<hr />
+<h2 id="machine-learning">Machine Learning</h2>
+<p>模型：本质上是一个函数，联系输入和输出，不一定有显式的表达式。</p>
+<p>回归与分类</p>
+<p>training = model fitting</p>
+<p>testing = inference</p>
+<p>Image Classification</p>
+<hr />
+<h2 id="linear-classifier">Linear Classifier</h2>
+<p>$$f(x,W)=Wx+b$$</p>
 <ul>
-<li>$\text{HALT}$ 即为 $F$</li>
-<li>$\text{ZEROFUNC}$ 即为 $G$</li>
-<li>$M,x$ 即为 $x$</li>
-<li>$N$ 即为 $R(x)$</li>
+<li>$W:10\times 3072$</li>
+<li>$x:3072\times 1$</li>
+<li>$b:10\times 1$</li>
 </ul>
-<p><strong>Lemma:</strong></p>
-<p>假设函数 $F$ 和 $G$，若存在一个从 $F$ 到 $G$ 的归约 $R$，且 $G$ 可计算，则 $F$ 也可计算。</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>def M_F(x):
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    compute R(x)
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    compute M_G(R(x))
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    return M_G(R(x))
-</span></code></pre></div>
-<p>实际上，我们通常使用其逆否命题：假设函数 $F$ 和 $G$，若存在一个从 $F$ 到 $G$ 的归约 $R$，且 $F$ 不可计算，则 $G$ 也不可计算。</p>
-<p>因此，要证明某个函数不可计算，只要找到一个已知的不可计算的函数，再找到一个归约就行了。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>若存在一个从 $F$ 到 $G$ 的归约 $R$，则说明 $F$ 的计算难度不大于 $G$ 的计算难度。</p>
-</div>
-<p><strong>Rice Theorem:</strong></p>
-<p>给定一个 TM $M$，判断 $M$ 是否满足某个性质 $P$：</p>
-<p>$$P(M)=\begin{cases}
-    1 &amp; \text{if $M$ is a TM which satisfies property $P$} \
-    0 &amp; \text{otherwise}
-\end{cases}$$</p>
-<p>如果 $P$ 是 <strong>semantic and non-trivial</strong> 的，那么上述判定问题不可计算。</p>
-<div class="admonition success">
-<p class="admonition-title">Definition</p>
-<p><strong>functionally equivalent:</strong></p>
-<p>两个 TM $M$ 和 $M'$ 是 functionally equivalent 的，当且仅当对于任意输入 $x$，$M(x)$ 和 $M'(x)$ 都有相同的输出。</p>
-<p><strong>semantic:</strong></p>
-<p>性质 $P$ 是 semantic 的，当且仅当对于任意两个 functionally equivalent 的 TM $M$ 和 $M'$，都有 $P(M)=P(M')$。（$P$ 只关注输入和输出，不关注 TM 本身内容）</p>
-<p><strong>trivial:</strong></p>
-<p>性质 $P$ 是 trivial 的，当且仅当 $P$ 是常数函数（对于所有 TM 都成立，或者对于所有 TM 都不成立）。</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Proof</p>
-<p>使用<strong>归约</strong>。</p>
-<p>定义 TM $M_{\text{INF}}$，其接受一个输入 $x$，但无论输入是什么都不停机。</p>
-<p>假设 $P(M_{\text{INF}})=0$。（可以这么假设是因为：若 $P(M_{\text{INF}})=1$，那么只需要考虑 $P$ 的反性质就行了）</p>
-<p>由于 $P$ 是 non-trivial 的，因此存在 TM $M_{\text{YES}}$，使得 $P(M_{\text{YES}})=1$。</p>
-<p>现在把 $\text{HALT}$ 归纳到 $P$，即将输入 $(M,x)$ 转换为 $N$。$N$ 的构造方式如下：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>def N(y):
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    compute M(x)
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    compute M_YES(y)
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    return M_YES(y)
-</span></code></pre></div>
-<p>那么此时是否有 $\text{HALT}(M,x)=P(N)$？</p>
-<p>若 $\text{HALT}(M,x)=0$，说明 $M$ 在 $x$ 上不停机，那么 $N$ 也不会停机，由于 $P$ 是 semantic 的，因此 $P(N)=P(M_{\text{INF}})=0$。</p>
-<p>若 $\text{HALT}(M,x)=1$，说明 $M$ 在 $x$ 上停机，那么 $N$ 会输出 $M_{\text{YES}}(y)$ 的结果，由于 $P$ 是 semantic 的，因此 $P(N)=P(M_{\text{YES}})=1$。</p>
-<p>综上所述，存在一个从 $\text{HALT}$ 到 $P$ 的归约，因此由于 $\text{HALT}$ 不可计算，推出 $P$ 也不可计算。</p>
-</div>
+<p>decision boundary: $Wx+b=0$</p>
+<p>不能直接用MSE训练图像分类问题：真实的标签向量无法准确定义</p>
+<p>想办法把分数转换成概率：softmax</p>
+<p>这样之后可以直接用MSE，但更常用cross-entropy：</p>
+<p>$$D(S,L)=-\sum\limits_iL_i\log S_i$$</p>
+<ul>
+<li>$S$： softmax输出的概率分布</li>
+<li>$L$：真实标签的one-hot编码</li>
+</ul>
+<hr />
+<h2 id="neural-network">Neural Network</h2>
+<p>perceptron：就是一个linear </p>
+<p>再在外面套一个非线性的激活函数</p>
+<p>输入的节点数：图像向量长度
+输出的节点数：类别数</p>
+<p>更复杂：加入隐藏层，变成神经网络</p>
+<p>fully-connected layer</p>
+<hr />
+<h2 id="convolutional-neural-network">Convolutional Neural Network</h2>
+<p>并不需要全连接，因为图像的一部分也能看出类别</p>
+<p>weight sharing</p>
+<p>local connectivity + weight sharing = convolution</p>
+<p>输出大小：$(ImageSize-FilterSize+Padding*2)/Stride+1$</p>
+<p>注意：卷积神经网络的层和层之间也要有非线性变换</p>
+<p>receptive field：每一个输出的节点对应输入图像的区域大小</p>
+<p>卷积神经网络越深，receptive field越大</p>
+<p>pooling layer</p>
+<p>作用：整合信息；减小尺寸</p>
+<p>经典：AlexNet、VGG</p>
+<hr />
+<h2 id="training-neural-networks">Training Neural Networks</h2>
+<p>loss function: 回归一般用L2 loss，分类一般用cross-entropy loss</p>
+<p>梯度下降，back-propagation</p>
+<p>SGD：随机梯度下降，每次只使用一小部分数据计算梯度</p>
+<p>神经网络一般不会用牛顿法之类的二阶方法</p>
+<p>train + validation + test</p>
+<p>防止过拟合：</p>
+<ul>
+<li>交叉验证、早停</li>
+<li>正则化、dropout</li>
+<li>数据增强</li>
+</ul>
+<p>batch normalization</p>
 
 
 
