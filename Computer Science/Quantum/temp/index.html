@@ -526,24 +526,10 @@
 
   <h1>Temp</h1>
 
-<p><strong>量子电路实现：</strong></p>
-<p>$$R_k=\begin{bmatrix}
-    1 &amp; 0 \\
-    0 &amp; e^{\frac{2\pi i}{2^k}}
+<p>$$\begin{bmatrix}
+    1+e^{i\frac{\pi}{4}} &amp; e^{i\frac{\pi}{4}}-i \
+    1-e^{i\frac{\pi}{4}} &amp; e^{i\frac{\pi}{4}}+i
 \end{bmatrix}$$</p>
-<p><img alt="alt text" src="../image/3.1.png" /></p>
-<p>先看第一位 $|j_1\rangle$。</p>
-<p>经过一个 H 门后，变为</p>
-<p>$$\frac{1}{\sqrt{2}}(|0\rangle+e^{2\pi i\overline{0.j_1}}|1\rangle)$$</p>
-<p>经过一个 $R_2$ 门后，变为</p>
-<p>$$\frac{1}{\sqrt{2}}(|0\rangle+e^{2\pi i\overline{0.j_1j_2}}|1\rangle)$$</p>
-<p>以此类推，最终变为</p>
-<p>$$\frac{1}{\sqrt{2}}(|0\rangle+e^{2\pi i\overline{0.j_1j_2...j_n}}|1\rangle)$$</p>
-<p>其余位同理。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>电路末端的量子态与张量积形式顺序相反，因此还要再加一系列 SWAP 门。</p>
-</div>
 
 
 

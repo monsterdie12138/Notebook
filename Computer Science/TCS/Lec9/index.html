@@ -718,10 +718,66 @@
 </span></code></pre></div>
 <p>既然有对应的 TM $M_\text{HALT}$，说明 $\text{HALT}$ 可计算，推出矛盾，因此 $\text{ZEROFUNC}$ 不可计算。</p>
 </div>
-<p><strong>（Reduction）：</strong></p>
+<p><strong>归约（Reduction）：</strong></p>
 <p>通过以上两个例子，我们发现证明的格式很类似。唯一不同的是 $N$ 的构造。</p>
 <p>核心是把 $\text{HALT}$ 的输入转换成 $\text{HALTONZERO}$（或 $\text{ZEROFUNC}$）的输入，且满足 $\text{HALT}(M,x)=\text{HALTONZERO}(N)$（或$\text{HALT}(M,x)=\text{ZEROFUNC}(N)$）。</p>
 <p>这个转换就是：从 $\text{HALT}$ 到 $\text{HALTONZERO}$（或 $\text{ZEROFUNC}$）的。</p>
+<p>归约的本质是一个函数映射，设从函数 $F$ 到函数 $G$ 的归约为 $R$，则</p>
+<p>$$R:{0,1}^<em>\rightarrow{0,1}^</em>$$</p>
+<p>$$F(x)=G(R(x))$$</p>
+<p>例如例二：</p>
+<ul>
+<li>$\text{HALT}$ 即为 $F$</li>
+<li>$\text{ZEROFUNC}$ 即为 $G$</li>
+<li>$M,x$ 即为 $x$</li>
+<li>$N$ 即为 $R(x)$</li>
+</ul>
+<p><strong>Lemma:</strong></p>
+<p>假设函数 $F$ 和 $G$，若存在一个从 $F$ 到 $G$ 的归约 $R$，且 $G$ 可计算，则 $F$ 也可计算。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>def M_F(x):
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    compute R(x)
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    compute M_G(R(x))
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    return M_G(R(x))
+</span></code></pre></div>
+<p>实际上，我们通常使用其逆否命题：假设函数 $F$ 和 $G$，若存在一个从 $F$ 到 $G$ 的归约 $R$，且 $F$ 不可计算，则 $G$ 也不可计算。</p>
+<p>因此，要证明某个函数不可计算，只要找到一个已知的不可计算的函数，再找到一个归约就行了。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>若存在一个从 $F$ 到 $G$ 的归约 $R$，则说明 $F$ 的计算难度不大于 $G$ 的计算难度。</p>
+</div>
+<p><strong>Rice Theorem:</strong></p>
+<p>给定一个 TM $M$，判断 $M$ 是否满足某个性质 $P$：</p>
+<p>$$P(M)=\begin{cases}
+    1 &amp; \text{if $M$ is a TM which satisfies property $P$} \
+    0 &amp; \text{otherwise}
+\end{cases}$$</p>
+<p>如果 $P$ 是 <strong>semantic and non-trivial</strong> 的，那么上述判定问题不可计算。</p>
+<div class="admonition success">
+<p class="admonition-title">Definition</p>
+<p><strong>functionally equivalent:</strong></p>
+<p>两个 TM $M$ 和 $M'$ 是 functionally equivalent 的，当且仅当对于任意输入 $x$，$M(x)$ 和 $M'(x)$ 都有相同的输出。</p>
+<p><strong>semantic:</strong></p>
+<p>性质 $P$ 是 semantic 的，当且仅当对于任意两个 functionally equivalent 的 TM $M$ 和 $M'$，都有 $P(M)=P(M')$。（$P$ 只关注输入和输出，不关注 TM 本身内容）</p>
+<p><strong>trivial:</strong></p>
+<p>性质 $P$ 是 trivial 的，当且仅当 $P$ 是常数函数（对于所有 TM 都成立，或者对于所有 TM 都不成立）。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p>使用<strong>归约</strong>。</p>
+<p>定义 TM $M_{\text{INF}}$，其接受一个输入 $x$，但无论输入是什么都不停机。</p>
+<p>假设 $P(M_{\text{INF}})=0$。（可以这么假设是因为：若 $P(M_{\text{INF}})=1$，那么只需要考虑 $P$ 的反性质就行了）</p>
+<p>由于 $P$ 是 non-trivial 的，因此存在 TM $M_{\text{YES}}$，使得 $P(M_{\text{YES}})=1$。</p>
+<p>现在把 $\text{HALT}$ 归纳到 $P$，即将输入 $(M,x)$ 转换为 $N$。$N$ 的构造方式如下：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>def N(y):
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    compute M(x)
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    compute M_YES(y)
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    return M_YES(y)
+</span></code></pre></div>
+<p>那么此时是否有 $\text{HALT}(M,x)=P(N)$？</p>
+<p>若 $\text{HALT}(M,x)=0$，说明 $M$ 在 $x$ 上不停机，那么 $N$ 也不会停机，由于 $P$ 是 semantic 的，因此 $P(N)=P(M_{\text{INF}})=0$。</p>
+<p>若 $\text{HALT}(M,x)=1$，说明 $M$ 在 $x$ 上停机，那么 $N$ 会输出 $M_{\text{YES}}(y)$ 的结果，由于 $P$ 是 semantic 的，因此 $P(N)=P(M_{\text{YES}})=1$。</p>
+<p>综上所述，存在一个从 $\text{HALT}$ 到 $P$ 的归约，因此由于 $\text{HALT}$ 不可计算，推出 $P$ 也不可计算。</p>
+</div>
 
 
 

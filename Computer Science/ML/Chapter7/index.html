@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/ML/Chapter7/">
       
       
+        <link rel="prev" href="../Chapter6/">
+      
+      
+        <link rel="next" href="../../Quantum/Chapter1/">
       
       
       <link rel="icon" href="../../../stylesheets/logo.jpg">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Chapter7 - Monsterdie's Notebook</title>
+        <title>7.贝叶斯分类器 - Monsterdie's Notebook</title>
       
     
     
@@ -130,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter7
+              7.贝叶斯分类器
             
           </span>
         </div>
@@ -266,10 +270,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../" class="md-tabs__link">
           
   
@@ -415,6 +421,72 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -434,11 +506,11 @@
         
   
   
-    <a href="../../" class="md-nav__link">
+    <a href="../../FPA/Chapter1/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Computer Science
+    程序设计与算法基础
   </span>
   
 
@@ -448,6 +520,726 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../FDS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据结构基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../AID/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System3/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅲ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../DB/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据库系统
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../OOP/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    面向对象程序设计
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../TCS/Lec1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    理论计算机
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    机器学习
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            机器学习
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.基本术语
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.模型的评估与选择
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.线性模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.决策树
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.神经网络
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.支持向量机
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    7.贝叶斯分类器
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    7.贝叶斯分类器
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bayesian-decision-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      贝叶斯决策论 Bayesian Decision Theory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maximum-likelihood-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      极大似然估计 Maximum Likelihood Estimation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naive-bayes-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      朴素贝叶斯分类器 Naive Bayes Classifier
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semi-naive-bayes-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      半朴素贝叶斯分类器 Semi-Naive Bayes Classifier
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bayesian-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      贝叶斯网 Bayesian Network
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Quantum/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    量子计算理论基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -522,9 +1314,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#bayesian-decision-theory" class="md-nav__link">
     <span class="md-ellipsis">
-      贝叶斯决策论
+      贝叶斯决策论 Bayesian Decision Theory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maximum-likelihood-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      极大似然估计 Maximum Likelihood Estimation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naive-bayes-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      朴素贝叶斯分类器 Naive Bayes Classifier
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semi-naive-bayes-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      半朴素贝叶斯分类器 Semi-Naive Bayes Classifier
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bayesian-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      贝叶斯网 Bayesian Network
     </span>
   </a>
   
@@ -551,56 +1379,61 @@
 <p><span style="font-family: 'Times New Roman';"></p>
 <h1 id="chapter7">Chapter7 贝叶斯分类器</h1>
 <hr />
-<h2 id="_1">贝叶斯决策论</h2>
-<p>以多分类任务为例，贝叶斯决策论是在所有概率都已知的情况下，选择最优的类别标记。</p>
+<h2 id="bayesian-decision-theory">贝叶斯决策论 Bayesian Decision Theory</h2>
+<p>对于多分类任务，<strong>贝叶斯决策论</strong>是在所有概率都已知的理想情况下，选择最优的类别标记。</p>
 <p><strong>贝叶斯判定准则（Bayes Decision Rule）：</strong></p>
-<p>设$N$个可能类别$c_1,c_2,...,c_N$，$\lambda_{ij}$表示将真实类别为$c_j$的样本误分类为$c_i$的损失。</p>
-<p>基于后验概率$p(c_i|x)$可获得将样本$x$分类为$c_i$所产生的期望损失（条件风险）：</p>
+<p>设 $N$ 个可能类别 $c_1,c_2,...,c_N$，$\lambda_{ij}$ 表示将真实类别为 $c_j$ 的样本误分类为 $c_i$ 的损失。</p>
+<p>基于后验概率 $P(c_i|x)$ 可获得将样本 $x$ 分类为 $c_i$ 所产生的期望损失（条件风险）：</p>
 <p>$$R(c_i|x)=\sum\limits_{j=1}^N\lambda_{ij}P(c_j|x)$$</p>
-<p>我们的目标是找到最优的判定准则（分类函数）$h^<em>$，输入为$x$，输出为$h^</em>(x)=c$，这个$c$可以让$R(c|x)$取最小：</p>
-<p>$$h^*(x)=\argmin\limits_cR(c|x)$$</p>
-<p>$h^<em>$称为</em><em>贝叶斯最优分类器（Bayes Optimal Classifier）</em><em>，其总体风险称为</em><em>贝叶斯风险（Bayes Risk）</em>*。</p>
+<p>目标：找到最优的分类函数 $h^{*}$，输入为 $x$，输出为 $h^*(x)=c$，这个 $c$ 可以让 $R(c|x)$ 取最小：</p>
+<p>$$h^*(x)=\arg\min\limits_cR(c|x)$$</p>
+<p>若所有误分类损失相等，即 $\lambda_{ij}=1$（$i\ne j$），$\lambda_{ii}=0$，则有：</p>
+<p>$$h^*(x)=\arg\max\limits_c P(c|x)$$</p>
+<p>$h^{*}$ 称为<strong>贝叶斯最优分类器（Bayes Optimal Classifier）</strong>，其总体风险称为<strong>贝叶斯风险（Bayes Risk）</strong>，其反映了学习性能的理论上限。</p>
 <div class="admonition success">
 <p class="admonition-title">Definition</p>
-<p><strong>先验概率：</strong>$P(A)$
+<p><strong>先验概率：</strong>$P(A)$<br />
 <strong>后验概率：</strong>$P(A|B)$</p>
 </div>
 <p><strong>机器学习策略：</strong></p>
-<p>机器学习的关键点在于估计后验概率$p(c|x)$，就像我们之前研究的那样，在给定一个样本的情况下，它属于不同类别的概率是多少。</p>
+<p>机器学习的关键点：估计后验概率 $P(c|x)$。就像我们之前一直研究的那样：在给定一个样本的情况下，它属于不同类别的概率是多少。</p>
 <ul>
-<li>判别式模型：直接对$p(c|x)$建模，如决策树、BP神经网络、SVM等。</li>
-<li>生成式模型：先对联合概率$p(x,c)$建模，再通过贝叶斯公式计算后验概率$p(c|x)$，如贝叶斯分类器等。</li>
+<li>判别式模型：直接对 $P(c|x)$ 建模，如决策树、神经网络、SVM 等</li>
+<li>生成式模型：先对联合概率 $P(x,c)$ 建模，再通过贝叶斯公式计算后验概率 $P(c|x)$，如贝叶斯分类器等</li>
 </ul>
 <p><strong>贝叶斯定理：</strong></p>
 <p>$$P(c|x)=\frac{P(x,c)}{P(x)}=\frac{P(c)P(x|c)}{P(x)}$$</p>
 <ul>
-<li>$P(c)$：类先验概率，可通过训练样本的类别分布估计（大数定律）</li>
-<li>$P(x)$：证据，即样本$x$出现的概率，一般为常数，可忽略</li>
-<li>$P(x|c)$：类条件概率或似然，是最难估计的一部分</li>
+<li>$P(c)$：类先验概率。样本空间中类别 $c$ 的占比，直接统计得到</li>
+<li>$P(x)$：证据。样本 $x$ 出现的概率，一般为可忽略的常数</li>
+<li>$P(x|c)$：类条件概率 / 似然。最难估计的一部分</li>
 </ul>
-<p><strong>极大似然估计：</strong></p>
-<p>极大似然估计就是：在已经看到一组实验结果的前提下，反推出哪个参数值能让这个结果最有可能发生。</p>
-<p>对于类条件概率$P(x|c)$，我们也是先假定其具有某种确定的概率分布形式，再基于训练样本对概率分布的参数$\theta_c$进行估计。</p>
-<p>为明确起见，将$P(x|c)$记为$P(x|\theta_c)$。</p>
-<p>设训练样本中类别为$c$的样本集合为$D_c$，则在给定类别$c$的条件下，观察到所有对应类别的样本（即$D_c$）的概率为：</p>
+<p>于是，生成式模型的关键点从估计后验概率 $P(c|x)$ 变为估计类条件概率 $P(x|c)$。</p>
+<hr />
+<h2 id="maximum-likelihood-estimation">极大似然估计 Maximum Likelihood Estimation</h2>
+<p><strong>极大似然估计</strong>：在已经看到一组实验结果的前提下，反推出哪个参数值能让这个结果最有可能发生。</p>
+<p>对于类条件概率 $P(x|c)$，我们是先假定其具有某种确定的概率分布形式，再基于训练样本对概率分布的参数 $\theta_c$ 进行估计。</p>
+<p>为明确起见，将 $P(x|c)$ 记为 $P(x|\theta_c)$。</p>
+<p>设训练样本中类别为 $c$ 的样本集合为 $D_c$，则在给定类别 $c$ 的条件下，观察到所有对应类别的样本的概率（似然）为：</p>
 <p>$$P(D_c|\theta_c)=\prod\limits_{x\in D_c}P(x|\theta_c)$$</p>
-<p>由于连乘后若接近0则会超出精度表示范围，直接被舍弃为0（下溢），因此使用对数似然：</p>
+<p>由于连乘后若接近 $0$ 会超出精度表示范围，直接被舍弃为 $0$（下溢），因此使用<strong>对数似然</strong>：</p>
 <p>$$LL(\theta_c)=\log P(D_c|\theta_c)=\sum\limits_{x\in D_c}\log P(x|\theta_c)$$</p>
-<p>因此，$\theta_c$的极大似然估计为：</p>
-<p>$$\hat{\theta_c}=\argmax\limits_{\theta_c}LL(\theta_c)$$</p>
-<p><strong>朴素贝叶斯分类器（Naive Bayes Classifier）：</strong></p>
-<p>当前的主要障碍是获得类条件概率$P(x|c)$。</p>
+<p>因此，$\theta_c$ 的极大似然估计为：</p>
+<p>$$\hat{\theta_c}=\arg\max\limits_{\theta_c}LL(\theta_c)$$</p>
+<hr />
+<h2 id="naive-bayes-classifier">朴素贝叶斯分类器 Naive Bayes Classifier</h2>
+<p><strong>朴素贝叶斯分类器：</strong></p>
 <p>朴素贝叶斯分类器的基本思路：<strong>假定属性相互独立。</strong></p>
-<p>因此，设$d$为属性数（$x$的维数），$x_i$为$x$在第$i$个属性上的取值，则：</p>
+<p>因此，设 $d$ 为属性数，$x_i$ 为 $x$ 在第 $i$ 个属性上的取值，则：</p>
 <p>$$P(c|x)=\frac{P(c)P(x|c)}{P(x)}=\frac{P(c)}{P(x)}\prod\limits_{i=1}^dP(x_i|c)$$</p>
-<p>由于$P(x)$是常数，因此可以忽略，最终的分类决策准则为：</p>
-<p>$$h_{nb}(x)=\argmax\limits_{c}P(c)\prod\limits_{i=1}^dP(x_i|c)$$</p>
-<p>估计$P(c)$：</p>
+<p>由于 $P(x)$ 是常数，因此可以忽略，最终的分类决策准则，也就是朴素贝叶斯分类器的表达式为：</p>
+<p>$$h_{nb}(x)=\arg\max\limits_{c}P(c)\prod\limits_{i=1}^dP(x_i|c)$$</p>
+<p>估计 $P(c)$：</p>
 <p>$$P(c)=\frac{|D_c|}{|D|}$$</p>
-<p>估计$P(x_i|c)$：</p>
+<p>估计 $P(x_i|c)$：</p>
 <p>对于离散属性：</p>
 <p>$$P(x_i|c)=\frac{|D_{c,x_i}|}{|D_c|}$$</p>
-<p>对于连续属性，假定$p(x_i|c)\sim N(\mu_{c,i},\sigma_{c,i}^2)$：</p>
+<p>对于连续属性，假定  $p(x_i|c)\sim N(\mu_{c,i},\sigma_{c,i}^2)$：</p>
 <p>$$p(x_i|c)=\frac{1}{\sqrt{2\pi}\sigma_{c,i}}e^{-\frac{(x_i-\mu_{c,i})^2}{2\sigma_{c,i}^2}}$$</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -608,45 +1441,60 @@
 <img alt="alt text" src="../image/7.1.png" />
 <strong>用这个训练集训练一个朴素贝叶斯分类器，并对如下测试样例进行分类：</strong>
 <img alt="alt text" src="../image/7.2.png" /></p>
-<p>计算类先验概率$P(c)$：
+<p>计算类先验概率 $P(c)$：
 <img alt="alt text" src="../image/7.3.png" /></p>
-<p>计算类条件概率$P(x_i|c)$：
+<p>计算类条件概率 $P(x_i|c)$：
 <img alt="alt text" src="../image/7.4.png" /></p>
-<p>计算最终概率$P(c|x)$（忽略$P(x)$）：
+<p>计算最终概率 $P(c|x)$（忽略 $P(x)$）：
 <img alt="alt text" src="../image/7.5.png" /></p>
 <p>最终判定结果为“好瓜”。</p>
 </div>
 <p><strong>拉普拉斯修正（Laplacian Correction）：</strong></p>
-<p>若某个属性值在训练集中没有与某类别共同出现过，则$P(x_i|c)=0$，在连乘时会抹去其他属性提供的信息，因此需要修正。设$N$为训练集$D$中的总类别数，$N_i$为第$i$个属性的可能取值数，则原本的公式应修正为：</p>
+<p>若某个属性值在训练集中没有与某类别共同出现过，则 $P(x_i|c)=0$，在连乘时会抹去其他属性提供的信息，因此需要修正。设 $N$ 为训练集 $D$ 中的总类别数，$N_i$ 为第 $i$ 个属性的可能取值数，则原本的公式应修正为：</p>
 <p>$$\hat{P}(c)=\frac{|D_{c}|+1}{|D|+N}$$</p>
 <p>$$\hat{P}(x_i|c)=\frac{|D_{c,x_i}|+1}{|D_c|+N_i}$$</p>
+<p><strong>朴素贝叶斯分类器的使用：</strong></p>
+<ul>
+<li>对预测速度要求高：
+  预计算所有概率估值，使用时直接查表</li>
+<li>数据更替频繁：
+  不进行任何训练，预测时再估值（<strong>懒惰学习</strong>）</li>
+<li>数据不断增加：
+  基于现有概率估值进行修正（<strong>增量学习</strong>）</li>
+</ul>
 <hr />
-<p><strong>半朴素贝叶斯分类器（Semi-Naive Bayes Classifier）：</strong></p>
-<p>朴素贝叶斯分类器的属性独立性假设在现实中很难成立。</p>
-<p>半朴素贝叶斯分类器的基本思路：<strong>适当考虑一部分属性间的依赖。</strong></p>
+<h2 id="semi-naive-bayes-classifier">半朴素贝叶斯分类器 Semi-Naive Bayes Classifier</h2>
+<p><strong>半朴素贝叶斯分类器：</strong></p>
+<p>朴素贝叶斯分类器的属性独立性假设在现实中很难成立。半朴素贝叶斯分类器的基本思路：<strong>适当考虑一部分属性间的依赖。</strong></p>
 <p>最常用策略：<strong>独依赖估计（One-Dependence Estimators, ODE）</strong>，即假设每个属性在类别之外最多仅依赖一个其他属性：</p>
 <p>$$P(c|x)\propto P(c)\prod\limits_{i=1}^dP(x_i|c,pa_i)$$</p>
-<p>其中，$pa_i$为$x_i$的父属性，问题的关键在于如何确定父属性。</p>
+<p>其中，$pa_i$ 为 $x_i$ 的父属性，问题的关键在于如何确定父属性。</p>
 <p><strong>SPODE（Super-Parent ODE）：</strong></p>
 <p>假设所有属性都依赖于同一属性，这个属性称为<strong>超父（Super Parent）</strong>，然后通过交叉验证等模型选择方法来确定超父。</p>
 <p><strong>TAN （Tree Augmented Naive Bayes）：</strong></p>
-<p>以属性间的条件互信息（属性在已知类别上的相关性）为边的权重，构建完全图，再利用最大带权生成树算法，仅保留强相关属性间的依赖性。</p>
+<p>以属性间的<strong>条件互信息</strong>（属性在已知类别上的相关性）为边的权重，构建完全图，再利用<strong>最大带权生成树算法</strong>，仅保留强相关属性间的依赖性。</p>
 <p><img alt="alt text" src="../image/7.6.png" /></p>
 <p><strong>AODE (Averaged ODE)：</strong></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>略</p>
-</div>
-<p><strong>贝叶斯网 （Bayesian Network, BN）：</strong></p>
+<p>之前的 SPODE 最终确定下来了一个超父，而 AODE 则是尝试将每个属性作为一次超父，构建多个 SPODE 模型后，再对结果进行平均。</p>
+<hr />
+<h2 id="bayesian-network">贝叶斯网 Bayesian Network</h2>
+<p><strong>贝叶斯网：</strong></p>
 <p>贝叶斯网考虑了属性之间更高阶的依赖：</p>
-<p>$$B=\lang G,\Theta\rang$$</p>
-<p>$G$对应<strong>有向无环图（Directed Acyclic Graph, DAG）</strong> ，刻画属性依赖关系；$\Theta$对应<strong>条件概率表（Conditional Probability Table, CPT）</strong> ，描述属性的联合概率分布。</p>
-<p>在$G$中，每个节点对应一个属性，如果两个属性有直接依赖关系，则相连。属性$x_i$在$G$中的父节点集合为$\pi_i$，则$\Theta$记录了$\theta_{x_i|\pi_i}=P_B(x_i|\pi_i)$。</p>
+<p>$$B=\langle G,\Theta\rangle$$</p>
+<ul>
+<li>$G$：<strong>有向无环图（Directed Acyclic Graph, DAG）</strong> ，刻画属性依赖关系（结构）</li>
+<li>$\Theta$：<strong>条件概率表（Conditional Probability Table, CPT）</strong> ，描述属性的联合概率分布（参数）</li>
+</ul>
+<p>在 $G$ 中，每个节点对应一个属性，如果两个属性有直接依赖关系，则相连。属性 $x_i$ 在 $G$ 中的父节点集合为 $\pi_i$，则 $\Theta$ 记录了 $\theta_{x_i|\pi_i}=P_B(x_i|\pi_i)$。</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p><img alt="alt text" src="../image/7.7.png" /></p>
-<p>从$G$中可以看出：“色泽”直接依赖于“好瓜”和“甜度”，而“根蒂”则直接依赖于“甜度”等。</p>
-<p>从$\Theta$中可以看出：$P(\text{根蒂=硬挺}|\text{甜度=高})=0.1$等。</p>
+<p>从 $G$ 中可以看出：“色泽”直接依赖于“好瓜”和“甜度”，而“根蒂”则直接依赖于“甜度”等。</p>
+<p>从 $\Theta$ 中可以看出：$P(\text{根蒂=硬挺}|\text{甜度=高})=0.1$ 等。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>贝叶斯网中，最后的分类结果也看作一个属性变量。</p>
+</div>
 </div>
 <p>贝叶斯网假设每个属性与它的非后裔属性（从它出发沿着箭头可以到达的属性）独立，因此有联合概率分布：</p>
 <p>$$P_B(x_1,x_2,...,x_d)=\prod\limits_{i=1}^dP_B(x_i|\pi_i)=\prod\limits_{i=1}^d\theta_{x_i|\pi_i}$$</p>
@@ -654,30 +1502,32 @@
 <p class="admonition-title">Example</p>
 <p><img alt="alt text" src="../image/7.7.png" /></p>
 <p>$$P(x_1,x_2,x_3,x_4,x_5)=P(x_1)P(x_2)P(x_3|x_1)P(x_4|x_1,x_2)P(x_5|x_2)$$</p>
-<p>显然，$x_3$和$x_4$在给定$x_1$的取值时独立，$x_4$和$x_5$在给定$x_2$的取值时独立，分别记为$x_3\perp x_4|x_1$和$x_4\perp x_5|x_2$。</p>
 </div>
 <p><strong>典型依赖关系：</strong></p>
 <p><img alt="alt text" src="../image/7.8.png" /></p>
 <ul>
-<li>同父结构：给定父节点$x_1$的取值，则$x_3$和$x_4$独立；</li>
-<li>V型结构：给定子节点$x_4$的取值，则$x_1$和$x_2$不独立；$x_4$的取值未知，则$x_1$和$x_2$独立；</li>
-<li>顺序结构：给定中间节点$x$的取值，则$y$和$z$独立。</li>
+<li>同父结构：给定父节点 $x_1$ 的取值，则 $x_3$ 和 $x_4$ 独立；</li>
+<li>V 型结构：给定子节点 $x_4$ 的取值，则 $x_1$ 和 $x_2$ 不独立；$x_4$ 的取值未知，则 $x_1$ 和 $x_2$ 独立；</li>
+<li>顺序结构：给定中间节点 $x$ 的取值，则 $y$ 和 $z$ 独立。</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>同父结构为条件独立：$x_3\perp x_4|x_1$
-V型结构为边际独立：$x_1\perp!!!\perp x_2$
-顺序结构为条件独立：$y\perp z|x$</p>
+<p>其中，同父结构和顺序结构为条件独立；V 型结构为边际独立。</p>
+<div class="admonition success">
+<p class="admonition-title">Definition</p>
+<p><strong>条件独立：</strong></p>
+<p>对于属性变量 $X$、$Y$ 和 $Z$，如果在给定 $Z$ 的条件下，$X$ 和 $Y$ 独立，则称 $X$ 和 $Y$ 在给定 $Z$ 的条件下是条件独立的，记为 $X\perp Y|Z$。</p>
+<p>例如上述的同父结构：$x_3\perp x_4|x_1$；上述的顺序结构：$y\perp z|x$。</p>
+<p><strong>边际独立：</strong></p>
+<p>对于属性变量 $X$、$Y$ 和 $Z$，如果在没有给定任何条件下，$X$ 和 $Y$ 独立，但在给定 $Z$ 的条件下，$X$ 和 $Y$ 不独立，则称 $X$ 和 $Y$ 是边际独立的，记为 $X\perp\perp Y$。</p>
+<p>例如上述的 V 型结构：$x_1\perp\perp x_2$。</p>
 </div>
 <p><strong>有向分离（D-separation）：</strong></p>
-<p>有向分离用于将有向图转换为无向图，从而分析属性间的条件独立性。</p>
-<p>步骤：</p>
+<p>有向分离用于将有向图转换为无向图，从而分析属性间的条件独立性：</p>
 <ul>
-<li>找出所有V型结构，在V型结构的两个父节点间连一条边；</li>
+<li>找出所有 V 型结构，在 V 型结构的两个父节点间连一条边；</li>
 <li>去掉所有箭头方向，得到无向边。</li>
 </ul>
 <p>得到的无向图称为<strong>道德图（Moral Graph）</strong> 。</p>
-<p>对于节点$x$，$y$，$z$，如果去掉$z$后，$x$和$y$不连通，则就有条件独立：$x\perp y|z$。</p>
+<p>对于节点 $x$，$y$，$z$，如果去掉 $z$ 后，$x$ 和 $y$ 不连通，则就有条件独立：$x\perp y|z$。</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p><img alt="alt text" src="../image/7.7.png" /></p>
@@ -686,50 +1536,39 @@ V型结构为边际独立：$x_1\perp!!!\perp x_2$
 <p>$$x_3\perp x_4|x_1$$</p>
 <p>$$x_4\perp x_5|x_2$$</p>
 <p>$$x_3\perp x_2|x_1$$</p>
+<p>$$x_1\perp x_5|x_2$$</p>
 <p>$$x_3\perp x_5|x_1$$</p>
 <p>$$x_3\perp x_5|x_2$$</p>
 </div>
 <p><strong>评分函数（Scoring Function）：</strong></p>
-<p>若网络结构$G$已知，那么我们只需要对训练样本进行计数，得到条件概率表$\Theta$即可。然而，我们往往不知道$G$，因此，贝叶斯网的首要任务是根据训练样本找到结构最恰当的$G$。</p>
-<p>评分函数用于评估贝叶斯网和训练样本的契合程度，最常见的是<strong>最小描述长度（Minimum Description Length, MDL）</strong> ，即希望编码长度尽可能小。</p>
-<p>贝叶斯网$B=\lang G,\Theta\rang$在训练集$D$上的评分函数：</p>
+<p>若网络结构 $G$ 已知，那么我们只需要对训练样本进行计数，得到条件概率表 $\Theta$ 即可。然而，我们往往不知道 $G$，因此，贝叶斯网的首要任务是根据训练样本找到结构最恰当的 $G$。可以先定义一个<strong>评分函数</strong>，用于评估贝叶斯网和训练样本的契合程度，然后再基于此寻找结构最优的 $G$。</p>
+<p>最常见的是基于<strong>最小描述长度（Minimum Description Length, MDL）</strong> 准则，即希望编码长度尽可能小。</p>
+<p>贝叶斯网 $B=\langle G,\Theta\rangle$ 在训练集 $D$ 上的评分函数：</p>
 <p>$$s(B|D)=f(\theta)|B|-LL(B|D)$$</p>
-<p>我们称条件概率表的每一个数值为一个参数，$f(\theta)$为描述参数需要的字节数，$|B|$为参数个数，$LL(B|D)=\sum\limits_{i=1}^m\log P_B(x_i)$，其中$m$为样本总数，$x_i$为第$i$个样本，$P_B(x_i)$就是利用$\Theta$查表得到的第$i$个样本出现的概率。</p>
-<p>第一部分$f(\theta)|B|$更多考虑模型复杂度；第二部分$-LL(B|D)$更多考虑模型拟合度。</p>
+<p>我们称条件概率表的每一个数值为一个参数，$f(\theta)$ 为描述参数需要的字节数，$|B|$ 为参数个数，$LL(B|D)=\sum\limits_{i=1}^m\log P_B(x_i)$，其中 $m$ 为样本总数，$x_i$ 为第 $i$ 个样本，$P_B(x_i)$ 就是利用 $\Theta$ 查表得到的第 $i$ 个样本出现的概率。</p>
+<p>第一部分 $f(\theta)|B|$ 更多考虑模型复杂度；第二部分 $-LL(B|D)$ 更多考虑模型拟合度。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>从所有可能的网络结构中找到最优贝叶斯网是NP难问题。</p>
+<p>从所有可能的网络结构中找到最优贝叶斯网是 NP 难问题。</p>
 </div>
 <p><strong>推断：</strong></p>
 <p>推断的意思是：基于已知属性变量的观测值（证据），推测未知属性变量的取值。</p>
 <p>如果贝叶斯网络训练好了，那么它就给出了所有局部的、底层的条件概率，通过这些条件概率可以计算出任意完整的联合概率，再由完整的联合概率可以计算出我们关心的任何后验概率。这就是<strong>精确推断</strong>。</p>
-<p>但是，这种精确推断是NP难问题，因此需要一些近似推断方法，如<strong>吉布斯采样（Gibbs Sampling）</strong>和<strong>变分推断（Variational Inference）</strong>。</p>
+<p>但是，这种精确推断是 NP 难问题，因此需要一些近似推断方法，如<strong>吉布斯采样（Gibbs Sampling）</strong> 和 <strong>变分推断（Variational Inference）</strong>。</p>
 <p><strong>吉布斯采样：</strong></p>
-<p>设未知变量$Q={Q_1,Q_2,...,Q_n}$，已知变量$E={E_1,E_2,...,E_k}$，待推测的具体值$q={q_1,q_2,...,q_n}$，观测到的具体值$e={e_1,e_2,...,e_k}$，目标是计算$P(Q=q|E=e)$。</p>
+<p>设未知变量 $Q=\{Q_1,Q_2,...,Q_n\}$，已知变量 $E=\{E_1,E_2,...,E_k\}$，待推测的具体值 $q=\{q_1,q_2,...,q_n\}$，观测到的具体值 $e=\{e_1,e_2,...,e_k\}$，目标是计算 $P(Q=q|E=e)$。</p>
 <p>例如：$E=e$：（色泽；敲声；根蒂）=（青绿；浊响；蜷缩）
 $Q=q$：（是否为好瓜；甜度）=（是；高）</p>
 <p>第一步：</p>
-<p>随机产生一个与$e$一致的样本$q_0$作为初始点，即$q_0$中对应$E$的值为$e$，对应$Q$的值随机。</p>
+<p>随机产生一个 $q_0$ 作为初始点，与 $E=e$ 进行拼接。</p>
 <p>例如：（青绿；浊响；蜷缩；否；高）</p>
 <p>第二步：</p>
-<p>进行$T$次迭代采样，每次采样中逐个考察未知变量，即假定所有其他属性取当前值，根据贝叶斯网络推测出该属性的条件概率分布，然后根据该条件概率分布重新采样该属性的值。</p>
+<p>进行 $T$ 次迭代采样，每次采样中逐个考察未知变量，即假定所有其他属性取当前值，根据贝叶斯网络推测出该属性的条件概率分布，然后根据该条件概率分布重新采样该属性的值。</p>
 <p>例如：先假定（色泽=青绿；敲声=浊响；根蒂=蜷缩；甜度=高）不变，根据贝叶斯网络计算出条件概率分布，然后根据该条件概率分布重新采样“是否为好瓜”的值。假设采样结果为“是”，则得到新的样本：（青绿；浊响；蜷缩；是；高）。以此类推。</p>
 <p>第三步：</p>
-<p>假设经过$T$次采样后得到与查询目标$q$一致的样本共有$n_q$个，则可近似估算出后验概率：</p>
+<p>假设经过 $T$ 次采样后得到与查询目标 $q$ 一致的样本共有 $n_q$ 个，则可近似估算出后验概率：</p>
 <p>$$P(Q=q|E=e)\approx\frac{n_q}{T}$$</p>
 <p><img alt="alt text" src="../image/7.10.png" /></p>
-<p><strong>EM算法：</strong></p>
-<p>EM算法针对的是训练样本部分属性未知的情况，考虑这种时候如何估计参数（$\Theta$表格内容）。</p>
-<p>未观测到的变量称为<strong>隐变量（latent variable）</strong>。</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>略</p>
-</div>
-<p><strong>变分推断：</strong></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>略</p>
-</div>
 
 
 
@@ -858,6 +1697,44 @@ $Q=q$：（是否为好瓜；甜度）=（是；高）</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter6/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 6.支持向量机">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                6.支持向量机
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../Quantum/Chapter1/" class="md-footer__link md-footer__link--next" aria-label="下一页: 1.量子比特与量子门">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                1.量子比特与量子门
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

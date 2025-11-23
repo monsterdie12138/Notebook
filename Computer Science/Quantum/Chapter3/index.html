@@ -1461,12 +1461,12 @@
 <p class="admonition-title">Proof</p>
 <p>$$
 \begin{align}
-\text{QFT}|j\rangle &amp; =\frac{1}{\sqrt{N}}\sum\limits_{k=0}^{N-1}e^{\frac{2\pi i}{N}\cdot jk}|k\rangle \
-&amp; =\frac{1}{\sqrt{2^n}}\sum\limits_{k_1=0}^1\dots\sum\limits_{k_n=0}^1e^{\frac{2\pi i}{2^n}\cdot j\sum\limits_{l=1}^nk_l2^{n-l}}|k_1\dots k_n\rangle \
-&amp; =\frac{1}{\sqrt{2^n}}\sum\limits_{k_1=0}^1\dots\sum\limits_{k_n=0}^1e^{2\pi ij\sum\limits_{l=1}^nk_l2^{-l}}|k_1\dots k_n\rangle \
-&amp; =\frac{1}{\sqrt{2^n}}\sum\limits_{k_1=0}^1\dots\sum\limits_{k_n=0}^1\bigotimes\limits_{l=1}^n(e^{2\pi ijk_l2^{-l}}|k_l\rangle) \
-&amp; =\frac{1}{\sqrt{2^n}}\bigotimes\limits_{l=1}^n\sum\limits_{k_l=0}^1e^{2\pi ijk_l2^{-l}}|k_l\rangle \
-&amp; =\frac{1}{\sqrt{2^n}}\bigotimes\limits_{l=1}^n(|0\rangle+e^{2\pi ij2^{-l}}|1\rangle) \
+\text{QFT}|j\rangle &amp; =\frac{1}{\sqrt{N}}\sum\limits_{k=0}^{N-1}e^{\frac{2\pi i}{N}\cdot jk}|k\rangle \\
+&amp; =\frac{1}{\sqrt{2^n}}\sum\limits_{k_1=0}^1\dots\sum\limits_{k_n=0}^1e^{\frac{2\pi i}{2^n}\cdot j\sum\limits_{l=1}^nk_l2^{n-l}}|k_1\dots k_n\rangle \\
+&amp; =\frac{1}{\sqrt{2^n}}\sum\limits_{k_1=0}^1\dots\sum\limits_{k_n=0}^1e^{2\pi ij\sum\limits_{l=1}^nk_l2^{-l}}|k_1\dots k_n\rangle \\
+&amp; =\frac{1}{\sqrt{2^n}}\sum\limits_{k_1=0}^1\dots\sum\limits_{k_n=0}^1\bigotimes\limits_{l=1}^n(e^{2\pi ijk_l2^{-l}}|k_l\rangle) \\
+&amp; =\frac{1}{\sqrt{2^n}}\bigotimes\limits_{l=1}^n\sum\limits_{k_l=0}^1e^{2\pi ijk_l2^{-l}}|k_l\rangle \\
+&amp; =\frac{1}{\sqrt{2^n}}\bigotimes\limits_{l=1}^n(|0\rangle+e^{2\pi ij2^{-l}}|1\rangle) \\
 &amp; =\frac{1}{\sqrt{2^n}}(|0\rangle+e^{2\pi i\cdot\overline{0.j_n}}|1\rangle)(|0\rangle+e^{2\pi i\cdot\overline{0.j_{n-1}j_n}}|1\rangle)\cdots(|0\rangle+e^{2\pi i\cdot\overline{0.j_1j_2\dots j_n}}|1\rangle)
 \end{align}
 $$</p>
@@ -1587,7 +1587,7 @@ $$</p>
 <p>$U$ 有以下性质：</p>
 <p>$$U^t|y\rangle=|a^t y \mod n\rangle$$</p>
 <p><strong>定义量子态 $|u_s\rangle$：</strong></p>
-<p>$$|u_s\rangle=\frac{1}{r}\sum\limits_{k=0}^{r-1}e^{-\frac{2\pi isk}{r}}|a^k\mod n\rangle$$</p>
+<p>$$|u_s\rangle=\frac{1}{\sqrt{r}}\sum\limits_{k=0}^{r-1}e^{-\frac{2\pi isk}{r}}|a^k\mod n\rangle$$</p>
 <p>其中，$a$ 和 $n$ 已知，$r$ 未知待求。$|u_s\rangle$ 有两个性质：</p>
 <p>性质一：</p>
 <p>$$U|u_s\rangle=e^{\frac{2\pi is}{r}}|u_s\rangle$$</p>
