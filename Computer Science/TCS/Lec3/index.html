@@ -1051,17 +1051,17 @@
         <li class="md-nav__item">
   <a href="#program" class="md-nav__link">
     <span class="md-ellipsis">
-      Program编码
+      Program 编码
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Program编码">
+    <nav class="md-nav" aria-label="Program 编码">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#eval" class="md-nav__link">
     <span class="md-ellipsis">
-      EVAL函数
+      EVAL 函数
     </span>
   </a>
   
@@ -1123,6 +1123,153 @@
   
   <span class="md-ellipsis">
     Lec5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec12
   </span>
   
 
@@ -1346,17 +1493,17 @@
         <li class="md-nav__item">
   <a href="#program" class="md-nav__link">
     <span class="md-ellipsis">
-      Program编码
+      Program 编码
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Program编码">
+    <nav class="md-nav" aria-label="Program 编码">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#eval" class="md-nav__link">
     <span class="md-ellipsis">
-      EVAL函数
+      EVAL 函数
     </span>
   </a>
   
@@ -1398,10 +1545,10 @@
 <h1 id="lec3">Lec3</h1>
 <hr />
 <h2 id="_1">界的继续放缩</h2>
-<p>回顾上次 lecture 的定理：对于任意 $n,m&gt;0$ 和任意有限函数 $f:\{0,1\}^n\rightarrow\{0,1\}^m$，存在一个 boolean circuit $C$ 可以计算 $f$，最多需要 $O(m\cdot n\cdot 2^n)$ 个门。</p>
+<p>回顾上次 lecture 的定理：对于任意 $n,m&gt;0$ 和任意有限函数 $f:\{0,1\}^n\rightarrow\{0,1\}^m$，都存在一个 boolean circuit $C$ 可以计算 $f$，且最多需要 $O(m\cdot n\cdot 2^n)$ 个门。</p>
 <p>那么，这个界能否进一步放缩？</p>
 <h3 id="omcdot-2n">放缩到 $O(m\cdot 2^n)$</h3>
-<p>我们可以利用之前的 $\text{LOOKUP}$ 的思想。</p>
+<p>我们可以利用之前 $\text{LOOKUP}$ 的思想。</p>
 <table>
 <thead>
 <tr>
@@ -1514,7 +1661,7 @@
 <p>令 $s=\frac{2^n}{Cn}$，则行数不超过 $s$ 的 NAND-CIRC program 的数量不超过 $2^{2^n}$ 个。</p>
 <p>我们看到，$m=1$ 的有限函数有 $2^{2^n}$ 种，而行数不超过 $s=\frac{2^n}{Cn}$ 的 NAND-CIRC program 的数量不超过 $2^{2^n}$ 个，因此至少存在一个函数，其对应的 NAND-CIRC program 的行数大于 $s=\frac{2^n}{Cn}$，也就是至少需要 $O(\frac{2^n}{n})$ 个门。再考虑 $m$ 位，则至少需要 $O(m\cdot\frac{2^n}{n})$ 个门。</p>
 <hr />
-<h2 id="program">Program编码</h2>
+<h2 id="program">Program 编码</h2>
 <p>如何对一个 program 进行编码？</p>
 <p>我们假设 NAND-CIRC program，有 $n$ 个输入变量 $X[0],X[1],...,X[n-1]$，$m$ 个输出变量 $Y[0],Y[1],...,Y[m-1]$，还有若干个中间变量 $temp[0],temp[1],...$。</p>
 <p>由于 NAND-CIRC program 的每一行的形式都是 $A=\text{NAND}(B,C)$，因此如果 program 有 $s$ 行，则至多有 $3s$ 个变量。</p>
@@ -1522,7 +1669,7 @@
 <p>如上重命名后，program 的每一行就可以简写为长度为 $3$ 的三元组。例如 $(7,2,1)$ 表示的就是 $var[7]=\text{NAND}(var[2],var[1])$。</p>
 <p>我们只需要对这些三元组进行编码。变量数量不超过 $3s$，因此每个变量的编码长度为 $\lceil\log(3s)\rceil$，一个三元组的编码长度为 $3\lceil\log(3s)\rceil$。由于 program 有 $s$ 行，因此整个 program 的编码长度为 $3s\lceil\log(3s)\rceil$。</p>
 <p>这个 program 本身可以作为输入给到其他程序。</p>
-<h3 id="eval">EVAL函数</h3>
+<h3 id="eval">EVAL 函数</h3>
 <p>考虑函数</p>
 <p>$$\text{EVAL}_{s,n,m}:\{0,1\}^{3s\lceil\log 3s\rceil+n}\rightarrow\{0,1\}^m$$</p>
 <p>这个函数的输入分为两部分：</p>
@@ -1541,7 +1688,7 @@
 <p>实现 $\text{EVAL}_{s,n,m}$ 需要 $O(s^2\log s)$ 个门。</p>
 <div class="admonition tip">
 <p class="admonition-title">Proof</p>
-<p>第一步：写一个 python program
+<p>第一步：写一个 python program<br />
 第二步：将 python program 转换为 NAND-CIRC program</p>
 <div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -1561,15 +1708,15 @@
 <span class="normal"><a href="#__codelineno-0-16">16</a></span>
 <span class="normal"><a href="#__codelineno-0-17">17</a></span>
 <span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># 初始化，V为数组</span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># 初始化，V 为数组</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="n">s</span><span class="p">):</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="n">update</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1"># 把x赋给前n位变量</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1"># 把 x 赋给前 n 位变量</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="n">update</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">xi</span><span class="p">)</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="c1"># 运行p</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="c1"># 运行 p</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="n">a</span><span class="o">=</span><span class="n">get</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="n">b</span><span class="o">=</span><span class="n">get</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>

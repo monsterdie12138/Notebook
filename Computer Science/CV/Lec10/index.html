@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/temp_note/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/Lec10/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>4 - Monsterdie's Notebook</title>
+        <title>Lec10 - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#4" class="md-skip">
+        <a href="#lec10-recognition" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4
+              Lec10
             
           </span>
         </div>
@@ -515,6 +515,134 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic Segmentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Semantic Segmentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fully-convolutional-network-fcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fully Convolutional Network (FCN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transposed-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transposed Convolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#u-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      U-Net
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-pixel-intersection-over-union-iou" class="md-nav__link">
+    <span class="md-ellipsis">
+      Per-pixel Intersection-over-Union (IoU)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Detection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Object Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r-cnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      R-CNN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fast-r-cnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fast R-CNN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faster-r-cnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Faster R-CNN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-stage-object-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single-Stage Object Detection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instance-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instance Segmentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#human-pose-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human Pose Estimation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -531,25 +659,125 @@
   
 
 
-<h1 id="4">4</h1>
-<p>类先验概率：</p>
-<p>$$P(Y=1)=\frac{3}{5}$$</p>
-<p>$$P(Y=-1)=\frac{2}{5}$$</p>
-<p>类条件概率：</p>
-<p>$$P(X^{(1)}=2|Y=1)=\frac{1}{3}$$</p>
-<p>$$P(X^{(1)}=2|Y=-1)=\frac{1}{3}$$</p>
-<p>$$P(X^{(2)}=S|Y=1)=\frac{1}{9}$$</p>
-<p>$$P(X^{(2)}=S|Y=-1)=\frac{1}{2}$$</p>
-<p>最终概率：</p>
-<p>$$P(Y=1)\times P(X^{(1)}=2|Y=1)\times P(X^{(2)}=S|Y=1)=\frac{1}{45}$$</p>
-<p>$$P(Y=-1)\times P(X^{(1)}=2|Y=-1)\times P(X^{(2)}=S|Y=-1)=\frac{1}{15}$$</p>
-<p>因为 $\frac{1}{45}&lt;\frac{1}{15}$，所以预测类别为 $-1$。</p>
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="lec10-recognition">Lec10 Recognition</h1>
+<p><img alt="alt text" src="../image/10.1.png" /></p>
+<hr />
+<h2 id="semantic-segmentation">Semantic Segmentation</h2>
+<p>输入：图像</p>
+<p>输出：每个像素的类别标签（不区分实例）</p>
+<p>回忆之前的图像分类，直接使用卷积神经网络便可。对于语义分割，也可以对于每个像素裁剪出一个窗口，输入给卷积神经网络进行分类。</p>
+<p>但是，这有两个问题：</p>
+<ul>
+<li>速度慢</li>
+<li>受限的感受野（即每个窗口信息过于有限）</li>
+</ul>
+<h3 id="fully-convolutional-network-fcn">Fully Convolutional Network (FCN)</h3>
+<p>FCN 的基本思路：把整个图像输入给一个 CNN，该 CNN 直接输出每个像素属于各个类别的概率分布（通道数）；再取概率最大的类别作为该像素的类别标签，得到最终的<strong>语义图</strong>。</p>
+<p>损失函数定义：逐像素的交叉熵。</p>
+<p>FNN 的感受野取决于网络深度，网络越深，感受野越大。</p>
+<h3 id="transposed-convolution">Transposed Convolution</h3>
+<p>FNN 的加速方法是：在网络中加入池化层或步幅卷积来减小尺寸，称为<strong>下采样</strong>。</p>
+<p>但有一个受限的地方是：输入和输出的分辨率要一致。因此，需要将下采样后的特征图还原到原始尺寸，称为<strong>上采样</strong>。</p>
+<p>先使用插值进行 <strong>unpooling</strong> 来放大尺寸，再利用深度学习学习卷积核来对 unpooling 后的图像进行优化处理，这两步合称 <strong>transposed convolution</strong>。</p>
+<p><img alt="alt text" src="../image/10.2.png" /></p>
+<h3 id="u-net">U-Net</h3>
+<p>下采样总归会丢失信息，如何在上采样时加回来原本丢失的信息？</p>
+<p>U-Net 是 FCN 的改进。在上采样的反卷积之前，先将下采样过程中相同尺寸的特征图（红色部分）与当前上采样的特征图（蓝色部分）进行拼接，再进行反卷积，称为 <strong>skip connection</strong>，这样就可以加回来丢失的信息。</p>
+<p><img alt="alt text" src="../image/10.3.png" /></p>
+<h3 id="per-pixel-intersection-over-union-iou">Per-pixel Intersection-over-Union (IoU)</h3>
+<p>IoU 用于衡量语义分割的好坏。假设图像分为前景和背景，有一个标准答案图像和一个预测图像，计算两张图像的前景的交集和并集的比值（面积大小）。结果越大则语义分割效果越好，等于 $1$ 时表示完全重合。</p>
+<p><img alt="alt text" src="../image/10.4.png" /></p>
+<hr />
+<h2 id="object-detection">Object Detection</h2>
+<p>输入：图像</p>
+<p>输出：若干 <strong>bounding box</strong>，每个 bounding box 有类别、位置（$x,y$）、大小（$w,h$）</p>
+<p>bounding box 的数量不确定，这是最困难的地方。最早的方法是 <strong>sliding window</strong>。可以假设一个框，这个框在图像上不断滑动，对于每个位置，都截出来输入网络，输出截出的图像的类别。</p>
+<p>问题是计算量太大了。不仅每个位置都要试，而且不同的大小也要试。</p>
+<h3 id="r-cnn">R-CNN</h3>
+<p><strong>Region Proposal:</strong></p>
+<p>实际上不需要每个位置都去穷举，我们只在图像的几处地方产生 proposal。</p>
+<p>如何生成 proposal？常用的方法包括 <strong>over-segmentation</strong>：根据图像颜色做聚类，集中的区域很有可能对应一个物体，这个区域就可以作为一个 proposal。</p>
+<p><strong>R-CNN:</strong></p>
+<p>基于 region proposal 的 CNN 方法称为 <strong>R-CNN</strong>：</p>
+<ul>
+<li>使用 region proposal 的方法生成一系列 proposal</li>
+<li>每个 proposal 缩放规范化到固定大小</li>
+<li>输入 CNN，输出类别得分（分类任务）和 bounding box 的微调（4 个值，回归任务）</li>
+</ul>
+<p><img alt="alt text" src="../image/10.5.png" /></p>
+<p>检验是否正确时，类别检查相对简单，bounding box 则依然使用 IoU 衡量（预测框和真实框的交集除以并集）。</p>
+<p><strong>Non-Maximum Suppression (NMS):</strong></p>
+<p>有一个问题：如果有两个重合度很高的 proposal 对应同一个物体怎么办？</p>
+<p>我们可以使用 NMS 删掉多余的 bounding box。如果两个 bounding box 的重合度足够大，我们就认为它们对应同一个物体，只保留概率最大的那个 bounding box：</p>
+<ul>
+<li>找到分数最高的 bounding box</li>
+<li>删除与其重合度超过阈值的其他 bounding box</li>
+<li>重复上述步骤</li>
+</ul>
+<p>例如下图，分数最高的是蓝色 bounding box，将其分别与橙色、紫色和黄色的 bounding box 比较，发现橙色的 bounding box 的重合度很大，超过阈值，因此删除橙色 bounding box，只保留蓝色 bounding box。</p>
+<p>然后，除去蓝色 bounding box，分数最高的是紫色 bounding box，将其与黄色 bounding box 比较，发现重合度也很大，超过阈值，因此删除黄色 bounding box，只保留紫色 bounding box。</p>
+<p>最终图上保留的只有蓝色和紫色的 bounding box，即识别出两个物体。</p>
+<p><img alt="alt text" src="../image/10.6.png" /></p>
+<h3 id="fast-r-cnn">Fast R-CNN</h3>
+<p>Fast R-CNN 是对 R-CNN 的加速。其先将整张图输入给一个 CNN 处理，得到一张特征图。然后根据每个 proposal，在特征图上截取对应区域，再输入一个小的网络进行处理。</p>
+<p>这样相当于最初几层用于特征提取的网络被共用，称为 <strong>backbone</strong>。</p>
+<p><img alt="alt text" src="../image/10.7.png" /></p>
+<h3 id="faster-r-cnn">Faster R-CNN</h3>
+<p>Faster R-CNN 进一步加速。其希望减少 proposal 的数量（提高 proposal 的准确性），因此专门训练了一个网络来生成 proposal，称为 <strong>Region Proposal Network (RPN)</strong>。</p>
+<p>RPN 的输入是最原始的图像。其先将图像划分为多格，例如下图所示的 $20\times 15$。假设每个格子对应一个 proposal；然后，对于每个格子，预设多种尺寸的 <strong>anchor box</strong>，例如下图中的四种。对于每个格子和每个 anchor box，RPN 输出两部分内容：</p>
+<ul>
+<li>是否有一个物体（$1$ 维）</li>
+<li>anchor box 的微调（$4$ 维）</li>
+</ul>
+<p>综上，RPN 的输出维度为：格子数量 $\times$ anchor box 数量 $\times (1+4)$。</p>
+<p><img alt="alt text" src="../image/10.8.png" /></p>
+<h3 id="single-stage-object-detection">Single-Stage Object Detection</h3>
+<p>上述关于 R-CNN 的一系列方法均为 <strong>two-stage object detection</strong>，即先生成 proposal，再对 proposal 进行分类和回归。</p>
+<p>事实上，在 Faster R-CNN 的 RPN 中，如果 RPN 输出的不仅仅是“是不是一个物体”，而是“是什么物体”，那么就可以省去第二阶段的分类和回归，直接得到最终的检测结果。这就是 <strong>single-stage object detection</strong>，代表算法是 <strong>YOLO (You Only Look Once)</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>two-stage object detection 更精确；
+single-stage object detection 更快。</p>
+</div>
+<hr />
+<h2 id="instance-segmentation">Instance Segmentation</h2>
+<p>输入：图像</p>
+<p>输出：每个像素的标签（区分实例）</p>
+<p>常见做法是先进行 object detection，得到 bounding box；再对每个 bounding box 内的像素进行 semantic segmentation。这个时候在 Faster R-CNN 的基础上增加一个分支，专门用于 semantic segmentation，输出为一个 mask，前景为 $1$，背景为 $0$，称为 <strong>Mask R-CNN</strong>。</p>
+<hr />
+<h2 id="human-pose-estimation">Human Pose Estimation</h2>
+<p>输入：图像</p>
+<p>输出：人体关键点位置</p>
+<p><img alt="alt text" src="../image/10.9.png" /></p>
+<p>我们依然可以使用 FCN，输出若干张热力图，每个热力图的高值位置对应一个关键点的位置。</p>
+<p><img alt="alt text" src="../image/10.10.png" /></p>
+<p>若图像中有多个人，则有以下两种方法。</p>
+<p><strong>Top-Down:</strong></p>
+<p>先进行 object detection，得到每个人的 bounding box；再对每个 bounding box 内的人进行关键点检测。</p>
+<p>主要问题有两个：</p>
+<ul>
+<li>速度慢</li>
+<li>当人比较密集时，bounding box 可能会把多个人都框进去，影响效果</li>
+</ul>
+<p><strong>Bottom-Up:</strong></p>
+<p>先检测出所有关键点，再尝试连成骨架。连成骨架的方法是 <strong>OpenPose</strong>：</p>
+<p>训练一个网络用来连接关键点，输出为部位关联性的一个向量场，每个点的向量方向表示这个点到下一个关键点的方向。</p>
+<p><img alt="alt text" src="../image.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>top-down 方法更准确；
+bottom-up 方法更快。</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -597,6 +825,59 @@
     </fieldset>
   </form>
 
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
 
                 
               </article>

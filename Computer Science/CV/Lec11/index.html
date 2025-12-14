@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/temp_note/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/Lec11/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>4 - Monsterdie's Notebook</title>
+        <title>Lec11 Deep Learning for 3D Vision - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#4" class="md-skip">
+        <a href="#lec11-deep-learning-for-3d-vision" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4
+              Lec11 Deep Learning for 3D Vision
             
           </span>
         </div>
@@ -515,6 +515,83 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#feature-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Matching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Feature Matching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#superpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      SuperPoint
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#superglue" class="md-nav__link">
+    <span class="md-ellipsis">
+      SuperGlue
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#object-pose-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Pose Estimation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#human-pose-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human Pose Estimation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dense-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dense Reconstruction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      3d understanding
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -531,19 +608,82 @@
   
 
 
-<h1 id="4">4</h1>
-<p>类先验概率：</p>
-<p>$$P(Y=1)=\frac{3}{5}$$</p>
-<p>$$P(Y=-1)=\frac{2}{5}$$</p>
-<p>类条件概率：</p>
-<p>$$P(X^{(1)}=2|Y=1)=\frac{1}{3}$$</p>
-<p>$$P(X^{(1)}=2|Y=-1)=\frac{1}{3}$$</p>
-<p>$$P(X^{(2)}=S|Y=1)=\frac{1}{9}$$</p>
-<p>$$P(X^{(2)}=S|Y=-1)=\frac{1}{2}$$</p>
-<p>最终概率：</p>
-<p>$$P(Y=1)\times P(X^{(1)}=2|Y=1)\times P(X^{(2)}=S|Y=1)=\frac{1}{45}$$</p>
-<p>$$P(Y=-1)\times P(X^{(1)}=2|Y=-1)\times P(X^{(2)}=S|Y=-1)=\frac{1}{15}$$</p>
-<p>因为 $\frac{1}{45}&lt;\frac{1}{15}$，所以预测类别为 $-1$。</p>
+<h1 id="lec11-deep-learning-for-3d-vision">Lec11 Deep Learning for 3D Vision</h1>
+<hr />
+<p>只有课堂笔记</p>
+<hr />
+<h2 id="feature-matching">Feature Matching</h2>
+<p>三个步骤：提取特征点、构造描述子、匹配特征点</p>
+<p>之前讲的都是人工设计的特征，称为 handcrafted，很多情况下表现不好，因为依赖的几何特征都是局部的，没有语义信息。弱纹理的情况下尤其明显。（注意，和大作业有关）</p>
+<h3 id="superpoint">SuperPoint</h3>
+<p>最早用神经网络做特征匹配，做的是提取特征点和构造描述子。本质上就是一个全卷积神经网络，输入是一个图像，输出有两部分，一个是热力图，表示想检测的特征点位置，另一部分是描述子。</p>
+<p>类似于 UNet 的结构，有 encoder 下采样，decoder 上采样。</p>
+<p>第一部分热力图，值比较大的地方认为是特征点的位置，经过非极大值抑制（NMS）得到最终的特征点位置。</p>
+<p>训练数据是什么样的？损失函数呢？</p>
+<p>很简单，训练数据是很多标出角点的图，图象是合成的。损失函数也很简单，有角点位置就可以构造出热力图的真值，角点位置放高斯就可以得到。</p>
+<p>在上述损失函数上还会加上：想要保证特征点的可重复性（两张图都有的），因此可以加入可重复性的约束，两张合成的图分别送进网络，输出的特征点要对应（合成图的变换都是已知的）。</p>
+<p>先过网络再做变换，和先变换再过网络，得到的特征点位置要一致。</p>
+<p>对于描述子，最后输出的特征图的厚度就是描述子的维度，特征图的大小和输入图像大小相同，每个位置的向量就是该位置的描述子。</p>
+<p>但是，描述子和上面的角点不同，没有真值，怎么办？</p>
+<p>什么样的描述子比较好？两张图真正对应的特征点的描述子要相似（距离小），不对应的要不相似（距离大）。这样的损失称为 contrastive loss。</p>
+<p>加一个截断，防止差距太大。</p>
+<p>还有一种 triplet loss，和上面本质上是一样的，其实就是把两个 contrastive loss 合并到一起。</p>
+<p>训练数据哪里来，可以合成数据（一张图变换一下，变换已知），但是合成数据只能模拟二维变换，没法模拟不同视角拍摄的变换；另外一种方法是三维重建，给定多张图，用 SfM 重建出三维点云，投影到各个输入的二维图像上就知道哪些点是对应的。但是 SfM 第一步就是特征匹配，本末倒置，不过 SfM 的输入有很多图，匹配更加容易？</p>
+<h3 id="superglue">SuperGlue</h3>
+<p>神经网络还可以做第三步：特征点匹配。之前我们都没有考虑过空间信息，比如相邻的点匹配的也应该是相邻的点。</p>
+<p>图神经网络是处理 graph 的神经网络，可以把两个图像的特征点看成两个 graph，节点是特征点，节点的特征是描述子，边可以连接相邻的点？</p>
+<p>SuperGlue 也有问题，还是传统的三阶段方式，例如第一个检测阶段就出错了怎么办，例如可重复性不强。</p>
+<p>LoFTR 不需要检测器，没有第一个阶段的步骤，就做稠密匹配，所有像素都去匹配，这样就不存在可重复性问题。但是太慢了，因此第一步会给两张图画格子，对格点做匹配，不准的话进行局部搜索。</p>
+<p>（可以用这个做大作业？ROMA 目前效果最好）</p>
+<hr />
+<h2 id="object-pose-estimation">Object Pose Estimation</h2>
+<p>之前讲的是相机位姿估计，现在是物体的位姿估计，比如拍到一只猫，在相机坐标系下的位置和朝向，本质上和前者是同一个问题。</p>
+<p>假设物体三维模型已知，可以是网格，也可以是点云，假设有一些三维关键点，假设图像上的对应点已知，也就是对应关系已知，那么可以用 PnP 算法求解。</p>
+<p>三维模型从哪儿来？SfM。物体表面比较光滑，没有纹理，要用到 SuperGlue 或者 LoFTR 这种方法。</p>
+<p>PPT 上有三篇论文，记得看一下。</p>
+<p>物体的位姿估计还有另一种方法：用一个网络，输入一张图，直接输出物体的位姿。例如 PoseCNN。但精准度不高，而且泛化能力一般，物体最好是要见过的。</p>
+<p>还有一类方法是：假如就要估计某一种特定的物体，设定眼睛、耳朵等直接用网络检测，然后得到点的对应关系。</p>
+<hr />
+<h2 id="human-pose-estimation">Human Pose Estimation</h2>
+<p>之前讲的都是二维的。关键点在三维的位置怎么估计。</p>
+<p>MoCap 动捕</p>
+<p>衣服上关键点能反射红外光，用四周的红外相机发出的红外光反射回来定位</p>
+<p>多视角三维人体姿态估计</p>
+<p>还可以单目，但只能靠神经网络了</p>
+<hr />
+<h2 id="dense-reconstruction">Dense Reconstruction</h2>
+<p>每个图象对应的深度图，搞出网格，这是传统的三维重建。</p>
+<p>如何使用神经网络估计深度图？传统是 MVS，是 colmap 里实现的，会去计算每个像素每个深度的 error，构成 cost colume，记录每个像素每个深度的 error。</p>
+<p>MVSNet：输入是 cost volume，输出是深度图，也是一个全卷积网络。最前面还有一个特征提取的网络。目前是效果最好的。</p>
+<p>可以模拟建模师的步骤：不停调整三维模型，让三维模型投影到图像上和图像尽可能一致。</p>
+<p>但是这很难，因此最好换种三维表示方式，最好的是隐式表示：比如函数表示表面、occupancy、sdf，这里的 occupancy 有一个隐函数，输入任意一个三维点，输出这个点是在物体内部还是外部（0/1），分辨率无限高，这是和离散体素的区别。</p>
+<p>但是对于任意形状，很难知道表达式。使用神经网络，称为隐式的神经表达，输入为三维坐标，输出为 occupancy 或 sdf。</p>
+<p>这样比较好优化，表达能力比较强。</p>
+<p>NeRF 最经典</p>
+<p>什么是辐射场：每个位置从不同角度看过去的颜色值不一样，记录下来就是光场，辐射场就是光场的近似。</p>
+<p>辐射=颜色+密度</p>
+<p>输入是坐标加观测角度（球坐标下有两个），输出是颜色和密度。</p>
+<p>使用的渲染方式是体渲染。</p>
+<p>如何从 NeRF 得到三维模型？可以通过密度阈值提取出等值面，Marching Cubes 算法。</p>
+<p>NeRF 适合光场重建，而不适合网格表面重建。应该使用 NeuS。</p>
+<p>3DGS：用一组高斯椭球表示辐射场。相比于 NeRF 重建效果类似，但是速度更快。</p>
+<p>2DGS：相比于 3DGS 能得到表面网格。</p>
+<hr />
+<h2 id="3d-understanding">3d understanding</h2>
+<p>分类：multi-view cnn</p>
+<p>多视角拍摄的图像输入网络，输出类别</p>
+<p>局限：只适合于模型本身就很好，</p>
+<p>也可以直接处理体素数据，使用 3d 的卷积网络</p>
+<p>使用稀疏结构：八叉树 octree</p>
+<p>比如先 8×8×8 对空间划分，哪个被占据就继续划分</p>
+<p>卷积只要对有值的地方做就行，且强制卷积的输出只在原本有值的地方有值，否则有值的地方随着卷积会越来越多。这个才叫稀疏卷积。</p>
+<p>如何用神经网络对点云做处理？</p>
+<p>不能直接用卷积神经网络，点云数据是不规则的（unrasterized data）；但是全连接还是可以的，PointNet，说白了就是一个全连接的网络。</p>
+<p>网络要对输入的点云的几何变换具有不变性，比如旋转平移缩放。最简单的想法：类似于 sift，转一下。</p>
+<p>pointnet 点云语义分割【！！！大作业也许可以用！！！】</p>
+<p>pointnet++：局部感受野</p>
+<p>3d object detection：</p>
+<p>需要 9 个数，中心坐标，长宽高、旋转</p>
 
 
 

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/temp_note/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/project/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>4 - Monsterdie's Notebook</title>
+        <title>Project - Monsterdie's Notebook</title>
       
     
     
@@ -94,11 +94,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#4" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -130,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4
+              Project
             
           </span>
         </div>
@@ -512,8 +507,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -531,19 +524,38 @@
   
 
 
-<h1 id="4">4</h1>
-<p>类先验概率：</p>
-<p>$$P(Y=1)=\frac{3}{5}$$</p>
-<p>$$P(Y=-1)=\frac{2}{5}$$</p>
-<p>类条件概率：</p>
-<p>$$P(X^{(1)}=2|Y=1)=\frac{1}{3}$$</p>
-<p>$$P(X^{(1)}=2|Y=-1)=\frac{1}{3}$$</p>
-<p>$$P(X^{(2)}=S|Y=1)=\frac{1}{9}$$</p>
-<p>$$P(X^{(2)}=S|Y=-1)=\frac{1}{2}$$</p>
-<p>最终概率：</p>
-<p>$$P(Y=1)\times P(X^{(1)}=2|Y=1)\times P(X^{(2)}=S|Y=1)=\frac{1}{45}$$</p>
-<p>$$P(Y=-1)\times P(X^{(1)}=2|Y=-1)\times P(X^{(2)}=S|Y=-1)=\frac{1}{15}$$</p>
-<p>因为 $\frac{1}{45}&lt;\frac{1}{15}$，所以预测类别为 $-1$。</p>
+  <h1>Project</h1>
+
+<p><strong>第一步：获取相机位姿</strong></p>
+<p>使用 colmap，可以加 "manually add correspondence"</p>
+<p><strong>第二步：获取深度和法线</strong></p>
+<p>使用 depth anything v2/v3 和 normal anything</p>
+<p><strong>第三步：获取物体背景 mask</strong></p>
+<p>用于去背景，使用 SAM2</p>
+<p><strong>第四步：训练结构</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>scene/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├─ images/           (原图)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├─ depth/            (Depth Anything 输出，png/exr)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├─ normal/           (Normal Anything 输出，png/exr)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├─ mask/             (SAM 输出，png)
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├─sparse/0/
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>| ├─ cameras.bin
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>| └─ images.bin
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└─ config.yaml       (训练配置)
+</span></code></pre></div>
+<p>前四个文件的对应图片文件名一致，尺寸也要一致。</p>
+<p><code>config.yaml</code> 内容：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">use_depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">use_normal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">use_mask</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">depth_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nt">normal_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nt">mask_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 可选，不改也行</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nt">depth_scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</span></code></pre></div>
 
 
 

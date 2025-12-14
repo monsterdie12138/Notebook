@@ -94,6 +94,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#3d-understanding" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -508,6 +513,56 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3d-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      3d understanding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computational-photography" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computational Photography
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Computational Photography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hdr" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deblurring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deblurring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -524,9 +579,68 @@
   
 
 
-  <h1>Temp class</h1>
-
-
+<h2 id="3d-understanding">3d understanding</h2>
+<p>分类：multi-view cnn</p>
+<p>多视角拍摄的图像输入网络，输出类别</p>
+<p>局限：只适合于模型本身就很好，</p>
+<p>也可以直接处理体素数据，使用 3d 的卷积网络</p>
+<p>使用稀疏结构：八叉树 octree</p>
+<p>比如先 8×8×8 对空间划分，哪个被占据就继续划分</p>
+<p>卷积只要对有值的地方做就行，且强制卷积的输出只在原本有值的地方有值，否则有值的地方随着卷积会越来越多。这个才叫稀疏卷积。</p>
+<p>如何用神经网络对点云做处理？</p>
+<p>不能直接用卷积神经网络，点云数据是不规则的（unrasterized data）；但是全连接还是可以的，PointNet，说白了就是一个全连接的网络。</p>
+<p>网络要对输入的点云的几何变换具有不变性，比如旋转平移缩放。最简单的想法：类似于 sift，转一下。</p>
+<p>pointnet 点云语义分割【！！！大作业也许可以用！！！】</p>
+<p>pointnet++：局部感受野</p>
+<p>3d object detection：</p>
+<p>需要 9 个数，中心坐标，长宽高、旋转</p>
+<hr />
+<h1 id="computational-photography">Computational Photography</h1>
+<p>怎么 P 图？</p>
+<h2 id="hdr">HDR</h2>
+<p>高动态范围成像</p>
+<p>曝光的问题，exposure = gain × irradiance × time</p>
+<p>gain 是胶片/传感器的灵敏度，由 ISO 控制
+irradiance 是场景的亮度，由光圈控制
+time 是曝光时间，由快门控制</p>
+<p>哪怕选择了一个合适的曝光量，场景中也可能有很亮和很暗的部分，对比度（最亮的部分和最暗的部分）太高。</p>
+<p>这个对比度就叫 动态范围 dynamic range。</p>
+<p>raw：4096:1 12位</p>
+<p>原理：多张不同曝光的照片合成一张 HDR 照片</p>
+<p>问题：怎么合成？每个像素取哪张图的值？</p>
+<ul>
+<li>在每张图中找到“好”的像素（不是极端值，在中间的一定范围内）</li>
+<li>把同一个位置好的像素加权平均，权重和曝光时间有关</li>
+</ul>
+<h2 id="deblurring">Deblurring</h2>
+<p>模糊的原因：对焦没对好（失焦），运动模糊</p>
+<p>从拍摄角度看，如何减少模糊？</p>
+<ul>
+<li>对焦准确</li>
+<li>快门速度快（但会导致曝光不够）</li>
+<li>增大光圈</li>
+<li>增大 ISO</li>
+</ul>
+<p>清晰图像和模糊图像之间的变换关系可以近似成一个卷积</p>
+<p>去模糊分为两种：non-blind（卷积核已知） 和 blind （卷积核未知）</p>
+<p>对焦没对好，属于 non-blind</p>
+<p>运动去模糊，属于 blind</p>
+<p>$$G=F\otimes H$$</p>
+<p>$G$ 为模糊的图像，$F$ 为清晰的图像，$H$ 为卷积核</p>
+<p>使用傅里叶变换（卷积定理）：</p>
+<p>$$FFT(G)=FFT(F\times H)=FFT(F)\times FFT(H)$$</p>
+<p>所以</p>
+<p>$$F=IFFT(FFT(G)\div FFT(H))$$</p>
+<p>但有问题，因为 $FFT(H)$ 在高频部分接近于 0，直接除不行，放大高频噪声。</p>
+<p>解决方法：Wiener filter，就是在除法时进行调整。</p>
+<p>例如监控摄像头，车辆的运动模糊方向一般是已知的，可以估计出卷积核。</p>
+<p>图像去模糊也可以建模成一个优化问题。</p>
+<p>优化变量：要求解的清晰图像</p>
+<p>目标函数：清晰图像进行模糊之后要接近观测到的模糊图像</p>
+<p>但是解不唯一，输入 ill-posed，需要正则化，好的清晰图像大部分地方梯度为0，只有边缘部分梯度很大。</p>
+<p>那么 blind 呢？</p>
+<p>优化变量：清晰图像 + 卷积核</p>
+<p>目标函数：和之前一样</p>
 
 
 

@@ -996,9 +996,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#theorem1" class="md-nav__link">
+  <a href="#theorem-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Theorem1
+      Theorem 1
     </span>
   </a>
   
@@ -1038,9 +1038,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#theorem2" class="md-nav__link">
+  <a href="#theorem-2" class="md-nav__link">
     <span class="md-ellipsis">
-      Theorem2
+      Theorem 2
     </span>
   </a>
   
@@ -1049,7 +1049,7 @@
           <li class="md-nav__item">
   <a href="#lookup" class="md-nav__link">
     <span class="md-ellipsis">
-      LOOKUP函数
+      LOOKUP 函数
     </span>
   </a>
   
@@ -1123,6 +1123,153 @@
   
   <span class="md-ellipsis">
     Lec5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec12
   </span>
   
 
@@ -1312,9 +1459,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#theorem1" class="md-nav__link">
+  <a href="#theorem-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Theorem1
+      Theorem 1
     </span>
   </a>
   
@@ -1354,9 +1501,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#theorem2" class="md-nav__link">
+  <a href="#theorem-2" class="md-nav__link">
     <span class="md-ellipsis">
-      Theorem2
+      Theorem 2
     </span>
   </a>
   
@@ -1365,7 +1512,7 @@
           <li class="md-nav__item">
   <a href="#lookup" class="md-nav__link">
     <span class="md-ellipsis">
-      LOOKUP函数
+      LOOKUP 函数
     </span>
   </a>
   
@@ -1408,29 +1555,28 @@
 <h2 id="model1-boolean-circuit">Model1: Boolean Circuit</h2>
 <p>boolean circuit 由三种门构成，对应三个最基本的函数：</p>
 <p>$$\text{AND}(a,b)=\begin{cases}
-    1, a=b=1\\
-    0,\text{otherwise}
+    1&amp;a=b=1\\
+    0&amp;\text{otherwise}
 \end{cases}$$</p>
 <p>$$\text{OR}(a,b)=\begin{cases}
-    0, a=b=0\\
-    1,\text{otherwise}
+    0&amp;a=b=0\\
+    1&amp;\text{otherwise}
 \end{cases}$$</p>
 <p>$$\text{NOT}(a)=\begin{cases}
-    1, a=0\\
-    0, a=1
+    1&amp;a=0\\
+    0&amp;a=1
 \end{cases}$$</p>
 <p>通过这三个门可以组成更多复杂函数。</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><strong>XOR:</strong></p>
-<p>异或</p>
-<p>$\text{XOR}(a,b)=\overline{(a\wedge b)}\wedge(a\vee b)$</p>
+<p><strong>异或 XOR:</strong></p>
+<p>$$\text{XOR}(a,b)=\overline{(a\wedge b)}\wedge(a\vee b)$$</p>
 <p><strong>MAJ3:</strong></p>
 <p>看三个输入中的 $1$ 多还是 $0$ 多，返回多的那个。</p>
-<p>$\text{MAJ3}(x_0,x_1,x_2)=\begin{cases}
-    1,x_1+x_2+x_3\geqslant 2\\
-    0,\text{otherwise}
-\end{cases}=(x_0\wedge x_1)\vee(x_1\wedge x_2)\vee(x_2\wedge x_0)$</p>
+<p>$$\text{MAJ3}(x_0,x_1,x_2)=\begin{cases}
+    1&amp;x_1+x_2+x_3\geqslant 2\\
+    0&amp;\text{otherwise}
+\end{cases}=(x_0\wedge x_1)\vee(x_1\wedge x_2)\vee(x_2\wedge x_0)$$</p>
 </div>
 <p>我们可以将 boolean circuit 抽象成一个有向无环图，一共有三种节点：</p>
 <ul>
@@ -1443,7 +1589,7 @@
 <p>输出节点实际是在门节点中指定。</p>
 </div>
 <p>电路的规模规定为门的个数，即 $|C|=s$。</p>
-<p>当我们拿到长度为 $n$ 的 01 串 $x\in{0,1}^n$，我们将每一位都输入到对应的输入节点中：$x_0\rightarrow X[0],x_1\rightarrow X[1],...,x_{n-1}\rightarrow X[n-1]$，然后输出节点就会有输出值：$Y[0],Y[1],...,Y[m-1]$，我们将这些输出值拼接起来得到长度为 $m$ 的 01 串，即为电路 $C$ 在输入 $x$ 下的输出，记为 $C(x)$。</p>
+<p>当我们拿到长度为 $n$ 的 01 串 $x\in\{0,1\}^n$，我们将每一位都输入到对应的输入节点中：$x_0\rightarrow X[0],x_1\rightarrow X[1],...,x_{n-1}\rightarrow X[n-1]$；然后输出节点就会有输出值：$Y[0],Y[1],...,Y[m-1]$。我们将这些输出值拼接起来得到长度为 $m$ 的 01 串，即为电路 $C$ 在输入 $x$ 下的输出，记为 $C(x)$。</p>
 <p>我们说电路 $C$ 计算了某个函数 $f:\{0,1\}^n\rightarrow\{0,1\}^m$，当且仅当对于任意 $x\in\{0,1\}^n$，都有 $C(x)=f(x)$。</p>
 <p>以 XOR 为例，我们可以将电路表示为如下程序：</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
@@ -1456,14 +1602,14 @@
 </span></code></pre></div></td></tr></table></div>
 <p>这一段程序称为 <strong>AON-CIRC program</strong>，和原本的电路等价，可以相互转换。</p>
 <p>我们可以观察到，程序的行数就是门的个数，因此程序的规模定义为：$|P|=\sharp\text{lines}=s$</p>
-<h3 id="theorem1">Theorem1</h3>
+<h3 id="theorem-1">Theorem 1</h3>
 <p>一个函数 $f$ 可以用一个有 $s$ 个门的 boolean circuit 计算，当且仅当它可以用一个有 $s$ 行的 AON-CIRC program 计算。</p>
 <hr />
 <h2 id="model2-nand-circuit">Model2: NAND Circuit</h2>
 <p>还有一种很重要的门——与非门：</p>
 <p>$$\text{NAND}(a,b)=\begin{cases}
-    0, a=b=1\\
-    1, \text{otherwise}
+    0&amp;a=b=1\\
+    1&amp;\text{otherwise}
 \end{cases}$$</p>
 <p>NAND 门可以用 AND 和 NOT 门实现；反过来，AND 门、OR 门、NOT 门也都可以用 NAND 门实现：</p>
 <p>$$\text{NOT}(a)=\text{NOT}(\text{AND}(a,a))=\text{NAND}(a,a)$$</p>
@@ -1500,21 +1646,21 @@
     f_1:\text{ONE}(a,b)=1\\
     f_2:\text{ZERO}(a,b)=0\\
     f_3:\text{IF}(a,b,c)=\begin{cases}
-        b,a=1\\
-        c,a=0
+        b&amp;a=1\\
+        c&amp;a=0
     \end{cases}
 \end{cases}$</p>
 <p>这三个函数拼成的集合 $\mathcal{F}$ 是 universal 的。</p>
 <p>原因：$\text{NAND}(a,b)=\text{IF}(a,\text{IF}(b,\text{ZERO}(a,b),\text{ONE}(a,b)),\text{ONE}(a,b))$</p>
 <p>也就是说，任意一个有限函数都可以转换成函数集合表示。</p>
 </div>
-<h3 id="theorem2">Theorem2</h3>
-<p>对于任意 $n,m&gt;0$ 和任意有限函数 $f:\{0,1\}^n\rightarrow\{0,1\}^m$，存在一个 boolean circuit $C$ 可以计算 $f$。</p>
+<h3 id="theorem-2">Theorem 2</h3>
+<p>对于任意 $n,m&gt;0$ 和任意有限函数 $f:\{0,1\}^n\rightarrow\{0,1\}^m$，都存在一个 boolean circuit $C$ 可以计算 $f$。</p>
 <p>那么 $C$ 最多需要多少个门才能计算这个函数？</p>
 <p>$$O(m\cdot n\cdot 2^n)$$</p>
 <div class="admonition tip">
 <p class="admonition-title">proof</p>
-<p>考虑输出 $Y[j]$ 和输入 $X[0],X[1],...,X[n-1]$ 的对应关系。</p>
+<p>考虑输出 $Y[j]$ 和输入 $X[0],X[1],...,X[n-1]$ 的对应关系。例如：</p>
 <table>
 <thead>
 <tr>
@@ -1561,7 +1707,7 @@
 </tr>
 </tbody>
 </table>
-<p>上述表格只是举个例子，我们发现，$Y[j]$ 可以表示成析取范式：</p>
+<p>$Y[j]$ 可以表示成析取范式：</p>
 <p>$$(...\wedge...\wedge...)\vee(...\wedge...\wedge...)\vee...$$</p>
 <p>每一个括号对应 $X[0],X[1],...,X[n-1]$ 的一个特定取值组合，因此总共有 $2^n$ 个括号。</p>
 <p>每一个括号中有 $n$ 个变量，因此在这个析取范式中与门和或门的数量级为 $O(n\cdot 2^n)$。</p>
@@ -1585,7 +1731,7 @@
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
-<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>def MAJ3(a,b,c):
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>def MAJ3(a, b, c):
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>    ...
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>    ...
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>    ...
@@ -1624,30 +1770,40 @@
 </div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><strong>$\text{MULT}:\{0,1\}^{2n}\rightarrow\{0,1\}^{2n}$</strong>
+<p><strong>$\text{MULT}:\{0,1\}^{2n}\rightarrow\{0,1\}^{2n}$</strong><br />
 <strong>$\text{MULT}(x_0,...,x_{2n-1})=x_0...x_{n-1}\times x_n...x_{2n-1}$</strong></p>
-<p>我们可以将乘法看作最多$n$次加法（竖式），因此实现 MULT 需要 $O(n^2)$ 个门。</p>
+<p>我们可以将乘法看作最多 $n$ 次加法（竖式），因此实现 MULT 需要 $O(n^2)$ 个门。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>但实际上有机会降到 $O(n^{\log_23})$ 甚至更低。</p>
 </div>
 </div>
-<h3 id="lookup">LOOKUP函数</h3>
-<p>现在我们来看一个很重要的函数——$\text{LOOKUP}:\{0,1\}^{2^k+k}\rightarrow\{0,1\}$</p>
-<p>输入分为两个部分。第一部分长度为 $2^k$，记作 $X$；第二部分长度为 $k$，记作 $i$。</p>
+<h3 id="lookup">LOOKUP 函数</h3>
+<p>现在我们来看一个很重要的函数：</p>
+<p>$$\text{LOOKUP}:\{0,1\}^{2^k+k}\rightarrow\{0,1\}$$</p>
+<p>输入分为</p>
+<ul>
+<li>第一部分：长度为 $2^k$，记作 $X$</li>
+<li>第二部分：长度为 $k$，记作 $i$</li>
+</ul>
 <p>LOOKUP 的功能是：返回 $X$ 中第 $i$ 位的值。</p>
-<p>采用的归纳的思想：</p>
-<p>对于 $\text{LOOKUP}_1(X[0],X[1],i[0])$</p>
-<p>若 $i[0]=0$，则返回 $X[0]$；
-若 $i[0]=1$，则返回 $X[1]$。</p>
-<p>规模为 $O(1)$。</p>
-<p>对于 $\text{LOOKUP}_2(X[0],X[1],X[2],X[3],i[0],i[1])$</p>
-<p>若 $i[0]=0$，则返回 $\text{LOOKUP}_1(X[0],X[1],i[1])$；
-若 $i[0]=1$，则返回 $\text{LOOKUP}_1(X[2],X[3],i[1])$。</p>
-<p>对于 $\text{LOOKUP}_k(X[0],X[1],...,X[2^k-1],i[0],i[1],...,i[k-1])$</p>
-<p>若 $i[0]=0$，则返回 $\text{LOOKUP}<em k-1="k-1">{k-1}(X[0],X[1],...,X[2^{k-1}-1],i[1],...,i[k-1])$；
-若 $i[0]=1$，则返回 $\text{LOOKUP}</em>+1],...,X[2^k-1],i[1],...,i[k-1])$。}(X[2^{k-1}],X[2^{k-1</p>
-<p>通过归纳可得：$\text{LOOKUP}_k$的规模为 $O(2^k)$。</p>
+<p>采用的<strong>归纳</strong>的思想：</p>
+<p>对于 $\text{LOOKUP}_1(X[0],X[1],i[0])$：</p>
+<ul>
+<li>若 $i[0]=0$，则返回 $X[0]$</li>
+<li>若 $i[0]=1$，则返回 $X[1]$</li>
+</ul>
+<p>对于 $\text{LOOKUP}_2(X[0],X[1],X[2],X[3],i[0],i[1])$：</p>
+<ul>
+<li>若 $i[0]=0$，则返回 $\text{LOOKUP}_1(X[0],X[1],i[1])$</li>
+<li>若 $i[0]=1$，则返回 $\text{LOOKUP}_1(X[2],X[3],i[1])$</li>
+</ul>
+<p>对于 $\text{LOOKUP}_k(X[0],X[1],...,X[2^k-1],i[0],i[1],...,i[k-1])$：</p>
+<ul>
+<li>若 $i[0]=0$，则返回 $\text{LOOKUP}_{k-1}(X[0],X[1],...,X[2^{k-1}-1],i[1],...,i[k-1])$</li>
+<li>若 $i[0]=1$，则返回 $\text{LOOKUP}_{k-1}(X[2^{k-1}],X[2^{k-1}+1],...,X[2^k-1],i[1],...,i[k-1])$</li>
+</ul>
+<p>通过归纳可得：$\text{LOOKUP}_k$ 的规模为 $O(2^k)$。</p>
 
 
 

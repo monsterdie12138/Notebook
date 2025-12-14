@@ -1150,6 +1150,153 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1435,15 +1582,15 @@
 <hr />
 <h2 id="_1">一般函数</h2>
 <h3 id="_2">一般函数与布尔函数</h3>
-<p>之前我们考虑的都是有限函数，即输入和输出长度固定的函数。接下来我们考虑更一般的函数：</p>
+<p>之前考虑的都是有限函数，即输入和输出长度固定的函数。接下来考虑<strong>一般函数</strong>：</p>
 <p>$$f:\{0,1\}^*\rightarrow\{0,1\}^*$$</p>
-<p>实际上，要看一般函数的可计算性，只需要看其中的一类函数，即布尔函数：</p>
+<p>要看一般函数的可计算性，只需要看其中的一类函数，即<strong>布尔函数</strong>：</p>
 <p>$$bf:\{0,1\}^*\rightarrow\{0,1\}$$</p>
-<p>实际上，任何函数 $f$ 都有一个对应的可计算性一致的布尔函数 $bf$，定义为：</p>
+<p>原因是，任何一般函数 $f$ 都有一个对应的可计算性一致的布尔函数 $bf$，定义为：</p>
 <p>$$bf(x,i,c)=\begin{cases}
-    f(x)_i, &amp; \text{if } c=0, i&lt;|f(x)|\\
-    1, &amp; \text{if } c=1, i&lt;|f(x)|\\
-    0, &amp; \text{if } i\geqslant |f(x)|
+    f(x)_i &amp; \text{if } c=0, i&lt;|f(x)|\\
+    1 &amp; \text{if } c=1, i&lt;|f(x)|\\
+    0 &amp; \text{if } i\geqslant |f(x)|
 \end{cases}$$</p>
 <p>可以利用 $f$ 描述 $bf$：</p>
 <div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
@@ -1487,10 +1634,10 @@
 <h2 id="deterministic-finite-automaton-dfa">Deterministic Finite Automaton (DFA)</h2>
 <h3 id="dfa-graph">DFA Graph</h3>
 <p>现在以一个经典的布尔函数——<strong>异或</strong>为例：</p>
-<p>$$XOR:\{0,1\}^*\rightarrow\{0,1\}$$</p>
-<p>$$XOR(x)=\sum\limits_{i=0}^{|x|-1}x_i\mod 2$$</p>
+<p>$$\text{XOR}:\{0,1\}^*\rightarrow\{0,1\}$$</p>
+<p>$$\text{XOR}(x)=\sum\limits_{i=0}^{|x|-1}x_i\mod 2$$</p>
 <p>即：有奇数个 $1$ 结果就为 $1$；有偶数个 $1$ 结果就为 $0$。</p>
-<p>$XOR$ 不能用之前的电路模拟，因为输入长度不固定；但显然可计算：</p>
+<p>$\text{XOR}$ 不能用之前的电路模拟，因为输入长度不固定；但显然可计算：</p>
 <div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
@@ -1501,7 +1648,7 @@
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="n">res</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">%</span> <span class="mi">2</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="k">return</span> <span class="n">res</span>
 </span></code></pre></div></td></tr></table></div>
-<p>从程序中可以看出：$XOR$ 是 one-pass（从左到右只扫描一遍）、constant-memory（内存空间为常数级别）的。</p>
+<p>从程序中可以看出：$\text{XOR}$ 是 one-pass（从左到右只扫描一遍）、constant-memory（内存空间为常数级别）的。</p>
 <p>我们可以用一张图来表示：</p>
 <p><img alt="alt text" src="../image/4.1.png" /></p>
 <div class="admonition note">
@@ -1518,8 +1665,8 @@
 <li>$\delta:K\times\{0,1\}\rightarrow K$：状态转移函数</li>
 </ul>
 <p>给定长度为 $n$ 的输入 $x_0x_1...x_{n-1}$，每次读一位，来确定下一个状态是什么。即 $s_0=s$，$s_1=\delta(s_0,x_0)$，$s_2=\delta(s_1,x_1)$，依此类推，直到 $s_n=\delta(s_{n-1},x_{n-1})$。最后如果 $s_n\in F$，则 accept，否则 reject。</p>
-<p>DFA $M$ 计算了一个布尔函数 $f$ 当且仅当 $M$ accept $x$ $\Leftrightarrow$ $f(x)=1$。</p>
-<p>DFA $M$ 决定了一个 language $A$ 当且仅当 $M$ accept $x$ $\Leftrightarrow$ $x\in A$。</p>
+<p>DFA $M$ 计算了一个布尔函数 $f$，当且仅当 $M$ accept $x$ $\Leftrightarrow$ $f(x)=1$。</p>
+<p>DFA $M$ 决定了一个 language $A$，当且仅当 $M$ accept $x$ $\Leftrightarrow$ $x\in A$。</p>
 <p>给定一个 DFA，只能判定唯一一个 language。</p>
 <h3 id="regular-language">Regular Language</h3>
 <p>能被 DFA 决定的 language 称为 <strong>regular language</strong>。</p>
@@ -1539,11 +1686,11 @@
 <p>若 language $A$ 和 $B$ 是 regular 的，那么 $A\cup B$ 也是 regular 的。</p>
 <div class="admonition tip">
 <p class="admonition-title">Proof</p>
-<p>存在两个 DFA $M_A$，$M_B$，分别判定 $A$ 和 $B$。</p>
-<p>$M_A=(K_A,s_A,F_A,\delta_A)$
-$M_B=(K_B,s_B,F_B,\delta_B)$</p>
-<p>构建新的 DFA $M$，使得 $M$ 判定 $A\cup B$。</p>
-<p>$M=(K,s,F,\delta)$</p>
+<p>存在两个 DFA $M_A$，$M_B$，分别判定 $A$ 和 $B$：</p>
+<p>$$M_A=(K_A,s_A,F_A,\delta_A)$$</p>
+<p>$$M_B=(K_B,s_B,F_B,\delta_B)$$</p>
+<p>构建新的 DFA $M$，使得 $M$ 判定 $A\cup B$：</p>
+<p>$$M=(K,s,F,\delta)$$</p>
 <ul>
 <li>$K=K_A\times K_B$，即状态组</li>
 <li>$s=(s_A,s_B)$</li>
@@ -1553,7 +1700,7 @@ $M_B=(K_B,s_B,F_B,\delta_B)$</p>
 </div>
 <h3 id="theorem-2">Theorem 2</h3>
 <p>若 language $A$ 和 $B$ 是 regular 的，那么 $AB$ 也是 regular 的，这里的 $AB$ 指的是字符串拼接。</p>
-<p>但此时无法简单使用 DFA 进行判定，需要引入新的概念。</p>
+<p>但此时无法立刻找到 DFA 进行判定，需要引入新的概念。</p>
 <hr />
 <h2 id="non-deterministic-finite-automaton-nfa">Non-deterministic Finite Automaton (NFA)</h2>
 <p>除了 DFA，还有 <strong>non-deterministic finite automaton (NFA)</strong>。</p>
