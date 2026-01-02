@@ -1148,15 +1148,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      支持向量回归
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1178,48 +1169,6 @@
   
   <span class="md-ellipsis">
     7.贝叶斯分类器
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Chapter8/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    8.集成学习
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Chapter9/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    9.聚类
   </span>
   
 
@@ -1391,15 +1340,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      支持向量回归
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1425,42 +1365,42 @@
 <p>线性模型的目标是：在样本空间寻找一个超平面，将不同类别的样本分开。</p>
 <p>这样的超平面有无数多个，我们希望找到最中间划分最明显的。使用这个超平面的就是<strong>支持向量机（Support Vector Machine, SVM）</strong>。</p>
 <p><img alt="alt text" src="../image/6.2.png" /></p>
-<p>假设超平面方程 $(w,b)$：</p>
-<p>$$w^Tx+b=0$$</p>
-<p>对于样本空间的任意一点 $x$，其到超平面的距离为：</p>
-<p>$$\gamma_i=\frac{|w^Tx+b|}{||w||}$$</p>
-<p>假设超平面 $(w,b)$ 能将所有训练样本正确分类，即正例都有 $w^Tx_i+b&gt;0$，负例都有 $w^Tx_i+b&lt;0$。令</p>
+<p>假设超平面方程 $(\mathbf{w},b)$：</p>
+<p>$$\mathbf{w}^T\mathbf{x}+b=0$$</p>
+<p>对于样本空间的任意一点 $\mathbf{x}$，其到超平面的距离为：</p>
+<p>$$\gamma_i=\frac{|\mathbf{w}^T\mathbf{x}+b|}{||\mathbf{w}||}$$</p>
+<p>假设超平面 $(\mathbf{w},b)$ 能将所有训练样本正确分类，即正例都有 $\mathbf{w}^T\mathbf{x}_i+b&gt;0$，负例都有 $\mathbf{w}^T\mathbf{x}_i+b&lt;0$。令</p>
 <p>$$\begin{cases}
-    w^Tx_i+b\geqslant+1 &amp; y_i=+1 \\
-    w^Tx_i+b\leqslant-1 &amp; y_i=-1
+    \mathbf{w}^T\mathbf{x}_i+b\geqslant+1 &amp; y_i=+1 \\
+    \mathbf{w}^T\mathbf{x}_i+b\leqslant-1 &amp; y_i=-1
 \end{cases}$$</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>只要超平面能将所有训练样本正确分类，就能通过缩放 $w$ 和 $b$，使得上述不等式成立。</p>
+<p>只要超平面能将所有训练样本正确分类，就能通过缩放 $\mathbf{w}$ 和 $b$，使得上述不等式成立。</p>
 </div>
-<p>若 $(x_i,y_i)$ 满足 $y_i(w^Tx_i+b)=1$，则称其为<strong>支持向量</strong>，它们是距离超平面最近的点。正负支持向量之间的距离为<strong>间隔</strong>：</p>
-<p>$$\gamma=\frac{2}{||w||}$$</p>
+<p>若 $(\mathbf{x}_i,y_i)$ 满足 $y_i(\mathbf{w}^T\mathbf{x}_i+b)=1$，则称其为<strong>支持向量</strong>，它们是距离超平面最近的点。正负支持向量之间的距离为<strong>间隔</strong>：</p>
+<p>$$\gamma=\frac{2}{||\mathbf{w}||}$$</p>
 <p><img alt="alt text" src="../image/6.1.png" /></p>
-<p>现在，我们的目标是找到超平面 $(w,b)$，在保证所有样本点都有 $|w^Tx_i+b|\geqslant1$ 的前提下，最大化间隔：</p>
-<p>$$\max\limits_{w,b}\frac{2}{||w||}~\text{ s.t.}\forall i,y_i(w^Tx_i+b)\geqslant1$$</p>
+<p>现在，我们的目标是找到超平面 $(\mathbf{w},b)$，在保证所有样本点都有 $|\mathbf{w}^T\mathbf{x}_i+b|\geqslant1$ 的前提下，最大化间隔：</p>
+<p>$$\max\limits_{\mathbf{w},b}\frac{2}{||\mathbf{w}||}\quad\text{s.t.}\quad\forall i,y_i(\mathbf{w}^T\mathbf{x}_i+b)\geqslant1$$</p>
 <p>为了之后的计算方便，我们将其转化为等价的形式：</p>
-<p>$$\min\limits_{w,b}\frac{1}{2}||w||^2~\text{ s.t.}\forall i,y_i(w^Tx_i+b)\geqslant1$$</p>
+<p>$$\min\limits_{\mathbf{w},b}\frac{1}{2}||\mathbf{w}||^2\quad\text{s.t.}\quad\forall i,y_i(\mathbf{w}^T\mathbf{x}_i+b)\geqslant1$$</p>
 <hr />
 <h2 id="_2">对偶问题</h2>
 <p>我们使用<strong>拉格朗日乘子法</strong>来求解上述约束优化问题。</p>
-<p>上述约束优化问题的约束是：$1-y_i(w^Tx_i+b)\leqslant 0$。引入拉格朗日乘子 $\alpha_i\geqslant0$，构造拉格朗日函数：</p>
-<p>$$L(w,b,\alpha)=\frac{1}{2}||w||^2+\sum\limits_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b))$$</p>
+<p>上述约束优化问题的约束是：$1-y_i(\mathbf{w}^T\mathbf{x}_i+b)\leqslant 0$。引入拉格朗日乘子 $\alpha_i\geqslant0$，构造拉格朗日函数：</p>
+<p>$$L(\mathbf{w},b,\boldsymbol{\alpha})=\frac{1}{2}||\mathbf{w}||^2+\sum\limits_{i=1}^m\alpha_i(1-y_i(\mathbf{w}^T\mathbf{x}_i+b))$$</p>
 <p>那么，上述约束优化问题转变为：</p>
-<p>$$\max\limits_{\alpha\geqslant0}\min\limits_{w,b}L(w,b,\alpha)$$</p>
-<p>$L(w,b,\alpha)$ 关于 $w,b$ 取最小值时，$w,b$ 偏导为 $0$：</p>
-<p>$$w=\sum\limits_{i=1}^m\alpha_iy_ix_i$$</p>
+<p>$$\max\limits_{\boldsymbol{\alpha}\geqslant0}\min\limits_{\mathbf{w},b}L(\mathbf{w},b,\boldsymbol{\alpha})$$</p>
+<p>$L(\mathbf{w},b,\boldsymbol{\alpha})$ 关于 $\mathbf{w},b$ 取最小值时，$\mathbf{w},b$ 偏导为 $0$：</p>
+<p>$$\mathbf{w}=\sum\limits_{i=1}^m\alpha_iy_i\mathbf{x}_i$$</p>
 <p>$$\sum\limits_{i=1}^m\alpha_iy_i=0$$</p>
 <p>代回拉格朗日函数：</p>
-<p>$$\frac{1}{2}||w||^2=\frac{1}{2}(\sum\limits_{i=1}^m\alpha_iy_ix_i)^T(\sum\limits_{j=1}^m\alpha_jy_jx_j)=\frac{1}{2}\sum\limits_{i=1}^m\sum\limits_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j$$</p>
-<p>$$\sum\limits_{i=1}^m\alpha_i(1-y_i(w^Tx_i+b))=\sum\limits_{i=1}^m\alpha_i-\sum\limits_{i=1}^m\alpha_iy_i(\sum\limits_{j=1}^m\alpha_jy_jx_j^Tx_i+b)=\sum\limits_{i=1}^m\alpha_i-\sum\limits_{i=1}^m\sum\limits_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j$$</p>
-<p>$$L(w,b,\alpha)=\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i=1}^m\sum\limits_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j$$</p>
-<p>接下来，我们的目标是：最大化 $L(w,b,\alpha)$，或者可以等价地表示为：</p>
-<p>$$\max_{\alpha}(\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i=1}^m\sum\limits_{j=1}^m\alpha_i\alpha_jy_iy_jx_i^Tx_j)~\text{ s.t.}\sum\limits_{i=1}^m\alpha_iy_i=0,\alpha_i \geqslant 0$$</p>
+<p>$$\frac{1}{2}||\mathbf{w}||^2=\frac{1}{2}(\sum\limits_{i=1}^m\alpha_iy_i\mathbf{x}_i)^T(\sum\limits_{j=1}^m\alpha_jy_j\mathbf{x}_j)=\frac{1}{2}\sum\limits_{i=1}^m\sum\limits_{j=1}^m\alpha_i\alpha_jy_iy_j\mathbf{x}_i^T\mathbf{x}_j$$</p>
+<p>$$\sum\limits_{i=1}^m\alpha_i(1-y_i(\mathbf{w}^T\mathbf{x}_i+b))=\sum\limits_{i=1}^m\alpha_i-\sum\limits_{i=1}^m\alpha_iy_i(\sum\limits_{j=1}^m\alpha_jy_j\mathbf{x}_j^T\mathbf{x}_i+b)=\sum\limits_{i=1}^m\alpha_i-\sum\limits_{i=1}^m\sum\limits_{j=1}^m\alpha_i\alpha_jy_iy_j\mathbf{x}_i^T\mathbf{x}_j$$</p>
+<p>$$L(\mathbf{w},b,\boldsymbol{\alpha})=\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i=1}^m\sum\limits_{j=1}^m\alpha_i\alpha_jy_iy_j\mathbf{x}_i^T\mathbf{x}_j$$</p>
+<p>接下来，我们的目标是：最大化 $L(\mathbf{w},b,\boldsymbol{\alpha})$，或者可以等价地表示为：</p>
+<p>$$\max_{\boldsymbol{\alpha}}(\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i=1}^m\sum\limits_{j=1}^m\alpha_i\alpha_jy_iy_j\mathbf{x}_i^T\mathbf{x}_j)\quad\text{s.t.}\quad\sum\limits_{i=1}^m\alpha_iy_i=0,\alpha_i \geqslant 0$$</p>
 <p>这个问题就是原本问题的<strong>对偶问题</strong>。</p>
 <p>使用 <strong>SMO</strong> 来求解上述对偶问题。SMO 的基本思想是：</p>
 <ul>
@@ -1468,39 +1408,34 @@
 <li>固定其他所有变量，求解对偶问题更新 $\alpha_i$ 和 $\alpha_j$（此时的约束条件只涉及两个变量，可以用一个变量表示另一个变量，对偶问题变成了求单变量函数的极值）</li>
 <li>重复上述过程，直到收敛</li>
 </ul>
-<p>得到所有参数后，最终模型为</p>
-<p>$$f(x)=w^Tx+b=\sum\limits_{i=1}^m\alpha_iy_ix_i^Tx+b$$</p>
-<p>注意，整个求解过程中需要满足<strong>KKT条件</strong>：</p>
+<p>得到 $\boldsymbol{\alpha}$ 后，再结合训练数据就可以得到 $\mathbf{w}=\sum\limits_{i=1}^m\alpha_iy_i\mathbf{x}_i$；然后由于对于任何支持向量，都有 $y_i(\mathbf{w}^T\mathbf{x}_i+b)=1$，因此可以通过支持向量计算出偏移量 $b$。（支持向量怎么确定请看下文）</p>
+<p>注意，记 $f(\mathbf{x})=\mathbf{w}^T\mathbf{x}+b$，整个求解过程中需要满足<strong>KKT条件</strong>：</p>
 <ul>
-<li>原始可行性条件：$\alpha_i\geqslant0,~y_if(x_i)\geqslant1$</li>
-<li>互补松弛条件：$\alpha_i(y_if(x_i)-1)=0$</li>
+<li>原始可行性条件：$\alpha_i\geqslant0,~y_if(\mathbf{x}_i)\geqslant1$</li>
+<li>互补松弛条件：$\alpha_i(y_if(\mathbf{x}_i)-1)=0$</li>
 </ul>
-<p>可以看出，对于任意训练样本 $(x_i,y_i)$，总有 $\alpha_i=0$ 或 $y_if(x_i)=1$，因此只有支持向量才会对 $f(x)$ 有影响，这显示出支持向量机的一个重要性质:训练完成后，大部分的训练样本都不需要保留，最终模型仅与支持向量有关。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>偏移项 $b$ 可以通过支持向量确定。</p>
-</div>
+<p>可以看出，对于任意训练样本 $(\mathbf{x}_i,y_i)$，总有 $\alpha_i=0$ 或 $y_if(\mathbf{x}_i)=1$，因此只有支持向量才会对 $f(\mathbf{x})$ 有影响，这显示出支持向量机的一个重要性质：训练完成后，大部分的训练样本都不需要保留，最终模型仅与支持向量有关。</p>
 <hr />
 <h2 id="_3">核函数</h2>
 <p>如果训练数据线性不可分怎么办？</p>
-<p>基本思路是：<strong>将数据映射到更高维的空间，使得数据在高维空间线性可分</strong>。</p>
+<p>基本思路是：<strong>将数据映射到更高维的空间，使得数据在高维空间线性可分</strong>。（只要属性有限就一定可以）</p>
 <p><img alt="alt text" src="../image/6.3.png" /></p>
-<p>设映射函数为 $\phi(x)$，则支持向量机模型为</p>
-<p>$$f(x)=w^T\phi(x)+b$$</p>
-<p>参数 $w,b$ 的优化目标为</p>
-<p>$$\min\limits_{w,b}\frac{1}{2}||w||^2~\text{ s.t.}\forall i,y_i(w^T\phi(x_i)+b)\geqslant1$$</p>
+<p>设映射函数为 $\phi(\mathbf{x})$，则支持向量机模型为</p>
+<p>$$f(\mathbf{x})=\mathbf{w}^T\phi(\mathbf{x})+b$$</p>
+<p>参数 $\mathbf{w},b$ 的优化目标为</p>
+<p>$$\min\limits_{\mathbf{w},b}\frac{1}{2}||\mathbf{w}||^2\quad\text{s.t.}\quad\forall i,y_i(\mathbf{w}^T\phi(\mathbf{x}_i)+b)\geqslant1$$</p>
 <p>其对偶问题为</p>
-<p>$$\max_{\alpha}(\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i=1}^m\sum\limits_{j=1}^m\alpha_i\alpha_jy_iy_j\phi(x_i)^T\phi(x_j))~\text{ s.t.}\sum\limits_{i=1}^m\alpha_iy_i=0,\alpha_i \geqslant 0$$</p>
-<p>直接计算 $\phi(x_i)^T\phi(x_j)$ 开销较大，因此，可以不显式地设计映射函数 $\phi(x)$，而是设计<strong>核函数</strong>：</p>
-<p>$$\kappa(x_i,x_j)=\phi(x_i)^T\phi(x_j)$$</p>
+<p>$$\max_{\alpha}(\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i=1}^m\sum\limits_{j=1}^m\alpha_i\alpha_jy_iy_j\phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j))\quad\text{s.t.}\quad\sum\limits_{i=1}^m\alpha_iy_i=0,\alpha_i \geqslant 0$$</p>
+<p>直接计算 $\phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j)$ 开销较大，因此，可以不显式地设计映射函数 $\phi(\mathbf{x})$，而是设计<strong>核函数</strong>：</p>
+<p>$$\kappa(\mathbf{x}_i,\mathbf{x}_j)=\phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j)$$</p>
 <p><img alt="alt text" src="../image/6.4.png" /></p>
 <hr />
 <h2 id="_4">软间隔与正则化</h2>
-<p><strong>软间隔：</strong></p>
+<p><strong>软间隔（soft margin）：</strong></p>
 <p>由于过拟合的存在和核函数的难确定性，我们引入<strong>软间隔</strong>的概念，允许支持向量机在一些样本上不满足约束。</p>
 <p><img alt="alt text" src="../image/6.5.png" /></p>
 <p>因此，优化目标变为：</p>
-<p>$$\min\limits_{w,b}\frac{1}{2}||w||^2+C\sum\limits_{i=1}^ml_{0/1}(y_i(w^Tx_i+b)-1)$$</p>
+<p>$$\min\limits_{\mathbf{w},b}\frac{1}{2}||\mathbf{w}||^2+C\sum\limits_{i=1}^ml_{0/1}(y_i(\mathbf{w}^T\mathbf{x}_i+b)-1)$$</p>
 <p>其中，$C$ 为常数，取值影响对不满足约束的样本的容忍度；$l_{0/1}$ 是 0-1 损失函数：</p>
 <p>$$l_{0/1}(z)=\begin{cases}
     0 &amp; z\geqslant0 \\
@@ -1508,19 +1443,15 @@
 \end{cases}$$</p>
 <p>但 0-1 损失函数非凸、非连续，不易优化，因此常常使用其他替代函数：</p>
 <p><img alt="alt text" src="../image/6.6.png" /></p>
-<p><strong>正则化：</strong></p>
+<p><strong>正则化（regularization）：</strong></p>
 <p>支持向量机的更一般形式：</p>
 <p>$$\min\limits_f[\Omega(f)+C\sum\limits_{i=1}^ml(f(x_i),y_i)]$$</p>
 <p>前面一部分为<strong>结构风险</strong>，描述模型的某些性质；后面一部分为<strong>经验风险</strong>，描述模型与训练数据的契合程度。</p>
 <hr />
-<h2 id="_5">支持向量回归</h2>
-<p>刚刚都是在讨论二分类问题，现在考虑回归问题。</p>
-<p>传统回归模型常常使用模型输出 $f(x)$ 和真实输出 $y$ 之间的差别来计算损失，只有完全相同时才为 $0$。支持向量回归则能容忍 $f(x)$ 和 $y$ 之间最多有 $\epsilon$ 的偏差，超过偏差才计算损失。</p>
-<p><img alt="alt text" src="../image/6.7.png" /></p>
-<p>因此，支持向量回归问题可形式化为</p>
-<p>$$\min\limits_{w,b}\frac{1}{2}|w|^2+C\sum\limits_{i=1}^ml_{\epsilon}(f(x_i)-y_i)$$</p>
-<p>其中，$l_{\epsilon}$ 是 $\epsilon$-不敏感损失函数：</p>
-<p>$$l_{\epsilon}(z)=\begin{cases}0,&amp;|z|\leq\epsilon\|z|-\epsilon,&amp;|z|&gt;\epsilon\end{cases}$$</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>此处省略支持向量回归、核方法。</p>
+</div>
 
 
 

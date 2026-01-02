@@ -14,7 +14,7 @@
         <link rel="prev" href="../Chapter6/">
       
       
-        <link rel="next" href="../Chapter8/">
+        <link rel="next" href="../../Quantum/Chapter1/">
       
       
       <link rel="icon" href="../../../stylesheets/logo.jpg">
@@ -1176,54 +1176,54 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="贝叶斯网 Bayesian Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      学习
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      推断
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#em" class="md-nav__link">
+    <span class="md-ellipsis">
+      EM 算法
+    </span>
+  </a>
+  
 </li>
       
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Chapter8/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    8.集成学习
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Chapter9/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    9.聚类
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1398,6 +1398,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="贝叶斯网 Bayesian Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      学习
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      推断
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#em" class="md-nav__link">
+    <span class="md-ellipsis">
+      EM 算法
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -1423,53 +1465,52 @@
 <hr />
 <h2 id="bayesian-decision-theory">贝叶斯决策论 Bayesian Decision Theory</h2>
 <p>对于多分类任务，<strong>贝叶斯决策论</strong>是在所有概率都已知的理想情况下，选择最优的类别标记。</p>
-<p><strong>贝叶斯判定准则（Bayes Decision Rule）：</strong></p>
+<p><strong>贝叶斯判定准则（Bayes decision rule）：</strong></p>
 <p>设 $N$ 个可能类别 $c_1,c_2,...,c_N$，$\lambda_{ij}$ 表示将真实类别为 $c_j$ 的样本误分类为 $c_i$ 的损失。</p>
-<p>基于后验概率 $P(c_i|x)$ 可获得将样本 $x$ 分类为 $c_i$ 所产生的期望损失（条件风险）：</p>
-<p>$$R(c_i|x)=\sum\limits_{j=1}^N\lambda_{ij}P(c_j|x)$$</p>
-<p>目标：找到最优的分类函数 $h^{*}$，输入为 $x$，输出为 $h^*(x)=c$，这个 $c$ 可以让 $R(c|x)$ 取最小：</p>
-<p>$$h^*(x)=\arg\min\limits_cR(c|x)$$</p>
+<p>基于后验概率 $P(c_i|\mathbf{x})$ 可获得将样本 $\mathbf{x}$ 分类为 $c_i$ 所产生的期望损失（条件风险）：</p>
+<p>$$R(c_i|\mathbf{x})=\sum\limits_{j=1}^N\lambda_{ij}P(c_j|\mathbf{x})$$</p>
+<p>目标：找到最优的分类函数 $h^{*}$，输入为 $\mathbf{x}$，输出为 $h^*(\mathbf{x})=c$，这个 $c$ 可以让 $R(c|\mathbf{x})$ 取最小：</p>
+<p>$$h^{*}(\mathbf{x})=\operatorname*{arg\,min}_cR(c|\mathbf{x})$$</p>
 <p>若所有误分类损失相等，即 $\lambda_{ij}=1$（$i\ne j$），$\lambda_{ii}=0$，则有：</p>
-<p>$$h^*(x)=\arg\max\limits_c P(c|x)$$</p>
-<p>$h^{*}$ 称为<strong>贝叶斯最优分类器（Bayes Optimal Classifier）</strong>，其总体风险称为<strong>贝叶斯风险（Bayes Risk）</strong>，其反映了学习性能的理论上限。</p>
+<p>$$h^{*}(\mathbf{x})=\operatorname*{arg\,max}_c P(c|\mathbf{x})$$</p>
+<p>$h^{*}$ 称为<strong>贝叶斯最优分类器（Bayes optimal classifier）</strong>，其总体风险称为<strong>贝叶斯风险（Bayes risk）</strong>，其反映了学习性能的理论上限。</p>
 <div class="admonition success">
 <p class="admonition-title">Definition</p>
 <p><strong>先验概率：</strong>$P(A)$<br />
 <strong>后验概率：</strong>$P(A|B)$</p>
 </div>
 <p><strong>机器学习策略：</strong></p>
-<p>机器学习的关键点：估计后验概率 $P(c|x)$。就像我们之前一直研究的那样：在给定一个样本的情况下，它属于不同类别的概率是多少。</p>
+<p>机器学习的关键点：估计后验概率 $P(c|\mathbf{x})$。就像我们之前一直研究的那样：在给定一个样本的情况下，它属于不同类别的概率是多少。</p>
 <ul>
-<li>判别式模型：直接对 $P(c|x)$ 建模，如决策树、神经网络、SVM 等</li>
-<li>生成式模型：先对联合概率 $P(x,c)$ 建模，再通过贝叶斯公式计算后验概率 $P(c|x)$，如贝叶斯分类器等</li>
+<li>判别式模型：直接对 $P(c|\mathbf{x})$ 建模，如决策树、神经网络、SVM 等</li>
+<li>生成式模型：先对联合概率 $P(\mathbf{x},c)$ 建模，再通过贝叶斯公式计算后验概率 $P(c|\mathbf{x})$，如贝叶斯分类器等</li>
 </ul>
 <p><strong>贝叶斯定理：</strong></p>
-<p>$$P(c|x)=\frac{P(x,c)}{P(x)}=\frac{P(c)P(x|c)}{P(x)}$$</p>
+<p>$$P(c|\mathbf{x})=\frac{P(\mathbf{x},c)}{P(\mathbf{x})}=\frac{P(c)P(\mathbf{x}|c)}{P(\mathbf{x})}$$</p>
 <ul>
-<li>$P(c)$：类先验概率。样本空间中类别 $c$ 的占比，直接统计得到</li>
-<li>$P(x)$：证据。样本 $x$ 出现的概率，一般为可忽略的常数</li>
-<li>$P(x|c)$：类条件概率 / 似然。最难估计的一部分</li>
+<li>$P(c)$：类先验概率，样本空间中类别 $c$ 的占比</li>
+<li>$P(\mathbf{x})$：证据因子，样本 $\mathbf{x}$ 出现的概率，一般为可忽略的常数</li>
+<li>$P(\mathbf{x}|c)$：类条件概率 / 似然，最难估计的一部分</li>
 </ul>
-<p>于是，生成式模型的关键点从估计后验概率 $P(c|x)$ 变为估计类条件概率 $P(x|c)$。</p>
+<p>于是，生成式模型的关键点从估计后验概率 $P(c|\mathbf{x})$ 变为估计类条件概率 $P(\mathbf{x}|c)$。</p>
 <hr />
 <h2 id="maximum-likelihood-estimation">极大似然估计 Maximum Likelihood Estimation</h2>
 <p><strong>极大似然估计</strong>：在已经看到一组实验结果的前提下，反推出哪个参数值能让这个结果最有可能发生。</p>
-<p>对于类条件概率 $P(x|c)$，我们是先假定其具有某种确定的概率分布形式，再基于训练样本对概率分布的参数 $\theta_c$ 进行估计。</p>
-<p>为明确起见，将 $P(x|c)$ 记为 $P(x|\theta_c)$。</p>
+<p>对于类条件概率 $P(\mathbf{x}|c)$，我们先假定其具有某种确定的概率分布形式，再基于训练样本对概率分布的参数 $\theta_c$ 进行估计。为明确起见，将 $P(\mathbf{x}|c)$ 记为 $P(\mathbf{x}|\theta_c)$。</p>
 <p>设训练样本中类别为 $c$ 的样本集合为 $D_c$，则在给定类别 $c$ 的条件下，观察到所有对应类别的样本的概率（似然）为：</p>
-<p>$$P(D_c|\theta_c)=\prod\limits_{x\in D_c}P(x|\theta_c)$$</p>
-<p>由于连乘后若接近 $0$ 会超出精度表示范围，直接被舍弃为 $0$（下溢），因此使用<strong>对数似然</strong>：</p>
-<p>$$LL(\theta_c)=\log P(D_c|\theta_c)=\sum\limits_{x\in D_c}\log P(x|\theta_c)$$</p>
+<p>$$P(D_c|\theta_c)=\prod\limits_{\mathbf{x}\in D_c}P(\mathbf{x}|\theta_c)$$</p>
+<p>由于连乘后可能接近 $0$，因此使用<strong>对数似然（log-likelihood）</strong>：</p>
+<p>$$LL(\theta_c)=\log P(D_c|\theta_c)=\sum\limits_{\mathbf{x}\in D_c}\log P(\mathbf{x}|\theta_c)$$</p>
 <p>因此，$\theta_c$ 的极大似然估计为：</p>
-<p>$$\hat{\theta_c}=\arg\max\limits_{\theta_c}LL(\theta_c)$$</p>
+<p>$$\hat{\theta_c}=\operatorname*{arg\,max}_{\theta_c}LL(\theta_c)$$</p>
 <hr />
 <h2 id="naive-bayes-classifier">朴素贝叶斯分类器 Naive Bayes Classifier</h2>
 <p><strong>朴素贝叶斯分类器：</strong></p>
 <p>朴素贝叶斯分类器的基本思路：<strong>假定属性相互独立。</strong></p>
-<p>因此，设 $d$ 为属性数，$x_i$ 为 $x$ 在第 $i$ 个属性上的取值，则：</p>
-<p>$$P(c|x)=\frac{P(c)P(x|c)}{P(x)}=\frac{P(c)}{P(x)}\prod\limits_{i=1}^dP(x_i|c)$$</p>
-<p>由于 $P(x)$ 是常数，因此可以忽略，最终的分类决策准则，也就是朴素贝叶斯分类器的表达式为：</p>
-<p>$$h_{nb}(x)=\arg\max\limits_{c}P(c)\prod\limits_{i=1}^dP(x_i|c)$$</p>
+<p>因此，设 $d$ 为属性数，$x_i$ 为 $\mathbf{x}$ 在第 $i$ 个属性上的取值，则：</p>
+<p>$$P(c|\mathbf{x})=\frac{P(c)P(\mathbf{x}|c)}{P(\mathbf{x})}=\frac{P(c)}{P(\mathbf{x})}\prod\limits_{i=1}^dP(x_i|c)$$</p>
+<p>由于 $P(\mathbf{x})$ 是常数，因此可以忽略，最终的分类决策准则，也就是朴素贝叶斯分类器的表达式为：</p>
+<p>$$h_{nb}(\mathbf{x})=\operatorname*{arg\,max}_c P(c)\prod\limits_{i=1}^dP(x_i|c)$$</p>
 <p>估计 $P(c)$：</p>
 <p>$$P(c)=\frac{|D_c|}{|D|}$$</p>
 <p>估计 $P(x_i|c)$：</p>
@@ -1487,11 +1528,11 @@
 <img alt="alt text" src="../image/7.3.png" /></p>
 <p>计算类条件概率 $P(x_i|c)$：
 <img alt="alt text" src="../image/7.4.png" /></p>
-<p>计算最终概率 $P(c|x)$（忽略 $P(x)$）：
+<p>计算最终概率 $P(c|\mathbf{x})$（忽略 $P(\mathbf{x})$）：
 <img alt="alt text" src="../image/7.5.png" /></p>
 <p>最终判定结果为“好瓜”。</p>
 </div>
-<p><strong>拉普拉斯修正（Laplacian Correction）：</strong></p>
+<p><strong>拉普拉斯修正（Laplacian correction）：</strong></p>
 <p>若某个属性值在训练集中没有与某类别共同出现过，则 $P(x_i|c)=0$，在连乘时会抹去其他属性提供的信息，因此需要修正。设 $N$ 为训练集 $D$ 中的总类别数，$N_i$ 为第 $i$ 个属性的可能取值数，则原本的公式应修正为：</p>
 <p>$$\hat{P}(c)=\frac{|D_{c}|+1}{|D|+N}$$</p>
 <p>$$\hat{P}(x_i|c)=\frac{|D_{c,x_i}|+1}{|D_c|+N_i}$$</p>
@@ -1509,17 +1550,18 @@
 <p><strong>半朴素贝叶斯分类器：</strong></p>
 <p>朴素贝叶斯分类器的属性独立性假设在现实中很难成立。半朴素贝叶斯分类器的基本思路：<strong>适当考虑一部分属性间的依赖。</strong></p>
 <p>最常用策略：<strong>独依赖估计（One-Dependence Estimators, ODE）</strong>，即假设每个属性在类别之外最多仅依赖一个其他属性：</p>
-<p>$$P(c|x)\propto P(c)\prod\limits_{i=1}^dP(x_i|c,pa_i)$$</p>
+<p>$$P(c|\mathbf{x})\propto P(c)\prod\limits_{i=1}^dP(x_i|c,pa_i)$$</p>
 <p>其中，$pa_i$ 为 $x_i$ 的父属性，问题的关键在于如何确定父属性。</p>
 <p><strong>SPODE（Super-Parent ODE）：</strong></p>
-<p>假设所有属性都依赖于同一属性，这个属性称为<strong>超父（Super Parent）</strong>，然后通过交叉验证等模型选择方法来确定超父。</p>
-<p><strong>TAN （Tree Augmented Naive Bayes）：</strong></p>
-<p>以属性间的<strong>条件互信息</strong>（属性在已知类别上的相关性）为边的权重，构建完全图，再利用<strong>最大带权生成树算法</strong>，仅保留强相关属性间的依赖性。</p>
+<p>假设所有属性都依赖于同一属性，这个属性称为<strong>超父（super -parent）</strong>，然后通过交叉验证等模型选择方法来确定超父。</p>
+<p><strong>TAN（Tree Augmented naive Bayes）：</strong></p>
+<p>以属性间的<strong>条件互信息（conditional mutual information）</strong>（属性在已知类别上的相关性）为边的权重，构建完全图，再利用<strong>最大带权生成树算法</strong>，仅保留强相关属性间的依赖性。</p>
 <p><img alt="alt text" src="../image/7.6.png" /></p>
 <p><strong>AODE (Averaged ODE)：</strong></p>
 <p>之前的 SPODE 最终确定下来了一个超父，而 AODE 则是尝试将每个属性作为一次超父，构建多个 SPODE 模型后，再对结果进行平均。</p>
 <hr />
 <h2 id="bayesian-network">贝叶斯网 Bayesian Network</h2>
+<h3 id="_1">结构</h3>
 <p><strong>贝叶斯网：</strong></p>
 <p>贝叶斯网考虑了属性之间更高阶的依赖：</p>
 <p>$$B=\langle G,\Theta\rangle$$</p>
@@ -1527,7 +1569,7 @@
 <li>$G$：<strong>有向无环图（Directed Acyclic Graph, DAG）</strong> ，刻画属性依赖关系（结构）</li>
 <li>$\Theta$：<strong>条件概率表（Conditional Probability Table, CPT）</strong> ，描述属性的联合概率分布（参数）</li>
 </ul>
-<p>在 $G$ 中，每个节点对应一个属性，如果两个属性有直接依赖关系，则相连。属性 $x_i$ 在 $G$ 中的父节点集合为 $\pi_i$，则 $\Theta$ 记录了 $\theta_{x_i|\pi_i}=P_B(x_i|\pi_i)$。</p>
+<p>在 $G$ 中，每个节点对应一个属性，如果两个属性有直接依赖关系，则相连。属性 $x_i$ 在 $G$ 中的父节点集合为 $\pi_i$，$\Theta$ 记录了 $\theta_{x_i|\pi_i}=P_B(x_i|\pi_i)$。</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p><img alt="alt text" src="../image/7.7.png" /></p>
@@ -1538,7 +1580,7 @@
 <p>贝叶斯网中，最后的分类结果也看作一个属性变量。</p>
 </div>
 </div>
-<p>贝叶斯网假设每个属性与它的非后裔属性（从它出发沿着箭头可以到达的属性）独立，因此有联合概率分布：</p>
+<p>贝叶斯网假设每个属性与它的非后裔属性（后裔属性：从它出发沿着箭头可以到达的属性）独立，因此有联合概率分布：</p>
 <p>$$P_B(x_1,x_2,...,x_d)=\prod\limits_{i=1}^dP_B(x_i|\pi_i)=\prod\limits_{i=1}^d\theta_{x_i|\pi_i}$$</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -1548,7 +1590,7 @@
 <p><strong>典型依赖关系：</strong></p>
 <p><img alt="alt text" src="../image/7.8.png" /></p>
 <ul>
-<li>同父结构：给定父节点 $x_1$ 的取值，则 $x_3$ 和 $x_4$ 独立；</li>
+<li>同父结构：给定父节点 $x_1$ 的取值，则 $x_3$ 和 $x_4$ 独立；$x_1$ 的取值未知，则 $x_3$ 和 $x_4$ 不独立；</li>
 <li>V 型结构：给定子节点 $x_4$ 的取值，则 $x_1$ 和 $x_2$ 不独立；$x_4$ 的取值未知，则 $x_1$ 和 $x_2$ 独立；</li>
 <li>顺序结构：给定中间节点 $x$ 的取值，则 $y$ 和 $z$ 独立。</li>
 </ul>
@@ -1568,7 +1610,7 @@
 <li>找出所有 V 型结构，在 V 型结构的两个父节点间连一条边；</li>
 <li>去掉所有箭头方向，得到无向边。</li>
 </ul>
-<p>得到的无向图称为<strong>道德图（Moral Graph）</strong> 。</p>
+<p>得到的无向图称为<strong>道德图（moral graph）</strong> 。</p>
 <p>对于节点 $x$，$y$，$z$，如果去掉 $z$ 后，$x$ 和 $y$ 不连通，则就有条件独立：$x\perp y|z$。</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -1582,35 +1624,52 @@
 <p>$$x_3\perp x_5|x_1$$</p>
 <p>$$x_3\perp x_5|x_2$$</p>
 </div>
-<p><strong>评分函数（Scoring Function）：</strong></p>
-<p>若网络结构 $G$ 已知，那么我们只需要对训练样本进行计数，得到条件概率表 $\Theta$ 即可。然而，我们往往不知道 $G$，因此，贝叶斯网的首要任务是根据训练样本找到结构最恰当的 $G$。可以先定义一个<strong>评分函数</strong>，用于评估贝叶斯网和训练样本的契合程度，然后再基于此寻找结构最优的 $G$。</p>
+<h3 id="_2">学习</h3>
+<p>若网络结构 $G$ 已知，那么我们只需要对训练样本进行计数，得到条件概率表 $\Theta$ 即可。然而，我们往往不知道 $G$，因此，贝叶斯网的首要任务是根据训练样本找到结构最恰当的 $G$。可以先定义一个<strong>评分函数（scoring function）</strong>，用于评估贝叶斯网和训练样本的契合程度，然后再基于此寻找结构最优的 $G$。</p>
 <p>最常见的是基于<strong>最小描述长度（Minimum Description Length, MDL）</strong> 准则，即希望编码长度尽可能小。</p>
 <p>贝叶斯网 $B=\langle G,\Theta\rangle$ 在训练集 $D$ 上的评分函数：</p>
 <p>$$s(B|D)=f(\theta)|B|-LL(B|D)$$</p>
-<p>我们称条件概率表的每一个数值为一个参数，$f(\theta)$ 为描述参数需要的字节数，$|B|$ 为参数个数，$LL(B|D)=\sum\limits_{i=1}^m\log P_B(x_i)$，其中 $m$ 为样本总数，$x_i$ 为第 $i$ 个样本，$P_B(x_i)$ 就是利用 $\Theta$ 查表得到的第 $i$ 个样本出现的概率。</p>
+<p>我们称条件概率表的每一个数值为一个参数，$f(\theta)$ 为描述每个参数需要的字节数，$|B|$ 为参数个数，$LL(B|D)=\sum\limits_{i=1}^m\log P_B(\mathbf{x}_i)$，其中 $m$ 为样本总数，$\mathbf{x}_i$ 为第 $i$ 个样本，$P_B(\mathbf{x}_i)$ 就是利用 $\Theta$ 查表得到的第 $i$ 个样本出现的概率。</p>
 <p>第一部分 $f(\theta)|B|$ 更多考虑模型复杂度；第二部分 $-LL(B|D)$ 更多考虑模型拟合度。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>从所有可能的网络结构中找到最优贝叶斯网是 NP 难问题。</p>
+<p>从所有可能的网络结构中找到最优贝叶斯网是 NP-Hard 问题。</p>
 </div>
-<p><strong>推断：</strong></p>
+<h3 id="_3">推断</h3>
 <p>推断的意思是：基于已知属性变量的观测值（证据），推测未知属性变量的取值。</p>
-<p>如果贝叶斯网络训练好了，那么它就给出了所有局部的、底层的条件概率，通过这些条件概率可以计算出任意完整的联合概率，再由完整的联合概率可以计算出我们关心的任何后验概率。这就是<strong>精确推断</strong>。</p>
-<p>但是，这种精确推断是 NP 难问题，因此需要一些近似推断方法，如<strong>吉布斯采样（Gibbs Sampling）</strong> 和 <strong>变分推断（Variational Inference）</strong>。</p>
-<p><strong>吉布斯采样：</strong></p>
-<p>设未知变量 $Q=\{Q_1,Q_2,...,Q_n\}$，已知变量 $E=\{E_1,E_2,...,E_k\}$，待推测的具体值 $q=\{q_1,q_2,...,q_n\}$，观测到的具体值 $e=\{e_1,e_2,...,e_k\}$，目标是计算 $P(Q=q|E=e)$。</p>
-<p>例如：$E=e$：（色泽；敲声；根蒂）=（青绿；浊响；蜷缩）
-$Q=q$：（是否为好瓜；甜度）=（是；高）</p>
+<p>如果贝叶斯网络训练好了，那么它就给出了所有局部的、底层的条件概率，通过这些条件概率可以计算出任意完整的联合概率，再由完整的联合概率可以计算出我们关心的任何后验概率。这就是<strong>精确推断</strong>。但是，这种精确推断也是 NP-Hard 问题，因此需要一些近似推断方法。</p>
+<p><strong>吉布斯采样（Gibbs sampling）：</strong></p>
+<p>设未知变量 $\mathbf{Q}=\{Q_1,Q_2,...,Q_n\}$，已知变量 $\mathbf{E}=\{E_1,E_2,...,E_k\}$，待推测的具体值 $\mathbf{q}=\{q_1,q_2,...,q_n\}$，观测到的具体值 $\mathbf{e}=\{e_1,e_2,...,e_k\}$，目标是计算 $P(\mathbf{Q}=\mathbf{q}|\mathbf{E}=\mathbf{e})$。</p>
+<p>例如：
+$\mathbf{E}=\mathbf{e}$：（色泽；敲声；根蒂）=（青绿；浊响；蜷缩）
+$\mathbf{Q}=\mathbf{q}$：（是否为好瓜；甜度）=（是；高）</p>
 <p>第一步：</p>
-<p>随机产生一个 $q_0$ 作为初始点，与 $E=e$ 进行拼接。</p>
+<p>随机产生一个 $\mathbf{q}_0$ 作为初始点，但是对应于 $\mathbf{E}$ 的属性值必须与观测值 $\mathbf{e}$ 一致。</p>
 <p>例如：（青绿；浊响；蜷缩；否；高）</p>
 <p>第二步：</p>
 <p>进行 $T$ 次迭代采样，每次采样中逐个考察未知变量，即假定所有其他属性取当前值，根据贝叶斯网络推测出该属性的条件概率分布，然后根据该条件概率分布重新采样该属性的值。</p>
 <p>例如：先假定（色泽=青绿；敲声=浊响；根蒂=蜷缩；甜度=高）不变，根据贝叶斯网络计算出条件概率分布，然后根据该条件概率分布重新采样“是否为好瓜”的值。假设采样结果为“是”，则得到新的样本：（青绿；浊响；蜷缩；是；高）。以此类推。</p>
 <p>第三步：</p>
-<p>假设经过 $T$ 次采样后得到与查询目标 $q$ 一致的样本共有 $n_q$ 个，则可近似估算出后验概率：</p>
-<p>$$P(Q=q|E=e)\approx\frac{n_q}{T}$$</p>
+<p>假设经过 $T$ 次采样后得到与查询目标 $\mathbf{q}$ 一致的样本共有 $n_q$ 个，则可近似估算出后验概率：</p>
+<p>$$P(\mathbf{Q}=\mathbf{q}|\mathbf{E}=\mathbf{e})\approx\frac{n_q}{T}$$</p>
 <p><img alt="alt text" src="../image/7.10.png" /></p>
+<hr />
+<h2 id="em">EM 算法</h2>
+<p>训练样本并不一定完整，可能存在未观测变量，称为<strong>隐变量（latent variable）</strong>。</p>
+<p>令 $\mathbf{X}$ 表示已观测变量集，$\mathbf{Z}$ 表示隐变量集，$\Theta$ 表示模型参数集，若要对 $\Theta$ 做极大似然估计，则应最大化<strong>对数边际似然</strong>：</p>
+<p>$$LL(\Theta|\mathbf{X},\mathbf{Z})=\ln\sum\limits_{\mathbf{Z}} P(\mathbf{X},\mathbf{Z}|\Theta)$$</p>
+<p>EM 算法的基本思想是：若参数 $\Theta$ 已知，则可根据训练数据推断出最优隐变量 $\mathbf{Z}$ 的值（E 步）；若 $\mathbf{Z}$ 的值已知，则可对 $\Theta$ 做极大似然估计。交替执行，直到收敛。</p>
+<p>更进一步，若不取 $\mathbf{Z}$ 的期望，而是取 $\mathbf{Z}$ 的概率分布 $P(\mathbf{Z}|\mathbf{X},\Theta^t)$，则 EM 算法的步骤为：</p>
+<ul>
+<li>E 步：根据当前参数 $\Theta^t$ 推断隐变量分布 $P(\mathbf{Z}|\mathbf{X},\Theta^t)$，并计算对数似然 $LL(\Theta|\mathbf{X},\mathbf{Z})$ 关于 $\mathbf{Z}$  的期望：
+  $$Q=\mathbb{E}_{\mathbf{Z}|\mathbf{X},\Theta^t}LL(\Theta|\mathbf{X},\mathbf{Z})$$</li>
+<li>寻找参数，最大化期望似然：
+  $$\Theta^{t+1}=\operatorname*{arg\,max}_{\Theta}Q$$</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>有关 EM 算法的更多内容详见 Chapter9。</p>
+</div>
 
 
 
@@ -1761,13 +1820,13 @@ $Q=q$：（是否为好瓜；甜度）=（是；高）</p>
         
         
           
-          <a href="../Chapter8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 8.集成学习">
+          <a href="../../Quantum/Chapter1/" class="md-footer__link md-footer__link--next" aria-label="下一页: 1.量子比特与量子门">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                8.集成学习
+                1.量子比特与量子门
               </div>
             </div>
             <div class="md-footer__button md-icon">

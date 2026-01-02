@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/project/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/ML/Chapter16/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>p3 基本实现 - Monsterdie's Notebook</title>
+        <title>Chapter16 - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#p3" class="md-skip">
+        <a href="#chapter16" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              p3 基本实现
+              Chapter16
             
           </span>
         </div>
@@ -515,6 +515,197 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      任务与奖赏
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#k-" class="md-nav__link">
+    <span class="md-ellipsis">
+      K-摇臂赌博机
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="K-摇臂赌博机">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epsilon-" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\epsilon$-贪心
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softmax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Softmax
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      有模型学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="有模型学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略评估
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略改进
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      免模型学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="免模型学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      蒙特卡洛强化学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="蒙特卡洛强化学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      同策略蒙特卡洛强化学习算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      异策略蒙特卡洛强化学习算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      时序差分学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="时序差分学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sarsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sarsa 算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q-学习算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      值函数近似
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      模仿学习
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -531,55 +722,187 @@
   
 
 
-<h1 id="p3">p3 基本实现</h1>
-<p>强调一下最开始的输入是视频，通过脚本将其转换为图片。</p>
-<p>然后 colmap 最关键的输出是 images.bin 和 cameras.bin，这两个文件包含了相机位姿等信息，然后再加上原本的图片，才构成了 2dgs 的输入。至于点云文件可选可不选，主要是便于初始化。</p>
-<h1 id="p4">p4 基本实现</h1>
-<p>选择的物体和背景纹理都比较丰富，所以重建效果不错。</p>
-<h1 id="p5">p5 进阶探索</h1>
-<p>强调一下深度约束部分失败了</p>
-<h1 id="p6">p6 替换特征检测匹配策略</h1>
-<p>可以详细说一下动机：对于若纹理物体，colmap的特征检测和特征匹配效果很差，最后没多少相机，有的物体甚至直接稀疏重建失败。记得说一下使用的已经是比较好的参数了。</p>
-<p>新的策略实际上是把 SIFT 换成了 LoFTR，可以去简单了解一下二者区别：SIFT 是严格的两步：先特征检测，再特征匹配；LoFTR 是整张图比对，没有严格的两步。</p>
-<p>LoFTR 用到的模型是 Depth-image-matching（github 上找的），输入图像，输出数据库文件。注意提一嘴最后的稀疏重建还是用的 colmap。</p>
-<h1 id="p7">p7 替换特征检测匹配策略</h1>
-<p>强调一下对于弱纹理物体效果很好，可能是四个改进中最有效之一。左边的橙子效果很明显，右边的杯子主要改进在粉色的杯盖部分，以及背景减少了碎片。如果他们看不清可以强调一下。</p>
-<h1 id="p8">p8 加入遮罩去除背景</h1>
-<p>主要讲一下动机：一是背景太丑了，二是能减小点云大小，不会卡。</p>
-<p>做法别忘了自己补充，得到的透明通道图像直接替代原本的图片输入给 2dgs，可以强调一下 colmap 部分不能使用遮罩，因为 colmap 主要要拿到相机位姿，如果遮罩掉了背景，colmap 反而会更难匹配。</p>
-<h1 id="p10">p10 引入真实深度约束</h1>
-<p>可以说一下主要读了 2dgs 的 train.py 的内容，发现里面的损失函数只有三种：</p>
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter16">Chapter16 强化学习</h1>
+<hr />
+<h2 id="_1">任务与奖赏</h2>
+<p>强化学习常用<strong>马尔可夫决策过程（MDP）</strong> 描述：</p>
+<p>$$E=\langle X,A,P,R\rangle$$</p>
 <ul>
-<li>RGB loss：就是要让渲染出的图像和真实图像接近</li>
-<li>depth distortion loss：不让一条视线上的高斯“前后站太散”，不理解没关系，随便讲，可以直接说这一部分没有深入了解，或者把这一页 ppt 删了也可以</li>
-<li>normal loss：让每个 2D 高斯“贴着表面躺平”，也不深入讲</li>
+<li>$E$：环境</li>
+<li>$X$：状态空间</li>
+<li>$A$：动作空间</li>
+<li>$P:X\times A\times X\mapsto\mathbb{R}$：状态转移概率</li>
+<li>$R:X\times A\times X\mapsto\mathbb{R}$ 或 $R:X\times X\mapsto\mathbb{R}$：奖励函数</li>
 </ul>
-<p>这里可以简要说一下为什么会有真实深度约束的想法：首先，上述的三种损失函数中 RGB loss 是最重要的，它关注“长得像不像”（颜色），而物体建模效果不好体现在什么上？往往是扭曲形变，也就是说问题出在几何上而不是颜色上。</p>
-<h1 id="p11">p11 引入真实深度约束</h1>
-<p>这里强调一下，真实深度我们使用 depth anything 的深度图近似替代，因为真实深度图难以获取。</p>
-<p>这里可以简要说一下代码思路：很简单，主要修改了 train.py 里面的 loss 计算部分，加入了一个 depth loss。用深度图作为 ground truth，然后还有一个渲染深度图作为预测值，计算二者形态分布的相似程度。</p>
-<p>可能老师会问尺度一致性的问题：代码中并没有考虑绝对尺度，因为使用的损失函数开了 log，所以只关注相对尺度，也就是“深度分布长得像不像”。（没提问的话尽量别说）</p>
-<h1 id="p12">p12 引入真实深度约束</h1>
-<p>说一下引入深度约束并没有显著差别，甚至增大权重之后效果更差。可以简单说点可能的原因：</p>
+<p>策略分为两种：</p>
 <ul>
-<li>深度图来替代真实深度图本身就可能不准确</li>
-<li>深度损失设计不合理，可能不考虑绝对尺度会有一定问题</li>
-<li>调参问题</li>
-<li>没注意到的犄角旮旯的语法问题</li>
+<li>$\pi:X\mapsto A$：确定性策略</li>
+<li>$\pi:X\times A\mapsto\mathbb{R}$：随机性策略</li>
 </ul>
-<p>最后记得圆回来：我们依然相信深度约束是可以带来效果了，虽然我们并没有成功实现，但依然做了点事。</p>
-<h1 id="p13">p13 平滑网格表面</h1>
-<p>主要讲动机：一些原本应该比较光滑的物体（比如杯子）渲染出来的网格很粗糙，有很多锯齿。</p>
-<p>启发来自二维图片的平滑操作，所以想让三维的网格表面也变得平滑一些。</p>
-<p>主要调用了open3d的一些函数，记得去读一下。</p>
-<p>有一点可以强调一下：之前实验中做过双边滤波，特点是边缘依然能保留。所以，为了了不让物体的几何边缘也被平滑掉，也加了一点东西。首先是检测哪些顶点在几何边缘，方法是将其法线与邻居顶点的法线比较，如果方向比较一致则不是边缘，否则是边缘。然后平滑过后所有的点都会移动，之后再把边缘点移回去。</p>
-<p>老师可能会问为什么不做颜色边缘的检测，可以回答说有考虑到，但相对来说比较复杂，且出问题的地方主要是几何（同样，没问到就不说）</p>
+<p>强化学习的目标是<strong>找到能使长期累积奖赏最大化的策略</strong>，长期累积奖赏分为两种：</p>
+<ul>
+<li>$\mathbb{E}[\frac{1}{T}\sum\limits_{t=1}^Tr_t]$：T 步累积奖赏</li>
+<li>$\mathbb{E}[\sum\limits_{t=0}^\infty \gamma^tr_{t+1}]$：$\gamma$ 折扣累积奖赏</li>
+</ul>
+<p>强化学习可以认为是一种延迟标记信息的监督学习。</p>
+<hr />
+<h2 id="k-">K-摇臂赌博机</h2>
+<p><strong>单步强化学习任务</strong>的目标是<strong>最大化单步奖赏</strong>，需要考虑：</p>
+<ul>
+<li>每个动作带来的奖赏</li>
+<li>执行奖赏最大的动作</li>
+</ul>
+<p>单步强化学习任务对应的理论模型是 <strong>K-摇臂赌博机</strong>。$K$ 个摇臂，投一枚硬币选一个摇臂，每个摇臂有一定概率吐出硬币，目标是获得最多的硬币。</p>
+<ul>
+<li>仅探索：将所有尝试机会平均分配，以每个摇臂各自的平均吐币概率作为奖赏期望的近似估计</li>
+<li>仅利用：每次都选择目前为止平均奖赏期望最高的摇臂</li>
+</ul>
+<p>上述的“探索”与“利用”是矛盾的，称为<strong>探索-利用窘境</strong>。以下为两种权衡方法：</p>
+<h3 id="epsilon-">$\epsilon$-贪心</h3>
+<p>以 $\epsilon$ 的概率随机选择摇臂，以 $1-\epsilon$ 的概率选择目前为止平均奖赏期望最高的摇臂。</p>
+<p><img alt="alt text" src="../image/16.1.png" /></p>
+<p>若摇臂奖赏的不确定性较大，例如概率分布较宽时，则需要更多的探索，此时需要更大的 $\epsilon$。</p>
+<h3 id="softmax">Softmax</h3>
+<p>每个摇臂都有概率选中，但目前为止平均奖赏期望高的摇臂被选中的概率更大。概率基于 <strong>Boltzmann 分布</strong>：</p>
+<p>$$P(k)=\frac{e^{\frac{Q(k)}{\tau}}}{\sum\limits_{i=1}^K e^{\frac{Q(i)}{\tau}}}$$</p>
+<p>$\tau$ 称为<strong>温度</strong>，趋于 $0$ 则趋向利用，趋于 $\infty$ 则趋向探索。</p>
+<p><img alt="alt text" src="../image/16.2.png" /></p>
+<hr />
+<h2 id="_2">有模型学习</h2>
+<p>考虑多步强化学习任务。若</p>
+<p>$$E=\langle X,A,P,R\rangle$$</p>
+<p>均已知，则称为<strong>有模型学习</strong>。</p>
+<h3 id="_3">策略评估</h3>
+<p><strong>状态值函数：</strong></p>
+<p>表示从状态 $x$ 出发，使用策略 $\pi$ 带来的累计奖赏的期望：</p>
+<p>$$\begin{cases}
+    V_T^{\pi}(x)=\mathbb{E}<em t="1">{\pi}[\frac{1}{T}\sum\limits</em> \
+    V_{\gamma}^{\pi}(x)=\mathbb{E}}^Tr_t|x_0=x] &amp; \text{T 步累积奖赏<em t="0">{\pi}[\sum\limits</em>
+\end{cases}$$}^\infty \gamma^tr_{t+1}|x_0=x] &amp; \gamma \text{ 折扣累积奖赏</p>
+<p><strong>状态-动作值函数：</strong></p>
+<p>表示从状态 $x$ 出发，采取动作 $a$，并随后使用策略 $\pi$ 带来的累计奖赏的期望：</p>
+<p>$$\begin{cases}
+    Q_T^{\pi}(x,a)=\mathbb{E}<em t="1">{\pi}[\frac{1}{T}\sum\limits</em> \
+    Q_{\gamma}^{\pi}(x,a)=\mathbb{E}}^Tr_t|x_0=x,a_0=a] &amp; \text{T 步累积奖赏<em t="0">{\pi}[\sum\limits</em>
+\end{cases}$$}^\infty \gamma^tr_{t+1}|x_0=x,a_0=a] &amp; \gamma \text{ 折扣累积奖赏</p>
+<p><strong>动作-状态全概率展开（Bellman 等式）：</strong></p>
+<p>$$
+\begin{align}
+V_T^{\pi}(x) &amp; =\mathbb{E}<em t="1">{\pi}[\frac{1}{T}\sum\limits</em>^Tr_t|x_0=x] \
+&amp; =\mathbb{E}<em t="2">{\pi}[\frac{1}{T}r_1+\frac{T-1}{T}\frac{T}{T-1}\sum\limits</em>^Tr_t|x_0=x] \
+&amp; =\sum\limits_{a\in A}\pi(x,a)\sum\limits_{x'\in X}P_{x\to x'}^a(\frac{1}{T}R_{x\to x'}^a+\frac{T-1}{T}V_{T-1}^{\pi}(x'))
+\end{align}
+$$</p>
+<p>$$V_{\gamma}^{\pi}(x)=\sum\limits_{a \in A} \pi(x, a) \sum\limits_{x' \in X} P_{x \to x'}^a (R_{x \to x'}^a + \gamma V_{\gamma}^{\pi}(x'))$$</p>
+<p>如果使用上述递归式计算值函数，本质上是一种<strong>动态规划</strong>。</p>
+<p><img alt="alt text" src="../image/16.3.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>$V_{\gamma}^{\pi}$ 也可以使用类似的算法，只要设置一个阈值 $\theta$，当</p>
+<p>$$\max\limits_{x\in X}|V(x)-V'(x)|&lt;\theta$$</p>
+<p>时就停止迭代。</p>
+</div>
+<p>状态值函数可以推出状态-动作值函数：</p>
+<p>$$\begin{cases}
+    Q_T^{\pi}(x,a)=\sum\limits_{x'\in X}P_{x\to x'}^a[\frac{1}{T}R_{x\to x'}^a+\frac{T-1}{T}V_{T-1}^{\pi}(x')] \
+    Q_{\gamma}^{\pi}(x,a)=\sum\limits_{x'\in X}P_{x\to x'}^a[R_{x\to x'}^a+\gamma V_{\gamma}^{\pi}(x')]
+\end{cases}$$</p>
+<h3 id="_4">策略改进</h3>
+<p>策略改进的目标是得到<strong>最优策略</strong>：</p>
+<p>$$\pi^*=\argmax\limits_{\pi}\sum\limits_{x\in X}V^{\pi}(x)$$</p>
+<p>最优策略对应的值函数 $V^<em>$ 称为</em><em>最优值函数</em>*：</p>
+<p>$$\forall x\in X: V^<em>(x)=V^{\pi^</em>}(x)$$</p>
+<p>可修改前面的 Bellman 等式为<strong>最优 Bellman 等式</strong>：</p>
+<p>$$\begin{cases}
+    V_T^<em>(x)=\max\limits_{a\in A}\sum\limits_{x'\in X}P_{x\to x'}^a[\frac{1}{T}R_{x\to x'}^a+\frac{T-1}{T}V_{T-1}^</em>(x')] \
+    V_{\gamma}^<em>(x)=\max\limits_{a\in A}\sum\limits_{x'\in X}P_{x\to x'}^a[R_{x\to x'}^a+\gamma V_{\gamma}^</em>(x')]
+\end{cases}$$</p>
+<p>$$\begin{cases}
+    Q_T^<em>(x,a)=\sum\limits_{x'\in X}P_{x\to x'}^a[\frac{1}{T}R_{x\to x'}^a+\frac{T-1}{T}\max\limits_{a'\in A}Q_{T-1}^</em>(x',a')] \
+    Q_{\gamma}^<em>(x,a)=\sum\limits_{x'\in X}P_{x\to x'}^a[R_{x\to x'}^a+\gamma \max\limits_{a'\in A}Q_{\gamma}^</em>(x',a')]
+\end{cases}$$</p>
+<p>$$V^<em>(x)=\max\limits_{a\in A}Q^{\pi^</em>}(x,a)$$</p>
+<h3 id="_5">算法</h3>
+<p><strong>策略迭代算法：</strong></p>
+<p><img alt="alt text" src="../image/16.4.png" /></p>
+<p><strong>值迭代算法：</strong></p>
+<p><img alt="alt text" src="../image/16.5.png" /></p>
+<p>二者本质上是等价的。</p>
+<hr />
+<h2 id="_6">免模型学习</h2>
+<h3 id="_7">蒙特卡洛强化学习</h3>
+<h4 id="_8">同策略蒙特卡洛强化学习算法</h4>
+<p><img alt="alt text" src="../image/16.6.png" /></p>
+<ul>
+<li>策略初始化为等概率选择动作</li>
+<li>根据当前策略，采样一条长度为 $T$ 的轨迹</li>
+<li>更新状态值函数 $Q(x,a)$ 的估计</li>
+<li>对目前已经出现过的状态 $x$，更新策略 $\pi(x)$：有 $1-\epsilon$ 的概率选择能使 $Q(x,a)$ 最大的动作 $a$，有 $\epsilon$ 的概率随机选择动作</li>
+<li>重复上述过程，直到收敛</li>
+</ul>
+<h4 id="_9">异策略蒙特卡洛强化学习算法</h4>
+<p>我们希望仅在策略评估时引入 $\epsilon$-贪心，而在策略改进时不引入。</p>
+<p>可以考虑从使用两个不同的策略 $\pi$ 和 $\pi'$ 来采样轨迹，区别在于每个状态动作对被采样的概率不同。</p>
+<div class="admonition success">
+<p class="admonition-title">Definition</p>
+<p><strong>重要性采样：</strong></p>
+<p>基于一个分布的采样来估计另一个分布下的期望。</p>
+<p>若根据概率分布 $p$ 上的采样 ${x_1,x_2,\dots,x_m}$ 来估计 $f$ 的期望：</p>
+<p>$$\mathbb{E}[f]=\frac{1}{m}\sum\limits_{i=1}^mf(x_i)$$</p>
+<p>则根据概率分布 $q$ 上的采样 ${x_1',x_2',\dots,x_m'}$ 来估计 $f$ 的期望：</p>
+<p>$$\mathbb{E}[f]=\frac{1}{m}\sum\limits_{i=1}^m \frac{p(x_i')}{q(x_i')}f(x_i')$$</p>
+</div>
+<p>回到问题上，$\pi$ 为确定性策略，$\pi'$ 为 $\epsilon$-贪心策略。使用策略 $\pi$ 的采样轨迹来评估策略 $\pi$，实际上就是对累积奖赏估计期望：</p>
+<p>$$Q(x,a)=\frac{1}{m}\sum\limits_{i=1}^mR_i$$</p>
+<p>使用策略 $\pi'$ 的采样轨迹来评估策略 $\pi$，实际上就是对累计奖赏加权估计期望：</p>
+<p>$$Q(x,a)=\frac{1}{m}\sum\limits_{i=1}^m\frac{P_i^{\pi}}{P_i^{\pi'}}R_i$$</p>
+<p>其中 $P_i^{\pi}$ 和 $P_i^{\pi'}$ 分别为轨迹 $i$ 在策略 $\pi$ 和 $\pi'$ 下产生的概率。轨迹 $\langle x_0,a_0,r_1,\dots,x_{T-1},a_{T-1},r_T,x_T\rangle$ 在策略 $\pi$ 下产生的概率为：</p>
+<p>$$P^{\pi}=\prod\limits_{i=0}^{T-1}\pi(x_i,a_i)P_{x_i\to x_{i+1}}^{a_i}$$</p>
+<p>$$\frac{P^{\pi}}{P^{\pi'}}=\prod\limits_{i=0}^{T-1}\frac{\pi(x_i,a_i)}{\pi'(x_i,a_i)}$$</p>
+<p><img alt="alt text" src="../image/16.7.png" /></p>
+<ul>
+<li>策略初始化为等概率选择动作</li>
+<li>根据当前策略 $\pi'$，采样一条长度为 $T$ 的轨迹</li>
+<li>$\pi$ 是确定性策略，因此 $\pi(x_i,a_i)=1$；而 $\pi'$ 则为 $p_i$</li>
+<li>更新状态值函数 $Q(x,a)$ 的估计</li>
+<li>对目前已经出现过的状态 $x$，更新策略 $\pi(x)$：选择能使 $Q(x,a)$ 最大的动作</li>
+<li>重复上述过程，直到收敛</li>
+</ul>
+<h3 id="_10">时序差分学习</h3>
+<p>蒙特卡洛强化学习每次更新都需要完成一个完整的轨迹，而时序差分学习为增量式更新。其中，Sarsa 算法为同策略，Q-学习算法为异策略。</p>
+<h4 id="sarsa">Sarsa 算法</h4>
+<p><img alt="alt text" src="../image/16.8.png" /></p>
+<h4 id="q-">Q-学习算法</h4>
+<p><img alt="alt text" src="../image/16.9.png" /></p>
+<hr />
+<h2 id="_11">值函数近似</h2>
+<p>之前我们一直假定任务在有限状态空间上进行，此时值函数和每个状态一一对应。但是如果状态空间连续（$X=\mathbb{R}^n$），那么这个时候需要近似：</p>
+<p>$$V_{\theta}(x)=\theta^T(x)$$</p>
+<p>我们希望 $V_{\theta}(x)$ 与真实值函数 $V^{\pi}$ 尽量接近，使用<strong>最小二乘误差</strong>：</p>
+<p>$$E_{\theta}=\mathbb{E}<em _theta="\theta">{x\sim\pi}[(V^{\pi}(x)-V</em>(x))^2]$$</p>
+<p>要让上式关于 $\theta$ 取最小值，最后得到单样本的更新规则：</p>
+<p>$$\theta\to\theta+\alpha(V^{\pi}(x)-V_{\theta}(x))x$$</p>
+<p>问题就在于 $V^{\pi}$ 是不知道的，但可以借助时序差分学习中的</p>
+<p>$$V^{\pi}(x)=r+\gamma V^{\pi}(x')$$</p>
+<p>来替代，得到</p>
+<p>$$\theta\to\theta+\alpha(r+\gamma V_{\theta}(x')-V_{\theta}(x))x$$</p>
+<p><img alt="alt text" src="../image/16.10.png" /></p>
+<hr />
+<h2 id="_12">模仿学习</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>略</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -627,6 +950,59 @@
     </fieldset>
   </form>
 
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
 
                 
               </article>

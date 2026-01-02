@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/project/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/ML/Chapter14/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>p3 基本实现 - Monsterdie's Notebook</title>
+        <title>Chapter14 - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#p3" class="md-skip">
+        <a href="#chapter14" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              p3 基本实现
+              Chapter14
             
           </span>
         </div>
@@ -515,6 +515,92 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      隐马尔可夫模型
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      马尔可夫随机场
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件随机场
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      学习与推断
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="学习与推断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量消去
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      信念传播
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      近似推断
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      话题模型
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -531,55 +617,105 @@
   
 
 
-<h1 id="p3">p3 基本实现</h1>
-<p>强调一下最开始的输入是视频，通过脚本将其转换为图片。</p>
-<p>然后 colmap 最关键的输出是 images.bin 和 cameras.bin，这两个文件包含了相机位姿等信息，然后再加上原本的图片，才构成了 2dgs 的输入。至于点云文件可选可不选，主要是便于初始化。</p>
-<h1 id="p4">p4 基本实现</h1>
-<p>选择的物体和背景纹理都比较丰富，所以重建效果不错。</p>
-<h1 id="p5">p5 进阶探索</h1>
-<p>强调一下深度约束部分失败了</p>
-<h1 id="p6">p6 替换特征检测匹配策略</h1>
-<p>可以详细说一下动机：对于若纹理物体，colmap的特征检测和特征匹配效果很差，最后没多少相机，有的物体甚至直接稀疏重建失败。记得说一下使用的已经是比较好的参数了。</p>
-<p>新的策略实际上是把 SIFT 换成了 LoFTR，可以去简单了解一下二者区别：SIFT 是严格的两步：先特征检测，再特征匹配；LoFTR 是整张图比对，没有严格的两步。</p>
-<p>LoFTR 用到的模型是 Depth-image-matching（github 上找的），输入图像，输出数据库文件。注意提一嘴最后的稀疏重建还是用的 colmap。</p>
-<h1 id="p7">p7 替换特征检测匹配策略</h1>
-<p>强调一下对于弱纹理物体效果很好，可能是四个改进中最有效之一。左边的橙子效果很明显，右边的杯子主要改进在粉色的杯盖部分，以及背景减少了碎片。如果他们看不清可以强调一下。</p>
-<h1 id="p8">p8 加入遮罩去除背景</h1>
-<p>主要讲一下动机：一是背景太丑了，二是能减小点云大小，不会卡。</p>
-<p>做法别忘了自己补充，得到的透明通道图像直接替代原本的图片输入给 2dgs，可以强调一下 colmap 部分不能使用遮罩，因为 colmap 主要要拿到相机位姿，如果遮罩掉了背景，colmap 反而会更难匹配。</p>
-<h1 id="p10">p10 引入真实深度约束</h1>
-<p>可以说一下主要读了 2dgs 的 train.py 的内容，发现里面的损失函数只有三种：</p>
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter14">Chapter14 概率图模型</h1>
+<hr />
+<h2 id="_1">隐马尔可夫模型</h2>
+<p><strong>概率图模型：</strong></p>
+<p>概率图模型是用图来表达变量关系的概率模型。分为</p>
 <ul>
-<li>RGB loss：就是要让渲染出的图像和真实图像接近</li>
-<li>depth distortion loss：不让一条视线上的高斯“前后站太散”，不理解没关系，随便讲，可以直接说这一部分没有深入了解，或者把这一页 ppt 删了也可以</li>
-<li>normal loss：让每个 2D 高斯“贴着表面躺平”，也不深入讲</li>
+<li>有向图模型（贝叶斯网）</li>
+<li>无向图模型（马尔可夫网）</li>
 </ul>
-<p>这里可以简要说一下为什么会有真实深度约束的想法：首先，上述的三种损失函数中 RGB loss 是最重要的，它关注“长得像不像”（颜色），而物体建模效果不好体现在什么上？往往是扭曲形变，也就是说问题出在几何上而不是颜色上。</p>
-<h1 id="p11">p11 引入真实深度约束</h1>
-<p>这里强调一下，真实深度我们使用 depth anything 的深度图近似替代，因为真实深度图难以获取。</p>
-<p>这里可以简要说一下代码思路：很简单，主要修改了 train.py 里面的 loss 计算部分，加入了一个 depth loss。用深度图作为 ground truth，然后还有一个渲染深度图作为预测值，计算二者形态分布的相似程度。</p>
-<p>可能老师会问尺度一致性的问题：代码中并没有考虑绝对尺度，因为使用的损失函数开了 log，所以只关注相对尺度，也就是“深度分布长得像不像”。（没提问的话尽量别说）</p>
-<h1 id="p12">p12 引入真实深度约束</h1>
-<p>说一下引入深度约束并没有显著差别，甚至增大权重之后效果更差。可以简单说点可能的原因：</p>
+<p><strong>隐马尔可夫模型（Hidden Markov Model, HMM）：</strong></p>
+<p>隐马尔可夫模型是一种有向图模型。有两种变量：</p>
 <ul>
-<li>深度图来替代真实深度图本身就可能不准确</li>
-<li>深度损失设计不合理，可能不考虑绝对尺度会有一定问题</li>
-<li>调参问题</li>
-<li>没注意到的犄角旮旯的语法问题</li>
+<li>状态变量 ${y_1,y_2,\dots,y_n}$</li>
+<li>观测变量 ${x_1,x_2,\dots,x_n}$</li>
 </ul>
-<p>最后记得圆回来：我们依然相信深度约束是可以带来效果了，虽然我们并没有成功实现，但依然做了点事。</p>
-<h1 id="p13">p13 平滑网格表面</h1>
-<p>主要讲动机：一些原本应该比较光滑的物体（比如杯子）渲染出来的网格很粗糙，有很多锯齿。</p>
-<p>启发来自二维图片的平滑操作，所以想让三维的网格表面也变得平滑一些。</p>
-<p>主要调用了open3d的一些函数，记得去读一下。</p>
-<p>有一点可以强调一下：之前实验中做过双边滤波，特点是边缘依然能保留。所以，为了了不让物体的几何边缘也被平滑掉，也加了一点东西。首先是检测哪些顶点在几何边缘，方法是将其法线与邻居顶点的法线比较，如果方向比较一致则不是边缘，否则是边缘。然后平滑过后所有的点都会移动，之后再把边缘点移回去。</p>
-<p>老师可能会问为什么不做颜色边缘的检测，可以回答说有考虑到，但相对来说比较复杂，且出问题的地方主要是几何（同样，没问到就不说）</p>
+<p>二者的依赖关系如下图所示：</p>
+<p><img alt="alt text" src="../image/14.1.png" /></p>
+<p>可以看出，在任意时刻，观测变量的取值仅依赖于状态变量，系统下一时刻的状态仅由当前状态决定，形成<strong>马尔可夫链</strong>，有联合概率分布：</p>
+<p>$$P(x_1,y_1,\dots,x_n,y_n)=P(y_1)P(x_1|y_1)\prod\limits_{i=2}^n P(y_i|y_{i-1})P(x_i|y_i)$$</p>
+<p>记 $y_i\in\mathcal{Y}$ 有 $N$ 种可能的取值，$x_i\in\mathcal{X}$ 有 $M$ 种可能的取值，欲确定一个隐马尔可夫模型还需要三组参数：</p>
+<ul>
+<li>状态转移概率：$\mathbf{A}=[a_{ij}]<em ij="ij">{N\times N}$，$a</em>=s_j|y_t=s_i),\quad1\leqslant i,j\leqslant N$}=P(y_{t+1</li>
+<li>输出观测概率：$\mathbf{B}=[b_{ij}]<em ij="ij">{N\times M}$，$b</em>=P(x_t=o_j|y_t=s_i),\quad1\leqslant i\leqslant N,1\leqslant j\leqslant M$</li>
+<li>初始状态概率：$\boldsymbol{\pi}=(\pi_1,\dots,\pi_N)$，$\pi_i=P(y_1=s_i),\quad1\leqslant i\leqslant N$</li>
+</ul>
+<p>这三组参数确定了一个隐马尔可夫模型 $\lambda=[\mathbf{A}, \mathbf{B}, \boldsymbol{\pi}]$，人们通常关注以下三个问题：</p>
+<ul>
+<li>给定模型 $\lambda=[\mathbf{A}, \mathbf{B}, \boldsymbol{\pi}]$，如何有效计算其产生观测序列 $\mathbf{x}={x_1,\dots,x_n}$ 的概率？（评估模型与观测序列之间的匹配程度）</li>
+<li>给定模型 $\lambda=[\mathbf{A}, \mathbf{B}, \boldsymbol{\pi}]$ 和观测序列 $\mathbf{x}={x_1,\dots,x_n}$，如何求解与观测序列最匹配的状态序列 $\mathbf{y}={y_1,\dots,y_n}$？（根据观测序列推断出隐藏的模型状态）</li>
+<li>给定观测序列 $\mathbf{x}={x_1,\dots,x_n}$，如何调整模型参数 $\lambda=[\mathbf{A}, \mathbf{B}, \boldsymbol{\pi}]$，使得该序列出现的概率最大？（训练模型使其能更好地描述观测数据）</li>
+</ul>
+<hr />
+<h2 id="_2">马尔可夫随机场</h2>
+<p>马尔可夫随机场（Markov Random Field, MRF）是一种无向图模型。</p>
+<p><img alt="alt text" src="../image/14.2.png" /></p>
+<p>如果一组节点两两都有边连接，则这个节点子集称为一个<strong>团</strong>；如果一个团不能再通过添加节点而扩大，或者说不能被其他团包含，则称为<strong>极大团</strong>。每个节点都至少出现在一个极大团中。</p>
+<p><strong>联合概率分布：</strong></p>
+<p>对于节点图中的 $n$ 个变量 $\mathbf{x}={x_1,\dots,x_n}$，设所有极大团构成的集合为 $\mathcal{C}^<em>$，极大团 $Q\in\mathcal{C}^</em>$ 对应的变量集合为 $\mathbf{x}_Q$，则有联合概率分布：</p>
+<p>$$P(\mathbf{x})=\frac{1}{Z^<em>}\prod_{Q\in\mathcal{C}^</em>}\psi_Q(\mathbf{x}_Q)$$</p>
+<p>其中，$\psi_Q$ 为 $Q$ 对应的<strong>势函数</strong>，用于对变量关系进行建模；$Z^<em>$ 为</em><em>规范化因子</em>*，确保 $P(\mathbf{x})$ 是被正确定义的概率。</p>
+<p><strong>条件独立性：</strong></p>
+<p>如下图所示，若从节点集 $A$ 到节点集 $B$ 必须经过节点集 $C$，则 $C$ 是 $A$ 和 $B$ 的<strong>分离集</strong>。</p>
+<p><img alt="alt text" src="../image/14.3.png" /></p>
+<p>若给定两个变量子集的分离集，则这两个变量子集条件独立，这称为<strong>全局马尔可夫性</strong>。如上例，记作 $\mathbf{x}_A \perp \mathbf{x}_B \mid \mathbf{x}_C$。</p>
+<p>由全局马尔可夫性可以推出：</p>
+<ul>
+<li><strong>局部马尔可夫性</strong>：若给定某变量 $v$ 的全部相邻变量 $n(v)$，则该变量条件独立于其他变量 $V\setminus(n(v)\cup{v})$：$\mathbf{x}<em V_setminus_n_v_cup_123_v_125_="V\setminus(n(v)\cup{v})">v\perp\mathbf{x}</em>$} \mid \mathbf{x}_{n(v)</li>
+<li><strong>成对马尔可夫性</strong>：两个非相邻变量 $u$ 和 $v$ 在给定所有其他变量 $V\setminus{u,v}$ 的条件下独立：$\mathbf{x}<em V_setminus_123_u_v_125_="V\setminus{u,v}">u\perp\mathbf{x}_v \mid \mathbf{x}</em>$</li>
+</ul>
+<hr />
+<h2 id="_3">条件随机场</h2>
+<p>条件随机场（Conditional Random Field, CRF）是一种无向图模型。</p>
+<p>生成式模型对联合分布进行建模，隐马尔可夫模型和马尔可夫随机场都是生成式模型；判别式模型对条件分布进行建模，条件随机场是判别式模型。</p>
+<p>令观测序列 $\mathbf{x}={x_1,\dots,x_n}$，对应标记序列 $\mathbf{y}={y_1,\dots,y_n}$，则条件随机场的目标是构建条件概率模型 $P(\mathbf{y}|\mathbf{x})$。</p>
+<p><img alt="alt text" src="../image/14.4.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>略</p>
+</div>
+<hr />
+<h2 id="_4">学习与推断</h2>
+<p>若图模型对应的变量集 $\mathbf{x}={x_1,\dots,x_N}$ 能分成互不相交的 $\mathbf{x}_E$ 和 $\mathbf{x}_F$，则推断问题的目标就是计算边际概率 $P(\mathbf{x}_E)$：</p>
+<p>$$P(\mathbf{x}<em _mathbf_x="\mathbf{x">E)=\sum\limits</em>_F)$$}_F}P(\mathbf{x}_E,\mathbf{x</p>
+<p>后面的联合概率可以根据概率图模型得到，推断问题的关键就在于如何高效计算上式。</p>
+<h3 id="_5">变量消去</h3>
+<p><img alt="alt text" src="../image/14.5.png" /></p>
+<p>以左图为例。</p>
+<p>若目标是计算边际概率 $P(x_5)$，则</p>
+<p>$$\begin{align}
+P(x_5) &amp; =\sum\limits_{x_4}\sum\limits_{x_3}\sum\limits_{x_2}\sum\limits_{x_1} P(x_1,x_2,x_3,x_4,x_5) \
+&amp; =\sum\limits_{x_4}\sum\limits_{x_3}\sum\limits_{x_2}\sum\limits_{x_1}P(x_1)P(x_2|x_1)P(x_3|x_2)P(x_4|x_3)P(x_5|x_3)
+\end{align}$$</p>
+<p>如果求和的顺序是 $x_1,x_2,x_4,x_3$，则上式变为</p>
+<p>$$\begin{align}
+P(x_5) &amp; =\sum\limits_{x_3}P(x_5|x_3)\sum\limits_{x_4}P(x_4|x_3)\sum\limits_{x_2}P(x_3|x_2)\sum\limits_{x_1}P(x_1)P(x_2|x_1)
+\end{align}$$</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>狗屎</p>
+</div>
+<h3 id="_6">信念传播</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>传你妈</p>
+</div>
+<hr />
+<h2 id="_7">近似推断</h2>
+<hr />
+<h2 id="_8">话题模型</h2>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -627,6 +763,59 @@
     </fieldset>
   </form>
 
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
 
                 
               </article>

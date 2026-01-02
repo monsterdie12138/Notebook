@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/project/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/ML/Chapter15/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>p3 基本实现 - Monsterdie's Notebook</title>
+        <title>Chapter15 - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#p3" class="md-skip">
+        <a href="#chapter15" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              p3 基本实现
+              Chapter15
             
           </span>
         </div>
@@ -515,6 +515,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      序贯覆盖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      剪枝优化
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      一阶规则学习
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ilp" class="md-nav__link">
+    <span class="md-ellipsis">
+      归纳逻辑程序设计（ILP）
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -531,55 +584,97 @@
   
 
 
-<h1 id="p3">p3 基本实现</h1>
-<p>强调一下最开始的输入是视频，通过脚本将其转换为图片。</p>
-<p>然后 colmap 最关键的输出是 images.bin 和 cameras.bin，这两个文件包含了相机位姿等信息，然后再加上原本的图片，才构成了 2dgs 的输入。至于点云文件可选可不选，主要是便于初始化。</p>
-<h1 id="p4">p4 基本实现</h1>
-<p>选择的物体和背景纹理都比较丰富，所以重建效果不错。</p>
-<h1 id="p5">p5 进阶探索</h1>
-<p>强调一下深度约束部分失败了</p>
-<h1 id="p6">p6 替换特征检测匹配策略</h1>
-<p>可以详细说一下动机：对于若纹理物体，colmap的特征检测和特征匹配效果很差，最后没多少相机，有的物体甚至直接稀疏重建失败。记得说一下使用的已经是比较好的参数了。</p>
-<p>新的策略实际上是把 SIFT 换成了 LoFTR，可以去简单了解一下二者区别：SIFT 是严格的两步：先特征检测，再特征匹配；LoFTR 是整张图比对，没有严格的两步。</p>
-<p>LoFTR 用到的模型是 Depth-image-matching（github 上找的），输入图像，输出数据库文件。注意提一嘴最后的稀疏重建还是用的 colmap。</p>
-<h1 id="p7">p7 替换特征检测匹配策略</h1>
-<p>强调一下对于弱纹理物体效果很好，可能是四个改进中最有效之一。左边的橙子效果很明显，右边的杯子主要改进在粉色的杯盖部分，以及背景减少了碎片。如果他们看不清可以强调一下。</p>
-<h1 id="p8">p8 加入遮罩去除背景</h1>
-<p>主要讲一下动机：一是背景太丑了，二是能减小点云大小，不会卡。</p>
-<p>做法别忘了自己补充，得到的透明通道图像直接替代原本的图片输入给 2dgs，可以强调一下 colmap 部分不能使用遮罩，因为 colmap 主要要拿到相机位姿，如果遮罩掉了背景，colmap 反而会更难匹配。</p>
-<h1 id="p10">p10 引入真实深度约束</h1>
-<p>可以说一下主要读了 2dgs 的 train.py 的内容，发现里面的损失函数只有三种：</p>
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter15">Chapter15 规则学习</h1>
+<hr />
+<h2 id="_1">基本概念</h2>
+<p>规则的形式如下：</p>
+<p><img alt="alt text" src="../image/15.1.png" /></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>规则1：好瓜 $\gets$ (根蒂 = 蜷缩) ∧ (脐部 = 凹陷)</p>
+<p>规则2：¬好瓜 $\gets$ (纹理 = 模糊)</p>
+</div>
+<p>如果样本符合某个规则，则称为被该规则<strong>覆盖</strong>。如果被多个规则覆盖且判别结果不同，则称为<strong>冲突</strong>，有以下解决方法：</p>
 <ul>
-<li>RGB loss：就是要让渲染出的图像和真实图像接近</li>
-<li>depth distortion loss：不让一条视线上的高斯“前后站太散”，不理解没关系，随便讲，可以直接说这一部分没有深入了解，或者把这一页 ppt 删了也可以</li>
-<li>normal loss：让每个 2D 高斯“贴着表面躺平”，也不深入讲</li>
+<li>投票法：听从更多结果相同的规则</li>
+<li>排序法：听从优先级最高的规则</li>
+<li>元规则法：额外制定一些约束规则的规则</li>
 </ul>
-<p>这里可以简要说一下为什么会有真实深度约束的想法：首先，上述的三种损失函数中 RGB loss 是最重要的，它关注“长得像不像”（颜色），而物体建模效果不好体现在什么上？往往是扭曲形变，也就是说问题出在几何上而不是颜色上。</p>
-<h1 id="p11">p11 引入真实深度约束</h1>
-<p>这里强调一下，真实深度我们使用 depth anything 的深度图近似替代，因为真实深度图难以获取。</p>
-<p>这里可以简要说一下代码思路：很简单，主要修改了 train.py 里面的 loss 计算部分，加入了一个 depth loss。用深度图作为 ground truth，然后还有一个渲染深度图作为预测值，计算二者形态分布的相似程度。</p>
-<p>可能老师会问尺度一致性的问题：代码中并没有考虑绝对尺度，因为使用的损失函数开了 log，所以只关注相对尺度，也就是“深度分布长得像不像”。（没提问的话尽量别说）</p>
-<h1 id="p12">p12 引入真实深度约束</h1>
-<p>说一下引入深度约束并没有显著差别，甚至增大权重之后效果更差。可以简单说点可能的原因：</p>
+<p>规则按照表达形式可以分成两类：</p>
 <ul>
-<li>深度图来替代真实深度图本身就可能不准确</li>
-<li>深度损失设计不合理，可能不考虑绝对尺度会有一定问题</li>
-<li>调参问题</li>
-<li>没注意到的犄角旮旯的语法问题</li>
+<li><strong>命题规则</strong>：原子命题 + 逻辑连接词（例如上面的例子）</li>
+<li><strong>一阶规则</strong>：引入量词、谓词等，更加复杂</li>
 </ul>
-<p>最后记得圆回来：我们依然相信深度约束是可以带来效果了，虽然我们并没有成功实现，但依然做了点事。</p>
-<h1 id="p13">p13 平滑网格表面</h1>
-<p>主要讲动机：一些原本应该比较光滑的物体（比如杯子）渲染出来的网格很粗糙，有很多锯齿。</p>
-<p>启发来自二维图片的平滑操作，所以想让三维的网格表面也变得平滑一些。</p>
-<p>主要调用了open3d的一些函数，记得去读一下。</p>
-<p>有一点可以强调一下：之前实验中做过双边滤波，特点是边缘依然能保留。所以，为了了不让物体的几何边缘也被平滑掉，也加了一点东西。首先是检测哪些顶点在几何边缘，方法是将其法线与邻居顶点的法线比较，如果方向比较一致则不是边缘，否则是边缘。然后平滑过后所有的点都会移动，之后再把边缘点移回去。</p>
-<p>老师可能会问为什么不做颜色边缘的检测，可以回答说有考虑到，但相对来说比较复杂，且出问题的地方主要是几何（同样，没问到就不说）</p>
+<p>命题规则是一阶规则的特例。</p>
+<hr />
+<h2 id="_2">序贯覆盖</h2>
+<p>规则学习的目标是<strong>产生一个能覆盖尽可能多样例的规则集</strong>，最直接的做法是<strong>序贯覆盖</strong>：:在训练集上每学到一条规则，就将该规则覆盖的训练样例去除，然后以剩下的训练样例组成训练集，重复上述过程。</p>
+<p>以如下数据集为例：</p>
+<p><img alt="alt text" src="../image/15.2.png" /></p>
+<p>从空规则 $\oplus\gets$ 开始，将正例类别作为规则头，逐个遍历训练集中的每个属性及取值。例如，根据第一个样例的第一个属性：</p>
+<p>$$\text{好瓜}\gets(\text{色泽}=\text{青绿})$$</p>
+<p>这条规则覆盖的样例中包括了两个正例和两个反例，不符合要求。我们可以尝试将“青绿”换成“乌黑”，但依然不行。我们还可以尝试增加原子命题：</p>
+<p>$$\text{好瓜}\gets(\text{色泽}=\text{青绿})\land(\text{根蒂}=\text{蜷缩})$$</p>
+<p>这条规则依然覆盖了反例。当我们换成</p>
+<p>$$\text{好瓜}\gets(\text{色泽}=\text{青绿})\land(\text{根蒂}=\text{稍蜷})$$</p>
+<p>这条规则不覆盖任何反例，因此可以保留，然后去除它覆盖的样例。继续学习规则，最后得到如下规则集：</p>
+<p>$$\text{规则1}:\text{好瓜}\gets(\text{色泽}=\text{青绿})\land(\text{根蒂}=\text{稍蜷})$$</p>
+<p>$$\text{规则2}:\text{好瓜}\gets(\text{色泽}=\text{青绿})\land(\text{敲声}=\text{浊响})$$</p>
+<p>$$\text{规则3}:\text{好瓜}\gets(\text{色泽}=\text{乌黑})\land(\text{根蒂}=\text{蜷缩})$$</p>
+<p>$$\text{规则4}:\text{好瓜}\gets(\text{色泽}=\text{乌黑})\land(\text{纹理}=\text{稍糊})$$</p>
+<p>该规则集覆盖了所有正例，未覆盖任何反例。</p>
+<p>序贯覆盖一般有两种策略：</p>
+<ul>
+<li><strong>自顶向下</strong>：从一般规则开始，通过添加新文字逐渐变成特定规则</li>
+<li><strong>自底向上</strong>：从特定规则开始，通过删除文字逐渐变成一般规则</li>
+</ul>
+<p>命题规则常使用自顶向下的方法，一阶规则常使用自底向上的方法。</p>
+<p>仍以上述数据集为例，如果使用自顶向下的方法：</p>
+<p><img alt="alt text" src="../image/15.3.png" /></p>
+<p>图中的分母表示覆盖了多少样例，分子表示其中有多少正例。第一轮候选集中“色泽=乌黑”规则准确率最高，在此基础上再添加新的文字。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>规则生成过程中常用的评估标准：</p>
+<p>先考虑规则准确率，再考虑覆盖样例数，最后考虑属性次序。</p>
+</div>
+<hr />
+<h2 id="_3">剪枝优化</h2>
+<ul>
+<li>预剪枝：CN2 算法（使用了似然率统计量 LRS）</li>
+<li>后剪枝：减错剪枝（REP）</li>
+<li>二者结合：IREP、RIPPER</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>略</p>
+</div>
+<hr />
+<h2 id="_4">一阶规则学习</h2>
+<p>对于西瓜数据，可以定义：</p>
+<p><img alt="alt text" src="../image/15.4.png" /></p>
+<p>因此，上述数据集可以改为：</p>
+<p><img alt="alt text" src="../image/15.5.png" /></p>
+<p>其中，每个数据直接描述了样例间的关系，称为<strong>关系数据</strong>；由原样本属性转化而来的“色泽更深”“根蒂更蜷”等原子公式称为<strong>背景知识</strong>；由样本类别转化而来的“更好”“¬更好”等原子公式称为<strong>关系数据样例</strong>。例如，可以学到一阶规则：</p>
+<p>$$(\forall X,\forall Y)(\text{更好}(X,Y)\gets\text{根蒂更蜷}(X,Y)\land\text{脐部更凹}(X,Y))$$</p>
+<p><strong>FOIL</strong> 是一阶规则学习算法，遵循序贯覆盖，采用自顶向下的策略。使用 <strong>FOIL 增益</strong> 来选择文字：</p>
+<p>$$\text{F_Gain}=\hat{m}<em>+\times(\log_2\frac{\hat{m}</em>+}{\hat{m}<em>+ + \hat{m}</em>-}-\log_2\frac{m_+}{m_+ + m_-})$$</p>
+<p>其中，$m_+$ 和 $m_-$ 分别表示当前规则覆盖的正例和反例数，$\hat{m}<em>+$ 和 $\hat{m}</em>-$ 分别表示添加新文字后规则覆盖的正例和反例数。</p>
+<hr />
+<h2 id="ilp">归纳逻辑程序设计（ILP）</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>略</p>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -627,6 +722,59 @@
     </fieldset>
   </form>
 
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
 
                 
               </article>

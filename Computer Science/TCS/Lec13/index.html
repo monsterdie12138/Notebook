@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/project/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/TCS/Lec13/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>p3 基本实现 - Monsterdie's Notebook</title>
+        <title>Lec13 - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#p3" class="md-skip">
+        <a href="#lec13" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              p3 基本实现
+              Lec13
             
           </span>
         </div>
@@ -515,6 +515,80 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cook-levin-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cook-Levin Theorem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cook-Levin Theorem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#textnandsatleqslant_ptextsat" class="md-nav__link">
+    <span class="md-ellipsis">
+      证明 $\text{NANDSAT}\leqslant_p\text{SAT}$
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#textsatleqslant_ptext3sat" class="md-nav__link">
+    <span class="md-ellipsis">
+      证明 $\text{SAT}\leqslant_p\text{3SAT}$
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forall-fintextnpfleqslant_ptextnandsat" class="md-nav__link">
+    <span class="md-ellipsis">
+      证明 $\forall F\in\text{NP},F\leqslant_p\text{NANDSAT}$
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      应用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#independent-set-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Independent Set Problem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -531,55 +605,87 @@
   
 
 
-<h1 id="p3">p3 基本实现</h1>
-<p>强调一下最开始的输入是视频，通过脚本将其转换为图片。</p>
-<p>然后 colmap 最关键的输出是 images.bin 和 cameras.bin，这两个文件包含了相机位姿等信息，然后再加上原本的图片，才构成了 2dgs 的输入。至于点云文件可选可不选，主要是便于初始化。</p>
-<h1 id="p4">p4 基本实现</h1>
-<p>选择的物体和背景纹理都比较丰富，所以重建效果不错。</p>
-<h1 id="p5">p5 进阶探索</h1>
-<p>强调一下深度约束部分失败了</p>
-<h1 id="p6">p6 替换特征检测匹配策略</h1>
-<p>可以详细说一下动机：对于若纹理物体，colmap的特征检测和特征匹配效果很差，最后没多少相机，有的物体甚至直接稀疏重建失败。记得说一下使用的已经是比较好的参数了。</p>
-<p>新的策略实际上是把 SIFT 换成了 LoFTR，可以去简单了解一下二者区别：SIFT 是严格的两步：先特征检测，再特征匹配；LoFTR 是整张图比对，没有严格的两步。</p>
-<p>LoFTR 用到的模型是 Depth-image-matching（github 上找的），输入图像，输出数据库文件。注意提一嘴最后的稀疏重建还是用的 colmap。</p>
-<h1 id="p7">p7 替换特征检测匹配策略</h1>
-<p>强调一下对于弱纹理物体效果很好，可能是四个改进中最有效之一。左边的橙子效果很明显，右边的杯子主要改进在粉色的杯盖部分，以及背景减少了碎片。如果他们看不清可以强调一下。</p>
-<h1 id="p8">p8 加入遮罩去除背景</h1>
-<p>主要讲一下动机：一是背景太丑了，二是能减小点云大小，不会卡。</p>
-<p>做法别忘了自己补充，得到的透明通道图像直接替代原本的图片输入给 2dgs，可以强调一下 colmap 部分不能使用遮罩，因为 colmap 主要要拿到相机位姿，如果遮罩掉了背景，colmap 反而会更难匹配。</p>
-<h1 id="p10">p10 引入真实深度约束</h1>
-<p>可以说一下主要读了 2dgs 的 train.py 的内容，发现里面的损失函数只有三种：</p>
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="lec13">Lec13</h1>
+<hr />
+<h2 id="cook-levin-theorem">Cook-Levin Theorem</h2>
+<p><strong>3SAT 是 NP-complete 的。</strong></p>
+<p>要证明 3SAT 是 NP-complete 的，我们需要证明两点：</p>
 <ul>
-<li>RGB loss：就是要让渲染出的图像和真实图像接近</li>
-<li>depth distortion loss：不让一条视线上的高斯“前后站太散”，不理解没关系，随便讲，可以直接说这一部分没有深入了解，或者把这一页 ppt 删了也可以</li>
-<li>normal loss：让每个 2D 高斯“贴着表面躺平”，也不深入讲</li>
+<li>$\text{3SAT}\in\text{NP}$</li>
+<li>$\forall F\in\text{NP},F\leqslant_p\text{3SAT}$</li>
 </ul>
-<p>这里可以简要说一下为什么会有真实深度约束的想法：首先，上述的三种损失函数中 RGB loss 是最重要的，它关注“长得像不像”（颜色），而物体建模效果不好体现在什么上？往往是扭曲形变，也就是说问题出在几何上而不是颜色上。</p>
-<h1 id="p11">p11 引入真实深度约束</h1>
-<p>这里强调一下，真实深度我们使用 depth anything 的深度图近似替代，因为真实深度图难以获取。</p>
-<p>这里可以简要说一下代码思路：很简单，主要修改了 train.py 里面的 loss 计算部分，加入了一个 depth loss。用深度图作为 ground truth，然后还有一个渲染深度图作为预测值，计算二者形态分布的相似程度。</p>
-<p>可能老师会问尺度一致性的问题：代码中并没有考虑绝对尺度，因为使用的损失函数开了 log，所以只关注相对尺度，也就是“深度分布长得像不像”。（没提问的话尽量别说）</p>
-<h1 id="p12">p12 引入真实深度约束</h1>
-<p>说一下引入深度约束并没有显著差别，甚至增大权重之后效果更差。可以简单说点可能的原因：</p>
+<p>其中，第一点显然。对于第二点，我们将证明：</p>
+<p>$$\forall F\in\text{NP},F\leqslant_p\text{NANDSAT}\leqslant_p\text{SAT}\leqslant_p\text{3SAT}$$</p>
+<p><strong>NANDSAT:</strong></p>
+<p>给定一个 NAND-CIRC program $Q$，$Q$ 有 $n$ 位输入，输出为 $0/1$。是否存在一个输入 $t\in{0,1}^n$，满足 $Q(t)=1$？</p>
+<p><strong>SAT:</strong></p>
+<p>和 3SAT 唯一的区别是：每个 clause 中的 literal 数量可以是任意多个。</p>
+<h3 id="textnandsatleqslant_ptextsat">证明 $\text{NANDSAT}\leqslant_p\text{SAT}$</h3>
+<p>例如 $n=3$，输入 $t_1t_2t_3$，输出 $y$：</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">temp1</span> <span class="o">=</span> <span class="n">NAND</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">temp2</span> <span class="o">=</span> <span class="n">NAND</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">t3</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">y</span> <span class="o">=</span> <span class="n">NAND</span><span class="p">(</span><span class="n">temp1</span><span class="p">,</span> <span class="n">temp2</span><span class="p">)</span>
+</span></code></pre></div>
+<p>问是否存在一个 $t_1t_2t_3$ 的赋值满足要求，等价于在问：是否能满足</p>
+<div align="center">
+
+(`temp1 == NAND(t1, t2)`) $\land$ (`temp2 == NAND(t2, t3)`) $\land$ (`y == NAND(temp1, temp2)`) $\land$ (`y == 1`)
+
+</div>
+
+<p>对于形如 <code>a == NAND(b, c)</code> 的等式，其有等价形式</p>
+<p>$$(\overline{a}\lor\overline{b}\lor\overline{c})\land(a\lor b)\land(a\lor c)$$</p>
+<p>对于 <code>y == 1</code>，等价于 $y$。</p>
+<p>这个归约是多项式时间的。</p>
+<h3 id="textsatleqslant_ptext3sat">证明 $\text{SAT}\leqslant_p\text{3SAT}$</h3>
+<p>例如：</p>
+<p>$$\phi=(x_1\lor x_2)\land(x_1\lor x_2\lor x_3\lor x_4)$$</p>
+<p>可以引入新的变量：</p>
+<p>$$(x_1\lor x_2)\Leftrightarrow (x_1\lor x_2\lor y)\land(x_1\lor x_2\lor \overline{y})$$</p>
+<p>$$(x_1\lor x_2\lor x_3\lor x_4)\Leftrightarrow (x_1\lor x_2\lor z)\land(x_3\lor x_4\lor \overline{z})$$</p>
+<p>这个归约是多项式时间的。</p>
+<h3 id="forall-fintextnpfleqslant_ptextnandsat">证明 $\forall F\in\text{NP},F\leqslant_p\text{NANDSAT}$</h3>
+<p>如果 $F\in\text{NP}$，则存在多项式时间的 NAND-TM program $V$，使得对于任意 $x\in{0,1}^*$：</p>
+<p>$$F(x)=1\Leftrightarrow\exists t\in{0,1}^*,V(x,t)=1$$</p>
+<p>且</p>
+<p>$$|t|\leqslant |x|^a$$</p>
+<p>对于给定的 $x$，$F(x)=1$ 当且仅当满足上述两个条件。</p>
+<p>首先，我们观察到上述的 $V$ 是 NAND-TM program，而 NANDSAT 需要 NAND-CIRC program，二者的差别在于一个循环。回忆之前的内容，只要输入长度和运行时间都有上界，则可以展开。</p>
+<p>给定 $x$ 后，$V$ 的输入长度：</p>
+<p>$$|x|+|t|\leqslant |x|+|x|^a\leqslant 2|x|^a$$</p>
+<p>又有 $V$ 的运行时间为多项式，因此运行时间至多为输入长度的多项式倍，记为 $(2|x|^a)^b$。</p>
+<p>因此，可以把循环展开，展开的用时为 $\text{poly}(2|x|^a,(2|x|^a)^b,|V|)$。</p>
+<p>展开后，得到一个 NAND-CIRC program $Q$，$Q(x,t)=V(x,t)$。</p>
+<p>由于 $Q$ 中的 $x$ 固定，因此转换为 $Q'$，$Q'(t)=Q(x,t)$。</p>
+<p>因此，$F(x)=1$ 当且仅当存在 $t$ 使得 $Q'(t)=1$，即 $t$ 是 NANDSAT 的一个实例。</p>
+<hr />
+<h2 id="_1">应用</h2>
+<p>有了 Cook-Levin Theorem，我们可以证明 $G$ 是 NP-complete 的：</p>
 <ul>
-<li>深度图来替代真实深度图本身就可能不准确</li>
-<li>深度损失设计不合理，可能不考虑绝对尺度会有一定问题</li>
-<li>调参问题</li>
-<li>没注意到的犄角旮旯的语法问题</li>
+<li>$G\in\text{NP}$</li>
+<li>$\text{3SAT}\leqslant_p G$</li>
 </ul>
-<p>最后记得圆回来：我们依然相信深度约束是可以带来效果了，虽然我们并没有成功实现，但依然做了点事。</p>
-<h1 id="p13">p13 平滑网格表面</h1>
-<p>主要讲动机：一些原本应该比较光滑的物体（比如杯子）渲染出来的网格很粗糙，有很多锯齿。</p>
-<p>启发来自二维图片的平滑操作，所以想让三维的网格表面也变得平滑一些。</p>
-<p>主要调用了open3d的一些函数，记得去读一下。</p>
-<p>有一点可以强调一下：之前实验中做过双边滤波，特点是边缘依然能保留。所以，为了了不让物体的几何边缘也被平滑掉，也加了一点东西。首先是检测哪些顶点在几何边缘，方法是将其法线与邻居顶点的法线比较，如果方向比较一致则不是边缘，否则是边缘。然后平滑过后所有的点都会移动，之后再把边缘点移回去。</p>
-<p>老师可能会问为什么不做颜色边缘的检测，可以回答说有考虑到，但相对来说比较复杂，且出问题的地方主要是几何（同样，没问到就不说）</p>
+<h3 id="independent-set-problem">Independent Set Problem</h3>
+<p>给定图 $G=(V,E)$ 和正整数 $k$，能否从节点中挑出一个大小为 $k$ 的子集，使得子集中任意两个节点之间都没有边相连？</p>
+<p>显然，$\text{IS}\in\text{NP}$。</p>
+<p>然后，可以证明 $\text{3SAT}\leqslant_p\text{IS}$。</p>
+<p>例如：</p>
+<p>$$\phi=(x_1\lor x_2\lor x_3)\land (x_1\lor\overline{x_2}\lor x_3)\land(\overline{x_1}\lor x_2\lor \overline{x_3})$$</p>
+<p>针对 $\phi$ 中每一个括号，可以构造一个三角形：</p>
+<p>【【【】】】</p>
+<p>然后把 $x_i$ 和 $\overline{x_i}$ 相连：</p>
+<p>【【【】】】</p>
+<p>令 $k=m$，即括号的数量。如果要在上述图中选出 $k$ 个互不相连的节点，则每个三角形中最多只能选一个节点。若 $\phi$ 能被满足，则每个括号中至少有一个 literal 为真，可以从每个三角形中选出一个对应的节点，且这些节点之间互不相连。</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -627,6 +733,59 @@
     </fieldset>
   </form>
 
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
 
                 
               </article>

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/project/">
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/Lec13/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>p3 基本实现 - Monsterdie's Notebook</title>
+        <title>Lec13 - Monsterdie's Notebook</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#p3" class="md-skip">
+        <a href="#3d-understanding" class="md-skip">
           跳转至
         </a>
       
@@ -130,7 +130,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              p3 基本实现
+              Lec13
             
           </span>
         </div>
@@ -512,8 +512,56 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3d-understanding" class="md-nav__link">
+    <span class="md-ellipsis">
+      3d understanding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computational-photography" class="md-nav__link">
+    <span class="md-ellipsis">
+      Computational Photography
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Computational Photography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hdr" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deblurring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deblurring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -531,49 +579,68 @@
   
 
 
-<h1 id="p3">p3 基本实现</h1>
-<p>强调一下最开始的输入是视频，通过脚本将其转换为图片。</p>
-<p>然后 colmap 最关键的输出是 images.bin 和 cameras.bin，这两个文件包含了相机位姿等信息，然后再加上原本的图片，才构成了 2dgs 的输入。至于点云文件可选可不选，主要是便于初始化。</p>
-<h1 id="p4">p4 基本实现</h1>
-<p>选择的物体和背景纹理都比较丰富，所以重建效果不错。</p>
-<h1 id="p5">p5 进阶探索</h1>
-<p>强调一下深度约束部分失败了</p>
-<h1 id="p6">p6 替换特征检测匹配策略</h1>
-<p>可以详细说一下动机：对于若纹理物体，colmap的特征检测和特征匹配效果很差，最后没多少相机，有的物体甚至直接稀疏重建失败。记得说一下使用的已经是比较好的参数了。</p>
-<p>新的策略实际上是把 SIFT 换成了 LoFTR，可以去简单了解一下二者区别：SIFT 是严格的两步：先特征检测，再特征匹配；LoFTR 是整张图比对，没有严格的两步。</p>
-<p>LoFTR 用到的模型是 Depth-image-matching（github 上找的），输入图像，输出数据库文件。注意提一嘴最后的稀疏重建还是用的 colmap。</p>
-<h1 id="p7">p7 替换特征检测匹配策略</h1>
-<p>强调一下对于弱纹理物体效果很好，可能是四个改进中最有效之一。左边的橙子效果很明显，右边的杯子主要改进在粉色的杯盖部分，以及背景减少了碎片。如果他们看不清可以强调一下。</p>
-<h1 id="p8">p8 加入遮罩去除背景</h1>
-<p>主要讲一下动机：一是背景太丑了，二是能减小点云大小，不会卡。</p>
-<p>做法别忘了自己补充，得到的透明通道图像直接替代原本的图片输入给 2dgs，可以强调一下 colmap 部分不能使用遮罩，因为 colmap 主要要拿到相机位姿，如果遮罩掉了背景，colmap 反而会更难匹配。</p>
-<h1 id="p10">p10 引入真实深度约束</h1>
-<p>可以说一下主要读了 2dgs 的 train.py 的内容，发现里面的损失函数只有三种：</p>
+<h2 id="3d-understanding">3d understanding</h2>
+<p>分类：multi-view cnn</p>
+<p>多视角拍摄的图像输入网络，输出类别</p>
+<p>局限：只适合于模型本身就很好，</p>
+<p>也可以直接处理体素数据，使用 3d 的卷积网络</p>
+<p>使用稀疏结构：八叉树 octree</p>
+<p>比如先 8×8×8 对空间划分，哪个被占据就继续划分</p>
+<p>卷积只要对有值的地方做就行，且强制卷积的输出只在原本有值的地方有值，否则有值的地方随着卷积会越来越多。这个才叫稀疏卷积。</p>
+<p>如何用神经网络对点云做处理？</p>
+<p>不能直接用卷积神经网络，点云数据是不规则的（unrasterized data）；但是全连接还是可以的，PointNet，说白了就是一个全连接的网络。</p>
+<p>网络要对输入的点云的几何变换具有不变性，比如旋转平移缩放。最简单的想法：类似于 sift，转一下。</p>
+<p>pointnet 点云语义分割【！！！大作业也许可以用！！！】</p>
+<p>pointnet++：局部感受野</p>
+<p>3d object detection：</p>
+<p>需要 9 个数，中心坐标，长宽高、旋转</p>
+<hr />
+<h1 id="computational-photography">Computational Photography</h1>
+<p>怎么 P 图？</p>
+<h2 id="hdr">HDR</h2>
+<p>高动态范围成像</p>
+<p>曝光的问题，exposure = gain × irradiance × time</p>
+<p>gain 是胶片/传感器的灵敏度，由 ISO 控制
+irradiance 是场景的亮度，由光圈控制
+time 是曝光时间，由快门控制</p>
+<p>哪怕选择了一个合适的曝光量，场景中也可能有很亮和很暗的部分，对比度（最亮的部分和最暗的部分）太高。</p>
+<p>这个对比度就叫 动态范围 dynamic range。</p>
+<p>raw：4096:1 12位</p>
+<p>原理：多张不同曝光的照片合成一张 HDR 照片</p>
+<p>问题：怎么合成？每个像素取哪张图的值？</p>
 <ul>
-<li>RGB loss：就是要让渲染出的图像和真实图像接近</li>
-<li>depth distortion loss：不让一条视线上的高斯“前后站太散”，不理解没关系，随便讲，可以直接说这一部分没有深入了解，或者把这一页 ppt 删了也可以</li>
-<li>normal loss：让每个 2D 高斯“贴着表面躺平”，也不深入讲</li>
+<li>在每张图中找到“好”的像素（不是极端值，在中间的一定范围内）</li>
+<li>把同一个位置好的像素加权平均，权重和曝光时间有关</li>
 </ul>
-<p>这里可以简要说一下为什么会有真实深度约束的想法：首先，上述的三种损失函数中 RGB loss 是最重要的，它关注“长得像不像”（颜色），而物体建模效果不好体现在什么上？往往是扭曲形变，也就是说问题出在几何上而不是颜色上。</p>
-<h1 id="p11">p11 引入真实深度约束</h1>
-<p>这里强调一下，真实深度我们使用 depth anything 的深度图近似替代，因为真实深度图难以获取。</p>
-<p>这里可以简要说一下代码思路：很简单，主要修改了 train.py 里面的 loss 计算部分，加入了一个 depth loss。用深度图作为 ground truth，然后还有一个渲染深度图作为预测值，计算二者形态分布的相似程度。</p>
-<p>可能老师会问尺度一致性的问题：代码中并没有考虑绝对尺度，因为使用的损失函数开了 log，所以只关注相对尺度，也就是“深度分布长得像不像”。（没提问的话尽量别说）</p>
-<h1 id="p12">p12 引入真实深度约束</h1>
-<p>说一下引入深度约束并没有显著差别，甚至增大权重之后效果更差。可以简单说点可能的原因：</p>
+<h2 id="deblurring">Deblurring</h2>
+<p>模糊的原因：对焦没对好（失焦），运动模糊</p>
+<p>从拍摄角度看，如何减少模糊？</p>
 <ul>
-<li>深度图来替代真实深度图本身就可能不准确</li>
-<li>深度损失设计不合理，可能不考虑绝对尺度会有一定问题</li>
-<li>调参问题</li>
-<li>没注意到的犄角旮旯的语法问题</li>
+<li>对焦准确</li>
+<li>快门速度快（但会导致曝光不够）</li>
+<li>增大光圈</li>
+<li>增大 ISO</li>
 </ul>
-<p>最后记得圆回来：我们依然相信深度约束是可以带来效果了，虽然我们并没有成功实现，但依然做了点事。</p>
-<h1 id="p13">p13 平滑网格表面</h1>
-<p>主要讲动机：一些原本应该比较光滑的物体（比如杯子）渲染出来的网格很粗糙，有很多锯齿。</p>
-<p>启发来自二维图片的平滑操作，所以想让三维的网格表面也变得平滑一些。</p>
-<p>主要调用了open3d的一些函数，记得去读一下。</p>
-<p>有一点可以强调一下：之前实验中做过双边滤波，特点是边缘依然能保留。所以，为了了不让物体的几何边缘也被平滑掉，也加了一点东西。首先是检测哪些顶点在几何边缘，方法是将其法线与邻居顶点的法线比较，如果方向比较一致则不是边缘，否则是边缘。然后平滑过后所有的点都会移动，之后再把边缘点移回去。</p>
-<p>老师可能会问为什么不做颜色边缘的检测，可以回答说有考虑到，但相对来说比较复杂，且出问题的地方主要是几何（同样，没问到就不说）</p>
+<p>清晰图像和模糊图像之间的变换关系可以近似成一个卷积</p>
+<p>去模糊分为两种：non-blind（卷积核已知） 和 blind （卷积核未知）</p>
+<p>对焦没对好，属于 non-blind</p>
+<p>运动去模糊，属于 blind</p>
+<p>$$G=F\otimes H$$</p>
+<p>$G$ 为模糊的图像，$F$ 为清晰的图像，$H$ 为卷积核</p>
+<p>使用傅里叶变换（卷积定理）：</p>
+<p>$$FFT(G)=FFT(F\times H)=FFT(F)\times FFT(H)$$</p>
+<p>所以</p>
+<p>$$F=IFFT(FFT(G)\div FFT(H))$$</p>
+<p>但有问题，因为 $FFT(H)$ 在高频部分接近于 0，直接除不行，放大高频噪声。</p>
+<p>解决方法：Wiener filter，就是在除法时进行调整。</p>
+<p>例如监控摄像头，车辆的运动模糊方向一般是已知的，可以估计出卷积核。</p>
+<p>图像去模糊也可以建模成一个优化问题。</p>
+<p>优化变量：要求解的清晰图像</p>
+<p>目标函数：清晰图像进行模糊之后要接近观测到的模糊图像</p>
+<p>但是解不唯一，输入 ill-posed，需要正则化，好的清晰图像大部分地方梯度为0，只有边缘部分梯度很大。</p>
+<p>那么 blind 呢？</p>
+<p>优化变量：清晰图像 + 卷积核</p>
+<p>目标函数：和之前一样</p>
 
 
 
