@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/ML/Chapter11/">
       
       
+        <link rel="prev" href="../Chapter10/">
+      
+      
+        <link rel="next" href="../Chapter13/">
       
       
       <link rel="icon" href="../../../stylesheets/logo.jpg">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Chapter11 - Monsterdie's Notebook</title>
+        <title>11.特征选择与稀疏学习 - Monsterdie's Notebook</title>
       
     
     
@@ -130,7 +134,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter11
+              11.特征选择与稀疏学习
             
           </span>
         </div>
@@ -266,10 +270,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../" class="md-tabs__link">
           
   
@@ -415,6 +421,72 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -434,11 +506,11 @@
         
   
   
-    <a href="../../" class="md-nav__link">
+    <a href="../../FPA/Chapter1/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Computer Science
+    程序设计与算法基础
   </span>
   
 
@@ -448,6 +520,894 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../FDS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据结构基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../AID/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System3/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅲ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../DB/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据库系统
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../OOP/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    面向对象程序设计
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../TCS/Lec1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    理论计算机
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    机器学习
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            机器学习
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.基本术语
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.模型的评估与选择
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.线性模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.决策树
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.神经网络
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.支持向量机
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.贝叶斯分类器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.集成学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9.聚类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10.降维与度量学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    11.特征选择与稀疏学习
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    11.特征选择与稀疏学习
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      子集搜索与评价
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      过滤式选择
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      包裹式选择
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式选择
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      稀疏表示与字典学习
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13.半监督学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14.概率图模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15.规则学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16.强化学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Quantum/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    量子计算理论基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -566,15 +1526,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      压缩感知
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -615,25 +1566,25 @@
 <p><strong>子集评价：</strong></p>
 <p>利用某个特征子集对数据集进行划分，每个划分区域对应特征子集的某种取值。</p>
 <p>如果上述划分和真实划分（标签）差异越小，则特征子集越好。</p>
-<p>例如，依据特征子集$A$将数据集$D$划分为$V$份（即$A$的取值数），每一份用$D^v$表示。这样，可以计算$D$和$D^v$的信息熵，从而得到$A$的信息增益，用来评价好坏。</p>
+<p>例如，依据特征子集 $A$ 将数据集 $D$ 划分为 $V$ 份（即 $A$ 的取值数），每一份用 $D^v$ 表示。这样，可以计算 $D$ 和 $D^v$ 的信息熵，从而得到 $A$ 的信息增益，用来评价好坏。</p>
 <hr />
 <h2 id="_2">过滤式选择</h2>
 <p>过滤式选择先进行特征选择，过滤掉无用数据；再进行模型训练。即：特征选择过程与后续学习器无关。</p>
-<p>特征选择使用<strong>Relief方法</strong>：每个特征有一个表示重要程度的相关统计量，根据相关统计量进行选择。</p>
+<p>特征选择使用 <strong>Relief 方法</strong>：每个特征有一个表示重要程度的相关统计量，根据相关统计量进行选择。</p>
 <p><strong>相关统计量：</strong></p>
 <p>先给出两个定义：</p>
 <ul>
-<li>猜中近邻（near-hit）：$x_i$同类样本中的最近邻，记为$x_{i,nh}$</li>
-<li>猜错近邻（near-miss）：$x_i$异类样本中的最近邻，记为$x_{i,nm}$</li>
+<li>猜中近邻（near-hit）：$\mathbf{x}_i$ 同类样本中的最近邻，记为 $\mathbf{x}_{i,nh}$</li>
+<li>猜错近邻（near-miss）：$\mathbf{x}_i$ 异类样本中的最近邻，记为 $\mathbf{x}_{i,nm}$</li>
 </ul>
-<p>特征$j$的相关统计量为</p>
+<p>特征 $j$ 的相关统计量为</p>
 <p>$$\delta^j=\sum\limits_i[-\text{diff}(x_i^j-x_{i,nh}^j)^2+\text{diff}(x_i^j-x_{i,nm}^j)^2]$$</p>
 <p>其中：</p>
 <ul>
-<li>$j$为离散特征：若$x_a^j=x_b^j$，则$\text{diff}(x_a^j-x_b^j)=0$，否则为1</li>
-<li>$j$为连续特征：$\text{diff}(x_a^j-x_b^j)=|x_a^j-x_b^j|$</li>
+<li>$j$ 为离散特征：若 $x_a^j=x_b^j$，则 $\text{diff}(x_a^j-x_b^j)=0$，否则为 $1$</li>
+<li>$j$ 为连续特征：$\text{diff}(x_a^j-x_b^j)=|x_a^j-x_b^j|$</li>
 </ul>
-<p>我们可以看出，如果特征$j$区分对错比较有效，那么猜中近邻会很近，猜错近邻会很远，从而相关统计量比较大。</p>
+<p>如果特征 $j$ 区分对错比较有效，那么猜中近邻会很近，猜错近邻会很远，从而相关统计量比较大。</p>
 <hr />
 <h2 id="_3">包裹式选择</h2>
 <p>包裹式选择直接将最终要使用的学习器的性能作为特征子集的评价准则。</p>
@@ -649,35 +1600,34 @@
 <hr />
 <h2 id="_4">嵌入式选择</h2>
 <p>嵌入式选择将特征选择和学习器训练融为一体，两者在同一个优化过程中完成。</p>
-<p>考虑线性回归模型，使用平方误差作为损失函数，若使用L2正则化，则优化目标为</p>
-<p>$$\sum\limits_{i=1}^m(y_i-w^Tx_i)^2+\lambda|w|_2^2$$</p>
-<p>若使用L1正则化，则优化目标为</p>
-<p>$$\sum\limits_{i=1}^m(y_i-w^Tx_i)^2+\lambda|w|_1$$</p>
-<p>后者更容易获得稀疏解。理由见下图，平方误差项等值线与正则化等值线相交处更容易落在坐标轴上，此时某些权重为0。这自然而然地实现了特征选择。</p>
+<p>考虑线性回归模型，使用平方误差作为损失函数，若使用 L2 正则化，则优化目标称为<strong>岭回归</strong>，其形式为</p>
+<p>$$\sum\limits_{i=1}^m(y_i-\mathbf{w}^T\mathbf{x}_i)^2+\lambda\|\mathbf{w}\|_2^2$$</p>
+<p>若使用 L1 正则化，则优化目标称为 <strong>LASSO 回归</strong>，其形式为</p>
+<p>$$\sum\limits_{i=1}^m(y_i-\mathbf{w}^T\mathbf{x}_i)^2+\lambda\|\mathbf{w}\|_1$$</p>
+<p>L1 正则化更容易获得稀疏解（参数中有更多 $0$）。理由见下图，平方误差项等值线与正则化等值线相交处更容易落在坐标轴上，此时某些权重为 $0$。这自然而然地实现了嵌入式特征选择。</p>
 <p><img alt="alt text" src="../image/11.3.png" /></p>
 <hr />
 <h2 id="_5">稀疏表示与字典学习</h2>
-<p>我们将样本放在一起就形成了一个矩阵，如果里面有很多0，那么这组样本就是稀疏表示的。</p>
-<p>稀疏表示的样本有利于问题的线性可分，从而简化后续的学习任务。</p>
-<p>为稠密表示的样本找到合适的字典，将样本转化为稀疏表示，这一过程称为字典学习。</p>
-<p>给定数据集${x_1,x_2,\dots,x_m}$，字典学习最简单的形式为</p>
-<p>$$\min\limits_{B,\alpha_i}\sum\limits_{i=1}^m|x_i-B\alpha_i|<em i="1">2^2+\lambda\sum\limits</em>^m|\alpha_i|_1$$</p>
+<p>我们将样本放在一起就形成了一个矩阵（每行对应一个样本，每列对应一个特征），刚刚我们在讨论的特征选择是一种特征的稀疏性，即可以通过特征选择去除掉矩阵中的一些无关列。</p>
+<p>现在考虑另一种稀疏性：矩阵中有很多 $0$，但并不是整列或整行存在。这样稀疏表示的样本有利于问题的线性可分，从而简化后续的学习任务。</p>
+<p>为稠密表示的样本找到合适的字典，将样本转化为稀疏表示，这一过程称为<strong>字典学习（dictionary learning）</strong>。</p>
+<p>给定数据集 $\{\mathbf{x}_1,\mathbf{x}_2,\dots,\mathbf{x}_m\}$，字典学习最简单的形式为</p>
+<p>$$\min\limits_{\mathbf{B},\boldsymbol{\alpha}_i}\sum\limits_{i=1}^m\|\mathbf{x}_i-\mathbf{B}\boldsymbol{\alpha}_i\|_2^2+\lambda\sum\limits_{i=1}^m\|\boldsymbol{\alpha}_i\|_1$$</p>
 <ul>
-<li>$B\in R^{d\times k}$：字典矩阵</li>
+<li>$\mathbf{B}\in \mathbb{R}^{d\times k}$：字典矩阵</li>
 <li>$k$：字典词汇量</li>
-<li>$\alpha_i\in R^k$：样本$x_i\in R^d$的稀疏表示</li>
+<li>$\boldsymbol{\alpha}_i\in \mathbb{R}^k$：样本 $\mathbf{x}_i\in \mathbb{R}^d$ 的稀疏表示</li>
 </ul>
 <p>上式的第一项是希望$\alpha_i$能很好地重构$x_i$，第二项是希望$\alpha_i$尽可能稀疏。</p>
+<p><strong>求解：</strong></p>
+<p>采用变量交替优化的方法。</p>
+<p>第一步：固定 $\mathbf{B}$，为每个样本 $\mathbf{x}_i$ 找到相应的 $\boldsymbol{\alpha}_i$：</p>
+<p>$$\min\limits_{\boldsymbol{\alpha}_i}\|\mathbf{x}_i-\mathbf{B}\boldsymbol{\alpha}_i\|_2^2+\lambda\|\boldsymbol{\alpha}_i\|_1$$</p>
+<p>第二步：固定 $\boldsymbol{\alpha}_i$，更新字典 $\mathbf{B}$：</p>
+<p>$$\min\limits_{\mathbf{B}}\|\mathbf{X}-\mathbf{BA}\|_F^2$$</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>待补充。</p>
-</div>
-<hr />
-<h2 id="_6">压缩感知</h2>
-<p>压缩感知的目标是：利用部分数据恢复全部数据。</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>待补充。</p>
+<p>此处省略压缩感知。</p>
 </div>
 
 
@@ -807,6 +1757,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter10/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 10.降维与度量学习">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                10.降维与度量学习
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Chapter13/" class="md-footer__link md-footer__link--next" aria-label="下一页: 13.半监督学习">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                13.半监督学习
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
