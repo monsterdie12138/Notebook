@@ -1206,9 +1206,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#common-problems-not-in-p" class="md-nav__link">
+  <a href="#common-problems-still-not-in-p" class="md-nav__link">
     <span class="md-ellipsis">
-      Common Problems Not in P
+      Common Problems Still Not in P
     </span>
   </a>
   
@@ -1435,9 +1435,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#common-problems-not-in-p" class="md-nav__link">
+  <a href="#common-problems-still-not-in-p" class="md-nav__link">
     <span class="md-ellipsis">
-      Common Problems Not in P
+      Common Problems Still Not in P
     </span>
   </a>
   
@@ -1504,8 +1504,8 @@
 <p>若 $F\leqslant_p G$ 且 $G\in P$，则 $F\in P$。</p>
 <p><strong>Lemma2:</strong></p>
 <p>若 $F\leqslant_p G$ 且 $G\leqslant_p H$，则 $F\leqslant_p H$。</p>
-<h3 id="common-problems-not-in-p">Common Problems Not in P</h3>
-<p>以下的问题为一些常见问题，它们实际上无法在多项式时间内计算（不属于 $\text{P}$）。</p>
+<h3 id="common-problems-still-not-in-p">Common Problems Still Not in P</h3>
+<p>以下的问题为一些常见问题，它们还没有找到在多项式时间内计算的方法（暂时不属于 $\text{P}$）。</p>
 <p><strong>3SAT Problem:</strong></p>
 <p>给定一个布尔公式 $\phi$，例如：</p>
 <p>$$\phi=(x_0\lor\overline{x_1}\lor x_2)\land(x_1\lor x_2\lor\overline{x_3})\land(\overline{x_0}\lor\overline{x_1}\lor x_3)$$</p>
@@ -1635,19 +1635,23 @@
   1 \\
   2
 \end{bmatrix}$$</p>
-<p>其中，$x_i\in{0,1}$。这样来看，就相当于这三个向量是选还是不选，已经初具 Subset Sum 的形式了。</p>
+<p>其中，$x_i\in\{0,1\}$。这样来看，就相当于这三个向量是选还是不选，已经初具 Subset Sum 的形式了。</p>
 <p>然后，我们要将向量转换为数。设有 $n$ 个变量，为了保证不进位，我们设每个向量为 $2n$ 进制编码。例如，上面的例子中为 $6$ 进制编码，向量第一个元素为最低位，最后一个元素为最高位：</p>
 <p>$$7x_0+43x_1+37x_2=81$$</p>
 <p>无法从 $7,43,37$ 中选出一些数，使得它们的和为 $81$。这可以解释，因为原本的线性方程组无解。</p>
 <hr />
 <h2 id="pnp-and-np-complete">P、NP and NP-complete</h2>
-<p>上述三个问题都不能在多项式时间内计算，但都可以在多项式时间内验证。</p>
+<p>上述三个问题暂时都不能在多项式时间内计算，但都可以在多项式时间内验证。</p>
 <p><strong>可验证性：</strong></p>
 <p>对于一个布尔函数 $F:\{0,1\}^{*}\rightarrow\{0,1\}$，如果其能在多项式时间内验证，当且仅当存在一台 TM $V$，作为证明系统，其满足：</p>
 <ul>
 <li>运行时间为多项式时间</li>
-<li>对于任意输入 $x\in\{0,1\}^{*}$，$F(x)=1$ 当且仅当存在证据/赋值 $t\in\{0,1\}^{*}$，使得</li>
-<li>$V(x,t)=1$</li>
+<li>
+<p>对于任意输入 $x\in\{0,1\}^{*}$，$F(x)=1$ 当且仅当存在证据/赋值 $t\in\{0,1\}^{*}$，使得  </p>
+</li>
+<li>
+<p>$V(x,t)=1$</p>
+</li>
 <li>$|t|&lt;poly(|x|)$（其实意思是不要太长）</li>
 </ul>
 <p>例如，对于 3SAT，$F=\text{3SAT}$，$V$ 如下：</p>

@@ -1658,8 +1658,8 @@
 <p>先只考虑 $m=1$ 的情况：$\{0,1\}^n\rightarrow\{0,1\}$，刚刚我们已经算出来，可能的函数有 $2^{2^n}$ 种。</p>
 <p>此外，对于一个 NAND-CIRC program $P$，如果它的行数不超过 $s$，则可以将其编码成长度为 $O(s\log s)$ 的 01 串。（证明在下一阶段给出）</p>
 <p>如果上面的成立，则有行数不超过 $s$ 的 NAND-CIRC program 的数量不超过长度为 $Cs\log s$ 的 01 串的数量，其中 $C$ 为某个常数。因此，行数不超过 $s$ 的 NAND-CIRC program 的数量不超过 $2^{Cs\log s}$ 个。</p>
-<p>令 $s=\frac{2^n}{Cn}$，则行数不超过 $s$ 的 NAND-CIRC program 的数量不超过 $2^{2^n}$ 个。</p>
-<p>我们看到，$m=1$ 的有限函数有 $2^{2^n}$ 种，而行数不超过 $s=\frac{2^n}{Cn}$ 的 NAND-CIRC program 的数量不超过 $2^{2^n}$ 个，因此至少存在一个函数，其对应的 NAND-CIRC program 的行数大于 $s=\frac{2^n}{Cn}$，也就是至少需要 $O(\frac{2^n}{n})$ 个门。再考虑 $m$ 位，则至少需要 $O(m\cdot\frac{2^n}{n})$ 个门。</p>
+<p>令 $s=\frac{2^n}{Cn}$，则行数不超过 $s$ 的 NAND-CIRC program 的数量严格小于 $2^{2^n}$ 个（有放缩）。</p>
+<p>我们看到，$m=1$ 的有限函数有 $2^{2^n}$ 种，而行数不超过 $s=\frac{2^n}{Cn}$ 的 NAND-CIRC program 的数量严格小于 $2^{2^n}$ 个，因此至少存在一个函数，其对应的 NAND-CIRC program 的行数大于 $s=\frac{2^n}{Cn}$，也就是至少需要 $O(\frac{2^n}{n})$ 个门。再考虑 $m$ 位，则至少需要 $O(m\cdot\frac{2^n}{n})$ 个门。</p>
 <hr />
 <h2 id="program">Program 编码</h2>
 <p>如何对一个 program 进行编码？</p>

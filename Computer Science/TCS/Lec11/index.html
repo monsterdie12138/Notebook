@@ -1578,8 +1578,8 @@
 <p>上述函数最主要的特征是限制了多少步内停机，称为 <strong>bounded halting problem</strong>。</p>
 <p>我们要证明两件事：</p>
 <ol>
-<li>$\text{HALT}<em _text_RAM="\text{RAM">T\in\text{TIME}</em>(T(n)\log n)$}</li>
-<li>$\text{HALT}<em _text_RAM="\text{RAM">T\notin\text{TIME}</em>(T(n))$}</li>
+<li>$\text{HALT}_T\in\text{TIME}_{\text{RAM}}(T(n)\log n)$</li>
+<li>$\text{HALT}_T\notin\text{TIME}_{\text{RAM}}(T(n))$</li>
 </ol>
 <p><strong>Proof of 1:</strong></p>
 <p>用如下程序实现 $\text{HALT}_T$：</p>
@@ -1611,8 +1611,8 @@
 <p>$$|P|\leqslant\log\log|x|\leqslant\log\log(|P|+|x|)$$</p>
 <p>因此：</p>
 <p>$$\begin{align}
-O(|P|^bT_0) &amp; \leqslant O(T_0[\log\log(|P|+|x|)]^b) \
-&amp; =O(T(|P|+|x|)\cdot[\log\log(|P|+|x|)]^b) \
+O(|P|^bT_0) &amp; \leqslant O(T_0[\log\log(|P|+|x|)]^b) \\
+&amp; =O(T(|P|+|x|)\cdot[\log\log(|P|+|x|)]^b) \\
 &amp; \leqslant O(T(|P|+|x|)\log(|P|+|x|))
 \end{align}$$</p>
 <p>因此证得：$\text{HALT}_T\in\text{TIME}_{\text{RAM}}(T(n)\log n)$。</p>
@@ -1647,7 +1647,7 @@ O(|P|^bT_0) &amp; \leqslant O(T_0[\log\log(|P|+|x|)]^b) \
 <hr />
 <h2 id="_3">电路规模</h2>
 <p>除了时间资源，在研究 finite function 时，我们还讨论过需要多少个与非门（NAND-CIRC program 需要多少行）。</p>
-<p>而刚刚我们在研究的是，对于 infinite function，对应的 NAND_RAM program 需要多少行。</p>
+<p>而刚刚我们在研究的是，对于 infinite function，对应的 NAND-RAM program 需要多少步。</p>
 <p>现在我们要将二者联系起来。</p>
 <p>对于任意 infinite function：</p>
 <p>$$F:\{0,1\}^*\rightarrow\{0,1\}$$</p>
@@ -1721,11 +1721,8 @@ O(|P|^bT_0) &amp; \leqslant O(T_0[\log\log(|P|+|x|)]^b) \
 <p>对于输入 $N$，先转换成二进制串，再去掉最高位的 $1$。例如，$S(7)=11$，$S(8)=000$。</p>
 <p>定义 Unary Halting Function：</p>
 <p>$$\text{UH}(x)=\text{HALTONZERO}(S(|x|))$$</p>
-<p>$\text{UH}$ 是不可计算的。</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>使用归约，证明太快没听懂，暂时懒得记。</p>
-</div>
+<p>$\text{UH}$ 是不可计算的。尝试将 $\text{HALTONZERO}$ 归约到 $\text{UH}$。例如，TM $M$ 的编码为 $11_{(2)}$，我们要找到一个 $x$，满足 $S(|x|)=11_{(2)}=\langle M\rangle$。</p>
+<p>那么，从 $M$ 的编码 $11_{(2)}$ 出发，先在开头添上一位，变成 $111_{(2)}=7$，那么 $x=1111111_{(2)}$ 即可。因此，归约成立，$\text{UH}$ 不可计算。</p>
 <p>然后，$\text{UH}$ 的函数值只和输入长度相关，如果限制输入长度，那么 $\text{UH}$ 是一个常数函数。显然，一个常数函数可以用常数多个门去计算。根据定义，可知 $\text{UH}\in\text{P}_{/poly}$。</p>
 
 

@@ -1574,7 +1574,7 @@
 <p><strong>MAJ3:</strong></p>
 <p>看三个输入中的 $1$ 多还是 $0$ 多，返回多的那个。</p>
 <p>$$\text{MAJ3}(x_0,x_1,x_2)=\begin{cases}
-    1&amp;x_1+x_2+x_3\geqslant 2\\
+    1&amp;x_0+x_1+x_2\geqslant 2\\
     0&amp;\text{otherwise}
 \end{cases}=(x_0\wedge x_1)\vee(x_1\wedge x_2)\vee(x_2\wedge x_0)$$</p>
 </div>
@@ -1619,6 +1619,7 @@
 <p>如果 NAND circuit 有 $s$ 个门，则将其转化成 boolean circuit 后，最多有 $2s$ 个门。（一个 NAND 门转化成一个 AND 门和一个 NOT 门）</p>
 <p>如果 boolean circuit 有 $s$ 个门，则将其转化成 NAND circuit 后，最多有 $3s$ 个门。（三种门中 OR 门开销最大，转化成 3 个 NAND 门）</p>
 <p>类似的，对于 NAND circuit，我们也可以定义对应的等价程序 <strong>NAND-CIRC program</strong>。我们仍以 XOR 函数为例，其在 NAND circuit 下的电路图如下：</p>
+<p>【【【】】】</p>
 <p>对应的 NAND-CIRC program 为：</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>

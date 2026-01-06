@@ -1579,7 +1579,7 @@
 <p>构造一个 TM $M$，用 $\langle M\rangle$ 表示其编码，我们的目标是让 $M$ 在纸带上输出 $\langle M\rangle$。</p>
 <p>最简单的想法是：将 $M$ 拆成 $A$ 和 $B$，$A$ 先将 $\langle B\rangle$ 写到纸带上；$B$ 再将 $\langle A\rangle$ 写到纸带上，然后互换 $\langle A\rangle$ 和 $\langle B\rangle$。最后得到的 $\langle A\rangle\langle B\rangle$ 即为 $\langle M\rangle$。</p>
 <p>这样定义之后依然有问题： $A$ 需要知道 $\langle B\rangle$， $B$ 需要知道 $\langle A\rangle$，形成死锁。</p>
-<p>我们可以先定义函数 $q:\{0,1\}^<em>\to\{0,1\}^</em>$，令 $q(w)=\langle M_w\rangle$，即函数值是一台 TM 的编码。</p>
+<p>我们可以先定义函数 $q:\{0,1\}^*\to\{0,1\}^*$，令 $q(w)=\langle M_w\rangle$，即函数值是一台 TM 的编码。</p>
 <p>然后定义 $M_w$：</p>
 <div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span> <span class="nf">Mw</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1714,9 +1714,11 @@
 <li>子过程二：令 $x=$ "M does not halt on 0"，寻找能够证明这个 statement 的 proof $t$：
     <div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
 <span class="normal"><a href="#__codelineno-8-2">2</a></span>
-<span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">compute</span> <span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="k">if</span> <span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a>    <span class="k">return</span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span><span class="o">*</span> <span class="ow">in</span> <span class="n">increasing</span> <span class="n">length</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>    <span class="n">compute</span> <span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a>    <span class="k">if</span> <span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a>        <span class="k">return</span>
 </span></code></pre></div></td></tr></table></div></li>
 </ul>
 <p>我们发现：这两个子过程必然会有一个停机，一个不停机。若 $M$ 在 $0$ 上停机，那么子过程一会停机；若 $M$ 在 $0$ 上不停机，那么子过程二会停机。也就是说，这个程序能够判断 $M$ 是否在 $0$ 上停机，从而说明 $\text{HALTONZERO}$ 是可计算的，矛盾。</p>

@@ -1659,7 +1659,7 @@
 <p class="admonition-title">Note</p>
 <p>若存在一个从 $F$ 到 $G$ 的归约 $R$，则说明 $F$ 的计算难度不大于 $G$ 的计算难度。</p>
 </div>
-<p><strong>Rice Theorem:</strong></p>
+<p><strong>Rice's Theorem:</strong></p>
 <p>给定一个 TM $M$，判断 $M$ 是否满足某个性质 $P$：</p>
 <p>$$P(M)=\begin{cases}
     1 &amp; \text{if $M$ is a TM which satisfies property $P$} \\
@@ -1681,7 +1681,7 @@
 <p>定义 TM $M_{\text{INF}}$，其接受一个输入 $x$，但无论输入是什么都不停机。</p>
 <p>假设 $P(M_{\text{INF}})=0$。（可以这么假设是因为：若 $P(M_{\text{INF}})=1$，那么只需要考虑 $P$ 的反性质就行了）</p>
 <p>由于 $P$ 是 non-trivial 的，因此存在 TM $M_{\text{YES}}$，使得 $P(M_{\text{YES}})=1$。</p>
-<p>现在把 $\text{HALT}$ 归纳到 $P$，即将输入 $(M,x)$ 转换为 $N$。$N$ 的构造方式如下：</p>
+<p>现在把 $\text{HALT}$ 归约到 $P$，即将输入 $(M,x)$ 转换为 $N$。$N$ 的构造方式如下：</p>
 <div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span>
