@@ -1,0 +1,1218 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Course/DRL/PPO/">
+      
+      
+        <link rel="prev" href="../../GAMES101/Appendix/">
+      
+      
+        <link rel="next" href="../Q-Learning/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>1.PPO - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ppo" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.PPO
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Mathematics/" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Computer%20Science/" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Course
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Computer%20Science/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Course
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../CS61A/Part1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CS61A
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../CS231N/Part1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CS231N
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../GAMES101/Lec1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    GAMES101
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DRL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            DRL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1.PPO
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1.PPO
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Policy 训练初步
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#policy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Policy 训练改进
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      PPO
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Q-Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.Q-Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Policy 训练初步
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#policy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Policy 训练改进
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      PPO
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="ppo">PPO</h1>
+<hr />
+<h2 id="policy">Policy 训练初步</h2>
+<p><strong>强化学习基础：</strong></p>
+<p><img alt="alt text" src="../image/ppo.1.png" /></p>
+<ul>
+<li>environment</li>
+<li>agent</li>
+<li>state</li>
+<li>action</li>
+<li>reward</li>
+<li>action space：可选择的 action 集合</li>
+<li>policy：策略函数，用 $\pi$ 表示，输入为 state，输出为 action 的概率分布，</li>
+<li>trajectory：轨迹，一连串 state 和 action 的序列，用 $\tau$ 表示</li>
+<li>return：累积奖励，即 trajectory 中所有 reward 的和，用 $R$ 表示</li>
+</ul>
+<p>强化学习的最终目标是：用神经网络模拟一个 policy $\pi$，使得 return 期望最大。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>训练和推理时根据概率分布采样 action，而不是直接选择概率最大的 action。</p>
+</div>
+<p><strong>统计学基础：</strong></p>
+<p>期望：</p>
+<p>$$E(x)_{x\sim p(x)}=\sum\limits_{x}x\cdot p(x)\approx\frac{1}{n}\sum\limits_{i=1}^nx_i,x_i\sim p(x)$$</p>
+<p><strong>数学描述——梯度法：</strong></p>
+<p>设 trajectory $\tau$ 服从分布 $P_{\theta}(\tau)$，其中 $\theta$ 为 policy 的参数，trajectory 由 policy 决定，上述目标中提到的期望表示为：</p>
+<p>$$E[R(\tau)]_{\tau\sim P_{\theta}(\tau)}=\sum\limits_{\tau}R(\tau)P_{\theta}(\tau)$$</p>
+<p>如何让上述期望最大化？我们只需要让其沿梯度的方向上升即可。因此，需要对 $\theta$ 求梯度：</p>
+<p>$$
+\begin{align}
+\nabla E[R(\tau)]_{\tau\sim P_{\theta}(\tau)} &amp;= \nabla\sum\limits_{\tau}R(\tau)P_{\theta}(\tau) \\
+&amp;= \sum\limits_{\tau}R(\tau)\nabla P_{\theta}(\tau) \\
+&amp;= \sum\limits_{\tau}P_{\theta}(\tau)R(\tau)\frac{\nabla P_{\theta}(\tau)}{P_{\theta}(\tau)} \\
+&amp;\approx \frac{1}{N}\sum\limits_{n=1}^NR(\tau^n)\frac{\nabla P_{\theta}(\tau^n)}{P_{\theta}(\tau^n)} \\
+&amp;= \frac{1}{N}\sum\limits_{n=1}^NR(\tau^n)\nabla[\log(P_{\theta}(\tau^n))], \tau\sim P_{\theta}(\tau)
+\end{align}
+$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>$\approx$ 的部分基于蒙特卡洛采样。</p>
+</div>
+<p>对于一条确定的 trajectory 的概率分布，有：</p>
+<p>$$P_{\theta}(\tau)=P(s_1)P_{\theta}(a_1|s_1)P(s_2|s_1,a_1)P_{\theta}(a_2|s_2)P(s_3|s_2,a_2)\dots=P(s_1)\prod\limits_{t=1}^TP_{\theta}(a_t|s_t)P(s_{t+1}|s_t,a_t)$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里不带下标的 $P$ 由 environment 决定。</p>
+<p>这里 $s$ 和 $a$ 的下标并不是确定的第几号 state/action，而是表示在这个 trajectory 中的第几个 state/action。</p>
+</div>
+<p>因此，上式可以继续变形。取对数后变成加法，如果求导只关注和 $\theta$ 有关的部分：</p>
+<p>$$
+\begin{align}
+\nabla E(R(\tau))_{\tau\sim P_{\theta}(\tau)} &amp;= \frac{1}{N}\sum\limits_{n=1}^NR(\tau^n)\sum\limits_{t=1}^{T_n}R(\tau_n)\nabla[\log(P_{\theta}(a_t^n|s_t^n))] \\
+&amp;= \frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}R(\tau^n)\nabla[\log(P_{\theta}(a_t^n|s_t^n))]
+\end{align}
+$$</p>
+<p>如果我们去掉 $\nabla$，那么 $\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}R(\tau^n)\log(P_{\theta}(a_t^n|s_t^n))$ 和最开始的原函数 $E[R(\tau)]_{\tau\sim P_{\theta}(\tau)}$ 虽然不完全等价，但是它们的梯度是相等的，更新方向一致，因此我们可以直接用前者来研究优化问题，将其视为简化的目标函数。</p>
+<p>我们来看一下这个目标函数的形式：</p>
+<p>$$\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}R(\tau^n)\log(P_{\theta}(a_t^n|s_t^n))$$</p>
+<p>它由两部分组成。第一部分是对应 trajectory 的 return，第二部分是某个 state 下选择某个 action 的概率（取对数）。</p>
+<p>我们要让这个目标函数最大化是什么意思？就是当 return 为正时，我们希望让对应的 action 被选中的概率更大一些；当 return 为负时，我们希望让对应的 action 被选中的概率更小一些。</p>
+<p><strong>policy 训练：</strong></p>
+<p>为了贴合一般形式的梯度下降，对上述目标函数稍加变换：</p>
+<p>$$\text{Loss} = -\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}R(\tau^n)\log(P_{\theta}(a_t^n|s_t^n))$$</p>
+<p>使用 policy 跑 $N$场游戏，得到 $N$ 条 trajectory，每条 trajectory 有 $T_n$ 个 state-action 对，以及对应的 return $R(\tau^n)$。</p>
+<p>因此，损失函数所有组成成分已知，可以进行反向传播求得梯度，更新神经网络参数 $\theta$。</p>
+<hr />
+<h2 id="policy_1">Policy 训练改进</h2>
+<p><strong>return 改进：</strong></p>
+<p>问题1：</p>
+<p>对于某个 state 下采取某个 action，其对应的 reward 并不应该是整个 trajectory 的 return，而是看采取了这个 action 之后的影响，因为其只会对后续的 reward 产生影响。此外，后面越远的 reward 影响越小：</p>
+<p>$$R(\tau^n)\rightarrow R_t^n=\sum\limits_{t'=t}^{T_n}\gamma^{t'-t}r_{t'}^n$$</p>
+<p>问题2：</p>
+<p>假设无论采取什么 action，环境都会给出一个正的 reward，那么算法就会增加所有 action 的概率，对应 reward 更大的 action，概率增加得更大，但是这样会让训练很慢。最好能让相对好的 action 概率增加，相对不好的 action 概率减少。因此，对 return 引入 baseline：</p>
+<p>$$R_t^n\rightarrow R_t^n - B(s_t^n)$$</p>
+<p>综上，梯度修改为：</p>
+<p>$$\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}[R_t^n-B(s_t^n)]\nabla[\log(P_{\theta}(a_t^n|s_t^n))]$$</p>
+<p><strong>新概念引入：</strong></p>
+<ul>
+<li><strong>action-value function</strong>：记为$Q_{\theta}(s,a)$，表示在 state $s$ 下采取 action $a$，期望的 return 是多少</li>
+<li><strong>state-value function</strong>：记为$V_{\theta}(s)$，表示在 state $s$ 下，无论采取任何 action，期望的 return 是多少</li>
+<li><strong>advantage function</strong>：记为$A_{\theta}(s,a)=Q_{\theta}(s,a)-V_{\theta}(s)$，表示在 state $s$ 下采取 action $a$，相对于平均水平的优势是多少</li>
+</ul>
+<p>因此，advantage function 实际上表示的就是上面的$R_t^n-B(s_t^n)$：</p>
+<p>$$\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta}(s_t^n,a_t^n)\nabla[\log(P_{\theta}(a_t^n|s_t^n))]$$</p>
+<p><strong>Generalized Advantage Estimation (GAE):</strong></p>
+<p>对 advantage function 进行研究：</p>
+<p>$$A_{\theta}(s,a)=Q_{\theta}(s,a)-V_{\theta}(s)$$</p>
+<p>设当前一步得到的 reward 为 $r_t$，则有</p>
+<p>$$Q_{\theta}(s_t,a)=r_t+\gamma*V_{\theta}(s_{t+1})$$</p>
+<p>代回 advantage function：</p>
+<p>$$A_{\theta}(s_t,a)=r_t+\gamma*V_{\theta}(s_{t+1})-V_{\theta}(s_t)$$</p>
+<p>此时的 advantage function 只和 state-value function 有关。</p>
+<p>因此，原本我们需要两个神经网络，分别拟合 $Q_{\theta}(s,a)$ 和 $V_{\theta}(s)$，现在只需要一个神经网络拟合 $V_{\theta}(s)$，然后计算 $A_{\theta}(s_t,a)$。</p>
+<p>此外</p>
+<p>$$V_{\theta}(s_{t+1})\approx r_{t+1}+\gamma*V_{\theta}(s_{t+2})$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里的约等于是因为$r_{t+1}$是不确定的。</p>
+</div>
+<p>因此，advantage function 可以多步采样：</p>
+<p>$$A_{\theta}^1(s_t,a)=r_t+\gamma*V_{\theta}(s_{t+1})-V_{\theta}(s_t)$$</p>
+<p>$$A_{\theta}^2(s_t,a)=r_t+\gamma*r_{t+1}+\gamma^2*V_{\theta}(s_{t+2})-V_{\theta}(s_t)$$</p>
+<p>$$A_{\theta}^3(s_t,a)=r_t+\gamma*r_{t+1}+\gamma^2*r_{t+2}+\gamma^3*V_{\theta}(s_{t+3})-V_{\theta}(s_t)$$</p>
+<p>$$\dots$$</p>
+<p>$$A_{\theta}^T(s_t,a)=r_t+\gamma*r_{t+1}+\gamma^2*r_{t+2}+\gamma^3*r_{t+3}+\dots+\gamma^{T-1}*r_{t+T-1}-V_{\theta}(s_t)$$</p>
+<p>我们使用以下符号进行简记：</p>
+<p>$$\delta_t^V=r_t+\gamma*V_{\theta}(s_{t+1})-V_{\theta}(s_t)$$</p>
+<p>因此，advantage function 可以表示为：</p>
+<p>$$A_{\theta}^1(s_t,a)=\delta_t^V$$</p>
+<p>$$A_{\theta}^2(s_t,a)=\delta_t^V+\gamma*\delta_{t+1}^V$$</p>
+<p>$$A_{\theta}^3(s_t,a)=\delta_t^V+\gamma*\delta_{t+1}^V+\gamma^2*\delta_{t+2}^V$$</p>
+<p>$$\dots$$</p>
+<p>$$A_{\theta}^T(s_t,a)=\delta_t^V+\gamma*\delta_{t+1}^V+\gamma^2*\delta_{t+2}^V+\dots+\gamma^{T-1}*\delta_{t+T-1}^V$$</p>
+<p>如果所有的采样次数都考虑，但是给更远的采样更小的权重：</p>
+<p>$$
+\begin{align}
+A_{\theta}^{GAE}(s_t,a) &amp;= (1-\lambda)(A_{\theta}^1+\lambda*A_{\theta}^2+\lambda^2*A_{\theta}^3+\dots) \\
+&amp;= (1-\lambda)(\delta_t^V + \lambda*(\delta_t^V+\gamma*\delta_{t+1}^V)+ \lambda^2*(\delta_t^V+\gamma*\delta_{t+1}^V+\gamma^2*\delta_{t+2}^V)+\dots) \\
+&amp;= (1-\lambda)(\delta_t^V(1+\lambda+\lambda^2+\dots)+\gamma\delta_{t+1}^V*(\lambda+\lambda^2+\dots)+\dots) \\
+&amp;= (1-\lambda)(\delta_t^V\frac{1}{1-\lambda}+\gamma*\delta_{t+1}^V\frac{\lambda}{1-\lambda}+\gamma^2*\delta_{t+2}^V\frac{\lambda^2}{1-\lambda}+\dots) \\
+&amp;= \sum\limits_{b=0}^{\infty}(\gamma\lambda)^b\delta_{t+b}^V
+\end{align}
+$$</p>
+<p><strong>改进后的算法：</strong></p>
+<p>$$\delta_t^V=r_t+\gamma*V_{\theta}(s_{t+1})-V_{\theta}(s_t)$$</p>
+<p>$$A_{\theta}^{GAE}(s_t,a) = \sum\limits_{b=0}^{\infty}(\gamma\lambda)^b\delta_{t+b}^V$$</p>
+<p>$$\text{gradient}=\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta}^{GAE}(s_t^n,a_t^n)\nabla[\log(P_{\theta}(a_t^n|s_t^n))]$$</p>
+<p>其中，$V_{\theta}$ 和 $P_{\theta}$ 都是用神经网络来拟合的，一般可共用参数，在最后一层不同。</p>
+<hr />
+<h2 id="ppo_1">PPO</h2>
+<p>全称： Proximal Policy Optimization，邻近策略优化</p>
+<p><strong>重要性采样：</strong></p>
+<p>策略分为 on-policy 和 off-policy 两种。on-policy 采集数据所用模型和要训练的模型是同一个；而 off-policy 不然。例如，老师根据一名同学的行为进行奖励或惩罚，这名同学自己调整行为则为 on-policy；而其他同学根据这名同学的奖惩情况调整自己的行为则为 off-policy。</p>
+<p>原本我们的 policy 训练是 on-policy 的，现在，PPO 想要利用 off-policy 的数据来训练 policy。</p>
+<p>如果我们想要求$f(x)$的期望：</p>
+<p>$$
+\begin{align}
+E[f(x)]_{x\sim p(x)} &amp;= \sum\limits_xf(x)p(x)  \\
+&amp;= \sum\limits_xf(x)\cdot\frac{p(x)}{q(x)}\cdot q(x)  \\
+&amp;= E[f(x)\frac{p(x)}{q(x)}]_{x\sim q(x)} \\
+&amp;\approx \frac{1}{N}\sum\limits_{n=1}^N[f(x)\frac{p(x)}{q(x)}], x\sim q(x)
+\end{align}$$</p>
+<p>实质上，是更换了原本的采样分布。因此，原本的目标函数的梯度公式也可以用重要性采样来改写：</p>
+<p>$$
+\begin{align}
+\text{gradient} &amp;= \frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta}^{GAE}(s_t^n,a_t^n)\nabla[\log(P_{\theta}(a_t^n|s_t^n))]   \\
+&amp;\rightarrow \frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)}\nabla[\log(P_{\theta}(a_t^n|s_t^n))] 
+\end{align}
+$$</p>
+<p>其中，$A_{\theta'}^{GAE}(s_t^n,a_t^n)$ 是观测到其他 policy 的数据后计算得到的 advantage function，用 $\nabla[\log(P_{\theta}(a_t^n|s_t^n))]$ 来更新当前 policy，引入 $\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)}$ 来修正分布差异带来的影响。</p>
+<p>我们可以对 $\nabla[\log(P_{\theta}(a_t^n|s_t^n))]$ 进行还原：</p>
+<p>$$
+\begin{align}
+\text{gradient} &amp;= \frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)}\frac{\nabla [P_{\theta}(a_t^n|s_t^n)]}{P_{\theta}(a_t^n|s_t^n)} \\
+&amp;= \frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{\nabla [P_{\theta}(a_t^n|s_t^n)]}{P_{\theta'}(a_t^n|s_t^n)}
+\end{align}
+$$</p>
+<p>类似地，还原出简化的目标函数：</p>
+<p>$$\text{Loss} = -\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)}$$</p>
+<p>这样，我们就把 on-policy 的目标函数变成了 off-policy 的目标函数，这个时候其他策略采集得到的数据就可以多次利用了。</p>
+<p><strong>进一步约束：</strong></p>
+<p>观测的 policy 和自身的 policy 给出的各种 action 概率分布差别不能太大，不然训练效果不好。例如，老师批评坏学生考试交白卷，但如果是好学生观测并学习，这是没有意义的，因为好学生出现交白卷的 action 的概率几乎为 0。</p>
+<p>添加的约束就是 <strong>KL 散度</strong>，是描述两个概率分布相似程度的量化指标。分布完全一致则为 0，差别越大则 KL 散度越大。</p>
+<p>$$\text{Loss} = -\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)} + \beta KL(P_{\theta},P_{\theta'})$$</p>
+<p>还有一种使用 <strong>clip截断函数</strong>的形式。$clip(a,b,c)$ 表示：当 $a&lt;b$ 时，输出 $b$；当 $a&gt;c$ 时，输出 $c$；否则输出 $a$。</p>
+<p>$$\text{Loss}= -\frac{1}{N}\sum\limits_{n=1}^N\sum\limits_{t=1}^{T_n}\min\{A_{\theta'}^{GAE}(s_t^n,a_t^n)\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)},A_{\theta'}^{GAE}(s_t^n,a_t^n)clip\left(\frac{P_{\theta}(a_t^n|s_t^n)}{P_{\theta'}(a_t^n|s_t^n)},1-\epsilon,1+\epsilon\right)\}$$</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../GAMES101/Appendix/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Appendix">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Appendix
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Q-Learning/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2.Q-Learning">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                2.Q-Learning
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

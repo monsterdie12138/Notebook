@@ -1,0 +1,2137 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/CV/Chapter6/">
+      
+      
+        <link rel="prev" href="../Chapter5/">
+      
+      
+        <link rel="next" href="../Chapter7/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>6.Structure from Motion (SfM) - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter6-structure-from-motion-sfm" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6.Structure from Motion (SfM)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Mathematics/" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Course/" class="md-tabs__link">
+          
+  
+  Course
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../FPA/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    程序设计与算法基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../FDS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据结构基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../AID/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System3/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅲ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../DB/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据库系统
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../OOP/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    面向对象程序设计
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../TCS/Lec1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    理论计算机科学导引
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ML/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    机器学习
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Quantum/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    量子计算理论基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_14" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_14" id="__nav_3_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机视觉导论
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_14_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_14">
+            <span class="md-nav__icon md-icon"></span>
+            计算机视觉导论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.Image Formation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.Image Processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.Model Fitting and Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.Image Matching and Motion Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.Image Stitching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    6.Structure from Motion (SfM)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    6.Structure from Motion (SfM)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q1-camera-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1: Camera Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q1: Camera Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      坐标变换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      透视投影
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      光栅化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q2-camera-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2: Camera Calibration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q2: Camera Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#camera-calibration-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera Calibration Procedure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-localization-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Localization Problem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3-structure-from-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3: Structure from Motion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3: Structure from Motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epipolar-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Epipolar Geometry 对极几何
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triangulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triangulation 三角化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-frame-structure-from-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-frame Structure from Motion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.Depth Estimation and 3D Reconstruction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.Recognition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Course/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Course
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q1-camera-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1: Camera Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q1: Camera Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      坐标变换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      透视投影
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      光栅化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q2-camera-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2: Camera Calibration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q2: Camera Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#camera-calibration-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Camera Calibration Procedure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-localization-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Localization Problem
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3-structure-from-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3: Structure from Motion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3: Structure from Motion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#epipolar-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Epipolar Geometry 对极几何
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triangulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triangulation 三角化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-frame-structure-from-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-frame Structure from Motion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="chapter6-structure-from-motion-sfm">Chapter6 Structure from Motion (SfM)</h1>
+<hr />
+<p>输入：一个场景不同角度的图片，相机内参</p>
+<p>输出：场景的三维点云，相机的位置与朝向（相机外参）</p>
+<p>SfM 相关的问题有以下三个：</p>
+<ul>
+<li>如何将世界坐标系下的三维点映射到像素坐标系下的二维点（camera model）</li>
+<li>如何计算相机在世界坐标系下的位置和朝向（camera calibration）</li>
+<li>如何从多张图片中重建三维结构（structure from motion）</li>
+</ul>
+<hr />
+<h2 id="q1-camera-model">Q1: Camera Model</h2>
+<p>输入：世界坐标系下的三维点，相机的位置与朝向，相机的相关参数</p>
+<p>输出：像素坐标系下的二维点</p>
+<p>以上变换经历三个步骤：</p>
+<ul>
+<li>坐标变换：世界坐标系下的三维点 → 相机坐标系下的三维点</li>
+<li>透视投影：相机坐标系下的三维点 → 二维平面上的二维点</li>
+<li>光栅化：二维平面上的二维点 → 像素坐标系下的二维点</li>
+</ul>
+<p>每个步骤本质上都是一个<strong>矩阵乘法</strong>，坐标变换的矩阵为<strong>外参矩阵（extrinsic matrix）</strong>，与相机的位置和朝向有关；透视投影和光栅化的矩阵为<strong>内参矩阵（intrinsic matrix）</strong>，与相机本身的参数有关。</p>
+<h3 id="_1">坐标变换</h3>
+<p>世界坐标系下的三维点：</p>
+<p>$$\mathbf{x}_w=\begin{bmatrix}
+    x_w \\
+    y_w \\
+    z_w
+\end{bmatrix}$$</p>
+<p>相机在世界坐标系下的位置：</p>
+<p>$$\mathbf{c}_w$$</p>
+<p>相机在世界坐标系下的朝向，表示为 $3\times 3$ 的旋转矩阵，每一行表示相机坐标系的 $x$、$y$、$z$ 轴在世界坐标系下的朝向：</p>
+<p>$$R=\begin{bmatrix}
+    r_{11} &amp; r_{12} &amp; r_{13} \\
+    r_{21} &amp; r_{22} &amp; r_{23} \\
+    r_{31} &amp; r_{32} &amp; r_{33}
+\end{bmatrix}$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>$R$ 虽然有 9 个元素，但实际上只有 3 个自由度。</p>
+</div>
+<p>相机坐标系下的三维点可通过以下公式计算得到：</p>
+<p>$$\mathbf{x}_c=R(\mathbf{x}_w-\mathbf{c}_w)=R\mathbf{x}_w-R\mathbf{c}_w\equiv R\mathbf{x}_w+\mathbf{t}$$</p>
+<p>也就是对 $\mathbf{x}_w-\mathbf{c}_w$ 在相机的三个轴上做投影。其中，$\mathbf{t}\equiv-R\mathbf{c}_w$</p>
+<p>写成齐次坐标的形式：</p>
+<p>$$\tilde{\mathbf{x}}_c=
+\begin{bmatrix}
+    x_c \\
+    y_c \\
+    z_c \\
+    1
+\end{bmatrix}=
+\begin{bmatrix}
+    r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \\
+    r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \\
+    r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z \\
+    0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+    x_w \\
+    y_w \\
+    z_w \\
+    1
+\end{bmatrix}$$</p>
+<p>其中，外参矩阵即为</p>
+<p>$$M_{ext}=\begin{bmatrix}
+    r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \\
+    r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \\
+    r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z \\
+    0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}$$</p>
+<h3 id="_2">透视投影</h3>
+<p>二维平面上的点可以通过以下公式计算得到：</p>
+<p>$$\mathbf{x}_i=\begin{bmatrix}
+    x_i \\
+    y_i
+\end{bmatrix}=f\cdot\begin{bmatrix}
+    \frac{x_c}{z_c} \\
+    \frac{y_c}{z_c}
+\end{bmatrix}$$</p>
+<h3 id="_3">光栅化</h3>
+<p>设横向的像素密度为 $m_x$，纵向的像素密度为 $m_y$，横向的像素数量的一半为 $c_x$，纵向的像素数量的一半为 $c_y$，则像素坐标系下的二维点可以通过以下公式计算得到：</p>
+<p>$$u=m_xx_i+c_x$$</p>
+<p>$$v=m_yy_i+c_y$$</p>
+<p>将透视投影和光栅化合并，并写成齐次坐标的形式：</p>
+<p>$$\tilde{\mathbf{u}}=\begin{bmatrix}
+    u \\
+    v \\
+    1
+\end{bmatrix}\cong\begin{bmatrix}
+    \tilde{u} \\
+    \tilde{v} \\
+    \tilde{w}
+\end{bmatrix}=\begin{bmatrix}
+    f_x &amp; 0 &amp; c_x &amp; 0 \\
+    0 &amp; f_y &amp; c_y &amp; 0 \\
+    0 &amp; 0 &amp; 1 &amp; 0
+\end{bmatrix}\begin{bmatrix}
+    x_c \\
+    y_c \\
+    z_c \\
+    1
+\end{bmatrix}$$</p>
+<p>其中，$f_x\equiv m_xf$，$f_y\equiv m_yf$，内参矩阵即为</p>
+<p>$$M_{int}=\begin{bmatrix}
+    f_x &amp; 0 &amp; c_x &amp; 0 \\
+    0 &amp; f_y &amp; c_y &amp; 0 \\
+    0 &amp; 0 &amp; 1 &amp; 0
+\end{bmatrix}$$</p>
+<p>综上，投影矩阵 $P$ 记为内参矩阵和外参矩阵的乘积：</p>
+<p>$$P=M_{int}M_{ext}$$</p>
+<p>$$\begin{bmatrix}
+    \tilde{u} \\
+    \tilde{v} \\
+    \tilde{w}
+\end{bmatrix}=\begin{bmatrix}
+    p_{11} &amp; p_{12} &amp; p_{13} &amp; p_{14} \\
+    p_{21} &amp; p_{22} &amp; p_{23} &amp; p_{24} \\
+    p_{31} &amp; p_{32} &amp; p_{33} &amp; p_{34}
+\end{bmatrix}\begin{bmatrix}
+    x_w \\
+    y_w \\
+    z_w \\
+    1
+\end{bmatrix}$$</p>
+<hr />
+<h2 id="q2-camera-calibration">Q2: Camera Calibration</h2>
+<h3 id="camera-calibration-procedure">Camera Calibration Procedure</h3>
+<p>输入：多组世界坐标系下的三维点和对应的像素坐标系下的二维点</p>
+<p>输出：内参矩阵和外参矩阵</p>
+<p><img alt="alt text" src="../image/7.1.png" /></p>
+<p>使用<strong>棋盘格</strong>。以棋盘格本身为世界坐标系，那么棋盘格上每一个角点的 $\mathbf{x}_w$ 都是已知的。</p>
+<p>现在拿相机拍一张棋盘格的图像，使用特定算法检测出角点，这样也知道了棋盘格上每一个角点的像素坐标 $\mathbf{u}$。</p>
+<p>由上一部分的公式：</p>
+<p>$$\begin{bmatrix}
+    \tilde{u} \\
+    \tilde{v} \\
+    \tilde{w}
+\end{bmatrix}=\begin{bmatrix}
+    p_{11} &amp; p_{12} &amp; p_{13} &amp; p_{14} \\
+    p_{21} &amp; p_{22} &amp; p_{23} &amp; p_{24} \\
+    p_{31} &amp; p_{32} &amp; p_{33} &amp; p_{34}
+\end{bmatrix}\begin{bmatrix}
+    x_w \\
+    y_w \\
+    z_w \\
+    1
+\end{bmatrix}$$</p>
+<p>我们可以得到第 $i$ 组对应点提供的两个方程：</p>
+<p>$$u^{(i)}=\frac{p_{11}x_w^{(i)}+p_{12}y_w^{(i)}+p_{13}z_w^{(i)}+p_{14}}{p_{31}x_w^{(i)}+p_{32}y_w^{(i)}+p_{33}z_w^{(i)}+p_{34}}$$</p>
+<p>$$v^{(i)}=\frac{p_{21}x_w^{(i)}+p_{22}y_w^{(i)}+p_{23}z_w^{(i)}+p_{24}}{p_{31}x_w^{(i)}+p_{32}y_w^{(i)}+p_{33}z_w^{(i)}+p_{34}}$$</p>
+<p>把 $P$ 的 12 个元素展开成列向量 $p$，可以用与之前类似的方法，得到</p>
+<p><img alt="alt text" src="../image/7.2.png" /></p>
+<p>也就是说，我们要求解</p>
+<p>$$Ap=0$$</p>
+<p>由于 $p$ 尺度无关，因此需要加上约束条件，要么最后一个元素为 $1$，要么 $||p||^2=1$。加上约束条件后，一般不会有精确解，因此转变成优化问题，求解</p>
+<p>$$\operatorname*{arg\,min}_p\|Ap\|^2$$</p>
+<p>解得 $p$ 之后恢复成矩阵 $P$，通过 <strong>QR 分解</strong>获得内参矩阵和外参矩阵。</p>
+<h3 id="visual-localization-problem">Visual Localization Problem</h3>
+<p>Visual Localization Problem 也称为 <strong>Perspective-n-Point Problem (PnP)</strong>，其与 camera calibration problem 的区别在于，前者内参矩阵已知，后者内参矩阵未知。</p>
+<p>输入：多组世界坐标系下的三维点和对应的像素坐标系下的二维点，以及内参矩阵</p>
+<p>输出：外参矩阵</p>
+<p><strong>Direct Linear Transform (DLT):</strong></p>
+<p>直接像 camera calibration 那样求出 $P$，再解出外参矩阵。</p>
+<p><strong>P3P:</strong></p>
+<p><img alt="alt text" src="../image/7.3.png" /></p>
+<p>如图，$a$、$b$、$c$ 为像素坐标系下的二维点，已知。</p>
+<p>像平面到相机光心的距离为 $f$，因此如果把这个平面放在相机坐标系下的三维空间内，那么 $a$、$b$、$c$ 的三维坐标也已知，于是射线 $Oa$、$Ob$、$Oc$ 也已知。</p>
+<p>$A$、$B$、$C$ 为世界坐标系下的三维点，也已知。因此，$AB$、$BC$、$AC$ 也已知。</p>
+<p>在相机坐标系下，$A$、$B$、$C$ 分别在射线 $Oa$、$Ob$、$Oc$ 上，再加上 $AB$、$BC$、$AC$ 的长度限制，就可以解出 $A$、$B$、$C$ 在相机坐标系下的坐标。</p>
+<p>最后，就可以还原出相机在世界坐标系下的位置和朝向，即外参矩阵。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这样做会得到四组解，还需要额外一对点来确定正确解。因此，对于 visual localization problem，至少需要四对点。</p>
+</div>
+<p><strong>Minimize the Reprojection Error:</strong></p>
+<p>转化成优化问题：找到最佳的 $R$ 和 $\mathbf{t}$，能够使</p>
+<p>$$\sum\limits_i\|p_i-M_{int}(RP_i+\mathbf{t})\|^2$$</p>
+<p>取最小值。其中，$p_i$ 为已知的二维像素坐标，$M_{int}(RP_i+\mathbf{t})$ 将原本的三维点 $P_i$ 投影到二维像素坐标系下。我们希望投影后的点与实际观测到的点尽可能接近。</p>
+<p>可以使用 P3P 初始化，然后使用 Gauss-Newton 法进行优化。</p>
+<hr />
+<h2 id="q3-structure-from-motion">Q3: Structure from Motion</h2>
+<p>输入：两张图像和对应相机的内参</p>
+<p>输出：重建出的三维点云和对应相机的外参</p>
+<p>接下来，我们先想办法求解相机外参，即两个相机相对的平移和旋转（以左相机的相机坐标系为世界坐标系）。</p>
+<h3 id="epipolar-geometry">Epipolar Geometry 对极几何</h3>
+<ul>
+<li>$\mathbf{u}_l$：三维点 $P$ 在左相机二维像素坐标，与右相机对应点 $\mathbf{u}_r$ 匹配，已知</li>
+<li>$\mathbf{u}_r$：三维点 $P$ 在右相机二维像素坐标，与左相机对应点 $\mathbf{u}_l$ 匹配，已知</li>
+<li>$\mathbf{x}_l$：三维点 $P$ 在左相机坐标系下的三维坐标，未知</li>
+<li>$\mathbf{x}_r$：三维点 $P$ 在右相机坐标系下的三维坐标，未知</li>
+<li>$R$：右相机坐标系相对于左相机坐标系的旋转矩阵，未知</li>
+<li>$\mathbf{t}$：右相机坐标系相对于左相机坐标系的平移向量，未知</li>
+</ul>
+<p>对极几何描述了 $\mathbf{u}_l$ 和 $\mathbf{u}_r$ 的变换关系，即相机之间的变换关系（$\mathbf{t}$ 和 $R$）。</p>
+<p><img alt="alt text" src="../image/7.4.png" /></p>
+<p><strong>极点（epipole）：</strong></p>
+<p>极点在图中表示为 $e_l$ 和 $e_r$，是两个相机在对方图像平面上的投影（不一定在画面里），对于每一对给定的相机都是唯一的。</p>
+<p><strong>对极平面（epipolar plane）：</strong></p>
+<p>对极平面由三维点 $P$ 和两个相机中心 $O_l$、$O_r$ 组成，每个三维点都有自己的对极平面。</p>
+<p>如图所示，对极平面的三条边都有各自的意义：</p>
+<ul>
+<li>$\vec{O_lP}=\mathbf{x}_l$：描述的是三维点$P$在左相机坐标系下的位置</li>
+<li>$\vec{O_rP}=\mathbf{x}_r$：描述的是三维点$P$在右相机坐标系下的位置</li>
+<li>$\vec{O_lO_r}=\mathbf{t}$：描述的是右相机在左相机坐标系下的位置，即两个相机的相对位移</li>
+</ul>
+<p><strong>对极约束（epipolar constraint）：</strong></p>
+<p>假设对极平面的法向量：</p>
+<p>$$\mathbf{n}=\mathbf{t}\times\mathbf{x}_l$$</p>
+<p>此时有</p>
+<p>$$\mathbf{x}_l\cdot\mathbf{n}=\mathbf{x}_l\cdot(\mathbf{t}\times\mathbf{x}_l)=0$$</p>
+<p>将点乘和叉乘展开成矩阵形式：</p>
+<p>$$\begin{bmatrix}
+    x_l &amp; y_l &amp; z_l
+\end{bmatrix}
+\begin{bmatrix}
+    0 &amp; -t_z &amp; t_y \\
+    t_z &amp; 0 &amp; -t_x \\
+    -t_y &amp; t_x &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+    x_l \\
+    y_l \\
+    z_l
+\end{bmatrix}=0$$</p>
+<p>中间的矩阵记为 $T_{\times}$。已知</p>
+<p>$$\mathbf{x}_l=R\mathbf{x}_r+\mathbf{t}$$</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里的 $R$ 和 $t$ 与上面的定义略有区别。</p>
+</div>
+<p>代入上述的矩阵形式，最终得到</p>
+<p>$$\begin{bmatrix}
+    x_l &amp; y_l &amp; z_l
+\end{bmatrix}
+\begin{bmatrix}
+    e_{11} &amp; e_{12} &amp; e_{13} \\
+    e_{21} &amp; e_{22} &amp; e_{23} \\
+    e_{31} &amp; e_{32} &amp; e_{33}
+\end{bmatrix}
+\begin{bmatrix}
+    x_r \\
+    y_r \\
+    z_r
+\end{bmatrix}=0$$</p>
+<p>这个公式就是对极约束。我们记中间的矩阵为 $E$，称为<strong>本质矩阵（essential matrix）</strong>，它实际上是</p>
+<p>$$E=T_{\times}R$$</p>
+<p>只要我们知道了 $E$，就可以通过 <strong>SVD 奇异值分解</strong>，把 $E$ 分解为 $T_\times$（对应平移）和 $R$（对应旋转）。</p>
+<p>问题是如何求解 $E$？我们需要获得若干组 $(\mathbf{x}_l,\mathbf{x}_r)$ 来解这个方程，但我们现在只有若干组 $(\mathbf{u}_l,\mathbf{u}_r)$。</p>
+<p><strong>Incorporating the Image Coordinates:</strong></p>
+<p>对于左相机：</p>
+<p>$$z_l\begin{bmatrix}
+    u_l \\
+    v_l \\
+    1
+\end{bmatrix}=K_l
+\begin{bmatrix}
+    x_l \\
+    y_l \\
+    z_l
+\end{bmatrix}$$</p>
+<p>对于右相机：</p>
+<p>$$z_r\begin{bmatrix}
+    u_r \\
+    v_r \\
+    1
+\end{bmatrix}=K_r
+\begin{bmatrix}
+    x_r \\
+    y_r \\
+    z_r
+\end{bmatrix}$$</p>
+<p>其中，$K_l$ 和 $K_r$ 分别为左、右相机的内参矩阵（已知）。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里的 $K_l$ 和 $K_r$ 是 $3\times 3$ 矩阵，不是之前提到的 $3\times 4$ 矩阵，其实本质不变，只是去掉没什么用的最后一列。</p>
+</div>
+<p>因此</p>
+<p>$$\mathbf{x}_l^T=\begin{bmatrix}
+    u_l &amp; v_l &amp; 1
+\end{bmatrix}z_lK_l^{-1T}$$</p>
+<p>$$\mathbf{x}_r=K_r^{-1}z_r\begin{bmatrix}
+    u_r \\
+    v_r \\
+    1
+\end{bmatrix}$$</p>
+<p>代入原式，得到</p>
+<p>$$\begin{bmatrix}
+    u_l &amp; v_l &amp; 1
+\end{bmatrix}z_lK_l^{-1T}EK_r^{-1}z_r\begin{bmatrix}
+    u_r \\
+    v_r \\
+    1
+\end{bmatrix}=0$$</p>
+<p>去掉常数 $z_l$ 和 $z_r$，将中间的矩阵记为 $F$，称为<strong>基础矩阵（fundamental matrix）</strong>，得到</p>
+<p>$$F=K_l^{-1T}EK_r^{-1}$$</p>
+<p>$$E=K_l^TFK_r^T$$</p>
+<p>有了多组 $(\mathbf{u}_l,\mathbf{u}_r)$，就可以用类似之前的方法解 $F$；解出 $F$ 后，由于内参矩阵已知，可以解 $E$；解出 $E$ 后，可以通过 SVD 分解得到相机的相对变换 $\mathbf{t}$ 和 $R$。</p>
+<h3 id="triangulation">Triangulation 三角化</h3>
+<p>知道了一组对应点 $(\mathbf{u}_l,\mathbf{u}_r)$，以及两个相机的相对位置与朝向 $\mathbf{t}$ 和 $R$ 后，就可以得到两条射线，射线交点即为三维点 $P$（得到在世界坐标系/左相机坐标系下的三维坐标）。</p>
+<p>多组对应点可以得到多个三维点，最终得到三维点云。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>为什么知道了一个相机的内参和外参，不能直接把图像上的点直接还原到世界坐标系下，而是要通过两个相机的射线求交获得？</strong></p>
+<p>如果考虑从世界坐标系到图像像素坐标系，那么是一个从三维到二维的投影过程，深度信息丢失，因此是<strong>不可逆</strong>的！</p>
+</div>
+<p>但大多数情况下，两条射线并不一定能完美地相交，因此这里依然可以考虑<strong>重投影误差（reprojection error）</strong>。目标是得到一个三维点 $P$，使得它投影回两张图像后，得到的重投影 $(\hat{\mathbf{u}}_l, \hat{\mathbf{u}}_r)$ 和对应的二维点 $(\mathbf{u}_l,\mathbf{u}_r)$ 尽可能接近：</p>
+<p>$$\text{cost}(\mathbf{P})=\|\mathbf{u}_l-\hat{\mathbf{u}}_l\|^2+\|\mathbf{u}_r-\hat{\mathbf{u}}_r\|^2$$</p>
+<p><img alt="alt text" src="../image/7.5.png" /></p>
+<h3 id="multi-frame-structure-from-motion">Multi-frame Structure from Motion</h3>
+<p>现在考虑多张图像的情况。如何得到三维点云和相机外参？</p>
+<p><img alt="alt text" src="../image/7.6.png" /></p>
+<ul>
+<li>用两张图，按照上述过程得到三维点云和两个相机的外参</li>
+<li>用第三张图和第二张图进行特征匹配</li>
+<li>对于第三张图进行视觉定位，得到第三个相机的外参</li>
+<li>第三张图和第二张图的特征匹配可能会带来新的三维点，加入到点云中</li>
+<li>以此类推</li>
+</ul>
+<p>上述过程称为<strong>序列化（增量式）SfM</strong>，问题是会有累计误差。</p>
+<p>解决方法是：</p>
+<p>$$\|\mathbf{u}_l-\hat{\mathbf{u}}_l\|^2+\|\mathbf{u}_r-\hat{\mathbf{u}}_r\|^2$$</p>
+<p>依然是考虑这个重投影误差，但这个时候优化的参数不仅仅只有 $P$ 的三维坐标，还有相机的内外参。</p>
+<p><img alt="alt text" src="../image/7.7.png" /></p>
+<p>按照上述的步骤得到初始的结果后，进行<strong>集束优化（bundle adjustment）</strong>，利用下面的误差同时优化所有的三维点和相机参数：</p>
+<p>$$E(P_{proj},\mathbf{P})=\sum\limits_{i=1}^m\sum\limits_{j=1}^n\|u_j^{(i)}-P_{proj}^{(i)}\mathbf{P}_j\|^2$$</p>
+<p>变量说明：</p>
+<ul>
+<li>$P_{proj}$：投影矩阵（包含内外参）</li>
+<li>$\mathbf{P}$：三维点</li>
+<li>$m$：相机数量</li>
+<li>$n$：三维点数量</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注意有些点在某些图上是看不到的，这些点不计入重投影误差。</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Chapter5/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 5.Image Stitching">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                5.Image Stitching
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Chapter7/" class="md-footer__link md-footer__link--next" aria-label="下一页: 7.Depth Estimation and 3D Reconstruction">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                7.Depth Estimation and 3D Reconstruction
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

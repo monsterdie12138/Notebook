@@ -1,0 +1,2005 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monsterdie12138.github.io/Notebook/Computer%20Science/TCS/Lec12/">
+      
+      
+        <link rel="prev" href="../Lec11/">
+      
+      
+        <link rel="next" href="../Lec13/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/logo.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Lec12 - Monsterdie's Notebook</title>
+      
+    
+    
+  
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+
+    
+
+      
+    
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-J49VTEQR8G"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-J49VTEQR8G",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-J49VTEQR8G",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lec12" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-header__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Monsterdie's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lec12
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Mathematics/" class="md-tabs__link">
+          
+  
+  Mathematics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Course/" class="md-tabs__link">
+          
+  
+  Course
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Monsterdie&#39;s Notebook" class="md-nav__button md-logo" aria-label="Monsterdie's Notebook" data-md-component="logo">
+      
+  <img src="../../../stylesheets/logo.jpg" alt="logo">
+
+    </a>
+    Monsterdie's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monsterdie12138/Notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Monsterdie's Notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Mathematics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../FPA/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    程序设计与算法基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../FDS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据结构基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ADS/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    高级数据结构与算法分析
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../AID/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    人工智能引论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System1/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅰ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System2/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅱ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../System3/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机系统Ⅲ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../DB/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    数据库系统
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../OOP/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    面向对象程序设计
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    理论计算机科学导引
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            理论计算机科学导引
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lec12
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lec12
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      多项式时间归约
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多项式时间归约">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-problems-still-not-in-p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Problems Still Not in P
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text3satleqslant_p-text01eq" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\text{3SAT}\leqslant_p \text{01EQ}$
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text01eqleqslant_p-textsubset-sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\text{01EQ}\leqslant_p \text{Subset Sum}$
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pnp-and-np-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      P、NP and NP-complete
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec13
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Lec14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lec14
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ML/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    机器学习
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Quantum/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    量子计算理论基础
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../CV/Chapter1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    计算机视觉导论
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../Course/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Course
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      多项式时间归约
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多项式时间归约">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-problems-still-not-in-p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Problems Still Not in P
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text3satleqslant_p-text01eq" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\text{3SAT}\leqslant_p \text{01EQ}$
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text01eqleqslant_p-textsubset-sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\text{01EQ}\leqslant_p \text{Subset Sum}$
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pnp-and-np-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      P、NP and NP-complete
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<p><span style="font-family: 'Times New Roman';"></p>
+<h1 id="lec12">Lec12</h1>
+<hr />
+<h2 id="_1">多项式时间归约</h2>
+<p>我们之前讲过<strong>归约</strong>：</p>
+<p>给定两个布尔函数 $F$ 和 $G$，$F\to G$ 的归约是一个可计算的函数 $R:\{0,1\}^{*}\to\{0,1\}^{*}$，满足对于任意 $F$ 的输入 $x\in\{0,1\}^{*}$，可以转换成 $G$ 的输入 $R(x)$，且满足 $F(x)=G(R(x))$，说明 $G$ 的计算难度不低于 $F$。</p>
+<p>现在，如果我们进一步限制归约 $R$ 在多项式时间内可计算，那么我们称之为<strong>多项式时间归约（polynomial-time reduction）</strong>，记为 $F\leqslant_p G$。</p>
+<p><strong>Lemma1:</strong></p>
+<p>若 $F\leqslant_p G$ 且 $G\in P$，则 $F\in P$。</p>
+<p><strong>Lemma2:</strong></p>
+<p>若 $F\leqslant_p G$ 且 $G\leqslant_p H$，则 $F\leqslant_p H$。</p>
+<h3 id="common-problems-still-not-in-p">Common Problems Still Not in P</h3>
+<p>以下的问题为一些常见问题，它们还没有找到在多项式时间内计算的方法（暂时不属于 $\text{P}$）。</p>
+<p><strong>3SAT Problem:</strong></p>
+<p>给定一个布尔公式 $\phi$，例如：</p>
+<p>$$\phi=(x_0\lor\overline{x_1}\lor x_2)\land(x_1\lor x_2\lor\overline{x_3})\land(\overline{x_0}\lor\overline{x_1}\lor x_3)$$</p>
+<p>其中：</p>
+<ul>
+<li>$x_0\sim x_3$ 为 variables</li>
+<li>$x_0\sim x_3,\overline{x_0}\sim\overline{x_3}$ 为 literals</li>
+<li>每个括号中有三个 literals，称为 clause</li>
+</ul>
+<p>我们称 $\phi$ 可满足，当且仅当存在一种变量赋值方式，使得 $\phi$ 为真。因此可定义函数：</p>
+<p>$$\text{3SAT}(\phi)=\begin{cases}
+    1 &amp; \text{if satisfiable}\\
+    0 &amp; \text{otherwise}
+\end{cases}$$</p>
+<p><strong>01EQ Problem:</strong></p>
+<p>给定线性方程组。例如：</p>
+<p>$$x_0+x_1+x_2=0$$</p>
+<p>$$x_0+x_1=1$$</p>
+<p>$$x_1+x_2=2$$</p>
+<p>每个等式的右边都是非负整数，变量的系数为 $0$ 或 $1$。判断这样一个线性方程组是否有 $01$ 解（每个 $x$ 只能取 $0$ 或 $1$）。</p>
+<p><strong>Subset Sum Problem:</strong></p>
+<p>给定 $n$ 个正整数 $a_1\sim a_n$，以及一个目标整数 $t$，判断能否从 $a_1\sim a_n$ 中选出一些数，使得它们的和等于 $t$。</p>
+<h3 id="text3satleqslant_p-text01eq">$\text{3SAT}\leqslant_p \text{01EQ}$</h3>
+<p>过程有三步：</p>
+<ul>
+<li>构造归约 $R$</li>
+<li>证明 $R$ 在多项式时间内可计算</li>
+<li>证明归约后输出一致</li>
+</ul>
+<p><strong>第一步：</strong></p>
+<p>怎样的 $R$ 可以将 3SAT 的输入转换成 01EQ 的输入？</p>
+<p>例如，3SAT 的某个输入为</p>
+<p>$$(x_0\lor x_1\lor x_2)\land(x_1\lor \overline{x_2}\lor x_3)$$</p>
+<p>如果上面的布尔式子要为真，则每个 clause 中至少有一个 literal 为真。</p>
+<p>$$x_0\lor x_1\lor x_2\to x_0+x_1+x_2\geqslant 1$$</p>
+<p>$$x_1\lor \overline{x_2}\lor x_3\to x_1+(1-x_2)+x_3\geqslant 1$$</p>
+<p>这与 ）01EQ 的输入形式还有一定差别。首先，系数只能为 $0$ 或 $1$，因此，令</p>
+<p>$$x_2'=1-x_2$$</p>
+<p>则上式变为</p>
+<p>$$x_1+x_2'+x_3\geqslant 1$$</p>
+<p>且 $x_2$ 和 $x_2'$ 不能同时为 $1$，因此新增等式</p>
+<p>$$x_2+x_2'=1$$</p>
+<p>接着，01EQ 要求输入均为等式，因此可以增加<strong>松弛变量</strong>，将不等式转换为等式：</p>
+<p>$$x_0+x_1+x_2\geqslant 1\to x_0+x_1+x_2+y_1+z_1=3$$</p>
+<p>左右两边实际上等价。</p>
+<p>因此，3SAT 的输入最终转换为 01EQ 的输入：</p>
+<p>$$x_0+x_1+x_2+y_1+z_1=3$$</p>
+<p>$$x_1+x_2'+x_3+y_2+z_2=3$$</p>
+<p>$$x_2+x_2'=1$$</p>
+<p>我们进行更严谨的泛化：</p>
+<p>令 $\phi$ 为 3CNF 公式，有 $n$ 个 variables $x_1\sim x_n$，有 $m$ 个 clauses $C_1\sim C_m$。</p>
+<div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="n">让</span> <span class="n">x1</span><span class="o">~</span><span class="n">xn</span><span class="p">,</span> <span class="n">x1</span><span class="s1">&#39;~xn&#39;</span> <span class="n">对应每个</span> <span class="n">literal</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="n">松弛变量</span> <span class="n">y1</span><span class="o">~</span><span class="n">ym</span><span class="p">,</span> <span class="n">z1</span><span class="o">~</span><span class="n">zm</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>        <span class="n">构造等式</span> <span class="n">xi</span> <span class="o">+</span> <span class="n">xi</span><span class="s1">&#39; = 1</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>        <span class="n">设</span> <span class="n">Cj</span> <span class="n">为</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">w3</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>        <span class="n">构造等式</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">w2</span> <span class="o">+</span> <span class="n">w3</span> <span class="o">+</span> <span class="n">yj</span> <span class="o">+</span> <span class="n">zj</span> <span class="o">=</span> <span class="mi">3</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>第二步：</strong></p>
+<p>有两个循环，一共循环 $n+m$ 遍，循环内部为 $O(1)$，因此总的时间复杂度为 $O(n+m)$，也就是说 $R$ 在多项式时间内可计算。</p>
+<p><strong>第三步：</strong></p>
+<p>求证：$\phi$ 可满足当且仅当 $R(\phi)$ 有 $01$ 解。</p>
+<p>左推右：</p>
+<p>若存在可满足 $\phi$ 的一个变量赋值方式，则从它出发构造 $01$ 解：</p>
+<p>$$\begin{cases}
+  x_i=1,x_i'=0 &amp; \text{if $x_i$ is true} \\
+  x_i=0,x_i'=1 &amp; \text{if $x_i$ is false}
+\end{cases}$$</p>
+<p>显然，这些变量满足所有</p>
+<p>$$x_i+x_i'=1$$</p>
+<p>同时，对于每个 $w_1+w_2+w_3+y_j+z_j=3$，由于 $\phi$ 可满足，因此 $w_1,w_2,w_3$ 中至少有一个为 $1$，加起来最多为 $3$，因此可以找到合适的 $y_j,z_j$ 使得该等式成立。</p>
+<p>右推左：</p>
+<p>若 $R(\phi)$ 有 $01$ 解，由于 $x_i+x_i'=1$，因此</p>
+<p>$$\begin{cases}
+  x_i=\text{true} &amp; \text{if } x_i=1 \\
+  x_i=\text{false} &amp; \text{if } x_i=0
+\end{cases}$$</p>
+<p>再看 $\phi$ 的每个括号 $C_j=(w_1\lor w_2 \lor w_3)$，由于已知 $w_1+w_2+w_3+y_j+z_j=3$，且 $y_j+z_j\leqslant 2$，因此 $w_1+w_2+w_3\geqslant 1$，说明在 $C_j$ 中至少有一个 literal 为真，因此 $\phi$ 可满足。</p>
+<h3 id="text01eqleqslant_p-textsubset-sum">$\text{01EQ}\leqslant_p \text{Subset Sum}$</h3>
+<p>例如：</p>
+<p>$$x_0+x_1+x_2=3$$</p>
+<p>$$x_0+x_1=1$$</p>
+<p>$$x_1+x_2=2$$</p>
+<p>怎样将如上 01EQ 的输入转换成 Subset Sum 的输入？</p>
+<p>将上面的三个等式用矩阵表示：</p>
+<p>$$\begin{bmatrix}
+  1 &amp; 1 &amp; 1 \\
+  1 &amp; 1 &amp; 0 \\
+  0 &amp; 1 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+  x_0 \\
+  x_1 \\
+  x_2
+\end{bmatrix}=
+\begin{bmatrix}
+  3 \\
+  1 \\
+  2
+\end{bmatrix}$$</p>
+<p>$$\begin{bmatrix}
+  1 \\
+  1 \\
+  0
+\end{bmatrix}x_0+
+\begin{bmatrix}
+  1 \\
+  1 \\
+  1
+\end{bmatrix}x_1+
+\begin{bmatrix}
+  1 \\
+  0 \\
+  1
+\end{bmatrix}x_2=
+\begin{bmatrix}
+  3 \\
+  1 \\
+  2
+\end{bmatrix}$$</p>
+<p>其中，$x_i\in\{0,1\}$。这样来看，就相当于这三个向量是选还是不选，已经初具 Subset Sum 的形式了。</p>
+<p>然后，我们要将向量转换为数。设有 $n$ 个变量，为了保证不进位，我们设每个向量为 $2n$ 进制编码。例如，上面的例子中为 $6$ 进制编码，向量第一个元素为最低位，最后一个元素为最高位：</p>
+<p>$$7x_0+43x_1+37x_2=81$$</p>
+<p>无法从 $7,43,37$ 中选出一些数，使得它们的和为 $81$。这可以解释，因为原本的线性方程组无解。</p>
+<hr />
+<h2 id="pnp-and-np-complete">P、NP and NP-complete</h2>
+<p>上述三个问题暂时都不能在多项式时间内计算，但都可以在多项式时间内验证。</p>
+<p><strong>可验证性：</strong></p>
+<p>对于一个布尔函数 $F:\{0,1\}^{*}\rightarrow\{0,1\}$，如果其能在多项式时间内验证，当且仅当存在一台 TM $V$，作为证明系统，其满足：</p>
+<ul>
+<li>运行时间为多项式时间</li>
+<li>
+<p>对于任意输入 $x\in\{0,1\}^{*}$，$F(x)=1$ 当且仅当存在证据/赋值 $t\in\{0,1\}^{*}$，使得  </p>
+</li>
+<li>
+<p>$V(x,t)=1$</p>
+</li>
+<li>$|t|&lt;poly(|x|)$（其实意思是不要太长）</li>
+</ul>
+<p>例如，对于 3SAT，$F=\text{3SAT}$，$V$ 如下：</p>
+<div class="language-py highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span> <span class="nf">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="mi">3</span><span class="n">CNF</span> <span class="n">formula</span> <span class="ow">or</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">an</span> <span class="n">assignment</span> <span class="n">of</span> <span class="n">variables</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>       <span class="k">return</span> <span class="mi">0</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="k">if</span> <span class="n">x</span> <span class="n">evaluates</span> <span class="n">to</span> <span class="n">true</span><span class="p">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>        <span class="k">return</span> <span class="mi">1</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>        <span class="k">return</span> <span class="mi">0</span>
+</span></code></pre></div></td></tr></table></div>
+<p>从上面的伪代码可以知道， $V$ 在多项式时间内运行。</p>
+<p><strong>$\text{NP}$:</strong></p>
+<p>$\text{NP}$ 是所有多项式时间内可验证的布尔函数的集合。</p>
+<p><strong>Lemma1:</strong></p>
+<p>$$\text{P}\subseteq \text{NP}\subseteq \text{EXP}$$</p>
+<div class="admonition tip">
+<p class="admonition-title">Proof</p>
+<p><strong>证明：$\text{P}\subseteq \text{NP}$：</strong></p>
+<p>若 $F\in\text{P}$，则存在一台 TM $M$，在多项式时间内计算 $F$。我们构造 TM $V$，其与 $t$ 无关，直接计算 $M(x)$ 并返回，且这个 $V$ 满足上述所有条件。</p>
+<p><strong>证明：$\text{NP}\subseteq \text{EXP}$：</strong></p>
+<p>若 $F\in\text{NP}$，则存在一台 TM $V$，在多项式时间内验证 $F$。我们构造 TM $M$：</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span> <span class="nf">M</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">for</span> <span class="nb">all</span> <span class="n">string</span> <span class="n">t</span> <span class="k">with</span> <span class="o">|</span><span class="n">t</span><span class="o">|&lt;=</span> <span class="o">|</span><span class="n">x</span><span class="o">|^</span><span class="n">a</span><span class="p">:</span> <span class="c1"># 枚举</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="n">run</span> <span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="k">if</span> <span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>            <span class="k">return</span> <span class="mi">1</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="k">return</span> <span class="mi">0</span>
+</span></code></pre></div>
+</div>
+<p><strong>Theorem1:</strong></p>
+<p>$\text{3SAT}\in\text{P}$ 当且仅当 $\text{P}=\text{NP}$。</p>
+<p><strong>NP-complete:</strong></p>
+<p>函数 $G:\{0,1\}^{*}\to\{0,1\}^{*}$ 是 NP-complete，当且仅当：</p>
+<ul>
+<li>$G\in\text{NP}$</li>
+<li>对任意 $F\in\text{NP}$，都有 $F\leqslant_p G$。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果只满足第二个条件，则称 $G$ 为 NP-hard。</p>
+</div>
+<p><strong>Lemma2:</strong></p>
+<p>若 $G$ 是 NP-complete，且 $G\in\text{P}$，则 $\text{P}=\text{NP}$。</p>
+<p><strong>Cook-Levin Theorem:</strong></p>
+<p>$\text{3SAT}$ 是 NP-complete。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>. 
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+      data-repo="monsterdie12138/Notebook"
+      data-repo-id="R_kgDOMQ832g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOMQ832s4CmZ2M"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after document loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Lec11/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Lec11">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Lec11
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Lec13/" class="md-footer__link md-footer__link--next" aria-label="下一页: Lec13">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Lec13
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 - Now Monsterdie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/monsterdie12138" target="_blank" rel="noopener" title="Writer on Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

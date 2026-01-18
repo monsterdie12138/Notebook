@@ -257,7 +257,51 @@ nav:
       - 6.模板与STL: Computer Science/OOP/Chapter6.md
       - 7.异常: Computer Science/OOP/Chapter7.md
       - 8.流和文件: Computer Science/OOP/Chapter8.md
-  
+    - 理论计算机科学导引:
+      - Lec1: Computer Science/TCS/Lec1.md
+      - Lec2: Computer Science/TCS/Lec2.md
+      - Lec3: Computer Science/TCS/Lec3.md
+      - Lec4: Computer Science/TCS/Lec4.md
+      - Lec5: Computer Science/TCS/Lec5.md
+      - Lec6: Computer Science/TCS/Lec6.md
+      - Lec7: Computer Science/TCS/Lec7.md
+      - Lec8: Computer Science/TCS/Lec8.md
+      - Lec9: Computer Science/TCS/Lec9.md
+      - Lec10: Computer Science/TCS/Lec10.md
+      - Lec11: Computer Science/TCS/Lec11.md
+      - Lec12: Computer Science/TCS/Lec12.md
+      - Lec13: Computer Science/TCS/Lec13.md
+      - Lec14: Computer Science/TCS/Lec14.md
+    - 机器学习:
+      - 1.基本术语: Computer Science/ML/Chapter1.md
+      - 2.模型的评估与选择: Computer Science/ML/Chapter2.md
+      - 3.线性模型: Computer Science/ML/Chapter3.md
+      - 4.决策树: Computer Science/ML/Chapter4.md
+      - 5.神经网络: Computer Science/ML/Chapter5.md
+      - 6.支持向量机: Computer Science/ML/Chapter6.md
+      - 7.贝叶斯分类器: Computer Science/ML/Chapter7.md
+      - 8.集成学习: Computer Science/ML/Chapter8.md
+      - 9.聚类: Computer Science/ML/Chapter9.md
+      - 10.降维与度量学习: Computer Science/ML/Chapter10.md
+      - 11.特征选择与稀疏学习: Computer Science/ML/Chapter11.md
+      - 13.半监督学习: Computer Science/ML/Chapter13.md
+      - 14.概率图模型: Computer Science/ML/Chapter14.md
+      - 15.规则学习: Computer Science/ML/Chapter15.md
+      - 16.强化学习: Computer Science/ML/Chapter16.md
+    - 量子计算理论基础:
+      - 1.量子比特与量子门: Computer Science/Quantum/Chapter1.md
+      - 2.量子测量: Computer Science/Quantum/Chapter2.md
+      - 3.量子算法: Computer Science/Quantum/Chapter3.md
+    - 计算机视觉导论:
+      - 1.Image Formation: Computer Science/CV/Chapter1.md
+      - 2.Image Processing: Computer Science/CV/Chapter2.md
+      - 3.Model Fitting and Optimization: Computer Science/CV/Chapter3.md
+      - 4.Image Matching and Motion Estimation: Computer Science/CV/Chapter4.md
+      - 5.Image Stitching: Computer Science/CV/Chapter5.md
+      - 6.Structure from Motion (SfM): Computer Science/CV/Chapter6.md
+      - 7.Depth Estimation and 3D Reconstruction: Computer Science/CV/Chapter7.md
+      - 8.Recognition: Computer Science/CV/Chapter8.md
+
   - Course:
     - '': Course/index.md
     - CS61A:
@@ -268,3 +312,26 @@ nav:
       - Appendix1: Course/CS61A/Appendix1.md
       - Appendix2: Course/CS61A/Appendix2.md
       - Appendix3: Course/CS61A/Appendix3.md
+    - CS231N:
+      - 1.Image Classification: Course/CS231N/Part1.md
+      - 2.Linear Classification: Course/CS231N/Part2.md
+      - 3.Optimization: Course/CS231N/Part3.md
+      - 4.Backpropagation: Course/CS231N/Part4.md
+      - 5.Neural NetworksⅠ: Course/CS231N/Part5.md
+      - 6.Neural NetworksⅡ: Course/CS231N/Part6.md
+      - 7.Neural NetworksⅢ: Course/CS231N/Part7.md
+      - 8.Mini Neural Network Case Study: Course/CS231N/Part8.md
+      - 9.Convolutional Neural Networks: Course/CS231N/Part9.md
+      - 10.Recurrent Neural Networks: Course/CS231N/Part10.md
+      - Appendix: Course/CS231N/Appendix.md
+    - GAMES101:
+      - 1.Transformation: Course/GAMES101/Lec1.md
+      - 2.Rasterization: Course/GAMES101/Lec2.md
+      - 3.Shading: Course/GAMES101/Lec3.md
+      - 4.Geometry: Course/GAMES101/Lec4.md
+      - 5.Ray Tracing: Course/GAMES101/Lec5.md
+      - 6.Animation: Course/GAMES101/Lec6.md
+      - Appendix: Course/GAMES101/Appendix.md
+    - DRL:
+      - 1.PPO: Course/DRL/PPO.md
+      - 2.Q-Learning: Course/DRL/Q-Learning.md
